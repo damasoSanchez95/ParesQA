@@ -11,6 +11,7 @@ public class Instance {
 		this.body = body;
 	}
 	
+	asd;
 	public String getId(){
 		return id; 
 	}
