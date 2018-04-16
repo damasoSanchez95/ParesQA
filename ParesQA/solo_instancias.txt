@@ -1,0 +1,185 @@
+<instances>
+<Instance imx:id="U:9-NG8SwhEeifwIeF2GB2UA" xsi:type="mapping1:Instance" name="Lectura_arcco_ruc_comisiones" transformation="U:9-NG9CwhEeifwIeF2GB2UA">
+<annotations>
+<Annotation imx:id="ID_21" xsi:type="description:Description" body="Tabla+actual+temporal+con+la+informaci%C3%B3n+de+las+comisiones."/>
+</annotations>
+<fromOutlineLinks>
+<OutlineLink imx:id="ID_22" xsi:type="mapping1:OutlineLink" fromInstance="U:9-NG8SwhEeifwIeF2GB2UA" toInstance="U:YBQ4uSwlEeifwIeF2GB2UA"/>
+</fromOutlineLinks>
+<ports>
+<TransformationFieldPort imx:id="ID_23" xsi:type="mapping1:TransformationFieldPort" instance="U:9-NG8SwhEeifwIeF2GB2UA" transformationField="U:9-NHFCwhEeifwIeF2GB2UA">
+<children>
+<NestedPort imx:id="ID_24" xsi:type="mapping1:NestedPort" toPorts="ID_25" parent="ID_23" structuralFeature="U:9-NHFywhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_26" xsi:type="mapping1:NestedPort" toPorts="ID_27" parent="ID_23" structuralFeature="U:9-NHGCwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_28" xsi:type="mapping1:NestedPort" toPorts="ID_29" parent="ID_23" structuralFeature="U:9-NHGSwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_30" xsi:type="mapping1:NestedPort" toPorts="ID_31" parent="ID_23" structuralFeature="U:9-NHGiwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_32" xsi:type="mapping1:NestedPort" toPorts="ID_33" parent="ID_23" structuralFeature="U:9-NHGywhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_34" xsi:type="mapping1:NestedPort" toPorts="ID_35" parent="ID_23" structuralFeature="U:9-NHHCwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_36" xsi:type="mapping1:NestedPort" toPorts="ID_37" parent="ID_23" structuralFeature="U:9-NHQSwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_38" xsi:type="mapping1:NestedPort" toPorts="ID_39" parent="ID_23" structuralFeature="U:9-NHIiwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_40" xsi:type="mapping1:NestedPort" toPorts="ID_41" parent="ID_23" structuralFeature="U:9-NHHywhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_42" xsi:type="mapping1:NestedPort" toPorts="ID_43" parent="ID_23" structuralFeature="U:9-NHICwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_44" xsi:type="mapping1:NestedPort" toPorts="ID_45" parent="ID_23" structuralFeature="U:9-NHJywhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_46" xsi:type="mapping1:NestedPort" toPorts="ID_47" parent="ID_23" structuralFeature="U:9-NHKiwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_48" xsi:type="mapping1:NestedPort" toPorts="ID_49" parent="ID_23" structuralFeature="U:9-NHKywhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_50" xsi:type="mapping1:NestedPort" toPorts="ID_51" parent="ID_23" structuralFeature="U:9-NHMiwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_52" xsi:type="mapping1:NestedPort" toPorts="ID_53" parent="ID_23" structuralFeature="U:9-NHOSwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_54" xsi:type="mapping1:NestedPort" toPorts="ID_55" parent="ID_23" structuralFeature="U:9-NHIywhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_56" xsi:type="mapping1:NestedPort" toPorts="ID_57" parent="ID_23" structuralFeature="U:9-NHMCwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_58" xsi:type="mapping1:NestedPort" toPorts="ID_59" parent="ID_23" structuralFeature="U:9-NHMSwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_60" xsi:type="mapping1:NestedPort" toPorts="ID_61" parent="ID_23" structuralFeature="U:9-NHNywhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_62" xsi:type="mapping1:NestedPort" toPorts="ID_63" parent="ID_23" structuralFeature="U:9-NHOCwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_64" xsi:type="mapping1:NestedPort" toPorts="ID_65" parent="ID_23" structuralFeature="U:9-NHOiwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_66" xsi:type="mapping1:NestedPort" toPorts="ID_67" parent="ID_23" structuralFeature="U:9-NHISwhEeifwIeF2GB2UA"/>
+</children>
+</TransformationFieldPort>
+</ports>
+</Instance>
+
+
+<Instance imx:id="U:9-NG8iwhEeifwIeF2GB2UA" xsi:type="mapping1:Instance" name="Escritura_arcco_rendimientos_linea" toOutlineLinks="ID_68" transformation="U:9-NG9SwhEeifwIeF2GB2UA">
+<annotations>
+<Annotation imx:id="ID_69" xsi:type="description:Description" body="Tabla+con+informaci%C3%B3n+actual+de+rendimientos+con+los+importes+formateados."/>
+</annotations>
+<ports>
+<TransformationFieldPort imx:id="ID_70" xsi:type="mapping1:TransformationFieldPort" instance="U:9-NG8iwhEeifwIeF2GB2UA" transformationField="U:9-NG-iwhEeifwIeF2GB2UA">
+<children>
+<NestedPort imx:id="ID_71" xsi:type="mapping1:NestedPort" fromPort="ID_72" parent="ID_70" structuralFeature="U:9-NG_SwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_73" xsi:type="mapping1:NestedPort" fromPort="ID_74" parent="ID_70" structuralFeature="U:9-NG_iwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_75" xsi:type="mapping1:NestedPort" fromPort="ID_76" parent="ID_70" structuralFeature="U:9-NG_ywhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_77" xsi:type="mapping1:NestedPort" fromPort="ID_78" parent="ID_70" structuralFeature="U:9-NHACwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_79" xsi:type="mapping1:NestedPort" fromPort="ID_80" parent="ID_70" structuralFeature="U:9-NHASwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_81" xsi:type="mapping1:NestedPort" fromPort="ID_82" parent="ID_70" structuralFeature="U:9-NHAiwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_83" xsi:type="mapping1:NestedPort" fromPort="ID_84" parent="ID_70" structuralFeature="U:9-NHAywhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_85" xsi:type="mapping1:NestedPort" fromPort="ID_86" parent="ID_70" structuralFeature="U:9-NHBCwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_87" xsi:type="mapping1:NestedPort" fromPort="ID_88" parent="ID_70" structuralFeature="U:9-NHBSwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_89" xsi:type="mapping1:NestedPort" fromPort="ID_90" parent="ID_70" structuralFeature="U:9-NHBiwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_91" xsi:type="mapping1:NestedPort" fromPort="ID_92" parent="ID_70" structuralFeature="U:9-NHCCwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_93" xsi:type="mapping1:NestedPort" fromPort="ID_94" parent="ID_70" structuralFeature="U:9-NHCSwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_95" xsi:type="mapping1:NestedPort" fromPort="ID_96" parent="ID_70" structuralFeature="U:9-NHCiwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_97" xsi:type="mapping1:NestedPort" fromPort="ID_98" parent="ID_70" structuralFeature="U:9-NHCywhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_99" xsi:type="mapping1:NestedPort" fromPort="ID_100" parent="ID_70" structuralFeature="U:9-NHDCwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_101" xsi:type="mapping1:NestedPort" fromPort="ID_102" parent="ID_70" structuralFeature="U:9-NHDSwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_103" xsi:type="mapping1:NestedPort" fromPort="ID_104" parent="ID_70" structuralFeature="U:9-NHDiwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_105" xsi:type="mapping1:NestedPort" fromPort="ID_106" parent="ID_70" structuralFeature="U:9-NHECwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_107" xsi:type="mapping1:NestedPort" fromPort="ID_108" parent="ID_70" structuralFeature="U:9-NHDywhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_109" xsi:type="mapping1:NestedPort" fromPort="ID_110" parent="ID_70" structuralFeature="U:9-NHESwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_111" xsi:type="mapping1:NestedPort" fromPort="ID_112" parent="ID_70" structuralFeature="U:AV-ujzGmEeihRMPHnoObNQ"/>
+</children>
+</TransformationFieldPort>
+</ports>
+</Instance>
+
+
+<Instance imx:id="U:YBQ4uSwlEeifwIeF2GB2UA" xsi:type="mapping1:Instance" name="exp_importes" toOutlineLinks="ID_22" transformation="U:YBQ4uiwlEeifwIeF2GB2UA">
+<annotations>
+<Annotation imx:id="ID_113" xsi:type="description:Description" body="Expresi%C3%B3n+para+formatear+los+importes+con+su+signo+correspondiente."/>
+</annotations>
+<fromOutlineLinks>
+<OutlineLink imx:id="ID_114" xsi:type="mapping1:OutlineLink" fromInstance="U:YBQ4uSwlEeifwIeF2GB2UA" toInstance="U:1XTVEDGSEeihRMPHnoObNQ"/>
+</fromOutlineLinks>
+<ports>
+<TransformationFieldPort imx:id="ID_25" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_24" toPorts="ID_115" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4vCwlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_27" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_26" toPorts="ID_116" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4vSwlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_29" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_28" toPorts="ID_117" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4viwlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_31" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_30" toPorts="ID_118" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4vywlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_33" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_32" toPorts="ID_119" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4wCwlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_35" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_34" toPorts="ID_120" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4wSwlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_37" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_36" toPorts="ID_121" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4wiwlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_39" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_38" toPorts="ID_122" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4wywlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_41" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_40" toPorts="ID_123" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4xSwlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_43" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_42" toPorts="ID_124" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4xiwlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_45" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_44" toPorts="ID_125" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4xywlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_47" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_46" toPorts="ID_126" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4yCwlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_49" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_48" toPorts="ID_127" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4ySwlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_51" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_50" toPorts="ID_128" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4yiwlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_53" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_52" toPorts="ID_129" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4yywlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_55" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_54" toPorts="ID_130" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:YBQ4zCwlEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_57" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_56" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:rSkJBCwwEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_59" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_58" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:rSkJBSwwEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_61" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_60" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:rSkJBiwwEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_63" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_62" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:rSkJBywwEeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_131" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_132" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:95MJjSw0EeifwIeF2GB2UA"/>
+<TransformationFieldPort imx:id="ID_133" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_134" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:Tmi9uC3OEeiODaPWF10igw"/>
+<TransformationFieldPort imx:id="ID_65" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_64" toPorts="ID_135" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:zsR0dTDnEei7MCDIo0nFQA"/>
+<TransformationFieldPort imx:id="ID_67" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_66" toPorts="ID_136" instance="U:YBQ4uSwlEeifwIeF2GB2UA" transformationField="U:AV-ujjGmEeihRMPHnoObNQ"/>
+</ports>
+</Instance>
+
+
+<Instance imx:id="U:1XTVDzGSEeihRMPHnoObNQ" xsi:type="mapping1:Instance" name="Lectura_arcco_pt_cesta" transformation="U:1XTVETGSEeihRMPHnoObNQ">
+<fromOutlineLinks>
+<OutlineLink imx:id="ID_137" xsi:type="mapping1:OutlineLink" fromInstance="U:1XTVDzGSEeihRMPHnoObNQ" toInstance="U:1XTVEDGSEeihRMPHnoObNQ"/>
+</fromOutlineLinks>
+<ports>
+<TransformationFieldPort imx:id="ID_138" xsi:type="mapping1:TransformationFieldPort" instance="U:1XTVDzGSEeihRMPHnoObNQ" transformationField="U:1XUjZjGSEeihRMPHnoObNQ">
+<children>
+<NestedPort imx:id="ID_139" xsi:type="mapping1:NestedPort" toPorts="ID_140" parent="ID_138" structuralFeature="U:1XVKeTGSEeihRMPHnoObNQ"/>
+<NestedPort imx:id="ID_141" xsi:type="mapping1:NestedPort" toPorts="ID_142" parent="ID_138" structuralFeature="U:1XVKfDGSEeihRMPHnoObNQ"/>
+<NestedPort imx:id="ID_143" xsi:type="mapping1:NestedPort" toPorts="ID_144" parent="ID_138" structuralFeature="U:1XVKfTGSEeihRMPHnoObNQ"/>
+<NestedPort imx:id="ID_145" xsi:type="mapping1:NestedPort" toPorts="ID_146" parent="ID_138" structuralFeature="U:1XVKezGSEeihRMPHnoObNQ"/>
+</children>
+</TransformationFieldPort>
+</ports>
+</Instance>
+
+
+<Instance imx:id="U:1XTVEDGSEeihRMPHnoObNQ" xsi:type="mapping1:Instance" name="jnr_cesta" toOutlineLinks="ID_114 ID_137" transformation="U:1XTVEjGSEeihRMPHnoObNQ">
+
+
+<annotations>
+<Annotation imx:id="ID_147" xsi:type="description:Description" body="cruzamos+con+la+plantilla+cesta+para+llevarnos+la+informaci%C3%B3n+del+campo+codcesta."/>
+</annotations>
+<fromOutlineLinks>
+<OutlineLink imx:id="ID_68" xsi:type="mapping1:OutlineLink" fromInstance="U:1XTVEDGSEeihRMPHnoObNQ" toInstance="U:9-NG8iwhEeifwIeF2GB2UA"/>
+</fromOutlineLinks>
+<ports>
+<TransformationFieldPort imx:id="ID_134" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_133" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVGjGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_115" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_25" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVGzGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_116" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_27" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVHDGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_117" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_29" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVHTGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_118" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_31" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVHjGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_119" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_33" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVHzGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_120" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_35" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVIDGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_121" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_37" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVITGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_135" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_65" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVIjGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_122" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_39" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVIzGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_123" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_41" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVJDGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_124" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_43" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVJTGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_125" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_45" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVJjGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_126" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_47" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVJzGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_127" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_49" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVKDGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_128" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_51" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVKTGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_129" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_53" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVKjGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_130" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_55" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVKzGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_132" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_131" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVLDGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_140" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_139" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVFzGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_142" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_141" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVGDGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_144" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_143" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVGTGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_146" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_145" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVFjGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_72" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_71" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8PTGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_74" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_73" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8PjGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_76" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_75" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8PzGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_78" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_77" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8QDGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_80" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_79" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8QTGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_82" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_81" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8QjGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_84" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_83" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8QzGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_86" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_85" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8RDGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_88" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_87" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8RTGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_90" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_89" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8RjGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_92" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_91" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8RzGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_94" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_93" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8SDGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_96" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_95" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8STGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_98" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_97" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8SjGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_100" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_99" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8SzGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_102" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_101" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8TDGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_104" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_103" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8TTGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_106" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_105" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8UzGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_108" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_107" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8TzGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_110" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_109" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8TjGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_136" xsi:type="mapping1:TransformationFieldPort" fromPort="ID_67" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:AV-ujDGmEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_112" xsi:type="mapping1:TransformationFieldPort" toPorts="ID_111" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:AV-ujTGmEeihRMPHnoObNQ"/>
+</ports>
+</Instance>
+
+</instances>

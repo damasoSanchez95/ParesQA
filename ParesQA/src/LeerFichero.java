@@ -1,13 +1,27 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class LeerFichero {
+	
+	private static Instance nuevaInstancia;
+	private Instance.Campos camposInstancia;
+	private AbstractTransformation nuevaTransformacion;
+	private dataRecord nuevaTabla;
+	private Parameters nuevoParametro;
 
+
+	@SuppressWarnings("null")
 	public static void leerContenido(String archivo) throws Exception {
 	    FileReader fr = null;
 	    BufferedReader br = null;
+	    // String name="", id ="",body = ""; //atributos de una instancia
+	   // Instance.Campos campos = null; //Campos de una instancia
 		
 		try {
 			fr = new FileReader(archivo); //leemos el archivo que pasemos por parametro
@@ -28,7 +42,10 @@ public class LeerFichero {
 				}
 				else if(cadena.contains("<Instance")){
 					//CREAR UN OBJETO DE LA CLASE INSTANCIA
-					leerInstancia(br,cadena);
+					//id, name, body, campos
+					Instance instancia=null;
+					instancia=leerInstancia(br,cadena);
+					nuevaInstancia = new Instance(instancia.getId(), instancia.getName(), instancia.getBody());
 				}
 			}
 		}
@@ -36,9 +53,102 @@ public class LeerFichero {
 			throw new Exception("No se ha podido abrir ese archivo. No existe");
 		}
 		finally {
-			br.close();
+			if(br!=null){
+				br.close();
+			}
 		}
     }	
+	
+	public static void nosInteresa(String array[], String arrayBueno[]){
+		int contador=0;
+		
+		for(int i=0; i<array.length;i++){
+			
+			if(array[i].contains("id")) {
+				arrayBueno[contador]=array[i];
+				contador++;
+			}
+			
+			if(array[i].contains("name")){
+				arrayBueno[contador]=array[i];
+				contador++;		
+			}	
+		}
+	}
+	
+	
+	//METODO PARA QUITAR TODOS LOS CARACTERES INNECESARIOS
+	@SuppressWarnings("null")
+	public static void reemplazo(String array[], String[] arrayBueno){
+		nosInteresa(array, arrayBueno);
+		
+			for(int i=0; i<arrayBueno.length; i++){
+				if(arrayBueno[i]!=null) {
+					Pattern patron= Pattern.compile("[/><]");
+					Matcher caja= patron.matcher(arrayBueno[i]);
+					arrayBueno[i]=caja.replaceAll("");	
+					arrayBueno[i]=arrayBueno[i].replace("imx:id=", "");
+					arrayBueno[i]=arrayBueno[i].replace("name=", "");
+					arrayBueno[i]=arrayBueno[i].replace("body=", "");
+				}
+		}	
+	}
+	
+	public static void meterEnLista(String arrayBueno[], ArrayList<String> claves){
+		for(int i=0;i<arrayBueno.length;i++)
+			if(arrayBueno[i]!=null)
+				claves.add(arrayBueno[i]);
+	}
+	
+	//NO
+	 //String body, String id, Instance.Campos campos
+	public static Instance leerInstancia(BufferedReader br, String cadena) throws Exception{
+		boolean parar=false;
+		boolean falloBody=false;
+		Instance nuevaInstancia = new Instance(null,null,null);
+		ArrayList<String> listaClaves = new ArrayList<String>();
+		String [] cadenaDividida;
+		cadenaDividida=cadena.split(" ");
+		String[] arrayBueno = new String[cadenaDividida.length];
+		reemplazo(cadenaDividida,arrayBueno); //Aqui estamos dividiendo la cadena
+		meterEnLista(arrayBueno,listaClaves);
+		
+		Iterator<String> it = listaClaves.iterator();
+		nuevaInstancia.setId(it.next());
+		nuevaInstancia.setName(it.next());
+		
+		//HASTA AQUI BIEN
+		while(!cadena.contains("annotations") && !parar)
+			if((cadena.contains("<fromOutlineLinks")) || cadena.contains("ports")) {
+				parar=true; //para si no encontramos annotations y si otra etiqueta, esto ocurrira en caso de fallo.
+				falloBody=true;
+			}
+			else if(cadena.contains("annotations")) //para si encontramos annotations
+				parar=true;
+			else 
+				cadena = br.readLine(); //para que avance si no ha encontrado annotations
+			
+		//HACER EXCEPCION BIEN
+		if(falloBody) //es xq no tiene cuerpo asiq malo
+			//throw new Exception("la instancia " + nuevaInstancia.getName() + " no tiene descripcion puesta");
+			System.out.println("la instancia" + nuevaInstancia.getName() + "no tiene descripcion puesta");
+		else{
+			//leerBody
+			cadena = br.readLine(); //para que avance ya que aqui llega con <annotations>
+
+			String body ="caca";
+			nuevaInstancia.setBody(body); //body será lo que hemos leido en annotation
+		
+		while(!cadena.contains("<ports"))
+			cadena = br.readLine(); //para que avance
+		
+			while(!cadena.contains("</ports>")) { //mientras no sea el final
+				System.out.println(cadena);
+				cadena = br.readLine(); //para que avance
+				}
+		}
+		return nuevaInstancia;
+	}
 	
 	//OKI	
 	public static void leerDataRecord(BufferedReader br, String cadena) throws IOException{
@@ -50,29 +160,6 @@ public class LeerFichero {
 				cadena = br.readLine(); //para que avance
 				}
 	}
-	
-	//NO
-	public static void leerInstancia(BufferedReader br, String cadena) throws IOException{
-		System.out.println("INSTANCIA");
-		
-		//Instance nuevaInstancia;
-		//Instance.Campos campos; //clase interna de la clase Instance para los campos
-		
-		//if(!cadena.contains("annotations")) //es xq no tiene cuerpo asiq malo
-			//lanzar una excepcion que te diga que no tiene cuerpo
-		
-		//else{
-		//nuevaInstancia.setBody(body); //body será lo que hemos leido en annotation
-		
-		while(!cadena.contains("<ports"))
-			cadena = br.readLine(); //para que avance
-		
-			while(!cadena.contains("</ports>")) { //mientras no sea el final
-				System.out.println(cadena);
-				cadena = br.readLine(); //para que avance
-				}
-		}
-	//}
 	
 	//NO
 	public static void leerAbstractTransformation(BufferedReader br, String cadena) throws IOException{
@@ -96,5 +183,8 @@ public class LeerFichero {
 				cadena = br.readLine(); //para que avance
 				}
 		}
+
+
+
 }	
 

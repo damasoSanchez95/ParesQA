@@ -14,12 +14,16 @@ public class Instance {
 	public String getId(){
 		return id; 
 	}
-	
+	public void setId(String id){
+		this.id=id;
+	}
 	public String getName(){
 		return name;
 	}
-	
-	public String body(){
+	public void setName(String name){
+		this.name=name;
+	}
+	public String getBody(){
 		return body;
 	}
 	
@@ -35,5 +39,17 @@ public class Instance {
 		public String getId(){return id;}
 		public String getToPorts(){return to_ports;}
 		public String getStructural_feature(){return structural_feature;}
+		
+		public void setId(String id){
+			this.id=id;
+		}
+		
+		public void setToPorts(String to_ports){
+			this.to_ports = to_ports;
+		}
+		
+		public void setStructural_feature(String structural_feature){
+			this.structural_feature=structural_feature;
+		}
 	}	
 }

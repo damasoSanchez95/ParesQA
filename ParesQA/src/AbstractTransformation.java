@@ -16,17 +16,29 @@ public class AbstractTransformation {
 	public String getId(){
 		return id;
 	}
+	public void setId(String id){
+		this.id=id;
+	}
 	
 	public String getType() {
 		return type;
+	}
+	public void setType(String type){
+		this.type=type;
 	}
 	
 	public String getActive(){
 		return active;
 	}
+	public void setActive(String active){
+		this.active=active;
+	}
 	
 	public String getNombre(){
 		return nombre;
+	}
+	public void setNombre(String nombre){
+		this.nombre=nombre;
 	}
 	
 	class campos{ //Clase para los campos de dicha Transformacion, relacionalField en el XML

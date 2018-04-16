@@ -14,12 +14,21 @@ public class Parameters {
 	public String getId(){
 		return id;
 	}
+	public void setId(String id){
+		this.id=id;
+	}
 	
 	public String getName(){
 		return name;
 	}
+	public void setName(String name){
+		this.name=name;
+	}
 	
 	public String getValor(){
 		return valor;
+	}
+	public void setValor(String valor){
+		this.valor=valor;
 	}
 }
