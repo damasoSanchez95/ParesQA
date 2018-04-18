@@ -49,9 +49,26 @@ public class AbstractTransformation {
 		private String precision;
 		
 		public String getId(){return id;}
+		public void setID(String id) {
+			this.id=id;
+		}
+		
 		public String getName(){return name;}
+		public void setName(String name) {
+			this.name=name;
+		}
+		
 		public String getPrecision(){return precision;}
+		public void setPrecision(String precision) {
+			this.precision=precision;
+		}
 		public String getColumna(){return columna;}
+		public void setColumna(String columna) {
+			this.columna=columna;
+		}
 		public String getFeature(){return feature;}
+		public void setfeature(String feature) {
+			this.feature=feature;
+		}
 	}
 }

@@ -1,14 +1,25 @@
+import java.util.ArrayList;
 
 public class Instance {
 
-	String id;
-	String name;
-	String body;
+	private String id;
+	private String name;
+	private String body;
+	private ArrayList<Campos> camposInstancia;
 	
-	public Instance(String id, String name, String body){
+	public Instance(String id, String name, String body, ArrayList<Campos> camposInstancia){
 		this.id = id;
 		this.name = name;
 		this.body = body;
+		this.camposInstancia=camposInstancia;
+	}
+	
+	public ArrayList<Campos> getCampos(){
+		return this.camposInstancia;
+	}
+	
+	public void setCampos(ArrayList<Campos> campos){
+		this.camposInstancia=campos;
 	}
 	
 	public String getId(){
@@ -35,10 +46,19 @@ public class Instance {
 		private String id;
 		private String to_ports;
 		private String structural_feature;
+		private String from_port;
 		
 		public String getId(){return id;}
 		public String getToPorts(){return to_ports;}
+		public String getFromPorts(){return from_port;}
 		public String getStructural_feature(){return structural_feature;}
+		
+		public Campos(String id, String to_ports,String structural_feature, String from_port){
+			this.id=id;
+			this.to_ports=to_ports;
+			this.structural_feature=structural_feature;
+			this.from_port=from_port;
+		}
 		
 		public void setId(String id){
 			this.id=id;
@@ -46,6 +66,10 @@ public class Instance {
 		
 		public void setToPorts(String to_ports){
 			this.to_ports = to_ports;
+		}
+		
+		public void setFromPort(String from_port){
+			this.from_port = from_port;
 		}
 		
 		public void setStructural_feature(String structural_feature){

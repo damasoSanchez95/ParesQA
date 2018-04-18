@@ -9,13 +9,11 @@ import java.util.regex.Pattern;
 
 public class LeerFichero {
 	
-	private static Instance nuevaInstancia;
-	private Instance.Campos camposInstancia;
+	private static ArrayList<Instance> listaInstancia = new ArrayList<Instance>();
 	private AbstractTransformation nuevaTransformacion;
 	private dataRecord nuevaTabla;
 	private Parameters nuevoParametro;
-
-
+	
 	@SuppressWarnings("null")
 	public static void leerContenido(String archivo) throws Exception {
 	    FileReader fr = null;
@@ -43,9 +41,10 @@ public class LeerFichero {
 				else if(cadena.contains("<Instance")){
 					//CREAR UN OBJETO DE LA CLASE INSTANCIA
 					//id, name, body, campos
-					Instance instancia=null;
+					Instance instancia;
 					instancia=leerInstancia(br,cadena);
-					nuevaInstancia = new Instance(instancia.getId(), instancia.getName(), instancia.getBody());
+					instancia = new Instance(instancia.getId(), instancia.getName(), instancia.getBody(), instancia.getCampos());
+					listaInstancia.add(instancia);
 				}
 			}
 		}
@@ -64,6 +63,11 @@ public class LeerFichero {
 		
 		for(int i=0; i<array.length;i++){
 			
+			if(array[i].contains("fromPort")) {
+				arrayBueno[contador]=array[i];
+				contador++;
+			}
+			
 			if(array[i].contains("id")) {
 				arrayBueno[contador]=array[i];
 				contador++;
@@ -73,6 +77,21 @@ public class LeerFichero {
 				arrayBueno[contador]=array[i];
 				contador++;		
 			}	
+			
+			if(array[i].contains("body")){
+				arrayBueno[contador]=array[i];
+				contador++;		
+			}	
+			
+			if(array[i].contains("toPorts")){
+				arrayBueno[contador]=array[i];
+				contador++;		
+			}
+			
+			if(array[i].contains("structuralFeature")){
+				arrayBueno[contador]=array[i];
+				contador++;		
+			}
 		}
 	}
 	
@@ -90,6 +109,9 @@ public class LeerFichero {
 					arrayBueno[i]=arrayBueno[i].replace("imx:id=", "");
 					arrayBueno[i]=arrayBueno[i].replace("name=", "");
 					arrayBueno[i]=arrayBueno[i].replace("body=", "");
+					arrayBueno[i]=arrayBueno[i].replace("structuralFeature=", "");
+					arrayBueno[i]=arrayBueno[i].replace("toPorts=", "");
+					
 				}
 		}	
 	}
@@ -100,24 +122,47 @@ public class LeerFichero {
 				claves.add(arrayBueno[i]);
 	}
 	
+	public static void reiniciarArray(String arrayBueno[]){
+		for(int i=0; i<arrayBueno.length;i++)
+			arrayBueno[i]=null;
+	}
+	
+	public static void vaciarLista(ArrayList<String> listaClaves){
+		listaClaves.clear();
+	}
+
+	
 	//NO
 	 //String body, String id, Instance.Campos campos
+	@SuppressWarnings("null")
 	public static Instance leerInstancia(BufferedReader br, String cadena) throws Exception{
 		boolean parar=false;
 		boolean falloBody=false;
-		Instance nuevaInstancia = new Instance(null,null,null);
+		boolean dentro=false;
+		Iterator<String> it;
+		ArrayList<Instance.Campos> listaCampos = new ArrayList<Instance.Campos>();
+		
+		Instance nuevaInstancia = new Instance(null,null,null,null);
 		ArrayList<String> listaClaves = new ArrayList<String>();
 		String [] cadenaDividida;
+		
 		cadenaDividida=cadena.split(" ");
+		
 		String[] arrayBueno = new String[cadenaDividida.length];
-		reemplazo(cadenaDividida,arrayBueno); //Aqui estamos dividiendo la cadena
+		
+		//Metodo para quitar los caracteres innecesarios
+		reemplazo(cadenaDividida,arrayBueno); 
+		
+		//Metodo para meter en la lista solo lo que nos interese.
 		meterEnLista(arrayBueno,listaClaves);
 		
-		Iterator<String> it = listaClaves.iterator();
-		nuevaInstancia.setId(it.next());
-		nuevaInstancia.setName(it.next());
+		it = listaClaves.iterator();
 		
-		//HASTA AQUI BIEN
+		nuevaInstancia.setId(it.next()); //Tenemos id de la instancia
+		nuevaInstancia.setName(it.next()); //tenemos nombre de la instancia
+		
+		vaciarLista(listaClaves);
+		
 		while(!cadena.contains("annotations") && !parar)
 			if((cadena.contains("<fromOutlineLinks")) || cadena.contains("ports")) {
 				parar=true; //para si no encontramos annotations y si otra etiqueta, esto ocurrira en caso de fallo.
@@ -135,21 +180,76 @@ public class LeerFichero {
 		else{
 			//leerBody
 			cadena = br.readLine(); //para que avance ya que aqui llega con <annotations>
+			//cadena = <Annotation imx:id="ID_21" xsi:type="description:Description" body="Tabla+actual+temporal+con+la+informaci%C3%B3n+de+las+comisiones."/>
 
-			String body ="caca";
-			nuevaInstancia.setBody(body); //body será lo que hemos leido en annotation
-		
-		while(!cadena.contains("<ports"))
-			cadena = br.readLine(); //para que avance
-		
-			while(!cadena.contains("</ports>")) { //mientras no sea el final
-				System.out.println(cadena);
+			cadenaDividida=cadena.split(" ");
+			arrayBueno= new String[cadenaDividida.length];
+			
+			//Metodo para quitar los caracteres innecesarios
+			reemplazo(cadenaDividida,arrayBueno); 
+			
+			//Metodo para meter en la lista solo lo que nos interese.
+			meterEnLista(arrayBueno,listaClaves);
+			
+			it = listaClaves.iterator(); //llevamos al iterador al principio de la lista
+			it.next(); //para saltarnos el ID del annotation
+			nuevaInstancia.setBody(it.next());
+			
+			//HASTA AQUI BIEN
+			while(!cadena.contains("<ports"))
 				cadena = br.readLine(); //para que avance
+
+			while(!cadena.contains("</ports>")) { //mientras no sea el final
+				if(cadena.contains("<NestedPort")){
+					vaciarLista(listaClaves);
+					Instance.Campos campos = nuevaInstancia.new Campos(null, null, null, null);
+					
+					cadenaDividida=cadena.split(" ");
+					arrayBueno= new String[cadenaDividida.length];
+					
+					//Metodo para quitar los caracteres innecesarios
+					reemplazo(cadenaDividida,arrayBueno); 
+					
+					//Metodo para meter en la lista solo lo que nos interese.
+					meterEnLista(arrayBueno,listaClaves);
+					
+					if(nuevaInstancia.getName().contains("Lectura")){
+						it = listaClaves.iterator(); //llevamos al iterador al principio de la lista
+						campos.setId(it.next());
+						campos.setToPorts(it.next());
+						campos.setStructural_feature(it.next());
+						listaCampos.add(campos);
+						cadena = br.readLine(); //para que avance
+					}
+					else if(nuevaInstancia.getName().contains("Escritura")){
+						it=listaClaves.iterator();
+						campos.setId(it.next());
+						campos.setFromPort(it.next());
+						campos.setStructural_feature(it.next());
+						campos.setToPorts(null); //Como es escritura no va a ningun lado
+						listaCampos.add(campos);
+						cadena = br.readLine(); //para que avance
+					}
+					else{
+						
+						
+					}
 				}
+				else
+					cadena = br.readLine(); //para que avance
+
+			}
+			nuevaInstancia.setCampos(listaCampos);
+
 		}
 		return nuevaInstancia;
 	}
 	
+	private static void vaciarListaCampos(ArrayList<Instance.Campos> listaCampos) {
+			listaCampos.clear();
+		
+	}
+
 	//OKI	
 	public static void leerDataRecord(BufferedReader br, String cadena) throws IOException{
 		System.out.println("DATA RECORDS");
