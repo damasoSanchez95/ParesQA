@@ -11,5 +11,6 @@ public class Main {
 		
 		String archivo = br.readLine();
 		LeerFichero.leerContenido(archivo);
+		System.out.println("ACABÓ");
 	}
 }

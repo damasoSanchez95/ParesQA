@@ -1,0 +1,87 @@
+<parameters>
+<UserDefinedParameter imx:id="U:yo8uAC0pEeiQZWhR5Fywjg" xsi:type="parameter:UserDefinedParameter" name="P_s_Integration_Services" precision="-1" scale="-1" typeinfo="smd:com.informatica.metadata.seed.modeledtypes.ModeledTypeSeed.modeledtypes%2FConnection">
+<annotations>
+<Annotation imx:id="ID_469" xsi:type="description:Description" body="Servicio+de+integracion"/>
+</annotations>
+<defaultValue imx:id="ID_470" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HADOOP_ARC"/>
+</UserDefinedParameter>
+
+
+<UserDefinedParameter imx:id="U:yo8uAS0pEeiQZWhR5Fywjg" xsi:type="parameter:UserDefinedParameter" name="P_s_Hive_Version" precision="100" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
+<annotations>
+<Annotation imx:id="ID_471" xsi:type="description:Description" body="Version+del+motor+Hive"/>
+</annotations>
+<defaultValue imx:id="ID_472" xsi:type="parameter:MidStringParameterValue" valueLiteral="0.11"/>
+</UserDefinedParameter>
+
+
+<UserDefinedParameter imx:id="U:yo8uAi0pEeiQZWhR5Fywjg" xsi:type="parameter:UserDefinedParameter" name="P_s_Connection_ST_ARCCO" precision="-1" scale="-1" typeinfo="smd:com.informatica.metadata.seed.modeledtypes.ModeledTypeSeed.modeledtypes%2FConnection">
+<annotations>
+<Annotation imx:id="ID_473" xsi:type="description:Description" body="Conexion+a+la+base+de+datos"/>
+</annotations>
+<defaultValue imx:id="ID_474" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_ST"/>
+</UserDefinedParameter>
+
+
+<UserDefinedParameter imx:id="U:yo8uAy0pEeiQZWhR5Fywjg" xsi:type="parameter:UserDefinedParameter" name="P_s_Connection_TMP_ARCCO" precision="-1" scale="-1" typeinfo="smd:com.informatica.metadata.seed.modeledtypes.ModeledTypeSeed.modeledtypes%2FConnection">
+<annotations>
+<Annotation imx:id="ID_475" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
+</annotations>
+<defaultValue imx:id="ID_476" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_TM"/>
+</UserDefinedParameter>
+
+
+<UserDefinedParameter imx:id="U:yo8uBC0pEeiQZWhR5Fywjg" xsi:type="parameter:UserDefinedParameter" name="P_s_Schema_ST_OWNER" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
+<annotations>
+<Annotation imx:id="ID_477" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
+</annotations>
+<defaultValue imx:id="ID_478" xsi:type="parameter:StringParameterValue" valueLiteral="ws_aplarcco_dev_staging"/>
+</UserDefinedParameter>
+
+
+
+<UserDefinedParameter imx:id="U:yo8uBS0pEeiQZWhR5Fywjg" xsi:type="parameter:UserDefinedParameter" name="P_s_Schema_TMP_OWNER" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
+<annotations>
+<Annotation imx:id="ID_479" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
+</annotations>
+<defaultValue imx:id="ID_480" xsi:type="parameter:StringParameterValue" valueLiteral="ws_aplarcco_dev_tmp"/>
+</UserDefinedParameter>
+
+<UserDefinedParameter imx:id="U:yo8uBy0pEeiQZWhR5Fywjg" xsi:type="parameter:UserDefinedParameter" name="P_s_EXECUTOR_MEMORY" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
+<defaultValue imx:id="ID_481" xsi:type="parameter:StringParameterValue" valueLiteral="4g"/>
+</UserDefinedParameter>
+
+
+<UserDefinedParameter imx:id="U:yo8uCC0pEeiQZWhR5Fywjg" xsi:type="parameter:UserDefinedParameter" name="P_s_DRIVER_MEMORY" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
+<defaultValue imx:id="ID_482" xsi:type="parameter:StringParameterValue" valueLiteral="10g"/>
+</UserDefinedParameter>
+
+<UserDefinedParameter imx:id="U:yo8uCS0pEeiQZWhR5Fywjg" xsi:type="parameter:UserDefinedParameter" name="P_s_FechaEjecucion" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
+<defaultValue imx:id="ID_483" xsi:type="parameter:StringParameterValue" valueLiteral="9999-12-31"/>
+</UserDefinedParameter>
+
+<UserDefinedParameter imx:id="U:yo8uCi0pEeiQZWhR5Fywjg" xsi:type="parameter:UserDefinedParameter" name="P_s_Connection_MD_ARCCO" precision="-1" scale="-1" typeinfo="smd:com.informatica.metadata.seed.modeledtypes.ModeledTypeSeed.modeledtypes%2FConnection">
+<annotations>
+<Annotation imx:id="ID_484" xsi:type="description:Description" body="Conexion+a+la+base+de+datos"/>
+</annotations>
+<defaultValue imx:id="ID_485" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_MD"/>
+</UserDefinedParameter>
+
+
+<UserDefinedParameter imx:id="U:yo8uCy0pEeiQZWhR5Fywjg" xsi:type="parameter:UserDefinedParameter" name="P_s_Schema_MD_OWNER" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
+<annotations>
+<Annotation imx:id="ID_486" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
+</annotations>
+<defaultValue imx:id="ID_487" xsi:type="parameter:StringParameterValue" valueLiteral="ws_aplarcco_dev_md"/>
+</UserDefinedParameter>
+
+
+<UserDefinedParameter imx:id="U:yo8uDC0pEeiQZWhR5Fywjg" xsi:type="parameter:UserDefinedParameter" name="P_s_MAX_EXECUTORS" precision="10" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Finteger">
+<defaultValue imx:id="ID_488" xsi:type="parameter:IntegerParameterValue" valueLiteral="50"/>
+</UserDefinedParameter>
+
+
+<UserDefinedParameter imx:id="U:yo8uDS0pEeiQZWhR5Fywjg" xsi:type="parameter:UserDefinedParameter" name="P_s_DRIVER_CORES" precision="10" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Finteger">
+<defaultValue imx:id="ID_489" xsi:type="parameter:IntegerParameterValue" valueLiteral="3"/>
+</UserDefinedParameter>
+</parameters>
