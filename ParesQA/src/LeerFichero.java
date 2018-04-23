@@ -13,9 +13,20 @@ import java.util.regex.Pattern;
 public class LeerFichero {
 	
 	private static ArrayList<Instance> listaInstancia = new ArrayList<Instance>();
-	private AbstractTransformation nuevaTransformacion;
+	private static ArrayList<AbstractTransformation> listaTransformacion;
 	private static HashMap<String, String> tablaParametros = new HashMap<String, String>();
 
+	public static ArrayList<Instance> getListaInstancia(){
+		return listaInstancia;
+	}
+	
+	public static ArrayList<AbstractTransformation> getListaTransformaciones(){
+		return listaTransformacion;
+	}
+	
+	public static HashMap<String, String> getTablaParametros(){
+		return tablaParametros;
+	}
 	
 	@SuppressWarnings("null")
 	public static void leerContenido(String archivo) throws Exception {
@@ -146,7 +157,8 @@ public class LeerFichero {
 	
 	//METODO PARA QUITAR TODOS LOS CARACTERES INNECESARIOS, dentro de la palabra que queremos
 	@SuppressWarnings("null")
-	private static void reemplazo(String array[], String[] arrayBueno, boolean from_to[]){
+	//el parametro from_to[] solo lo usamos para los campos de las instancias y de las transformaciones
+	private static void reemplazo(String array[], String[] arrayBueno, boolean from_to[], boolean tipo){
 		
 		nosInteresa(array, arrayBueno,from_to);
 		
@@ -188,6 +200,10 @@ public class LeerFichero {
 	private static Instance leerInstancia(BufferedReader br, String cadena) throws Exception{
 		boolean parar=false;
 		boolean falloBody=false; //para controlar cuando una instancia tiene cuerpo o no
+		//booleano que nos sirve para saber si queremos coger el type o no
+		//en este caso solo queremos el booleano cuando sea un campo de una transfromacion o IOBJECT
+		//luego en las instancias siempre será falso.
+		boolean type=false; 
 		Iterator<String> it;
 		
 		//creacion de una lista de los campos de una instancia
@@ -204,7 +220,7 @@ public class LeerFichero {
 		
 		
 		//Metodo para quitar los caracteres innecesarios
-		reemplazo(cadenaDividida,arrayBueno, null); 
+		reemplazo(cadenaDividida,arrayBueno, null,type); 
 		
 		//Metodo para meter en la lista solo lo que nos interese.
 		meterEnLista(arrayBueno,listaClaves);
@@ -238,7 +254,7 @@ public class LeerFichero {
 			arrayBueno= new String[cadenaDividida.length];
 			
 			//Metodo para quitar los caracteres innecesarios
-			reemplazo(cadenaDividida,arrayBueno, null); 
+			reemplazo(cadenaDividida,arrayBueno, null,type); 
 			
 			//Metodo para meter en la lista solo lo que nos interese.
 			meterEnLista(arrayBueno,listaClaves);
@@ -262,7 +278,7 @@ public class LeerFichero {
 					arrayBueno= new String[cadenaDividida.length];
 					
 					//Metodo para quitar los caracteres innecesarios
-					reemplazo(cadenaDividida,arrayBueno, from_to); 
+					reemplazo(cadenaDividida,arrayBueno, from_to,type); 
 					
 					//Metodo para meter en la lista solo lo que nos interese.
 					meterEnLista(arrayBueno,listaClaves);
@@ -366,6 +382,11 @@ public class LeerFichero {
 		Parametro parametro = new Parametro(null,null);
 		boolean cuerpo=false;
 		boolean parar=false;
+		//booleano que nos sirve para saber si queremos coger el type o no
+		//en este caso solo queremos el booleano cuando sea un campo de una transfromacion o IOBJECT
+		//luego en las instancias siempre será falso.
+		boolean type=false; 
+		
 		String [] cadenaDividida;
 		cadenaDividida=cadena.split(" ");
 		String clave="";
@@ -382,7 +403,7 @@ public class LeerFichero {
 				cadenaDividida=cadena.split(" ");
 				arrayBueno= new String[cadenaDividida.length];
 
-				reemplazo(cadenaDividida,arrayBueno, null);				
+				reemplazo(cadenaDividida,arrayBueno, null,type);				
 				parametro.SetName(arrayBueno[1]);
 
 				reiniciarArray(arrayBueno);
@@ -407,7 +428,7 @@ public class LeerFichero {
 				
 			cadenaDividida=cadena.split(" ");
 			arrayBueno= new String[cadenaDividida.length];
-			reemplazo(cadenaDividida,arrayBueno, null);
+			reemplazo(cadenaDividida,arrayBueno, null,type);
 			parametro.SetValor(arrayBueno[1]);
 			reiniciarArray(arrayBueno);	
 			cadena = br.readLine(); //para que avance
