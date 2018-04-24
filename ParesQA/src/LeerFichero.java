@@ -14,7 +14,7 @@ public class LeerFichero {
 	
 	private static ArrayList<Instance> listaInstancia = new ArrayList<Instance>();
 	private static ArrayList<AbstractTransformation> listaTransformacion;
-	private static HashMap<String, String> tablaParametros = new HashMap<String, String>();
+	private static HashMap<Parametro, String> tablaParametros = new HashMap<Parametro, String>();
 
 	public static ArrayList<Instance> getListaInstancia(){
 		return listaInstancia;
@@ -24,16 +24,15 @@ public class LeerFichero {
 		return listaTransformacion;
 	}
 	
-	public static HashMap<String, String> getTablaParametros(){
+	public static HashMap<Parametro, String> getTablaParametros(){
 		return tablaParametros;
 	}
 	
 	@SuppressWarnings("null")
-	public static void leerContenido(String archivo) throws Exception {
+	public static void leerContenido(String archivo) throws Exception{
 	    FileReader fr = null;
 	    BufferedReader br = null;
 		
-		try {
 			fr = new FileReader(archivo); //leemos el archivo que pasemos por parametro
 			br = new BufferedReader(fr);
 			String cadena;
@@ -43,16 +42,13 @@ public class LeerFichero {
 					leerDataRecord(br,cadena);
 				}
 				
-				else if(cadena.contains("<parameters")){ //PARAMETROS
-					while(!cadena.contains("</parameters")){
-						//Cada parametro será un hashMap que dado
-						//el nombre, tiene el valor asociado
-						Parametro parametro;
-						parametro=leerParametros(br,cadena);
-						tablaParametros.put(parametro.getName(), parametro.getValor());
-						//listaParametros.add(parametro); //añadimos el parametro a la lista
+				else if(cadena.contains("<UserDefinedParameter")){ //PARAMETROS
+						//Cada parametro será un hashMap que tiene asociado
+						//un id y un nombre.
+					
+						//En este mismo metodo añadimos el parametro con un valor a tablaParametros.
+						leerParametros(br,cadena);	
 					}
-				}
 				
 				else if(cadena.contains("<AbstractTransformation")){
 					leerAbstractTransformation(br,cadena);	
@@ -62,21 +58,11 @@ public class LeerFichero {
 					Instance instancia;
 					instancia=leerInstancia(br,cadena);
 					instancia = new Instance(instancia.getId(), instancia.getName(), instancia.getBody(), instancia.getCampos());
-					//System.out.println("NUEVA INSTANCIAAAAAAA");
 					//mostrarInstancia(instancia);
-					listaInstancia.add(instancia);
+					listaInstancia.add(instancia); //Añadimos la instancia a la lista
 				}
 			}
-		}
-		catch(Exception e) {
-			throw new Exception("No se ha podido abrir ese archivo. No existe");
-		}
-		finally {
-			if(br!=null){
-				br.close();
-			}
-		}
-    }	
+	}
 	
 	//metodo para mostrar una instancia (para probar)
 	private static void mostrarInstancia(Instance instancia) {
@@ -87,7 +73,6 @@ public class LeerFichero {
 		Instance.Campos campo;
 
 		it = instancia.getCampos().iterator();
-		int contador=0;
 		while(it.hasNext()){
 			campo = it.next();
 			System.out.println("NUEVO CAMPOOOO");
@@ -177,6 +162,7 @@ public class LeerFichero {
 					arrayBueno[i]=arrayBueno[i].replace("connectionName=", "");
 					arrayBueno[i]=arrayBueno[i].replace("valueLiteral=", "");
 					
+					arrayBueno[i]=arrayBueno[i].replaceAll("\"", ""); //para quitar las comillas
 				}
 		}	
 	}
@@ -377,11 +363,12 @@ public class LeerFichero {
 	}
 	
 	@SuppressWarnings("unchecked")
-	private static Parametro leerParametros(BufferedReader br, String cadena) throws IOException{
+	private static void leerParametros(BufferedReader br, String cadena) throws IOException{
 		//creamos un parametro que va a ser un hashMap
 		Parametro parametro = new Parametro(null,null);
 		boolean cuerpo=false;
 		boolean parar=false;
+		String valor;
 		//booleano que nos sirve para saber si queremos coger el type o no
 		//en este caso solo queremos el booleano cuando sea un campo de una transfromacion o IOBJECT
 		//luego en las instancias siempre será falso.
@@ -392,21 +379,16 @@ public class LeerFichero {
 		String clave="";
 		String[] arrayBueno = new String[cadenaDividida.length];
 
-		cadena = br.readLine(); //para que avance
-
-		//si es el inicio del parametro, lo que nos interesa es su nombre
-			while(!cadena.contains("<UserDefinedParameter"))
-				cadena = br.readLine(); //para que avance
+						
 			
-				
-			
-				cadenaDividida=cadena.split(" ");
-				arrayBueno= new String[cadenaDividida.length];
+		cadenaDividida=cadena.split(" ");
+		arrayBueno= new String[cadenaDividida.length];
 
-				reemplazo(cadenaDividida,arrayBueno, null,type);				
-				parametro.SetName(arrayBueno[1]);
+		reemplazo(cadenaDividida,arrayBueno, null,type);
+		parametro.setId(arrayBueno[0]);
+		parametro.setName(arrayBueno[1]);
 
-				reiniciarArray(arrayBueno);
+		reiniciarArray(arrayBueno);
 
 			while(!parar){
 				if(cadena.contains("<defaultValue"))
@@ -429,15 +411,14 @@ public class LeerFichero {
 			cadenaDividida=cadena.split(" ");
 			arrayBueno= new String[cadenaDividida.length];
 			reemplazo(cadenaDividida,arrayBueno, null,type);
-			parametro.SetValor(arrayBueno[1]);
+			valor=arrayBueno[1];
 			reiniciarArray(arrayBueno);	
 			cadena = br.readLine(); //para que avance
 			
 			while(!cadena.contains("</UserDefinedParameter"))
 				cadena = br.readLine(); //para que avance
 	
-		return parametro;
-
+			tablaParametros.put(parametro, valor);
 	}
 }
 

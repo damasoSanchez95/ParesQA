@@ -2,25 +2,33 @@
 
 public class Parametro {
 	
+	String id;
 	String name;
-	String valor;
 
-	public Parametro(String name, String valor){
+	public Parametro(String id, String name){
+		this.id = id;
 		this.name=name;
-		this.valor=valor;
 	}
 	
 	public String getName(){
 		return name;
 	}
-	public void SetName(String name){
+	public void setName(String name){
 		this.name=name;
 	}
 	
-	public String getValor(){
-		return valor;
+	public String getId(){
+		return id;
 	}
-	public void SetValor(String valor){
-		this.valor=valor;
+	
+	public void setId(String id){
+		this.id=id;
 	}
+	
+//	public String getValor(){
+//		return valor;
+//	}
+//	public void SetValor(String valor){
+//		this.valor=valor;
+//	}
 }

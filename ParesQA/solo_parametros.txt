@@ -57,7 +57,7 @@
 </UserDefinedParameter>
 
 <UserDefinedParameter imx:id="U:yo8uCS0pEeiQZWhR5Fywjg" xsi:type="parameter:UserDefinedParameter" name="P_s_FechaEjecucion" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
-<defaultValue imx:id="ID_483" xsi:type="parameter:StringParameterValue" valueLiteral="9999-12-31"/>
+<defaultValue imx:id="ID_483" xsi:type="parameter:StringParameterValue" valueLiteral="9299-12-31"/>
 </UserDefinedParameter>
 
 <UserDefinedParameter imx:id="U:yo8uCi0pEeiQZWhR5Fywjg" xsi:type="parameter:UserDefinedParameter" name="P_s_Connection_MD_ARCCO" precision="-1" scale="-1" typeinfo="smd:com.informatica.metadata.seed.modeledtypes.ModeledTypeSeed.modeledtypes%2FConnection">
