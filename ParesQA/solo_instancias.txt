@@ -1,8 +1,5 @@
 <instances>
 <Instance imx:id="U:9-NG8SwhEeifwIeF2GB2UA" xsi:type="mapping1:Instance" name="Lectura_arcco_ruc_comisiones" transformation="U:9-NG9CwhEeifwIeF2GB2UA">
-<annotations>
-<Annotation imx:id="ID_21" xsi:type="description:Description" body="Tabla+actual+temporal+con+la+informaci%C3%B3n+de+las+comisiones."/>
-</annotations>
 <fromOutlineLinks>
 <OutlineLink imx:id="ID_22" xsi:type="mapping1:OutlineLink" fromInstance="U:9-NG8SwhEeifwIeF2GB2UA" toInstance="U:YBQ4uSwlEeifwIeF2GB2UA"/>
 </fromOutlineLinks>
@@ -38,9 +35,6 @@
 
 
 <Instance imx:id="U:9-NG8iwhEeifwIeF2GB2UA" xsi:type="mapping1:Instance" name="Escritura_arcco_rendimientos_linea" toOutlineLinks="ID_68" transformation="U:9-NG9SwhEeifwIeF2GB2UA">
-<annotations>
-<Annotation imx:id="ID_69" xsi:type="description:Description" body="Tabla+con+informaci%C3%B3n+actual+de+rendimientos+con+los+importes+formateados."/>
-</annotations>
 <ports>
 <TransformationFieldPort imx:id="ID_70" xsi:type="mapping1:TransformationFieldPort" instance="U:9-NG8iwhEeifwIeF2GB2UA" transformationField="U:9-NG-iwhEeifwIeF2GB2UA">
 <children>

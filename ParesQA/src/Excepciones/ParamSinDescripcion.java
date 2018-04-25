@@ -1,15 +1,15 @@
 package Excepciones;
 
-public class NombreNoConcide extends Exception{
-
-
+public class ParamSinDescripcion extends Exception {
     
 	/**
  * 
  */
 private static final long serialVersionUID = 1L;
 
-	public NombreNoConcide(String msg) {
+	public ParamSinDescripcion(String msg) {
 		super(msg);
 	}
+	
+	
 }

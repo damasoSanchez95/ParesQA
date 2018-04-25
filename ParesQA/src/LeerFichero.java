@@ -20,10 +20,9 @@ public class LeerFichero {
 	private static ArrayList<Instance> listaInstancia = new ArrayList<Instance>();
 	private static ArrayList<AbstractTransformation> listaTransformacion = new ArrayList<AbstractTransformation>();
 	private static ArrayList<Iobject> listaObjetos = new ArrayList<Iobject>();
-	private static ArrayList<ExecutionParameters> listaExecutionParameters = new ArrayList<ExecutionParameters>();
-	private static HashMap<Parametro, String> tablaParametros = new HashMap<Parametro, String>();
-	private final static Logger LOGGER = Logger.getLogger("default.LeerFichero");
 	
+	private static HashMap<String, String> tablaExecutionParameters = new HashMap<String, String>();
+	private static HashMap<Parametro, String> tablaParametros = new HashMap<Parametro, String>();
 	
 	public static ArrayList<Instance> getListaInstancia(){
 		return listaInstancia;
@@ -37,8 +36,8 @@ public class LeerFichero {
 		return listaObjetos;
 	}
 	
-	public static ArrayList<ExecutionParameters> getListaExecutionParameters() {
-		return listaExecutionParameters;
+	public static HashMap<String, String> getTablaExecutionParameters() {
+		return tablaExecutionParameters;
 	}
 	
 	public static HashMap<Parametro, String> getTablaParametros(){
@@ -59,20 +58,14 @@ public class LeerFichero {
 
 			while((cadena = br.readLine())!=null) { //mientras no sea el final
 				
-				if (cadena.contains("<executionParameters")) {
-					ExecutionParameters executionParameters;
-					executionParameters = leerExecutionParameters(br, cadena);
-					executionParameters = new ExecutionParameters(executionParameters.getName(),executionParameters.getValue());
-					listaExecutionParameters.add(executionParameters);
-				
-				}else if(cadena.contains("<datarecord:"))
-					//CREAR UN OBJETO DE LA CLASE DATARECORD
-					leerDataRecord(br,cadena);
+				if (cadena.contains("<HadoopExecutionParameter")) {
+					leerExecutionParameters(br, cadena);
+				}
 				else if(cadena.contains("<UserDefinedParameter")){ //PARAMETROS
-					//Cada parametro será un hashMap que tiene asociado
+					//Cada parametro serï¿½ un hashMap que tiene asociado
 					//un id y un nombre.
 				
-					//En este mismo metodo añadimos el parametro con un valor a tablaParametros.
+					//En este mismo metodo aï¿½adimos el parametro con un valor a tablaParametros.
 					leerParametros(br,cadena);	
 				}
 				else if(cadena.contains("<transformations")){
@@ -111,26 +104,27 @@ public class LeerFichero {
 			}
 		}
     }	
+	
 	//metodo para mostrar una instancia (para probar)
-	private static void mostrarInstancia(Instance instancia) {
-		System.out.println(instancia.getId());
-		System.out.println(instancia.getName());
-		System.out.println(instancia.getBody());
-		Iterator<Instance.Campos> it;
-		Instance.Campos campo;
-
-		it = instancia.getCampos().iterator();
-		int contador=0;
-		while(it.hasNext()){
-			campo = it.next();
-			System.out.println("NUEVO CAMPOOOO");
-			System.out.println(campo.getId());
-			System.out.println(campo.getFromPorts());
-			System.out.println(campo.getToPorts());
-			System.out.println(campo.getStructural_feature());
-			System.out.println(campo.getTransformationField());
-		}
-	}
+//	private static void mostrarInstancia(Instance instancia) {
+//		System.out.println(instancia.getId());
+//		System.out.println(instancia.getName());
+//		System.out.println(instancia.getBody());
+//		Iterator<Instance.Campos> it;
+//		Instance.Campos campo;
+//
+//		it = instancia.getCampos().iterator();
+//		int contador=0;
+//		while(it.hasNext()){
+//			campo = it.next();
+//			System.out.println("NUEVO CAMPOOOO");
+//			System.out.println(campo.getId());
+//			System.out.println(campo.getFromPorts());
+//			System.out.println(campo.getToPorts());
+//			System.out.println(campo.getStructural_feature());
+//			System.out.println(campo.getTransformationField());
+//		}
+//	}
 	
 	//metodo donde vemos que parte de la cadena nos interesa tener o no
 	public static void nosInteresa(String array[], String arrayBueno[], boolean from_to[], boolean tipo){
@@ -212,8 +206,6 @@ public class LeerFichero {
 			}
 			
 		}
-		
-
 	}
 	
 	
@@ -247,8 +239,6 @@ public class LeerFichero {
 						arrayBueno[i]=arrayBueno[i].replace("odbcType=smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%", "");
 						arrayBueno[i]=arrayBueno[i].substring(2, arrayBueno[i].length());						
 					}
-					
-					
 				}
 		}	
 	}
@@ -281,7 +271,7 @@ public class LeerFichero {
 		boolean falloBody=false; //para controlar cuando una instancia tiene cuerpo o no
 		//booleano que nos sirve para saber si queremos coger el type o no
 		//en este caso solo queremos el booleano cuando sea un campo de una transfromacion o IOBJECT
-		//luego en las instancias siempre será falso.
+		//luego en las instancias siempre serï¿½ falso.
 		boolean type=false; 
 		Iterator<String> it;
 		
@@ -322,21 +312,16 @@ public class LeerFichero {
 			else 
 				cadena = br.readLine(); //para que avance si aun no ha encontrado annotations ni otra etiqueta
 		
-		//HACER EXCEPCION BIEN
-		if(falloBody) //es xq no tiene cuerpo asiq malo
-			
-			try{
-			//throw new Exception("la instancia " + nuevaInstancia.getName() + " no tiene descripcion puesta");
-			System.out.println("la instancia " + nuevaInstancia.getName() + " no tiene descripcion puesta");
-		//He declarado un paquete de expeciones desde aqui llamo al catch que llama al mensaje de la clase
-			throw new NoTieneCuerpo();	
+		//Si no tiene cuerpo lanzamos la excepcion correspondiente
+		if(falloBody){ 
+			try {
+				throw new InstanciaSinDescrip(" LA INSTANCIA " + nuevaInstancia.getName() + " NO TIENE DESCRIPCION PUESTA ");
+
+			}catch(InstanciaSinDescrip e){
+				System.out.println(e.getMessage());
 			}
-			catch(NoTieneCuerpo ex){
-				//saco por el log un fallo con el mensaje de la clase
-				 LOGGER.log(Level.SEVERE, ex.getMessage());
-				//sale del programa ya que al no tener cuerpo debemos cerrarlo?? 
-				//System.exit(1);
-			}	
+		}
+		
 		else{ //Aqui entrara cuando si hay body
 			//leerBody
 			cadena = br.readLine(); //para que avance ya que aqui llega con <annotations>
@@ -428,7 +413,7 @@ public class LeerFichero {
 							
 							campo.setTransformationField(it.next());
 							
-							//añadimos este campo a la lista de campos
+							//aï¿½adimos este campo a la lista de campos
 							listaCampos.add(campo);
 							cadena = br.readLine(); //para que avance							
 						}
@@ -438,26 +423,10 @@ public class LeerFichero {
 					cadena = br.readLine(); //para que avance
 
 			}
-			//añadimos la lista de campos a la instancia
+			//aï¿½adimos la lista de campos a la instancia
 			nuevaInstancia.setCampos(listaCampos);
 			return nuevaInstancia;
 		}
-	
-	private static void vaciarListaCampos(ArrayList<Instance.Campos> listaCampos) {
-			listaCampos.clear();
-		
-	}
-
-	//OKI	
-	public static void leerDataRecord(BufferedReader br, String cadena) throws IOException{
-		System.out.println("DATA RECORDS");
-		cadena = br.readLine(); //para que avance
-		if(cadena.contains("<columns"))
-			while(!cadena.contains("</columns>")) { //mientras no sea el final
-				System.out.println(cadena);
-				cadena = br.readLine(); //para que avance
-				}
-	}
 	
 	//NO
 	public static AbstractTransformation leerAbstractTransformation(BufferedReader br, String cadena) throws IOException{
@@ -519,7 +488,7 @@ public class LeerFichero {
 	}
 	
 	//OKI
-	private static void leerParametros(BufferedReader br, String cadena) throws IOException{
+	private static void leerParametros(BufferedReader br, String cadena) throws ParamSinDescripcion, IOException{
 		//creamos un parametro que va a ser un hashMap
 		Parametro parametro = new Parametro(null,null);
 		boolean cuerpo=false;
@@ -527,12 +496,11 @@ public class LeerFichero {
 		String valor;
 		//booleano que nos sirve para saber si queremos coger el type o no
 		//en este caso solo queremos el booleano cuando sea un campo de una transfromacion o IOBJECT
-		//luego en las instancias siempre será falso.
+		//luego en las instancias siempre serï¿½ falso.
 		boolean type=false; 
 		
 		String [] cadenaDividida;
 		cadenaDividida=cadena.split(" ");
-		String clave="";
 		String[] arrayBueno = new String[cadenaDividida.length];
 
 						
@@ -558,7 +526,11 @@ public class LeerFichero {
 			}
 
 			if(!cuerpo)
-				System.out.println("el parametro" + clave + "no tiene cuerpo rision");
+				try{
+					throw new ParamSinDescripcion("EL PARAMETRO " + parametro.getName() + " NO TIENE DESCRIPCION PUESTA");
+				}catch(ParamSinDescripcion e) {
+					System.out.println(e.getLocalizedMessage());
+				}
 
 			//luego lo que nos interesa es el valor del parametro
 			while(!cadena.contains("<defaultValue")) 
@@ -630,49 +602,38 @@ public class LeerFichero {
 		return nuevoObjeto;
 		}
 	
-	private static ExecutionParameters leerExecutionParameters(BufferedReader br, String cadena) throws IOException {
-			
+	private static void leerExecutionParameters(BufferedReader br, String cadena) throws IOException {
+
 		Iterator<String> it;
 		ExecutionParameters executionParameters = new ExecutionParameters(null, null);
 		ArrayList<String> listaParametros = new ArrayList<String>();
-		
+
 		String [] cadenaDividida;
 		cadenaDividida=cadena.split(" ");
 		String[] arrayBueno = new String[cadenaDividida.length];
-		System.out.println("ExecutionParameters");
-		
-		cadena = br.readLine(); //para que avance
-		System.out.println(cadena);
-		
-		while (!cadena.contains("</executionParameters>")) { // mientras no sea el final
-			if (cadena.contains("<HadoopExecutionParameter")) {
-				
-			//Dividimos la cadena para leer las propiedades individualmente
-				cadenaDividida=cadena.split(" ");
-				arrayBueno= new String[cadenaDividida.length];
-			// Metodo para quitar los caracteres innecesarios
-			reemplazo(cadenaDividida, arrayBueno, null, false);
-			// Metodo para meter los reemplazos en un arratList
-			meterEnLista(arrayBueno, listaParametros);
-				it = listaParametros.iterator();
-			//Metemos los datos en el arraylist principal de executionParameters
-			
-			executionParameters.setValue(it.next());
-			executionParameters.setName(it.next());
-			//Mostramos los datos del arrayList
-			
-			System.out.println("tenemos value");
-			System.out.println(executionParameters.getValue());
-			System.out.println("tenemos name");
-			System.out.println(executionParameters.getName());
-			
-			vaciarLista(listaParametros);			
-			}
-			cadena = br.readLine(); // para que avance
-			System.out.println(cadena);
-		}
-		return executionParameters;
-	}
 
-}	
+
+		//Dividimos la cadena para leer las propiedades individualmente
+		cadenaDividida=cadena.split(" ");
+		arrayBueno= new String[cadenaDividida.length];
+
+		// Metodo para quitar los caracteres innecesarios
+		reemplazo(cadenaDividida, arrayBueno, null, false);
+
+		// Metodo para meter los reemplazos en un arratList
+		meterEnLista(arrayBueno, listaParametros);
+
+		it = listaParametros.iterator();
+		//Metemos los datos en el arraylist principal de executionParameters
+
+		executionParameters.setValue(it.next());
+		executionParameters.setName(it.next());
+		//Mostramos los datos del arrayList
+
+		vaciarLista(listaParametros);			
+
+		tablaExecutionParameters.put(executionParameters.getValue(), executionParameters.getName());
+	}
+}
+	
 

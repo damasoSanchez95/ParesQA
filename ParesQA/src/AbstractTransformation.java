@@ -87,10 +87,13 @@ public class AbstractTransformation {
 			this.columna=columna;
 		}
 		public String getFeature(){return feature;}
+		
 		public void setfeature(String feature) {
 			this.feature=feature;
 		}
+		
 		public String getType(){return obdcType;}
+		
 		public void setType(String type) {
 			this.obdcType=type;
 		}

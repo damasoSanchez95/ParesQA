@@ -1,10 +1,14 @@
 package Excepciones;
 
-public class LongitudNoCoincide {
+public class LongitudNoCoincide extends Exception {
 
-	public String getMessage(){
         
-        String mensaje="Error: La longitud no coincide";
-        return mensaje;       
-    }
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+		public LongitudNoCoincide(String msg) {
+			super(msg);
+		}
 }

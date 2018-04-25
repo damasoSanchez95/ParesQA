@@ -1,0 +1,6 @@
+<executionParameters>
+<HadoopExecutionParameter xsi:type="hadoop:HadoopExecutionParameter" value.="U:QIAZyywhEeifwIeF2GB2UA" name="spark.dynamicAllocation.maxExecutors"/>
+<HadoopExecutionParameter xsi:type="hadoop:HadoopExecutionParameter" value.="U:QIAZzCwhEeifwIeF2GB2UA" name="spark.executor.memory"/>
+<HadoopExecutionParameter xsi:type="hadoop:HadoopExecutionParameter" value.="U:QIAZzSwhEeifwIeF2GB2UA" name="spark.driver.cores"/>
+<HadoopExecutionParameter xsi:type="hadoop:HadoopExecutionParameter" value.="U:QIAZziwhEeifwIeF2GB2UA" name="spark.driver.memory"/>
+</executionParameters>

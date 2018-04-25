@@ -14,35 +14,41 @@ public class Validaciones {
 	private ArrayList<AbstractTransformation> listaTransformaciones= new ArrayList<AbstractTransformation>();
 	private static ArrayList<Iobject> listaObjetos = new ArrayList<Iobject>();
 	private HashMap<Parametro, String> tablaParametros = new HashMap<Parametro, String>();
+	private HashMap<String, String> tablaExecutionParameters = new HashMap<String, String>();
 	private final static Logger LOGGER = Logger.getLogger("default.LeerFichero");
 	
 	//Constructor Validaciones
-	public Validaciones(ArrayList<Instance> listaInstancia, ArrayList<AbstractTransformation> listaTransformaciones , HashMap<Parametro, String> tablaParametros, ArrayList<Iobject> listaObjetos){
+	public Validaciones(ArrayList<Instance> listaInstancia, ArrayList<AbstractTransformation> listaTransformaciones , HashMap<Parametro, String> tablaParametros, ArrayList<Iobject> listaObjetos, HashMap<String, String> tablaExecutionParameters ){
 		this.listaInstancia=listaInstancia;
 		this.listaTransformaciones=listaTransformaciones;
 		this.tablaParametros=tablaParametros;
 		this.listaObjetos=listaObjetos;
+		this.tablaExecutionParameters=tablaExecutionParameters;
 	}
 	
-	public void parametros(){
-
+	public void parametros() throws FechaEjecucionFallo{
+		try {
+			for (Entry<Parametro, String> entry : tablaParametros.entrySet()) {
+			    Parametro clave = entry.getKey();
+			    String valor = entry.getValue();
+			    
+			    if(clave.getName().equals("P_s_FechaEjecucion") && !valor.equals("9999-12-31"))
+			    	throw new FechaEjecucionFallo("El parametro P_s_FechaEjecucion no tiene puesto el valor 9999-12-31");
+			}
+		}catch(FechaEjecucionFallo e) {
+			System.out.println(e.getLocalizedMessage());
+		}
+	}
 	
+	public void executionParameters(){
 		for (Entry<Parametro, String> entry : tablaParametros.entrySet()) {
-		    Parametro clave = entry.getKey();
-		    String valor = entry.getValue();
-		    
-		    //try{	    
-		    if(clave.getName().equals("P_s_FechaEjecucion") && !valor.equals("9999-12-31"))
-		    	System.out.println("caca");
-		    	//LANZAR EXCEPCION DE QUE EL PARAMETRO P_s_FechaEjecucion NO TIENE LA FECHA POR DEFECTO 9999-12-31 
-		    //***Esta hecha solo falta descomentarla***
-		    //throw new FechaEjecucionFallo();	
-		    //}
-		    /*catch(FechaEjecucionFallo ex){
-		    	//saco por el log un fallo con el mensaje de la clase
-				 LOGGER.log(Level.SEVERE, ex.getMessage());
-				
-		    }*/
+			Parametro clave = entry.getKey();
+
+			if( (!tablaExecutionParameters.containsKey(clave.getId())) && (clave.getName().contains("DRIVER") || clave.getName().contains("EXECUTOR")))
+				System.out.println("no esta el parametro" + clave.getName() + "en las chismes de PRE" );
+			else
+				System.out.println("Si estaaaa");
+
 		}
 	}
 }
