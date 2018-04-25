@@ -49,15 +49,15 @@ public class Instance {
 		private String structural_feature;
 		private String from_port;
 		private String TransformationField;
-
+		
 		
 		public String getId(){return id;}
 		public String getToPorts(){return to_ports;}
 		public String getFromPorts(){return from_port;}
 		public String getStructural_feature(){return structural_feature;}
-
 		
-		public Campos(String id, String to_ports, String structural_feature, String from_port, String TransformationField, String type){
+		
+		public Campos(String id, String to_ports,String structural_feature, String from_port, String TransformationField, String type){
 			this.id=id;
 			this.to_ports=to_ports;
 			this.structural_feature=structural_feature;

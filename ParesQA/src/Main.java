@@ -11,7 +11,8 @@ public class Main {
 		Validaciones validaciones;
 		String archivo = br.readLine();
 		LeerFichero.leerContenido(archivo);
-		validaciones = new Validaciones(LeerFichero.getListaInstancia(), LeerFichero.getListaTransformaciones(), LeerFichero.getTablaParametros());
+		validaciones = new Validaciones(LeerFichero.getListaInstancia(), LeerFichero.getListaTransformaciones(), LeerFichero.getTablaParametros(), LeerFichero.getListaObjetos());
 		validaciones.parametros();
+		System.out.println("ACABAMOS");
 	}
 }
