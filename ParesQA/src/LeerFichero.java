@@ -50,7 +50,6 @@ public class LeerFichero {
 	    FileReader fr = null;
 	    BufferedReader br = null;
 	 
-		
 		try {
 			fr = new FileReader(archivo); //leemos el archivo que pasemos por parametro
 			br = new BufferedReader(fr);
@@ -62,19 +61,19 @@ public class LeerFichero {
 					leerExecutionParameters(br, cadena);
 				}
 				else if(cadena.contains("<UserDefinedParameter")){ //PARAMETROS
-					//Cada parametro ser� un hashMap que tiene asociado
+					//Cada parametro sera un hashMap que tiene asociado
 					//un id y un nombre.
 				
 					//En este mismo metodo a�adimos el parametro con un valor a tablaParametros.
 					leerParametros(br,cadena);	
 				}
-				else if(cadena.contains("<transformations")){
-					//CREAR UN OBJETO DE LA CLASE ABSTRACTTRANSFORMATION
-					AbstractTransformation transformacion;
-					transformacion=leerAbstractTransformation(br,cadena);	
-					transformacion= new AbstractTransformation(transformacion.getId(), transformacion.getNombre(), transformacion.getType(), transformacion.getActive(), transformacion.getCampos());
-					listaTransformacion.add(transformacion);
-				}
+//				else if(cadena.contains("<transformations")){
+//					//CREAR UN OBJETO DE LA CLASE ABSTRACTTRANSFORMATION
+//					AbstractTransformation transformacion;
+//					transformacion=leerAbstractTransformation(br,cadena);	
+//					transformacion= new AbstractTransformation(transformacion.getId(), transformacion.getNombre(), transformacion.getType(), transformacion.getActive(), transformacion.getCampos());
+//					listaTransformacion.add(transformacion);
+//				}
 				else if(cadena.contains("<Instance")){
 					//CREAR UN OBJETO DE LA CLASE INSTANCIA
 					//id, name, body, campos
@@ -84,19 +83,19 @@ public class LeerFichero {
 					//System.out.println("NUEVA INSTANCIAAAAAAA");
 					listaInstancia.add(instancia);
 				}
-				else if(cadena.contains("<folder:Folder")){
-					//CREAR UN OBJETO DE LA CLASE IObject
-					//id, name, body, campos				
-					Iobject objeto;
-					objeto=leerIObject(br,cadena);
-					objeto = new Iobject(objeto.gedId(), objeto.getName(), objeto.getPrecision(), objeto.getNullable(),objeto.getType() ,objeto.getOjeto());
-					listaObjetos.add(objeto);
-					
-				}
+//				else if(cadena.contains("<folder:Folder")){
+//					//CREAR UN OBJETO DE LA CLASE IObject
+//					//id, name, body, campos				
+//					Iobject objeto;
+//					objeto=leerIObject(br,cadena);
+//					objeto = new Iobject(objeto.gedId(), objeto.getName(), objeto.getPrecision(), objeto.getNullable(),objeto.getType() ,objeto.getOjeto());
+//					listaObjetos.add(objeto);
+//					
+//				}
 			}
 		}
 		catch(Exception e) {
-			throw new Exception("No se ha podido abrir ese archivo. No existe");
+			throw new Exception("ESE ARCHIVO NO EXISTE. REEVISELO");
 		}
 		finally {
 			if(br!=null){
@@ -344,7 +343,7 @@ public class LeerFichero {
 				cadena = br.readLine(); //para que avance
 			
 			while(!cadena.contains("</ports>")) { //mientras no sea el final
-				if(cadena.contains("<NestedPort") || (cadena.contains("<TransformationFieldPort") && (!nuevaInstancia.getName().contains("Lectura") && !nuevaInstancia.getName().contains("Escritura")))){
+				if(cadena.contains("<NestedPort") || (cadena.contains("<TransformationFieldPort") && (!nuevaInstancia.getName().contains("Lectura") && !nuevaInstancia.getName().contains("Read")  && !nuevaInstancia.getName().contains("Write") && !nuevaInstancia.getName().contains("Escritura")))){
 					boolean from_to[] = new boolean[2]; //Array para saber si tiene from y to el campo.
 					
 					listaClaves.clear(); //limpiamos la lista de elemenos 

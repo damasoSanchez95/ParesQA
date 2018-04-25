@@ -15,7 +15,6 @@ public class Validaciones {
 	private static ArrayList<Iobject> listaObjetos = new ArrayList<Iobject>();
 	private HashMap<Parametro, String> tablaParametros = new HashMap<Parametro, String>();
 	private HashMap<String, String> tablaExecutionParameters = new HashMap<String, String>();
-	private final static Logger LOGGER = Logger.getLogger("default.LeerFichero");
 	
 	//Constructor Validaciones
 	public Validaciones(ArrayList<Instance> listaInstancia, ArrayList<AbstractTransformation> listaTransformaciones , HashMap<Parametro, String> tablaParametros, ArrayList<Iobject> listaObjetos, HashMap<String, String> tablaExecutionParameters ){
@@ -43,12 +42,12 @@ public class Validaciones {
 	public void executionParameters(){
 		for (Entry<Parametro, String> entry : tablaParametros.entrySet()) {
 			Parametro clave = entry.getKey();
-
-			if( (!tablaExecutionParameters.containsKey(clave.getId())) && (clave.getName().contains("DRIVER") || clave.getName().contains("EXECUTOR")))
-				System.out.println("no esta el parametro" + clave.getName() + "en las chismes de PRE" );
-			else
-				System.out.println("Si estaaaa");
-
+			try {
+				if( (!tablaExecutionParameters.containsKey(clave.getId())) && (clave.getName().contains("DRIVER") || clave.getName().contains("EXECUTOR")))
+					throw new SinParametroPre("NO ESTA EL PARAMETRO " + clave.getName() + " DENTRO DE LOS TIEMPO DE EJECUCION");
+			}catch(SinParametroPre e){
+					System.out.println(e.getLocalizedMessage());
+				}
+			}
 		}
 	}
-}
