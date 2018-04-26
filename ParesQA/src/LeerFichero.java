@@ -83,15 +83,13 @@ public class LeerFichero {
 					//System.out.println("NUEVA INSTANCIAAAAAAA");
 					listaInstancia.add(instancia);
 				}
-//				else if(cadena.contains("<folder:Folder")){
-//					//CREAR UN OBJETO DE LA CLASE IObject
-//					//id, name, body, campos				
-//					Iobject objeto;
-//					objeto=leerIObject(br,cadena);
-//					objeto = new Iobject(objeto.gedId(), objeto.getName(), objeto.getPrecision(), objeto.getNullable(),objeto.getType() ,objeto.getOjeto());
-//					listaObjetos.add(objeto);
-//					
-//				}
+				else if(cadena.contains("<IObject")){		
+					Iobject objeto;
+					objeto=leerIObject(br,cadena);
+					objeto = new Iobject(objeto.gedId(), objeto.getName(),objeto.getType() ,objeto.getRef(), objeto.getCampos());
+					listaObjetos.add(objeto);
+					
+				}
 			}
 		}
 		catch(Exception e) {
@@ -126,7 +124,7 @@ public class LeerFichero {
 //	}
 	
 	//metodo donde vemos que parte de la cadena nos interesa tener o no
-	public static void nosInteresa(String array[], String arrayBueno[], boolean from_to[], boolean tipo){
+	public static void nosInteresa(String array[], String arrayBueno[], boolean from_to[], boolean tipo_idRef[]){
 		int contador=0;
 		
 		for(int i=0; i<array.length;i++){
@@ -145,6 +143,8 @@ public class LeerFichero {
 			if(array[i].contains("imx:id")) {
 				arrayBueno[contador]=array[i];
 				contador++;
+				if(array[i].contains("ref"))
+					tipo_idRef[1]=true;
 			}
 			
 			if(array[i].contains("name")){
@@ -198,20 +198,29 @@ public class LeerFichero {
 				contador++;
 				
 			}
-			if(array[i].contains("typesystem%") && tipo){
+			if(array[i].contains("type") && tipo_idRef[0]){
 				arrayBueno[contador]=array[i];
 				contador++;		
-				tipo=false;
+				//tipo_idRef[0]=false;
 			}
 			
+			if(array[i].contains("odbcScale")){
+				arrayBueno[contador]=array[i];
+				contador++;	
+			}
+			
+			if(array[i].contains("typesystem%2") && !array[i].contains("odbc")){
+				arrayBueno[contador]=array[i];
+				contador++;
+			}
 		}
 	}
 	
 	
 	//METODO PARA QUITAR TODOS LOS CARACTERES INNECESARIOS
 	@SuppressWarnings("null")
-	public static void reemplazo(String array[], String[] arrayBueno, boolean from_to[],boolean tipo){
-		nosInteresa(array, arrayBueno,from_to,tipo);
+	public static void reemplazo(String array[], String[] arrayBueno, boolean from_to[],boolean tipo_idRef[]){
+		nosInteresa(array, arrayBueno,from_to,tipo_idRef);
 		
 			for(int i=0; i<arrayBueno.length; i++){
 				if(arrayBueno[i]!=null) {
@@ -228,15 +237,19 @@ public class LeerFichero {
 					arrayBueno[i]=arrayBueno[i].replace("feature=", "");
 					arrayBueno[i]=arrayBueno[i].replace("column=", "");
 					arrayBueno[i]=arrayBueno[i].replace("odbcPrecision=", "");
+					arrayBueno[i]=arrayBueno[i].replace("odbcScale=", "");
 					arrayBueno[i]=arrayBueno[i].replace("nullable=", "");
-					arrayBueno[i] = arrayBueno[i].replace("value.=", "");
+					arrayBueno[i]=arrayBueno[i].replace("value.=", "");
+					arrayBueno[i]=arrayBueno[i].replace("imx:idref=", "");
+					arrayBueno[i]=arrayBueno[i].replace("xsi:type=", "");
+					
 					
 					arrayBueno[i]=arrayBueno[i].replaceAll("\"", ""); //para quitar las comillas
 					//esto es para los objetos y las transformaciones
-					if(tipo && arrayBueno[i].contains("typesystem%")){
-						arrayBueno[i]=arrayBueno[i].replace("type=smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%", "");
-						arrayBueno[i]=arrayBueno[i].replace("odbcType=smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%", "");
-						arrayBueno[i]=arrayBueno[i].substring(2, arrayBueno[i].length());						
+					if(arrayBueno[i].contains("typesystem%")){
+						arrayBueno[i]=arrayBueno[i].replace("type=smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2F", "");
+						//arrayBueno[i]=arrayBueno[i].replace("odbcType=smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%", "");
+						//arrayBueno[i]=arrayBueno[i].substring(2, arrayBueno[i].length());						
 					}
 				}
 		}	
@@ -271,7 +284,6 @@ public class LeerFichero {
 		//booleano que nos sirve para saber si queremos coger el type o no
 		//en este caso solo queremos el booleano cuando sea un campo de una transfromacion o IOBJECT
 		//luego en las instancias siempre ser� falso.
-		boolean type=false; 
 		Iterator<String> it;
 		
 		//creacion de una lista de los campos de una instancia
@@ -288,7 +300,7 @@ public class LeerFichero {
 		
 		
 		//Metodo para quitar los caracteres innecesarios
-		reemplazo(cadenaDividida,arrayBueno, null,type); 
+		reemplazo(cadenaDividida,arrayBueno, null,null); 
 		
 		//Metodo para meter en la lista solo lo que nos interese.
 		meterEnLista(arrayBueno,listaClaves);
@@ -329,7 +341,7 @@ public class LeerFichero {
 			arrayBueno= new String[cadenaDividida.length];
 			
 			//Metodo para quitar los caracteres innecesarios
-			reemplazo(cadenaDividida,arrayBueno, null,type); 
+			reemplazo(cadenaDividida,arrayBueno, null,null); 
 			
 			//Metodo para meter en la lista solo lo que nos interese.
 			meterEnLista(arrayBueno,listaClaves);
@@ -353,7 +365,7 @@ public class LeerFichero {
 					arrayBueno= new String[cadenaDividida.length];
 					
 					//Metodo para quitar los caracteres innecesarios
-					reemplazo(cadenaDividida,arrayBueno, from_to,type); 
+					reemplazo(cadenaDividida,arrayBueno, from_to,null); 
 					
 					//Metodo para meter en la lista solo lo que nos interese.
 					meterEnLista(arrayBueno,listaClaves);
@@ -428,63 +440,63 @@ public class LeerFichero {
 		}
 	
 	//NO
-	public static AbstractTransformation leerAbstractTransformation(BufferedReader br, String cadena) throws IOException{
-		Iterator<String> it;
-		ArrayList<String> listaTransformaciones = new ArrayList<String>();
-		AbstractTransformation nuevaTransformacion = new AbstractTransformation(null,null,null,null,null);
-		String [] cadenaDividida;
-		cadenaDividida=cadena.split(" ");
-		String[] arrayBueno = new String[cadenaDividida.length];
-		System.out.println("ABSTRACT TRANSFORMATION");
-		
-		cadena = br.readLine(); //para que avance
-		System.out.println(cadena);
-		
-		while(!cadena.contains("</transformations>")) { //mientras no sea el final
-			System.out.println(cadena);
-			if(cadena.contains("<AbstractTransformation")){			
-					cadenaDividida=cadena.split(" ");
-					arrayBueno= new String[cadenaDividida.length];
-					
-					reemplazo(cadenaDividida,arrayBueno,null,false);
-					meterEnLista(arrayBueno,listaTransformaciones);
-					it = listaTransformaciones.iterator(); 
-					nuevaTransformacion.setId(it.next());//ya tenemos el id de las AbstractTransformation(anonymousDso)
-					System.out.println("TENEMOS EL ID PRIMERO: "+ nuevaTransformacion.getId());
-					nuevaTransformacion.setNombre(it.next());//ya tenemos el name de las AbstractTransformation
-					System.out.println("TENEMOS EL NAME PRIMERO: "+ nuevaTransformacion.getNombre());
-					vaciarLista(listaTransformaciones);							
-			}
-			
-			if(cadena.contains("<RelationalField")){			
-				AbstractTransformation.campos campos = nuevaTransformacion.new campos(null, null, null, null, null,null);
-			
-						cadenaDividida=cadena.split(" ");
-						arrayBueno= new String[cadenaDividida.length];
-						
-						reemplazo(cadenaDividida,arrayBueno,null,true);
-						meterEnLista(arrayBueno,listaTransformaciones);
-						it = listaTransformaciones.iterator(); 
-						campos.setID(it.next());
-						System.out.println("TENEMOS EL ID: "+ campos.getId());					
-						campos.setColumna(it.next());
-						System.out.println("TENEMOS LA COLUMNA: "+ campos.getColumna());					
-						campos.setfeature(it.next());
-						System.out.println("TENEMOS EL FEATURE: "+ campos.getFeature());						
-						campos.setName(it.next());
-						System.out.println("TENEMOS EL NOMBRE: "+ campos.getName());						
-						campos.setPrecision(it.next());
-						System.out.println("TENEMOS LA PRECISION: "+ campos.getPrecision());
-						campos.setType(it.next());
-						if(campos.getType().contains("varchar")){campos.setType("string");}
-						System.out.println("TENEMOS EL TIPO: "+ campos.getType());
-						vaciarLista(listaTransformaciones);
-				}		
-			cadena = br.readLine(); //para que avance 
-		
-		}
-		return nuevaTransformacion;
-	}
+//	public static AbstractTransformation leerAbstractTransformation(BufferedReader br, String cadena) throws IOException{
+//		Iterator<String> it;
+//		ArrayList<String> listaTransformaciones = new ArrayList<String>();
+//		AbstractTransformation nuevaTransformacion = new AbstractTransformation(null,null,null,null,null);
+//		String [] cadenaDividida;
+//		cadenaDividida=cadena.split(" ");
+//		String[] arrayBueno = new String[cadenaDividida.length];
+//		System.out.println("ABSTRACT TRANSFORMATION");
+//		
+//		cadena = br.readLine(); //para que avance
+//		System.out.println(cadena);
+//		
+//		while(!cadena.contains("</transformations>")) { //mientras no sea el final
+//			System.out.println(cadena);
+//			if(cadena.contains("<AbstractTransformation")){			
+//					cadenaDividida=cadena.split(" ");
+//					arrayBueno= new String[cadenaDividida.length];
+//					
+//					reemplazo(cadenaDividida,arrayBueno,null,false);
+//					meterEnLista(arrayBueno,listaTransformaciones);
+//					it = listaTransformaciones.iterator(); 
+//					nuevaTransformacion.setId(it.next());//ya tenemos el id de las AbstractTransformation(anonymousDso)
+//					System.out.println("TENEMOS EL ID PRIMERO: "+ nuevaTransformacion.getId());
+//					nuevaTransformacion.setNombre(it.next());//ya tenemos el name de las AbstractTransformation
+//					System.out.println("TENEMOS EL NAME PRIMERO: "+ nuevaTransformacion.getNombre());
+//					vaciarLista(listaTransformaciones);							
+//			}
+//			
+//			if(cadena.contains("<RelationalField")){			
+//				AbstractTransformation.campos campos = nuevaTransformacion.new campos(null, null, null, null, null,null);
+//			
+//						cadenaDividida=cadena.split(" ");
+//						arrayBueno= new String[cadenaDividida.length];
+//						
+//						reemplazo(cadenaDividida,arrayBueno,null,true);
+//						meterEnLista(arrayBueno,listaTransformaciones);
+//						it = listaTransformaciones.iterator(); 
+//						campos.setID(it.next());
+//						System.out.println("TENEMOS EL ID: "+ campos.getId());					
+//						campos.setColumna(it.next());
+//						System.out.println("TENEMOS LA COLUMNA: "+ campos.getColumna());					
+//						campos.setfeature(it.next());
+//						System.out.println("TENEMOS EL FEATURE: "+ campos.getFeature());						
+//						campos.setName(it.next());
+//						System.out.println("TENEMOS EL NOMBRE: "+ campos.getName());						
+//						campos.setPrecision(it.next());
+//						System.out.println("TENEMOS LA PRECISION: "+ campos.getPrecision());
+//						campos.setType(it.next());
+//						if(campos.getType().contains("varchar")){campos.setType("string");}
+//						System.out.println("TENEMOS EL TIPO: "+ campos.getType());
+//						vaciarLista(listaTransformaciones);
+//				}		
+//			cadena = br.readLine(); //para que avance 
+//		
+//		}
+//		return nuevaTransformacion;
+//	}
 	
 	//OKI
 	private static void leerParametros(BufferedReader br, String cadena) throws ParamSinDescripcion, IOException{
@@ -496,7 +508,6 @@ public class LeerFichero {
 		//booleano que nos sirve para saber si queremos coger el type o no
 		//en este caso solo queremos el booleano cuando sea un campo de una transfromacion o IOBJECT
 		//luego en las instancias siempre ser� falso.
-		boolean type=false; 
 		
 		String [] cadenaDividida;
 		cadenaDividida=cadena.split(" ");
@@ -507,7 +518,7 @@ public class LeerFichero {
 		cadenaDividida=cadena.split(" ");
 		arrayBueno= new String[cadenaDividida.length];
 
-		reemplazo(cadenaDividida,arrayBueno, null,type);
+		reemplazo(cadenaDividida,arrayBueno, null,null);
 		parametro.setId(arrayBueno[0]);
 		parametro.setName(arrayBueno[1]);
 
@@ -537,7 +548,7 @@ public class LeerFichero {
 				
 			cadenaDividida=cadena.split(" ");
 			arrayBueno= new String[cadenaDividida.length];
-			reemplazo(cadenaDividida,arrayBueno, null,type);
+			reemplazo(cadenaDividida,arrayBueno, null,null);
 			valor=arrayBueno[1];
 			reiniciarArray(arrayBueno);	
 			cadena = br.readLine(); //para que avance
@@ -549,57 +560,88 @@ public class LeerFichero {
 	}
 	
 	public static Iobject leerIObject(BufferedReader br, String cadena) throws IOException{
-		boolean tipo=true;
+
+		//booleano para saber si queremos el tipo y para saber si es un id de referencia o el propio
+		boolean tipo_idRef[]= new boolean[2];
+		tipo_idRef[0]=true;
+		tipo_idRef[1]=false;
+
+
 		Iterator<String> it;
-		Iobject nuevoObjeto = new Iobject(null,null,null,null,null,null);
-		ArrayList<String> listaObjetos = new ArrayList<String>();
-		
+		Iobject nuevoObjeto = new Iobject(null,null,null,tipo_idRef[1],null);
+
+		//creacion de una lista de los campos del objeto
+		ArrayList<Iobject.Campo> listaCampos = new ArrayList<Iobject.Campo>();
+
+		//Creamos una lista donde meteremos las cosas que nos interesen de la linea
+		ArrayList<String> listaClaves = new ArrayList<String>();
+
 		String [] cadenaDividida;
 		cadenaDividida=cadena.split(" ");
 		String[] arrayBueno = new String[cadenaDividida.length];
-		System.out.println("OBJETOOOSSS");
-		
-		cadena = br.readLine(); //para que avance
-		System.out.println(cadena);
-		
-		while(!cadena.contains("</folder:Folder>")) {
-			
-			if(cadena.contains("<columns")){
-				cadena = br.readLine(); //para que avance
-				if(cadena.contains("<Column")){
-					while(!cadena.contains("</columns")){
-						cadenaDividida=cadena.split(" ");
-						arrayBueno= new String[cadenaDividida.length];
-						
-						reemplazo(cadenaDividida,arrayBueno,null,true);
-						meterEnLista(arrayBueno,listaObjetos);
-						it = listaObjetos.iterator(); 
-						nuevoObjeto.setId(it.next());
-						System.out.println("TENEMOS EL ID: "+ nuevoObjeto.gedId());					
-						nuevoObjeto.setType(it.next());
-						System.out.println("TENEMOS EL TYPE: "+ nuevoObjeto.getType());						
-						nuevoObjeto.setName(it.next());
-						System.out.println("TENEMOS EL NOMBRE: "+ nuevoObjeto.getName());
-						nuevoObjeto.setNullable(it.next());
-						System.out.println("TENEMOS EL NULLABLE: "+ nuevoObjeto.getNullable());	
-						nuevoObjeto.setPrecision(it.next());
-						System.out.println("TENEMOS LA PRECISION: "+ nuevoObjeto.getPrecision());				
-											
-				
-						vaciarLista(listaObjetos);	
-						cadena = br.readLine(); //para que avance
-						System.out.println(cadena);
-					}
-					
-				}
-			}			
-			cadena = br.readLine(); //para que avance
-			System.out.println(cadena);
+
+		cadenaDividida=cadena.split(" ");
+		arrayBueno= new String[cadenaDividida.length];
+
+		reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef);
+		meterEnLista(arrayBueno,listaClaves);
+		it = listaClaves.iterator(); 
+	
+		if(!tipo_idRef[1]) {
+			nuevoObjeto.setId(it.next()); //Id del Objeto
+			nuevoObjeto.setType(it.next()); //para saber que es un dataRecord
+			it.next(); //para saltarnos el connectionName del iObject ya que no nos interesa
+			nuevoObjeto.setName(it.next()); //Nombre del objeto
+		}
+		else {
+			nuevoObjeto.setId(it.next()); //Id del Objeto
+			nuevoObjeto.setType(it.next()); //para saber que es un dataRecord
 		}
 
-	
-		return nuevoObjeto;
+		nuevoObjeto.setRef(tipo_idRef[1]); //ponemos si es un IDRef o no
+
+		if(!nuevoObjeto.getRef()) {
+			while(!cadena.contains("</columns")){
+				if(cadena.contains("<Column")){
+						listaClaves.clear();
+		
+						//el ultimo es booleano es para indicar si es una particion o no
+						Iobject.Campo campo = nuevoObjeto.new Campo(null, null, null, null, null,null);
+		
+						cadenaDividida=cadena.split(" ");
+						arrayBueno= new String[cadenaDividida.length];
+		
+						//Metodo para quitar los caracteres innecesarios
+						tipo_idRef[0]=false; //no queremos coger el tipo del campo, solo el typeSystem
+						reemplazo(cadenaDividida,arrayBueno, null, tipo_idRef); 
+		
+						//Metodo para meter en la lista solo lo que nos interese.
+						meterEnLista(arrayBueno,listaClaves);
+						it=listaClaves.iterator();
+						campo.setId(it.next());
+						campo.setType(it.next());
+						campo.setName(it.next());
+						campo.setNullable(it.next());
+						campo.setPrecision(it.next());
+						
+						if(campo.getType().equals("decimal"))
+							campo.setEscala(it.next());
+						else
+							campo.setEscala(null);
+						
+						vaciarLista(listaClaves);
+						listaCampos.add(campo);
+						cadena=br.readLine(); //para pasar a la siguiete instruccion
+
+					}
+				else
+					cadena=br.readLine();
+			}
+			nuevoObjeto.setCampos(listaCampos);			
 		}
+
+		return nuevoObjeto;
+	}
 	
 	private static void leerExecutionParameters(BufferedReader br, String cadena) throws IOException {
 
@@ -617,7 +659,7 @@ public class LeerFichero {
 		arrayBueno= new String[cadenaDividida.length];
 
 		// Metodo para quitar los caracteres innecesarios
-		reemplazo(cadenaDividida, arrayBueno, null, false);
+		reemplazo(cadenaDividida, arrayBueno, null, null);
 
 		// Metodo para meter los reemplazos en un arratList
 		meterEnLista(arrayBueno, listaParametros);
