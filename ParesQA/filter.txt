@@ -1,0 +1,20 @@
+<AbstractTransformation imx:id="U:IFtusy1AEeiQZWhR5Fywjg" xsi:type="filter:FilterTx" active="true" name="Fil_nulos" filterCondition="isnull%28idcent%29">
+<filterInterface>
+<FilterDataInterface imx:id="U:IFtutC1AEeiQZWhR5Fywjg" xsi:type="filter:FilterDataInterface" input="true" name="Grupo" output="true">
+<filterFields>
+<FilterField imx:id="U:IFtutS1AEeiQZWhR5Fywjg" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" output="true"/>
+<FilterField imx:id="U:IFtuyC1AEeiQZWhR5Fywjg" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" output="true"/>
+<FilterField imx:id="U:IFtuti1AEeiQZWhR5Fywjg" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="centro" output="true"/>
+<FilterField imx:id="U:IFtuty1AEeiQZWhR5Fywjg" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="producto" output="true"/>
+<FilterField imx:id="U:IFtuuC1AEeiQZWhR5Fywjg" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="subpro" output="true"/>
+<FilterField imx:id="U:IFtuuS1AEeiQZWhR5Fywjg" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="contrato" output="true"/>
+<FilterField imx:id="U:IFtuui1AEeiQZWhR5Fywjg" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="subcontrato" output="true"/>
+<FilterField imx:id="U:Rlr8ei33EeiTYjXs-hnNMA" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idcent" output="true">
+<annotations>
+<Annotation imx:id="ID_1205" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</FilterField>
+</filterFields>
+</FilterDataInterface>
+</filterInterface>
+</AbstractTransformation>

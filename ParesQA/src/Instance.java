@@ -3,14 +3,20 @@ import java.util.ArrayList;
 public class Instance {
 
 	private String id;
+	private String type;
 	private String name;
 	private String body;
+	private String fromInstance;
+	private String toInstance;
 	private ArrayList<Campos> camposInstancia;
 	
-	public Instance(String id, String name, String body, ArrayList<Campos> camposInstancia){
+	public Instance(String id, String type, String name, String body, String fromInstance, String toInstance, ArrayList<Campos> camposInstancia){
 		this.id = id;
+		this.type=type;
 		this.name = name;
 		this.body = body;
+		this.fromInstance=fromInstance;
+		this.toInstance=toInstance;
 		this.camposInstancia=camposInstancia;
 	}
 	
@@ -28,6 +34,12 @@ public class Instance {
 	public void setId(String id){
 		this.id=id;
 	}
+	public String getType(){
+		return type; 
+	}
+	public void setType(String type){
+		this.type=type;
+	}
 	public String getName(){
 		return name;
 	}
@@ -41,10 +53,21 @@ public class Instance {
 	public void setBody(String body) {
 		this.body = body;
 	}
+	public String getfromInstance(){
+		return fromInstance; 
+	}
+	public void setfromInstance(String fromInstance){
+		this.fromInstance=fromInstance;
+	}
+	public String getToInstance(){
+		return toInstance; 
+	}
+	public void setToInstance(String toInstance){
+		this.toInstance=toInstance;
+	}
 	
 	class Campos{ //Clase para los campos de dicha Instancia, NestedPort en el XML
 		private String id;
-		private String type;
 		private String to_ports;
 		private String structural_feature;
 		private String from_port;
@@ -63,7 +86,7 @@ public class Instance {
 			this.structural_feature=structural_feature;
 			this.from_port=from_port;
 			this.TransformationField = TransformationField;
-			this.type=type;
+			
 		}
 		
 		public String getTransformationField(){

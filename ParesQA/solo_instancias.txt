@@ -42,7 +42,7 @@
 <NestedPort imx:id="ID_73" xsi:type="mapping1:NestedPort" fromPort="ID_74" parent="ID_70" structuralFeature="U:9-NG_iwhEeifwIeF2GB2UA"/>
 <NestedPort imx:id="ID_75" xsi:type="mapping1:NestedPort" fromPort="ID_76" parent="ID_70" structuralFeature="U:9-NG_ywhEeifwIeF2GB2UA"/>
 <NestedPort imx:id="ID_77" xsi:type="mapping1:NestedPort" fromPort="ID_78" parent="ID_70" structuralFeature="U:9-NHACwhEeifwIeF2GB2UA"/>
-<NestedPort imx:id="ID_79" xsi:type="mapping1:NestedPort" fromPort="ID_80" parent="ID_70" structuralFeature="U:9-NHASwhEeifwIeF2GB2UA"/>
+<NestedPort imx:id="ID_79" xsi:type="mappin1:NestedPort" fromPort="ID_80" parent="ID_70" structuralFeature="U:9-NHASwhEeifwIeF2GB2UA"/>
 <NestedPort imx:id="ID_81" xsi:type="mapping1:NestedPort" fromPort="ID_82" parent="ID_70" structuralFeature="U:9-NHAiwhEeifwIeF2GB2UA"/>
 <NestedPort imx:id="ID_83" xsi:type="mapping1:NestedPort" fromPort="ID_84" parent="ID_70" structuralFeature="U:9-NHAywhEeifwIeF2GB2UA"/>
 <NestedPort imx:id="ID_85" xsi:type="mapping1:NestedPort" fromPort="ID_86" parent="ID_70" structuralFeature="U:9-NHBCwhEeifwIeF2GB2UA"/>
@@ -119,8 +119,6 @@
 
 
 <Instance imx:id="U:1XTVEDGSEeihRMPHnoObNQ" xsi:type="mapping1:Instance" name="jnr_cesta" toOutlineLinks="ID_114 ID_137" transformation="U:1XTVEjGSEeihRMPHnoObNQ">
-
-
 <annotations>
 <Annotation imx:id="ID_147" xsi:type="description:Description" body="cruzamos+con+la+plantilla+cesta+para+llevarnos+la+informaci%C3%B3n+del+campo+codcesta."/>
 </annotations>

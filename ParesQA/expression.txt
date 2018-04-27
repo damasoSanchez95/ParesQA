@@ -1,0 +1,34 @@
+<AbstractTransformation imx:id="U:yo8uDi0pEeiQZWhR5Fywjg" xsi:type="expression:ExpressionTx" name="Exp_importes">
+<expressionInterface>
+<ExpressionDataInterface imx:id="U:yo8uEi0pEeiQZWhR5Fywjg" xsi:type="expression:ExpressionDataInterface" input="true" name="Grupo" output="true">
+<expressionFields>
+<ExpressionField imx:id="U:oPUQFC09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" output="true" expression="empresa"/>
+<ExpressionField imx:id="U:oPUQFS09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="centro" output="true" expression="centro"/>
+<ExpressionField imx:id="U:oPUQFi09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="producto" output="true" expression="producto"/>
+<ExpressionField imx:id="U:oPUQFy09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="subpro" output="true" expression="subpro"/>
+<ExpressionField imx:id="U:oPUQGC09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="contrato" output="true" expression="contrato"/>
+<ExpressionField imx:id="U:oPUQGS09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="subcontrato" output="true" expression="subcontrato"/>
+<ExpressionField imx:id="U:oPUQGi09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="linarcco" output="true" expression="linarcco"/>
+<ExpressionField imx:id="U:oPUQGy09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="indmoneda" output="true" expression="indmoneda"/>
+<ExpressionField imx:id="U:oPUQHC09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codmonsw" output="true" expression="codmonsw"/>
+<ExpressionField imx:id="U:oPUQHS09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="empresa_ambito" output="true" expression="empresa_ambito"/>
+<ExpressionField imx:id="U:oPUQHi09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="cod_centro_ambito" output="true" expression="cod_centro_ambito"/>
+<ExpressionField imx:id="U:oPUQHy09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="coestref" output="true" expression="coestref"/>
+<ExpressionField imx:id="U:oPUQIC09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="sitfin" output="true" expression="sitfin"/>
+<ExpressionField imx:id="U:oPUQIS09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="codcesta" output="true" expression="codcesta"/>
+<ExpressionField imx:id="U:oPUQIi09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="garantia" output="true" expression="garantia"/>
+<ExpressionField imx:id="U:oPUQIy09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="tipoint" output="true" expression="tipoint"/>
+<ExpressionField imx:id="U:oPUQJC09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="idindre" output="true" expression="idindre"/>
+<ExpressionField imx:id="U:oPUQJS09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="cgm" output="true" expression="cgm"/>
+<ExpressionField imx:id="U:oPUQJi09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" output="true" expression="codcepto"/>
+<ExpressionField imx:id="U:oPUQJy09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" output="true" expression="0">
+<defaultValue xsi:type="types:StringValue" valueLiteral="ERROR%28%27error+de+transformaci%C3%B3n%27%29"/>
+</ExpressionField>
+<ExpressionField imx:id="U:oPUQJy09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="111" scale="21" upper="1" output="true" expression="0">
+<defaultValue xsi:type="types:StringValue" valueLiteral="ERROR%28%27error+de+transformaci%C3%B3n%27%29"/>
+</ExpressionField>
+</ExpressionField>
+</expressionFields>
+</ExpressionDataInterface>
+</expressionInterface>
+</AbstractTransformation>

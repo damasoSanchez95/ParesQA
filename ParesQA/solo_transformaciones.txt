@@ -1,351 +1,739 @@
-<transformations>
-<AbstractTransformation imx:id="U:9-NG9CwhEeifwIeF2GB2UA" xsi:type="source:SourceTx" active="true" name="Lectura_arcco_ruc_comisiones" dso="U:9-NHEiwhEeifwIeF2GB2UA">
-<anonymousDso imx:id="U:9-NHEiwhEeifwIeF2GB2UA" xsi:type="datasourceoperation:ReadRelationalDataSourceOperation" name="arcco_ruc_comisiones" filterCondition="to_date%28trunc%28data_date_part%2C%27MONTH%27%29%29%3D+to_date%28trunc%28%27%24P_s_FechaEjecucion%27%2C%27MONTH%27%29%29" tableDefinitions="U:ipQUQN8fEeexjA8RSYbcVQ" typeSystem="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem">
-<defaultConfigs>
-<DSORuntimeConfig imx:id="U:9-NHFSwhEeifwIeF2GB2UA" xsi:type="dsoconfig:RelationalDSORuntimeConfig" connectionName.="U:QIAZxSwhEeifwIeF2GB2UA"/>
-</defaultConfigs>
-<operations>
-<Capability imx:id="ID_165" xsi:type="datasourceoperation1:ReadCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:9-NHFSwhEeifwIeF2GB2UA">
-<outGroups>
-<DataAccessGroup imx:id="ID_166" xsi:type="datasourceoperation1:DataAccessGroup" groupType="U:9-NHFiwhEeifwIeF2GB2UA"/>
-</outGroups>
-</Capability>
-<Capability imx:id="ID_167" xsi:type="datasourceoperation1:LookupCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:9-NHFSwhEeifwIeF2GB2UA"/>
-</operations>
-<ownedCapabilityTypes>
-<ComplexType imx:id="U:9-NHFiwhEeifwIeF2GB2UA" xsi:type="typelibrary:ComplexType" name="arcco_ruc_comisiones">
-<features>
-<StructuralFeature imx:id="U:9-NHFywhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idempr" nullable="true" precision="4" upper="1"/>
-<StructuralFeature imx:id="U:9-NHGCwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idcent" nullable="true" precision="4" upper="1"/>
-<StructuralFeature imx:id="U:9-NHGSwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idprod" nullable="true" precision="3" upper="1"/>
-<StructuralFeature imx:id="U:9-NHGiwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idsprod" nullable="true" precision="3" upper="1"/>
-<StructuralFeature imx:id="U:9-NHGywhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idcontrn" nullable="true" precision="7" upper="1"/>
-<StructuralFeature imx:id="U:9-NHHCwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idscontr" nullable="true" precision="7" upper="1"/>
-<StructuralFeature imx:id="U:9-NHHSwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="tip_elemento" nullable="true" precision="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHHiwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="cod_elemento" nullable="true" precision="4" upper="1"/>
-<StructuralFeature imx:id="U:9-NHHywhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idemprmb" nullable="true" precision="4" upper="1"/>
-<StructuralFeature imx:id="U:9-NHICwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idcentmb" nullable="true" precision="4" upper="1"/>
-<StructuralFeature imx:id="U:9-NHISwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="coestref" nullable="true" precision="7" upper="1"/>
-<StructuralFeature imx:id="U:9-NHIiwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="id_moneda" nullable="true" precision="1" upper="1"/>
-<StructuralFeature imx:id="U:9-NHIywhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="codcepto" nullable="true" precision="3" upper="1"/>
-<StructuralFeature imx:id="U:9-NHJCwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="cgm" nullable="true" precision="6" upper="1"/>
-<StructuralFeature imx:id="U:9-NHJSwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="cgm_sdo" nullable="true" precision="6" upper="1"/>
-<StructuralFeature imx:id="U:9-NHJiwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="codmonsw" nullable="true" precision="3" upper="1"/>
-<StructuralFeature imx:id="U:9-NHJywhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="codtires" nullable="true" precision="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHKCwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="cod_amb_liq" nullable="true" precision="1" upper="1"/>
-<StructuralFeature imx:id="U:9-NHKSwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="tip_entrada" nullable="true" precision="1" upper="1"/>
-<StructuralFeature imx:id="U:9-NHKiwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="imput_result" nullable="true" precision="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHKywhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="indcobro" nullable="true" precision="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHLCwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="id_ingre_gasto" nullable="true" precision="1" upper="1"/>
-<StructuralFeature imx:id="U:9-NHLSwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="id_impu_result" nullable="true" precision="1" upper="1"/>
-<StructuralFeature imx:id="U:9-NHLiwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="id_natu_result" nullable="true" precision="4" upper="1"/>
-<StructuralFeature imx:id="U:9-NHLywhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="cobrotip" nullable="true" precision="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHMCwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="sig_impcoc_dev" nullable="true" precision="1" upper="1"/>
-<StructuralFeature imx:id="U:9-NHMSwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="sig_impcoc_liq" nullable="true" precision="1" upper="1"/>
-<StructuralFeature imx:id="U:9-NHMiwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="num_opera" nullable="true" precision="7" upper="1"/>
-<StructuralFeature imx:id="U:9-NHMywhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="tipgaran" nullable="true" precision="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHNCwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="tipclsgar" nullable="true" precision="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHNSwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="tipindgar" nullable="true" precision="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHNiwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="rubrica" nullable="true" precision="12" upper="1"/>
-<StructuralFeature imx:id="U:9-NHNywhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="impcoc_dev" nullable="true" precision="15" scale="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHOCwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="impcoc_liq" nullable="true" precision="15" scale="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHOSwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="impopeor" nullable="true" precision="15" scale="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHOiwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="lineacom" nullable="true" precision="6" upper="1"/>
-<StructuralFeature imx:id="U:9-NHOywhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="indicador" nullable="true" precision="1" upper="1"/>
-<StructuralFeature imx:id="U:9-NHPCwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="seccont" nullable="true" precision="3" upper="1"/>
-<StructuralFeature imx:id="U:9-NHPSwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="segmento" nullable="true" precision="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHPiwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="tipperso" nullable="true" precision="1" upper="1"/>
-<StructuralFeature imx:id="U:9-NHPywhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="codper" nullable="true" precision="9" upper="1"/>
-<StructuralFeature imx:id="U:9-NHQCwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="segcomer" nullable="true" precision="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHQSwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="lineaibn" nullable="true" precision="6" upper="1"/>
-<StructuralFeature imx:id="U:9-NHQiwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="data_date_part" nullable="true" precision="49" upper="1"/>
-</features>
-</ComplexType>
-</ownedCapabilityTypes>
-<relationalFields>
-<RelationalField imx:id="ID_168" xsi:type="datasourceoperation:RelationalField" column="U:ipQUQd8fEeexjA8RSYbcVQ" feature="U:9-NHFywhEeifwIeF2GB2UA" name="idempr" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_170" xsi:type="datasourceoperation:RelationalField" column="U:ipQUQt8fEeexjA8RSYbcVQ" feature="U:9-NHGCwhEeifwIeF2GB2UA" name="idcent" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_171" xsi:type="datasourceoperation:RelationalField" column="U:ipQUQ98fEeexjA8RSYbcVQ" feature="U:9-NHGSwhEeifwIeF2GB2UA" name="idprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_172" xsi:type="datasourceoperation:RelationalField" column="U:ipQURN8fEeexjA8RSYbcVQ" feature="U:9-NHGiwhEeifwIeF2GB2UA" name="idsprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_173" xsi:type="datasourceoperation:RelationalField" column="U:ipQURd8fEeexjA8RSYbcVQ" feature="U:9-NHGywhEeifwIeF2GB2UA" name="idcontrn" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_174" xsi:type="datasourceoperation:RelationalField" column="U:ipQURt8fEeexjA8RSYbcVQ" feature="U:9-NHHCwhEeifwIeF2GB2UA" name="idscontr" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_175" xsi:type="datasourceoperation:RelationalField" column="U:ipQUR98fEeexjA8RSYbcVQ" feature="U:9-NHHSwhEeifwIeF2GB2UA" name="tip_elemento" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_176" xsi:type="datasourceoperation:RelationalField" column="U:ipQUSN8fEeexjA8RSYbcVQ" feature="U:9-NHHiwhEeifwIeF2GB2UA" name="cod_elemento" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_177" xsi:type="datasourceoperation:RelationalField" column="U:ipQUSd8fEeexjA8RSYbcVQ" feature="U:9-NHHywhEeifwIeF2GB2UA" name="idemprmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_178" xsi:type="datasourceoperation:RelationalField" column="U:ipQUSt8fEeexjA8RSYbcVQ" feature="U:9-NHICwhEeifwIeF2GB2UA" name="idcentmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_179" xsi:type="datasourceoperation:RelationalField" column="U:ipQUS98fEeexjA8RSYbcVQ" feature="U:9-NHISwhEeifwIeF2GB2UA" name="coestref" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_180" xsi:type="datasourceoperation:RelationalField" column="U:ipQUTN8fEeexjA8RSYbcVQ" feature="U:9-NHIiwhEeifwIeF2GB2UA" name="id_moneda" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_181" xsi:type="datasourceoperation:RelationalField" column="U:ipQUTd8fEeexjA8RSYbcVQ" feature="U:9-NHIywhEeifwIeF2GB2UA" name="codcepto" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_182" xsi:type="datasourceoperation:RelationalField" column="U:ipQUTt8fEeexjA8RSYbcVQ" feature="U:9-NHJCwhEeifwIeF2GB2UA" name="cgm" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_183" xsi:type="datasourceoperation:RelationalField" column="U:ipQUT98fEeexjA8RSYbcVQ" feature="U:9-NHJSwhEeifwIeF2GB2UA" name="cgm_sdo" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_184" xsi:type="datasourceoperation:RelationalField" column="U:ipQUUN8fEeexjA8RSYbcVQ" feature="U:9-NHJiwhEeifwIeF2GB2UA" name="codmonsw" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_185" xsi:type="datasourceoperation:RelationalField" column="U:ipQUUd8fEeexjA8RSYbcVQ" feature="U:9-NHJywhEeifwIeF2GB2UA" name="codtires" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_186" xsi:type="datasourceoperation:RelationalField" column="U:ipQUUt8fEeexjA8RSYbcVQ" feature="U:9-NHKCwhEeifwIeF2GB2UA" name="cod_amb_liq" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_187" xsi:type="datasourceoperation:RelationalField" column="U:ipQUU98fEeexjA8RSYbcVQ" feature="U:9-NHKSwhEeifwIeF2GB2UA" name="tip_entrada" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_188" xsi:type="datasourceoperation:RelationalField" column="U:ipQUVN8fEeexjA8RSYbcVQ" feature="U:9-NHKiwhEeifwIeF2GB2UA" name="imput_result" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_189" xsi:type="datasourceoperation:RelationalField" column="U:ipQUVd8fEeexjA8RSYbcVQ" feature="U:9-NHKywhEeifwIeF2GB2UA" name="indcobro" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_190" xsi:type="datasourceoperation:RelationalField" column="U:ipQUVt8fEeexjA8RSYbcVQ" feature="U:9-NHLCwhEeifwIeF2GB2UA" name="id_ingre_gasto" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_191" xsi:type="datasourceoperation:RelationalField" column="U:ipQUV98fEeexjA8RSYbcVQ" feature="U:9-NHLSwhEeifwIeF2GB2UA" name="id_impu_result" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_192" xsi:type="datasourceoperation:RelationalField" column="U:ipQUWN8fEeexjA8RSYbcVQ" feature="U:9-NHLiwhEeifwIeF2GB2UA" name="id_natu_result" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_193" xsi:type="datasourceoperation:RelationalField" column="U:ipQUWd8fEeexjA8RSYbcVQ" feature="U:9-NHLywhEeifwIeF2GB2UA" name="cobrotip" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_194" xsi:type="datasourceoperation:RelationalField" column="U:ipQUWt8fEeexjA8RSYbcVQ" feature="U:9-NHMCwhEeifwIeF2GB2UA" name="sig_impcoc_dev" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_195" xsi:type="datasourceoperation:RelationalField" column="U:ipQUW98fEeexjA8RSYbcVQ" feature="U:9-NHMSwhEeifwIeF2GB2UA" name="sig_impcoc_liq" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_196" xsi:type="datasourceoperation:RelationalField" column="U:ipQUXN8fEeexjA8RSYbcVQ" feature="U:9-NHMiwhEeifwIeF2GB2UA" name="num_opera" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_197" xsi:type="datasourceoperation:RelationalField" column="U:ipQUXd8fEeexjA8RSYbcVQ" feature="U:9-NHMywhEeifwIeF2GB2UA" name="tipgaran" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_198" xsi:type="datasourceoperation:RelationalField" column="U:ipQUXt8fEeexjA8RSYbcVQ" feature="U:9-NHNCwhEeifwIeF2GB2UA" name="tipclsgar" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_199" xsi:type="datasourceoperation:RelationalField" column="U:ipQUX98fEeexjA8RSYbcVQ" feature="U:9-NHNSwhEeifwIeF2GB2UA" name="tipindgar" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_200" xsi:type="datasourceoperation:RelationalField" column="U:ipQUYN8fEeexjA8RSYbcVQ" feature="U:9-NHNiwhEeifwIeF2GB2UA" name="rubrica" odbcPrecision="12" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_201" xsi:type="datasourceoperation:RelationalField" column="U:ipQUYd8fEeexjA8RSYbcVQ" feature="U:9-NHNywhEeifwIeF2GB2UA" name="impcoc_dev" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_202" xsi:type="datasourceoperation:RelationalField" column="U:ipQUYt8fEeexjA8RSYbcVQ" feature="U:9-NHOCwhEeifwIeF2GB2UA" name="impcoc_liq" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_203" xsi:type="datasourceoperation:RelationalField" column="U:ipQUY98fEeexjA8RSYbcVQ" feature="U:9-NHOSwhEeifwIeF2GB2UA" name="impopeor" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_204" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZN8fEeexjA8RSYbcVQ" feature="U:9-NHOiwhEeifwIeF2GB2UA" name="lineacom" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_205" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZd8fEeexjA8RSYbcVQ" feature="U:9-NHOywhEeifwIeF2GB2UA" name="indicador" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_206" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZt8fEeexjA8RSYbcVQ" feature="U:9-NHPCwhEeifwIeF2GB2UA" name="seccont" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_207" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZ98fEeexjA8RSYbcVQ" feature="U:9-NHPSwhEeifwIeF2GB2UA" name="segmento" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_208" xsi:type="datasourceoperation:RelationalField" column="U:ipQUaN8fEeexjA8RSYbcVQ" feature="U:9-NHPiwhEeifwIeF2GB2UA" name="tipperso" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_209" xsi:type="datasourceoperation:RelationalField" column="U:ipQUad8fEeexjA8RSYbcVQ" feature="U:9-NHPywhEeifwIeF2GB2UA" name="codper" odbcPrecision="9" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_210" xsi:type="datasourceoperation:RelationalField" column="U:ipQUat8fEeexjA8RSYbcVQ" feature="U:9-NHQCwhEeifwIeF2GB2UA" name="segcomer" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_211" xsi:type="datasourceoperation:RelationalField" column="U:ipQUa98fEeexjA8RSYbcVQ" feature="U:9-NHQSwhEeifwIeF2GB2UA" name="lineaibn" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_212" xsi:type="datasourceoperation:RelationalField" column="U:ipQUbN8fEeexjA8RSYbcVQ" feature="U:9-NHQiwhEeifwIeF2GB2UA" name="data_date_part" odbcPrecision="49" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-</relationalFields>
-<relationalRecordInstances>
-<RelationalRecordInstance imx:id="ID_169" xsi:type="datasourceoperation:RelationalRecordInstance" name="arcco_ruc_comisiones" ownerName.="U:QIAZwiwhEeifwIeF2GB2UA" record="U:ipQUQN8fEeexjA8RSYbcVQ"/>
-</relationalRecordInstances>
-</anonymousDso>
-<sourceInterfaces>
-<SourceDataInterface imx:id="U:9-NHEywhEeifwIeF2GB2UA" xsi:type="source:SourceDataInterface" name="Grupo" output="true">
-<sourceFields>
-<SourceTxField imx:id="U:9-NHFCwhEeifwIeF2GB2UA" xsi:type="source:SourceTxField" type="U:9-NHFiwhEeifwIeF2GB2UA" name="output" output="true"/>
-</sourceFields>
-</SourceDataInterface>
-</sourceInterfaces>
-</AbstractTransformation>
-<AbstractTransformation imx:id="U:9-NG9SwhEeifwIeF2GB2UA" xsi:type="target:TargetTx" active="true" name="Escritura_arcco_rendimientos_linea" dso="U:9-NG-CwhEeifwIeF2GB2UA">
-<anonymousDso imx:id="U:9-NG-CwhEeifwIeF2GB2UA" xsi:type="datasourceoperation:WriteRelationalDataSourceOperation" name="arcco_rendimientos_linea" loadType="Normal" tableDefinition="U:cQZV8eP2EeeI9b3aq1bBPw" typeSystem="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem">
-<defaultConfigs>
-<DSORuntimeConfig imx:id="U:9-NG-ywhEeifwIeF2GB2UA" xsi:type="dsoconfig:RelationalDSORuntimeConfig" connectionName.="U:QIAZxywhEeifwIeF2GB2UA"/>
-</defaultConfigs>
-<operations>
-<Capability imx:id="ID_213" xsi:type="datasourceoperation1:WriteCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalWriterDataAdapter" defaultConfig="U:9-NG-ywhEeifwIeF2GB2UA">
-<inGroups>
-<DataAccessGroup imx:id="ID_214" xsi:type="datasourceoperation1:DataAccessGroup" groupType="U:9-NG_CwhEeifwIeF2GB2UA" input="true"/>
-</inGroups>
-</Capability>
-</operations>
-<ownedCapabilityTypes>
-<ComplexType imx:id="U:9-NG_CwhEeifwIeF2GB2UA" xsi:type="typelibrary:ComplexType" name="arcco_rendimientos_linea">
-<features>
-<StructuralFeature imx:id="U:9-NG_SwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="fec_operacion" nullable="true" precision="10" upper="1"/>
-<StructuralFeature imx:id="U:9-NG_iwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idempr" nullable="true" precision="4" upper="1"/>
-<StructuralFeature imx:id="U:9-NG_ywhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idcent" nullable="true" precision="4" upper="1"/>
-<StructuralFeature imx:id="U:9-NHACwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idprod" nullable="true" precision="3" upper="1"/>
-<StructuralFeature imx:id="U:9-NHASwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idsprod" nullable="true" precision="3" upper="1"/>
-<StructuralFeature imx:id="U:9-NHAiwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idcontrn" nullable="true" precision="7" upper="1"/>
-<StructuralFeature imx:id="U:9-NHAywhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idscontr" nullable="true" precision="7" upper="1"/>
-<StructuralFeature imx:id="U:9-NHBCwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="lineaibn" nullable="true" precision="6" upper="1"/>
-<StructuralFeature imx:id="U:9-NHBSwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="lineacom" nullable="true" precision="6" upper="1"/>
-<StructuralFeature imx:id="U:9-NHBiwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="id_moneda" nullable="true" precision="1" upper="1"/>
-<StructuralFeature imx:id="U:9-NHCCwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idemprmb" nullable="true" precision="4" upper="1"/>
-<StructuralFeature imx:id="U:9-NHCSwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idcentmb" nullable="true" precision="4" upper="1"/>
-<StructuralFeature imx:id="U:9-NHCiwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="codtires" nullable="true" precision="2" upper="1"/>
-<StructuralFeature imx:id="U:AV-ujzGmEeihRMPHnoObNQ" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="coestref" nullable="true" precision="7" upper="1"/>
-<StructuralFeature imx:id="U:9-NHCywhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="imput_result" nullable="true" precision="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHDCwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="indcobro" nullable="true" precision="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHDSwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="num_opera" nullable="true" precision="7" upper="1"/>
-<StructuralFeature imx:id="U:9-NHDiwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="impopeor" nullable="true" precision="15" scale="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHDywhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="importe_coc" nullable="true" precision="15" scale="2" upper="1"/>
-<StructuralFeature imx:id="U:9-NHECwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="codcesta" nullable="true" precision="4" upper="1"/>
-<StructuralFeature imx:id="U:9-NHESwhEeifwIeF2GB2UA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="codcepto" nullable="true" precision="3" upper="1"/>
-</features>
-</ComplexType>
-</ownedCapabilityTypes>
-<relationalFields>
-<RelationalField imx:id="ID_215" xsi:type="datasourceoperation:RelationalField" column="U:cQZV8uP2EeeI9b3aq1bBPw" feature="U:9-NG_SwhEeifwIeF2GB2UA" name="fec_cierre" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_217" xsi:type="datasourceoperation:RelationalField" column="U:cQZV8-P2EeeI9b3aq1bBPw" feature="U:9-NG_iwhEeifwIeF2GB2UA" name="idempr" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_218" xsi:type="datasourceoperation:RelationalField" column="U:cQZV9OP2EeeI9b3aq1bBPw" feature="U:9-NG_ywhEeifwIeF2GB2UA" name="idcent" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_219" xsi:type="datasourceoperation:RelationalField" column="U:cQZV9eP2EeeI9b3aq1bBPw" feature="U:9-NHACwhEeifwIeF2GB2UA" name="idprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_220" xsi:type="datasourceoperation:RelationalField" column="U:cQZV9uP2EeeI9b3aq1bBPw" feature="U:9-NHASwhEeifwIeF2GB2UA" name="idsprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_221" xsi:type="datasourceoperation:RelationalField" column="U:cQZV9-P2EeeI9b3aq1bBPw" feature="U:9-NHAiwhEeifwIeF2GB2UA" name="idcontrn" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_222" xsi:type="datasourceoperation:RelationalField" column="U:cQZV-OP2EeeI9b3aq1bBPw" feature="U:9-NHAywhEeifwIeF2GB2UA" name="idscontr" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_223" xsi:type="datasourceoperation:RelationalField" column="U:cQZV-eP2EeeI9b3aq1bBPw" feature="U:9-NHBCwhEeifwIeF2GB2UA" name="lineaibn" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_224" xsi:type="datasourceoperation:RelationalField" column="U:cQZV-uP2EeeI9b3aq1bBPw" feature="U:9-NHBSwhEeifwIeF2GB2UA" name="linea_hm" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_225" xsi:type="datasourceoperation:RelationalField" column="U:cQZV--P2EeeI9b3aq1bBPw" feature="U:9-NHBiwhEeifwIeF2GB2UA" name="id_moneda" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_226" xsi:type="datasourceoperation:RelationalField" column="U:cQZV_eP2EeeI9b3aq1bBPw" feature="U:9-NHCCwhEeifwIeF2GB2UA" name="idemprmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_227" xsi:type="datasourceoperation:RelationalField" column="U:cQZV_uP2EeeI9b3aq1bBPw" feature="U:9-NHCSwhEeifwIeF2GB2UA" name="idcentmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_228" xsi:type="datasourceoperation:RelationalField" column="U:cQZV_-P2EeeI9b3aq1bBPw" feature="U:9-NHCiwhEeifwIeF2GB2UA" name="codtires" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_229" xsi:type="datasourceoperation:RelationalField" column="U:cQZWAOP2EeeI9b3aq1bBPw" feature="U:9-NHCywhEeifwIeF2GB2UA" name="imput_result" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_230" xsi:type="datasourceoperation:RelationalField" column="U:cQZWAeP2EeeI9b3aq1bBPw" feature="U:9-NHDCwhEeifwIeF2GB2UA" name="indcobro" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_231" xsi:type="datasourceoperation:RelationalField" column="U:cQZWAuP2EeeI9b3aq1bBPw" feature="U:9-NHDSwhEeifwIeF2GB2UA" name="num_opera" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_232" xsi:type="datasourceoperation:RelationalField" column="U:cQZWA-P2EeeI9b3aq1bBPw" feature="U:9-NHDiwhEeifwIeF2GB2UA" name="impopeor" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_233" xsi:type="datasourceoperation:RelationalField" column="U:cQZWBOP2EeeI9b3aq1bBPw" feature="U:9-NHDywhEeifwIeF2GB2UA" name="importe_coc" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_234" xsi:type="datasourceoperation:RelationalField" column="U:cQZWBeP2EeeI9b3aq1bBPw" feature="U:9-NHECwhEeifwIeF2GB2UA" name="codcesta" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_235" xsi:type="datasourceoperation:RelationalField" column="U:cQZWBuP2EeeI9b3aq1bBPw" feature="U:9-NHESwhEeifwIeF2GB2UA" name="codcepto" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_236" xsi:type="datasourceoperation:RelationalField" column="U:nnxk0jGkEeihRMPHnoObNQ" feature="U:AV-ujzGmEeihRMPHnoObNQ" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-</relationalFields>
-<relationalRecordInstance imx:id="ID_216" xsi:type="datasourceoperation:RelationalRecordInstance" name="arcco_rendimientos_linea" ownerName.="U:QIAZxCwhEeifwIeF2GB2UA" record="U:cQZV8eP2EeeI9b3aq1bBPw"/>
-</anonymousDso>
-<targetInterfaces>
-<TargetDataInterface imx:id="U:9-NG-SwhEeifwIeF2GB2UA" xsi:type="target:TargetDataInterface" input="true" name="Grupo">
-<targetFields>
-<TargetTxField imx:id="U:9-NG-iwhEeifwIeF2GB2UA" xsi:type="target:TargetTxField" type="U:9-NG_CwhEeifwIeF2GB2UA" input="true" name="Input"/>
-</targetFields>
-</TargetDataInterface>
-</targetInterfaces>
-</AbstractTransformation>
-<AbstractTransformation imx:id="U:YBQ4uiwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionTx" name="exp_importes">
+<AbstractTransformation imx:id="U:yo8uDi0pEeiQZWhR5Fywjg" xsi:type="expression:ExpressionTx" name="Exp_importes">
 <expressionInterface>
-<ExpressionDataInterface imx:id="U:YBQ4uywlEeifwIeF2GB2UA" xsi:type="expression:ExpressionDataInterface" input="true" name="Grupo" output="true">
+<ExpressionDataInterface imx:id="U:yo8uEi0pEeiQZWhR5Fywjg" xsi:type="expression:ExpressionDataInterface" input="true" name="Grupo" output="true">
 <expressionFields>
-<ExpressionField imx:id="U:Tmi9uC3OEeiODaPWF10igw" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="10" upper="1" name="fec_operacion" output="true" expression="%24P_s_FechaEjecucion">
+<ExpressionField imx:id="U:oPUQFC09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" output="true" expression="empresa"/>
+<ExpressionField imx:id="U:oPUQFS09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="centro" output="true" expression="centro"/>
+<ExpressionField imx:id="U:oPUQFi09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="producto" output="true" expression="producto"/>
+<ExpressionField imx:id="U:oPUQFy09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="subpro" output="true" expression="subpro"/>
+<ExpressionField imx:id="U:oPUQGC09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="contrato" output="true" expression="contrato"/>
+<ExpressionField imx:id="U:oPUQGS09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="subcontrato" output="true" expression="subcontrato"/>
+<ExpressionField imx:id="U:oPUQGi09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="linarcco" output="true" expression="linarcco"/>
+<ExpressionField imx:id="U:oPUQGy09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="indmoneda" output="true" expression="indmoneda"/>
+<ExpressionField imx:id="U:oPUQHC09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codmonsw" output="true" expression="codmonsw"/>
+<ExpressionField imx:id="U:oPUQHS09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="empresa_ambito" output="true" expression="empresa_ambito"/>
+<ExpressionField imx:id="U:oPUQHi09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="cod_centro_ambito" output="true" expression="cod_centro_ambito"/>
+<ExpressionField imx:id="U:oPUQHy09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="coestref" output="true" expression="coestref"/>
+<ExpressionField imx:id="U:oPUQIC09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="sitfin" output="true" expression="sitfin"/>
+<ExpressionField imx:id="U:oPUQIS09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="codcesta" output="true" expression="codcesta"/>
+<ExpressionField imx:id="U:oPUQIi09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="garantia" output="true" expression="garantia"/>
+<ExpressionField imx:id="U:oPUQIy09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="tipoint" output="true" expression="tipoint"/>
+<ExpressionField imx:id="U:oPUQJC09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="idindre" output="true" expression="idindre"/>
+<ExpressionField imx:id="U:oPUQJS09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="cgm" output="true" expression="cgm"/>
+<ExpressionField imx:id="U:oPUQJi09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" output="true" expression="codcepto"/>
+<ExpressionField imx:id="U:oPUQJy09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" output="true" expression="0">
 <defaultValue xsi:type="types:StringValue" valueLiteral="ERROR%28%27error+de+transformaci%C3%B3n%27%29"/>
 </ExpressionField>
-<ExpressionField imx:id="U:YBQ4vCwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idempr" output="true"/>
-<ExpressionField imx:id="U:YBQ4vSwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idcent" output="true"/>
-<ExpressionField imx:id="U:YBQ4viwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="idprod" output="true"/>
-<ExpressionField imx:id="U:YBQ4vywlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="idsprod" output="true"/>
-<ExpressionField imx:id="U:YBQ4wCwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="idcontrn" output="true"/>
-<ExpressionField imx:id="U:YBQ4wSwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="idscontr" output="true"/>
-<ExpressionField imx:id="U:YBQ4wiwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="lineaibn" output="true"/>
-<ExpressionField imx:id="U:zsR0dTDnEei7MCDIo0nFQA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="lineacom" output="true"/>
-<ExpressionField imx:id="U:YBQ4wywlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="id_moneda" output="true"/>
-<ExpressionField imx:id="U:YBQ4xSwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idemprmb" output="true"/>
-<ExpressionField imx:id="U:YBQ4xiwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idcentmb" output="true"/>
-<ExpressionField imx:id="U:AV-ujjGmEeihRMPHnoObNQ" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="coestref" output="true"/>
-<ExpressionField imx:id="U:YBQ4xywlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="codtires" output="true"/>
-<ExpressionField imx:id="U:YBQ4yCwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="imput_result" output="true"/>
-<ExpressionField imx:id="U:YBQ4ySwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="indcobro" output="true"/>
-<ExpressionField imx:id="U:YBQ4yiwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="num_opera" output="true"/>
-<ExpressionField imx:id="U:-nQSwj5lEeihC0emK5KmfQ" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="num_opera_out" output="true" expression="IIF%28ISNULL%28num_opera%29+OR+num_opera+%3D+%27%27%2C+to_char%28%24P_d_cero%29%2C+num_opera%29">
+<ExpressionField imx:id="U:oPUQJy09EeiQZWhR5Fywjg" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="111" scale="21" upper="1" output="true" expression="0">
 <defaultValue xsi:type="types:StringValue" valueLiteral="ERROR%28%27error+de+transformaci%C3%B3n%27%29"/>
 </ExpressionField>
-<ExpressionField imx:id="U:YBQ4yywlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impopeor" output="true"/>
-<ExpressionField imx:id="U:YBQ4zCwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codcepto" output="true"/>
-<ExpressionField imx:id="U:rSkJAiwwEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="V_importe_coc_dev" expression="IIF%28ISNULL%28impcoc_dev%29+OR+TO_CHAR%28impcoc_dev%29%3D%27%27%2C+%24P_d_cero%2C+IIF%28sig_impcoc_dev%3D%27-%27%2CTO_DECIMAL%28%27-%27%7C%7CTO_CHAR%28impcoc_dev%29%29%2Cimpcoc_dev%29%29%0D%0A%0D%0A--IIF%28sig_impcoc_dev%3D%27-%27%2CTO_DECIMAL%28%27-%27%7C%7CTO_CHAR%28impcoc_dev%29%29%2Cimpcoc_dev%29" variable="true"/>
-<ExpressionField imx:id="U:95MJjCw0EeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="V_importe_coc_liq" expression="IIF%28ISNULL%28impcoc_liq%29+OR+TO_CHAR%28impcoc_liq%29%3D%27%27%2C+%24P_d_cero%2C+IIF%28sig_impcoc_liq%3D%27-%27%2CTO_DECIMAL%28%27-%27%7C%7CTO_CHAR%28impcoc_liq%29%29%2Cimpcoc_liq%29%29%0D%0A%0D%0A--IIF%28sig_impcoc_liq%3D%27-%27%2CTO_DECIMAL%28%27-%27%7C%7CTO_CHAR%28impcoc_liq%29%29%2Cimpcoc_liq%29" variable="true"/>
-<ExpressionField imx:id="U:95MJjSw0EeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="Importe_coc" output="true" expression="V_importe_coc_dev+%2B+V_importe_coc_liq">
-<defaultValue xsi:type="types:StringValue" valueLiteral="ERROR%28%27error+de+transformaci%C3%B3n%27%29"/>
 </ExpressionField>
-<ExpressionField imx:id="U:rSkJBCwwEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="sig_impcoc_dev"/>
-<ExpressionField imx:id="U:rSkJBSwwEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="sig_impcoc_liq"/>
-<ExpressionField imx:id="U:rSkJBiwwEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impcoc_dev"/>
-<ExpressionField imx:id="U:rSkJBywwEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impcoc_liq"/>
 </expressionFields>
 </ExpressionDataInterface>
 </expressionInterface>
 </AbstractTransformation>
-<AbstractTransformation imx:id="U:1XTVETGSEeihRMPHnoObNQ" xsi:type="source:SourceTx" active="true" name="Lectura_arcco_pt_cesta" dso="U:1XUjZDGSEeihRMPHnoObNQ">
-<anonymousDso imx:id="U:1XUjZDGSEeihRMPHnoObNQ" xsi:type="datasourceoperation:ReadRelationalDataSourceOperation" name="arcco_pt_cesta" filterCondition="data_date_part%3D+%27%24P_s_FechaEjecucion%27" tableDefinitions="U:ptcwHt8fEeexjA8RSYbcVQ" typeSystem="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem">
+
+<AbstractTransformation imx:id="U:juNASCxVEeiFrAoaabTgbA" xsi:type="source:SourceTx" active="true" name="Read_arcco_datfinanc_detalle_temp" dso="U:juNnXyxVEeiFrAoaabTgbA">
+<anonymousDso imx:id="U:juNnXyxVEeiFrAoaabTgbA" xsi:type="datasourceoperation:ReadRelationalDataSourceOperation" name="arcco_datfinanc_detalle_temp" filterCondition="to_date%28trunc%28fecha_mes%2C%27MONTH%27%29%29+%3D+to_date%28add_months%28trunc%28%27%24P_s_FechaEjecucion%27%2C%27MONTH%27%29%2C-1%29%29" tableDefinitions="U:Z7fUYiezEeit9taz0Nn1uw" typeSystem="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem">
 <defaultConfigs>
-<DSORuntimeConfig imx:id="U:1XUjZzGSEeihRMPHnoObNQ" xsi:type="dsoconfig:RelationalDSORuntimeConfig" connectionName.="U:QIAZxiwhEeifwIeF2GB2UA"/>
+<DSORuntimeConfig imx:id="U:juNnYixVEeiFrAoaabTgbA" xsi:type="dsoconfig:RelationalDSORuntimeConfig" connectionName.="U:yo8uAy0pEeiQZWhR5Fywjg"/>
 </defaultConfigs>
 <operations>
-<Capability imx:id="ID_240" xsi:type="datasourceoperation1:ReadCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:1XUjZzGSEeihRMPHnoObNQ">
+<Capability imx:id="ID_490" xsi:type="datasourceoperation1:ReadCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:juNnYixVEeiFrAoaabTgbA">
 <outGroups>
-<DataAccessGroup imx:id="ID_241" xsi:type="datasourceoperation1:DataAccessGroup" groupType="U:1XUjaDGSEeihRMPHnoObNQ"/>
+<DataAccessGroup imx:id="ID_491" xsi:type="datasourceoperation1:DataAccessGroup" groupType="U:juNnYyxVEeiFrAoaabTgbA"/>
 </outGroups>
 </Capability>
-<Capability imx:id="ID_242" xsi:type="datasourceoperation1:LookupCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:1XUjZzGSEeihRMPHnoObNQ"/>
+<Capability imx:id="ID_492" xsi:type="datasourceoperation1:LookupCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:juNnYixVEeiFrAoaabTgbA"/>
 </operations>
 <ownedCapabilityTypes>
-<ComplexType imx:id="U:1XUjaDGSEeihRMPHnoObNQ" xsi:type="typelibrary:ComplexType" name="arcco_pt_cesta">
+<ComplexType imx:id="U:juNnYyxVEeiFrAoaabTgbA" xsi:type="typelibrary:ComplexType" name="arcco_datfinanc_detalle_temp">
 <features>
-<StructuralFeature imx:id="U:1XVKeTGSEeihRMPHnoObNQ" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idempr" nullable="true" precision="4" upper="1"/>
-<StructuralFeature imx:id="U:1XVKejGSEeihRMPHnoObNQ" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="tipcesta" nullable="true" precision="3" upper="1"/>
-<StructuralFeature imx:id="U:1XVKezGSEeihRMPHnoObNQ" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="codcesta" nullable="true" precision="4" upper="1"/>
-<StructuralFeature imx:id="U:1XVKfDGSEeihRMPHnoObNQ" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idprod" nullable="true" precision="3" upper="1"/>
-<StructuralFeature imx:id="U:1XVKfTGSEeihRMPHnoObNQ" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idsprod" nullable="true" precision="3" upper="1"/>
-<StructuralFeature imx:id="U:1XVKfjGSEeihRMPHnoObNQ" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="indtabco" nullable="true" precision="1" upper="1"/>
-<StructuralFeature imx:id="U:1XVKfzGSEeihRMPHnoObNQ" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="natura" nullable="true" precision="1" upper="1"/>
-<StructuralFeature imx:id="U:1XVKgDGSEeihRMPHnoObNQ" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="data_date_part" nullable="true" precision="10" upper="1"/>
-<StructuralFeature imx:id="U:1XVKgTGSEeihRMPHnoObNQ" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fbigint" lower="1" name="data_timestamp_part" nullable="true" precision="19" upper="1"/>
+<StructuralFeature imx:id="U:juO1hCxVEeiFrAoaabTgbA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="fecha_mes" nullable="true" precision="10" upper="1"/>
+<StructuralFeature imx:id="U:juO1hSxVEeiFrAoaabTgbA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="empresa" nullable="true" precision="4" upper="1"/>
+<StructuralFeature imx:id="U:juO1hixVEeiFrAoaabTgbA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="centro" nullable="true" precision="4" upper="1"/>
+<StructuralFeature imx:id="U:juO1hyxVEeiFrAoaabTgbA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="producto" nullable="true" precision="3" upper="1"/>
+<StructuralFeature imx:id="U:juO1mixVEeiFrAoaabTgbA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="impcof_cob_act" nullable="true" precision="15" scale="2" upper="1"/>
 </features>
 </ComplexType>
 </ownedCapabilityTypes>
 <relationalFields>
-<RelationalField imx:id="ID_243" xsi:type="datasourceoperation:RelationalField" column="U:ptcwH98fEeexjA8RSYbcVQ" feature="U:1XVKeTGSEeihRMPHnoObNQ" name="idempr" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_245" xsi:type="datasourceoperation:RelationalField" column="U:ptcwIN8fEeexjA8RSYbcVQ" feature="U:1XVKejGSEeihRMPHnoObNQ" name="tipcesta" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_246" xsi:type="datasourceoperation:RelationalField" column="U:ptcwId8fEeexjA8RSYbcVQ" feature="U:1XVKezGSEeihRMPHnoObNQ" name="codcesta" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_247" xsi:type="datasourceoperation:RelationalField" column="U:ptcwIt8fEeexjA8RSYbcVQ" feature="U:1XVKfDGSEeihRMPHnoObNQ" name="idprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_248" xsi:type="datasourceoperation:RelationalField" column="U:ptcwI98fEeexjA8RSYbcVQ" feature="U:1XVKfTGSEeihRMPHnoObNQ" name="idsprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_249" xsi:type="datasourceoperation:RelationalField" column="U:ptcwJN8fEeexjA8RSYbcVQ" feature="U:1XVKfjGSEeihRMPHnoObNQ" name="indtabco" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_250" xsi:type="datasourceoperation:RelationalField" column="U:ptcwJd8fEeexjA8RSYbcVQ" feature="U:1XVKfzGSEeihRMPHnoObNQ" name="natura" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_251" xsi:type="datasourceoperation:RelationalField" column="U:ptcwJt8fEeexjA8RSYbcVQ" feature="U:1XVKgDGSEeihRMPHnoObNQ" name="data_date_part" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_252" xsi:type="datasourceoperation:RelationalField" column="U:ptcwJ98fEeexjA8RSYbcVQ" feature="U:1XVKgTGSEeihRMPHnoObNQ" name="data_timestamp_part" odbcPrecision="19" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fbigint" recordInstance="ID_244"/>
+<RelationalField imx:id="ID_493" xsi:type="datasourceoperation:RelationalField" column="U:Z7fUYyezEeit9taz0Nn1uw" feature="U:juO1hCxVEeiFrAoaabTgbA" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_494"/>
+<RelationalField imx:id="ID_495" xsi:type="datasourceoperation:RelationalField" column="U:Z7fUZCezEeit9taz0Nn1uw" feature="U:juO1hSxVEeiFrAoaabTgbA" name="empresa" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_494"/>
+<RelationalField imx:id="ID_496" xsi:type="datasourceoperation:RelationalField" column="U:Z7fUZSezEeit9taz0Nn1uw" feature="U:juO1hixVEeiFrAoaabTgbA" name="centro" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_494"/>
+<RelationalField imx:id="ID_497" xsi:type="datasourceoperation:RelationalField" column="U:Z7fUZiezEeit9taz0Nn1uw" feature="U:juO1hyxVEeiFrAoaabTgbA" name="producto" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_494"/>
+<RelationalField imx:id="ID_516" xsi:type="datasourceoperation:RelationalField" column="U:Z7fUeSezEeit9taz0Nn1uw" feature="U:juO1mixVEeiFrAoaabTgbA" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_494"/>
 </relationalFields>
 <relationalRecordInstances>
-<RelationalRecordInstance imx:id="ID_244" xsi:type="datasourceoperation:RelationalRecordInstance" name="arcco_pt_cesta" ownerName.="U:QIAZwywhEeifwIeF2GB2UA" record="U:ptcwHt8fEeexjA8RSYbcVQ"/>
+<RelationalRecordInstance imx:id="ID_494" xsi:type="datasourceoperation:RelationalRecordInstance" name="arcco_datfinanc_detalle_temp" ownerName.="U:yo8uBS0pEeiQZWhR5Fywjg" record="U:Z7fUYiezEeit9taz0Nn1uw"/>
 </relationalRecordInstances>
 </anonymousDso>
 <sourceInterfaces>
-<SourceDataInterface imx:id="U:1XUjZTGSEeihRMPHnoObNQ" xsi:type="source:SourceDataInterface" name="Grupo" output="true">
+<SourceDataInterface imx:id="U:juNnYCxVEeiFrAoaabTgbA" xsi:type="source:SourceDataInterface" name="Grupo" output="true">
 <sourceFields>
-<SourceTxField imx:id="U:1XUjZjGSEeihRMPHnoObNQ" xsi:type="source:SourceTxField" type="U:1XUjaDGSEeihRMPHnoObNQ" name="output" output="true"/>
+<SourceTxField imx:id="U:juNnYSxVEeiFrAoaabTgbA" xsi:type="source:SourceTxField" type="U:juNnYyxVEeiFrAoaabTgbA" name="output" output="true"/>
 </sourceFields>
 </SourceDataInterface>
 </sourceInterfaces>
 </AbstractTransformation>
-<AbstractTransformation imx:id="U:1XTVEjGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerTx" active="true" name="jnr_cesta" cacheDir.="smd:com.informatica.metadata.common.parameter.util.InfaParameterSeed.CacheDir" caseSensitive="true" detailDataNullHighest="true" joinCondition="idempr1+%3D+idempr+AND+idprod1+%3D+idprod+AND+idsprod1+%3D+idsprod" joinType="leftOuterJoin" masterDataNullHighest="true" scope="allInput">
+
+
+<AbstractTransformation imx:id="U:3WeVJi1AEeiQZWhR5Fywjg" xsi:type="target:TargetTx" active="true" name="Write_arcco_datfinanc_enriq_temp_total" dso="U:3WeVJy1AEeiQZWhR5Fywjg">
+<anonymousDso imx:id="U:3WeVJy1AEeiQZWhR5Fywjg" xsi:type="datasourceoperation:WriteRelationalDataSourceOperation" name="arcco_datfinanc_enriq_temp_total" loadType="Normal" tableDefinition="U:bTLfTi0_EeirNzdq1PSshQ" typeSystem="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem">
+<defaultConfigs>
+<DSORuntimeConfig imx:id="U:3WeVKi1AEeiQZWhR5Fywjg" xsi:type="dsoconfig:RelationalDSORuntimeConfig" connectionName.="U:yo8uAy0pEeiQZWhR5Fywjg"/>
+</defaultConfigs>
+<operations>
+<Capability imx:id="ID_1206" xsi:type="datasourceoperation1:WriteCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalWriterDataAdapter" defaultConfig="U:3WeVKi1AEeiQZWhR5Fywjg">
+<inGroups>
+<DataAccessGroup imx:id="ID_1207" xsi:type="datasourceoperation1:DataAccessGroup" groupType="U:3WeVKy1AEeiQZWhR5Fywjg" input="true"/>
+</inGroups>
+</Capability>
+</operations>
+<ownedCapabilityTypes>
+<ComplexType imx:id="U:3WeVKy1AEeiQZWhR5Fywjg" xsi:type="typelibrary:ComplexType" name="arcco_datfinanc_enriq_temp_total">
+<features>
+<StructuralFeature imx:id="U:3WeVLC1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idempr" nullable="true" precision="4" upper="1">
+<annotations>
+<Annotation imx:id="ID_1208" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVLS1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idcent" nullable="true" precision="4" upper="1">
+<annotations>
+<Annotation imx:id="ID_1209" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVLi1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idprod" nullable="true" precision="3" upper="1">
+<annotations>
+<Annotation imx:id="ID_1210" xsi:type="description:Description" body="string+3"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVLy1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idsprod" nullable="true" precision="3" upper="1">
+<annotations>
+<Annotation imx:id="ID_1211" xsi:type="description:Description" body="string+3"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVMC1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idcontrn" nullable="true" precision="7" upper="1">
+<annotations>
+<Annotation imx:id="ID_1212" xsi:type="description:Description" body="string+7"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVMS1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idscontrn" nullable="true" precision="7" upper="1">
+<annotations>
+<Annotation imx:id="ID_1213" xsi:type="description:Description" body="string+7"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVMi1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="linarcco" nullable="true" precision="6" upper="1">
+<annotations>
+<Annotation imx:id="ID_1214" xsi:type="description:Description" body="string+6"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVMy1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="codmonsw" nullable="true" precision="3" upper="1">
+<annotations>
+<Annotation imx:id="ID_1215" xsi:type="description:Description" body="string+3"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVNC1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="id_moneda" nullable="true" precision="1" upper="1">
+<annotations>
+<Annotation imx:id="ID_1216" xsi:type="description:Description" body="string+1"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVNS1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idemprmb" nullable="true" precision="4" upper="1">
+<annotations>
+<Annotation imx:id="ID_1217" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVNi1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idcentmb" nullable="true" precision="4" upper="1">
+<annotations>
+<Annotation imx:id="ID_1218" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVNy1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="coestref" nullable="true" precision="7" upper="1">
+<annotations>
+<Annotation imx:id="ID_1219" xsi:type="description:Description" body="string+7"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVOC1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="cgm" nullable="true" precision="6" upper="1">
+<annotations>
+<Annotation imx:id="ID_1220" xsi:type="description:Description" body="string+6"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVOS1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="codcepto" nullable="true" precision="3" upper="1">
+<annotations>
+<Annotation imx:id="ID_1221" xsi:type="description:Description" body="string+3"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVOi1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="ind_garant" nullable="true" precision="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1222" xsi:type="description:Description" body="string+2"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVOy1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="codcesta" nullable="true" precision="4" upper="1">
+<annotations>
+<Annotation imx:id="ID_1223" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVPC1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="tipoint" nullable="true" precision="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1224" xsi:type="description:Description" body="string+2"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVPS1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="sitfin" nullable="true" precision="3" upper="1">
+<annotations>
+<Annotation imx:id="ID_1225" xsi:type="description:Description" body="string+3"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVPi1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idindre" nullable="true" precision="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1226" xsi:type="description:Description" body="string+2"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVPy1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="impintc_cob" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1227" xsi:type="description:Description" body="decimal%2815%2C2%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVQC1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="impintc_pag" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1228" xsi:type="description:Description" body="decimal%2815%2C2%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVQS1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="impcoc_cob" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1229" xsi:type="description:Description" body="decimal%2815%2C2%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVQi1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="impcoc_pag" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1230" xsi:type="description:Description" body="decimal%2815%2C2%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVQy1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="imp_ing_curv" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1231" xsi:type="description:Description" body="decimal%2815%2C2%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVRC1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="imp_cos_curv" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1232" xsi:type="description:Description" body="decimal%2815%2C2%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVRS1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="imp_ing_ince" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1233" xsi:type="description:Description" body="decimal%2815%2C2%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVRi1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="imp_cos_ince" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1234" xsi:type="description:Description" body="decimal%2815%2C2%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVRy1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="imp_cnf_neto" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1235" xsi:type="description:Description" body="decimal%2815%2C2%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVSC1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="imp_rof_neto" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1236" xsi:type="description:Description" body="decimal%2815%2C2%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVSS1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="imp_orex_neto" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1237" xsi:type="description:Description" body="decimal%2815%2C2%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVSi1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="imp_costes_expl" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1238" xsi:type="description:Description" body="decimal%2815%2C2%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVSy1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="imp_dot_insolv" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1239" xsi:type="description:Description" body="decimal%2815%2C2%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVTC1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="imp_rdos_dot" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1240" xsi:type="description:Description" body="decimal%2815%2C2%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVTS1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="margen_financiero" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1241" xsi:type="description:Description" body="decimal%2815%2C2%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVTi1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="tti_r_motor" nullable="true" precision="9" scale="6" upper="1">
+<annotations>
+<Annotation imx:id="ID_1242" xsi:type="description:Description" body="decimal%289%2C6%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVTy1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="tti_a_motor" nullable="true" precision="9" scale="6" upper="1">
+<annotations>
+<Annotation imx:id="ID_1243" xsi:type="description:Description" body="decimal%289%2C6%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVUC1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="spread_apl" nullable="true" precision="9" scale="6" upper="1">
+<annotations>
+<Annotation imx:id="ID_1244" xsi:type="description:Description" body="decimal%289%2C6%29+"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVUS1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="margen_bruto_act" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1245" xsi:type="description:Description" body="decimal%2815%2C2%29"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVUi1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="margen_neto_act" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1246" xsi:type="description:Description" body="decimal%2815%2C2%29"/>
+</annotations>
+</StructuralFeature>
+<StructuralFeature imx:id="U:3WeVUy1AEeiQZWhR5Fywjg" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" name="result_antes_impuestos_act" nullable="true" precision="15" scale="2" upper="1">
+<annotations>
+<Annotation imx:id="ID_1247" xsi:type="description:Description" body="decimal%2815%2C2%29"/>
+</annotations>
+</StructuralFeature>
+</features>
+</ComplexType>
+</ownedCapabilityTypes>
+<relationalFields>
+<RelationalField imx:id="ID_1248" xsi:type="datasourceoperation:RelationalField" column="U:bTLfTy0_EeirNzdq1PSshQ" feature="U:3WeVLC1AEeiQZWhR5Fywjg" name="idempr" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_1249"/>
+<RelationalField imx:id="ID_1250" xsi:type="datasourceoperation:RelationalField" column="U:bTLfUC0_EeirNzdq1PSshQ" feature="U:3WeVLS1AEeiQZWhR5Fywjg" name="idcent" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_1249"/>
+<RelationalField imx:id="ID_1251" xsi:type="datasourceoperation:RelationalField" column="U:bTLfUS0_EeirNzdq1PSshQ" feature="U:3WeVLi1AEeiQZWhR5Fywjg" name="idprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_1249"/>
+<RelationalField imx:id="ID_1252" xsi:type="datasourceoperation:RelationalField" column="U:bTLfUi0_EeirNzdq1PSshQ" feature="U:3WeVLy1AEeiQZWhR5Fywjg" name="idsprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_1249"/>
+<RelationalField imx:id="ID_1253" xsi:type="datasourceoperation:RelationalField" column="U:bTLfUy0_EeirNzdq1PSshQ" feature="U:3WeVMC1AEeiQZWhR5Fywjg" name="idcontrn" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_1249"/>
+<RelationalField imx:id="ID_1254" xsi:type="datasourceoperation:RelationalField" column="U:bTLfVC0_EeirNzdq1PSshQ" feature="U:3WeVMS1AEeiQZWhR5Fywjg" name="idscontrn" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_1249"/>
+<RelationalField imx:id="ID_1255" xsi:type="datasourceoperation:RelationalField" column="U:bTLfVS0_EeirNzdq1PSshQ" feature="U:3WeVMi1AEeiQZWhR5Fywjg" name="linarcco" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_1249"/>
+<RelationalField imx:id="ID_1256" xsi:type="datasourceoperation:RelationalField" column="U:bTLfVi0_EeirNzdq1PSshQ" feature="U:3WeVMy1AEeiQZWhR5Fywjg" name="codmonsw" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_1249"/>
+<RelationalField imx:id="ID_1257" xsi:type="datasourceoperation:RelationalField" column="U:bTLfVy0_EeirNzdq1PSshQ" feature="U:3WeVNC1AEeiQZWhR5Fywjg" name="id_moneda" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_1249"/>
+<RelationalField imx:id="ID_1258" xsi:type="datasourceoperation:RelationalField" column="U:bTLfWC0_EeirNzdq1PSshQ" feature="U:3WeVNS1AEeiQZWhR5Fywjg" name="idemprmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_1249"/>
+<RelationalField imx:id="ID_1268" xsi:type="datasourceoperation:RelationalField" column="U:bTLfYi0_EeirNzdq1PSshQ" feature="U:3WeVPy1AEeiQZWhR5Fywjg" name="impintc_cob" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_1249"/>
+</relationalFields>
+<relationalRecordInstance imx:id="ID_1249" xsi:type="datasourceoperation:RelationalRecordInstance" name="arcco_datfinanc_enriq_temp_total" ownerName.="U:yo8uBS0pEeiQZWhR5Fywjg" record="U:bTLfTi0_EeirNzdq1PSshQ"/>
+</anonymousDso>
+<targetInterfaces>
+<TargetDataInterface imx:id="U:3WeVKC1AEeiQZWhR5Fywjg" xsi:type="target:TargetDataInterface" input="true" name="Grupo">
+<targetFields>
+<TargetTxField imx:id="U:3WeVKS1AEeiQZWhR5Fywjg" xsi:type="target:TargetTxField" type="U:3WeVKy1AEeiQZWhR5Fywjg" input="true" name="Input"/>
+</targetFields>
+</TargetDataInterface>
+</targetInterfaces>
+</AbstractTransformation>
+
+<AbstractTransformation imx:id="U:IFtusy1AEeiQZWhR5Fywjg" xsi:type="filter:FilterTx" active="true" name="Fil_nulos" filterCondition="isnull%28idcent%29">
+<filterInterface>
+<FilterDataInterface imx:id="U:IFtutC1AEeiQZWhR5Fywjg" xsi:type="filter:FilterDataInterface" input="true" name="Grupo" output="true">
+<filterFields>
+<FilterField imx:id="U:IFtutS1AEeiQZWhR5Fywjg" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" output="true"/>
+<FilterField imx:id="U:IFtuyC1AEeiQZWhR5Fywjg" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" output="true"/>
+<FilterField imx:id="U:IFtuti1AEeiQZWhR5Fywjg" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="centro" output="true"/>
+<FilterField imx:id="U:IFtuty1AEeiQZWhR5Fywjg" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="producto" output="true"/>
+<FilterField imx:id="U:IFtuuC1AEeiQZWhR5Fywjg" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="subpro" output="true"/>
+<FilterField imx:id="U:IFtuuS1AEeiQZWhR5Fywjg" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="contrato" output="true"/>
+<FilterField imx:id="U:IFtuui1AEeiQZWhR5Fywjg" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="subcontrato" output="true"/>
+<FilterField imx:id="U:Rlr8ei33EeiTYjXs-hnNMA" xsi:type="filter:FilterField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idcent" output="true">
+<annotations>
+<Annotation imx:id="ID_1205" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</FilterField>
+</filterFields>
+</FilterDataInterface>
+</filterInterface>
+</AbstractTransformation>
+
+<AbstractTransformation imx:id="U:O0TjDS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionTx" active="true" name="Uni%C3%B3n" transformationConfiguration="smd:com.informatica.extensions.transformation.seed.UnionTx.configuration">
+<unionInterfaces>
+<UnionDataInterface imx:id="U:O0TjDi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionDataInterface" name="OUTPUT" output="true">
+<unionFields>
+<UnionField imx:id="U:O0UKcS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" output="true"/>
+<UnionField imx:id="U:O0UKci0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="centro" output="true"/>
+<UnionField imx:id="U:O0UKhC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="impintc_cob_act1" output="true"/>
+<UnionField imx:id="U:O0UKcy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="producto" output="true"/>
+<UnionField imx:id="U:O0UKdC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="subpro" output="true"/>
+<UnionField imx:id="U:O0UKdS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="contrato" output="true"/>
+<UnionField imx:id="U:O0UKdi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="subcontrato" output="true"/>
+<UnionField imx:id="U:O0UKmC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1"/>
+</unionFields>
+</UnionDataInterface>
+<UnionDataInterface imx:id="U:O0TjDy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionDataInterface" input="true" name="enriq">
+<unionFields>
+<UnionField imx:id="U:O0TjOS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="empresa"/>
+<UnionField imx:id="U:O0TjOi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="centro"/>
+<UnionField imx:id="U:O0TjOy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="producto"/>
+<UnionField imx:id="U:O0TjPC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="subpro"/>
+<UnionField imx:id="U:O0TjPS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="contrato"/>
+<UnionField imx:id="U:O0TjPi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="subcontrato"/>
+<UnionField imx:id="U:O0TjPy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="linarcco"/>
+<UnionField imx:id="U:O0TjQC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="indmoneda"/>
+<UnionField imx:id="U:O0TjQS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codmonsw"/>
+<UnionField imx:id="U:O0TjQi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="empresa_ambito"/>
+<UnionField imx:id="U:O0TjQy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="cod_centro_ambito"/>
+<UnionField imx:id="U:O0TjRC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="coestref">
+<annotations>
+<Annotation imx:id="ID_1204" xsi:type="description:Description" body="string+7"/>
+</annotations>
+</UnionField>
+<UnionField imx:id="U:O0TjRS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="sitfin"/>
+<UnionField imx:id="U:O0TjRi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="codcesta"/>
+<UnionField imx:id="U:O0TjRy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="garantia"/>
+<UnionField imx:id="U:O0TjSC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="tipoint"/>
+<UnionField imx:id="U:O0TjSS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="idindre"/>
+<UnionField imx:id="U:O0TjSi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="cgm"/>
+<UnionField imx:id="U:O0TjSy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codcepto"/>
+<UnionField imx:id="U:O0TjTC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impintc_cob_act1"/>
+<UnionField imx:id="U:O0TjTS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impintc_pag_act1"/>
+<UnionField imx:id="U:O0UKXi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impcof_cob_act1"/>
+<UnionField imx:id="U:O0UKXy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impcof_pag_act1"/>
+<UnionField imx:id="U:O0UKYC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_ingre_real_act1"/>
+<UnionField imx:id="U:O0UKYS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_coste_real_act1"/>
+<UnionField imx:id="U:O0UKYi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_ingre_analitica_act1"/>
+<UnionField imx:id="U:O0UKYy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_coste_analitica_act1"/>
+<UnionField imx:id="U:O0UKZC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="tti_r_motor_act1"/>
+<UnionField imx:id="U:O0UKZS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="tti_a_motor_act1"/>
+<UnionField imx:id="U:O0UKZi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="spread_apl_act1"/>
+<UnionField imx:id="U:O0UKZy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="margen_financiero_act1"/>
+<UnionField imx:id="U:O0UKaC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_cnf_neto_act"/>
+<UnionField imx:id="U:O0UKaS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_rof_neto_act"/>
+<UnionField imx:id="U:O0UKai0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_orex_neto_act"/>
+<UnionField imx:id="U:O0UKay0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="margen_bruto_act"/>
+<UnionField imx:id="U:O0UKbC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_costes_expl_act"/>
+<UnionField imx:id="U:O0UKbS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="margen_neto_act"/>
+<UnionField imx:id="U:O0UKbi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_dot_insolv_act"/>
+<UnionField imx:id="U:O0UKby0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_rdos_dot_act"/>
+<UnionField imx:id="U:O0UKcC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="result_antes_impuestos_act"/>
+</unionFields>
+</UnionDataInterface>
+<UnionDataInterface imx:id="U:O0TjEC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionDataInterface" input="true" name="bajas">
+<unionFields>
+<UnionField imx:id="U:O0TjES0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="empresa"/>
+<UnionField imx:id="U:O0TjEi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="centro"/>
+<UnionField imx:id="U:O0TjEy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="producto"/>
+<UnionField imx:id="U:O0TjFC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="subpro"/>
+<UnionField imx:id="U:O0TjFS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="contrato"/>
+<UnionField imx:id="U:O0TjFi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="subcontrato"/>
+<UnionField imx:id="U:O0TjFy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="linarcco"/>
+<UnionField imx:id="U:O0TjGC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="indmoneda"/>
+<UnionField imx:id="U:O0TjGS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codmonsw"/>
+<UnionField imx:id="U:O0TjGi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="empresa_ambito"/>
+<UnionField imx:id="U:O0TjGy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="cod_centro_ambito"/>
+<UnionField imx:id="U:O0TjHC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="coestref"/>
+<UnionField imx:id="U:O0TjHS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="sitfin"/>
+<UnionField imx:id="U:O0TjHi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="codcesta"/>
+<UnionField imx:id="U:O0TjHy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="garantia"/>
+<UnionField imx:id="U:O0TjIC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="tipoint"/>
+<UnionField imx:id="U:O0TjIS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="idindre"/>
+<UnionField imx:id="U:O0TjIi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="cgm"/>
+<UnionField imx:id="U:O0TjIy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codcepto"/>
+<UnionField imx:id="U:O0TjJC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impintc_cob_act1"/>
+<UnionField imx:id="U:O0TjJS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impintc_pag_act1"/>
+<UnionField imx:id="U:O0TjJi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impcof_cob_act1"/>
+<UnionField imx:id="U:O0TjJy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impcof_pag_act1"/>
+<UnionField imx:id="U:O0TjKC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_ingre_real_act1"/>
+<UnionField imx:id="U:O0TjKS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_coste_real_act1"/>
+<UnionField imx:id="U:O0TjKi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_ingre_analitica_act1"/>
+<UnionField imx:id="U:O0TjKy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_coste_analitica_act1"/>
+<UnionField imx:id="U:O0TjLC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="tti_r_motor_act1"/>
+<UnionField imx:id="U:O0TjLS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="tti_a_motor_act1"/>
+<UnionField imx:id="U:O0TjLi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="spread_apl_act1"/>
+<UnionField imx:id="U:O0TjLy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="margen_financiero_act1"/>
+<UnionField imx:id="U:O0TjMC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_cnf_neto_act"/>
+<UnionField imx:id="U:O0TjMS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_rof_neto_act"/>
+<UnionField imx:id="U:O0TjMi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_orex_neto_act"/>
+<UnionField imx:id="U:O0TjMy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="margen_bruto_act"/>
+<UnionField imx:id="U:O0TjNC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_costes_expl_act"/>
+<UnionField imx:id="U:O0TjNS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="margen_neto_act"/>
+<UnionField imx:id="U:O0TjNi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_dot_insolv_act"/>
+<UnionField imx:id="U:O0TjNy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_rdos_dot_act"/>
+<UnionField imx:id="U:O0TjOC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="result_antes_impuestos_act"/>
+</unionFields>
+</UnionDataInterface>
+</unionInterfaces>
+</AbstractTransformation>
+
+<AbstractTransformation imx:id="U:juNASSxVEeiFrAoaabTgbA" xsi:type="joiner:JoinerTx" active="true" name="Jnr_bajas" cacheDir.="smd:com.informatica.metadata.common.parameter.util.InfaParameterSeed.CacheDir" caseSensitive="true" detailDataNullHighest="true" joinCondition="idcent+%3D+centro+AND+idsprod+%3D+subpro+AND+cgm1+%3D+cgm+AND+linarcco1+%3D+linarcco+AND+idscontrn+%3D+subcontrato+AND+idcontrn+%3D+contrato+AND+codmonsw1+%3D+codmonsw+AND+idempr+%3D+empresa+AND+idprod+%3D+producto" joinType="leftOuterJoin" masterDataNullHighest="true" scope="allInput">
 <joinerInterfaces>
-<JoinerDataInterface imx:id="U:1XTVEzGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerDataInterface" name="Salida" output="true">
+<JoinerDataInterface imx:id="U:juNnXCxVEeiFrAoaabTgbA" xsi:type="joiner:JoinerDataInterface" name="Salida" output="true">
 <joinerFields>
-<JoinerField imx:id="U:1XT8PTGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="10" upper="1" name="fec_operacion" output="true"/>
-<JoinerField imx:id="U:1XT8PjGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="idempr" output="true"/>
-<JoinerField imx:id="U:1XT8PzGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="idcent" output="true"/>
-<JoinerField imx:id="U:1XT8QDGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="idprod" output="true"/>
-<JoinerField imx:id="U:1XT8QTGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="idsprod" output="true"/>
-<JoinerField imx:id="U:1XT8QjGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="idcontrn" output="true"/>
-<JoinerField imx:id="U:1XT8QzGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="idscontr" output="true"/>
-<JoinerField imx:id="U:1XT8RDGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" name="lineaibn" output="true"/>
-<JoinerField imx:id="U:1XT8RTGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" name="lineacom" output="true"/>
-<JoinerField imx:id="U:1XT8RjGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" name="id_moneda" output="true"/>
-<JoinerField imx:id="U:1XT8RzGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="idemprmb" output="true"/>
-<JoinerField imx:id="U:1XT8SDGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="idcentmb" output="true"/>
-<JoinerField imx:id="U:1XT8STGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" name="codtires" output="true"/>
-<JoinerField imx:id="U:1XT8SjGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" name="imput_result" output="true"/>
-<JoinerField imx:id="U:1XT8SzGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" name="indcobro" output="true"/>
-<JoinerField imx:id="U:1XT8TDGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="num_opera" output="true"/>
-<JoinerField imx:id="U:1XT8TTGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="impopeor" output="true"/>
-<JoinerField imx:id="U:1XT8TjGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="codcepto" output="true"/>
-<JoinerField imx:id="U:1XT8TzGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="Importe_coc" output="true"/>
-<JoinerField imx:id="U:1XT8UDGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="idempr1" output="true"/>
-<JoinerField imx:id="U:1XT8UTGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="idprod1" output="true"/>
-<JoinerField imx:id="U:1XT8UjGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="idsprod1" output="true"/>
-<JoinerField imx:id="U:1XT8UzGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="codcesta" output="true"/>
-<JoinerField imx:id="U:AV-ujTGmEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="coestref" output="true"/>
+<JoinerField imx:id="U:Z0zMTy02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="idcent" output="true">
+<annotations>
+<Annotation imx:id="ID_977" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMUC02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="idprod" output="true">
+<annotations>
+<Annotation imx:id="ID_978" xsi:type="description:Description" body="string+3"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMUS02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="idsprod" output="true">
+<annotations>
+<Annotation imx:id="ID_979" xsi:type="description:Description" body="string+3"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMUi02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="idcontrn" output="true">
+<annotations>
+<Annotation imx:id="ID_980" xsi:type="description:Description" body="string+7"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMUy02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="idscontrn" output="true">
+<annotations>
+<Annotation imx:id="ID_981" xsi:type="description:Description" body="string+11"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMVC02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" name="linarcco1" output="true">
+<annotations>
+<Annotation imx:id="ID_982" xsi:type="description:Description" body="string+6"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMVS02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="codmonsw1" output="true">
+<annotations>
+<Annotation imx:id="ID_983" xsi:type="description:Description" body="string+3"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMVi02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" name="id_moneda" output="true">
+<annotations>
+<Annotation imx:id="ID_984" xsi:type="description:Description" body="string+1"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMVy02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="idemprmb" output="true">
+<annotations>
+<Annotation imx:id="ID_985" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMWC02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="idcentmb" output="true">
+<annotations>
+<Annotation imx:id="ID_986" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMWS02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="coestref1" output="true">
+<annotations>
+<Annotation imx:id="ID_987" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMWi02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" name="cgm1" output="true">
+<annotations>
+<Annotation imx:id="ID_988" xsi:type="description:Description" body="string+6"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMWy02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="codcepto1" output="true">
+<annotations>
+<Annotation imx:id="ID_989" xsi:type="description:Description" body="string+3"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMXC02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" name="ind_garant" output="true">
+<annotations>
+<Annotation imx:id="ID_990" xsi:type="description:Description" body="string+2"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMXS02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="codcesta1" output="true">
+<annotations>
+<Annotation imx:id="ID_991" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMXi02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" name="tipoint1" output="true">
+<annotations>
+<Annotation imx:id="ID_992" xsi:type="description:Description" body="string+1"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMXy02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="sitfin1" output="true">
+<annotations>
+<Annotation imx:id="ID_993" xsi:type="description:Description" body="string+3"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0zMYC02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" name="idindre1" output="true">
+<annotations>
+<Annotation imx:id="ID_994" xsi:type="description:Description" body="string+1"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:YQCiVS04EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="idempr" output="true">
+<annotations>
+<Annotation imx:id="ID_995" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:oPU3nC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="empresa" output="true"/>
+<JoinerField imx:id="U:oPU3nS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="centro" output="true"/>
+<JoinerField imx:id="U:oPU3ni09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="producto" output="true"/>
+<JoinerField imx:id="U:oPU3ny09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="subpro" output="true"/>
+<JoinerField imx:id="U:oPU3oC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="contrato" output="true"/>
+<JoinerField imx:id="U:oPU3oS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="subcontrato" output="true"/>
+<JoinerField imx:id="U:oPU3oi09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" name="linarcco" output="true"/>
+<JoinerField imx:id="U:oPU3oy09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" name="indmoneda" output="true"/>
+<JoinerField imx:id="U:oPU3pC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="codmonsw" output="true"/>
+<JoinerField imx:id="U:oPU3pS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="empresa_ambito" output="true"/>
+<JoinerField imx:id="U:oPU3pi09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="cod_centro_ambito" output="true"/>
+<JoinerField imx:id="U:oPU3py09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="coestref" output="true"/>
+<JoinerField imx:id="U:oPU3qC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="sitfin" output="true"/>
+<JoinerField imx:id="U:oPU3qS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="codcesta" output="true"/>
+<JoinerField imx:id="U:oPU3qi09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" name="garantia" output="true"/>
+<JoinerField imx:id="U:oPU3qy09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" name="tipoint" output="true"/>
+<JoinerField imx:id="U:oPU3rC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" name="idindre" output="true"/>
+<JoinerField imx:id="U:oPU3rS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" name="cgm" output="true"/>
+<JoinerField imx:id="U:oPU3ri09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="codcepto" output="true"/>
+<JoinerField imx:id="U:oPU3ry09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="impintc_cob_act" output="true"/>
+<JoinerField imx:id="U:oPU3sC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="impintc_pag_act" output="true"/>
+<JoinerField imx:id="U:oPU3sS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="impcof_cob_act" output="true"/>
+<JoinerField imx:id="U:oPU3si09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="impcof_pag_act" output="true"/>
+<JoinerField imx:id="U:oPU3sy09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="imp_ingre_real_act" output="true"/>
+<JoinerField imx:id="U:oPU3tC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="imp_coste_real_act" output="true"/>
+<JoinerField imx:id="U:oPU3tS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="imp_ingre_analitica_act" output="true"/>
+<JoinerField imx:id="U:oPU3ti09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="imp_coste_analitica_act" output="true"/>
+<JoinerField imx:id="U:oPU3ty09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" name="tti_r_motor_act" output="true"/>
+<JoinerField imx:id="U:oPU3uC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" name="tti_a_motor_act" output="true"/>
+<JoinerField imx:id="U:oPU3uS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" name="spread_apl_act" output="true"/>
+<JoinerField imx:id="U:oPU3ui09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="margen_financiero_act" output="true"/>
+<JoinerField imx:id="U:oPU3uy09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="imp_cnf_neto_act" output="true"/>
+<JoinerField imx:id="U:oPU3vC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="imp_rof_neto_act" output="true"/>
+<JoinerField imx:id="U:oPU3vS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="imp_orex_neto_act" output="true"/>
+<JoinerField imx:id="U:oPU3vi09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="margen_bruto_act" output="true"/>
+<JoinerField imx:id="U:oPU3vy09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="imp_costes_expl_act" output="true"/>
+<JoinerField imx:id="U:oPU3wC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="margen_neto_act" output="true"/>
+<JoinerField imx:id="U:oPU3wS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="imp_dot_insolv_act" output="true"/>
+<JoinerField imx:id="U:oPU3wi09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="imp_rdos_dot_act" output="true"/>
+<JoinerField imx:id="U:oPU3wy09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="result_antes_impuestos_act" output="true"/>
 </joinerFields>
 </JoinerDataInterface>
-<JoinerDataInterface imx:id="U:1XTVFDGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerDataInterface" input="true" name="Detalle" detail="true">
+<JoinerDataInterface imx:id="U:juNnXSxVEeiFrAoaabTgbA" xsi:type="joiner:JoinerDataInterface" input="true" name="Detalle" detail="true">
 <joinerFields>
-<JoinerField imx:id="U:1XTVGjGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="10" upper="1" input="true" name="fec_operacion"/>
-<JoinerField imx:id="U:1XTVGzGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idempr"/>
-<JoinerField imx:id="U:1XTVHDGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idcent"/>
-<JoinerField imx:id="U:1XTVHTGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="idprod"/>
-<JoinerField imx:id="U:1XTVHjGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="idsprod"/>
-<JoinerField imx:id="U:1XTVHzGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="idcontrn"/>
-<JoinerField imx:id="U:1XTVIDGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="idscontr"/>
-<JoinerField imx:id="U:1XTVITGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="lineaibn"/>
-<JoinerField imx:id="U:1XTVIjGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="lineacom"/>
-<JoinerField imx:id="U:1XTVIzGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="id_moneda"/>
-<JoinerField imx:id="U:1XTVJDGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idemprmb"/>
-<JoinerField imx:id="U:1XTVJTGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idcentmb"/>
-<JoinerField imx:id="U:AV-ujDGmEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="coestref"/>
-<JoinerField imx:id="U:1XTVJjGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="codtires"/>
-<JoinerField imx:id="U:1XTVJzGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="imput_result"/>
-<JoinerField imx:id="U:1XTVKDGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="indcobro"/>
-<JoinerField imx:id="U:1XTVKTGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="num_opera"/>
-<JoinerField imx:id="U:1XTVKjGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impopeor"/>
-<JoinerField imx:id="U:1XTVKzGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codcepto"/>
-<JoinerField imx:id="U:1XTVLDGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="Importe_coc"/>
+<JoinerField imx:id="U:oPUQZC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="empresa"/>
+<JoinerField imx:id="U:oPUQZS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="centro"/>
+<JoinerField imx:id="U:oPUQZi09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="producto"/>
+<JoinerField imx:id="U:oPUQZy09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="subpro"/>
+<JoinerField imx:id="U:oPUQaC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="contrato"/>
+<JoinerField imx:id="U:oPUQaS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="subcontrato"/>
+<JoinerField imx:id="U:oPUQai09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="linarcco"/>
+<JoinerField imx:id="U:oPUQay09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="indmoneda"/>
+<JoinerField imx:id="U:oPUQbC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codmonsw"/>
+<JoinerField imx:id="U:oPUQbS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="empresa_ambito"/>
+<JoinerField imx:id="U:oPUQbi09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="cod_centro_ambito"/>
+<JoinerField imx:id="U:oPUQby09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="coestref"/>
+<JoinerField imx:id="U:oPUQcC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="sitfin"/>
+<JoinerField imx:id="U:oPUQcS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="codcesta"/>
+<JoinerField imx:id="U:oPUQci09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="garantia"/>
+<JoinerField imx:id="U:oPUQcy09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="tipoint"/>
+<JoinerField imx:id="U:oPUQdC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="idindre"/>
+<JoinerField imx:id="U:oPUQdS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="cgm"/>
+<JoinerField imx:id="U:oPUQdi09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codcepto"/>
+<JoinerField imx:id="U:oPUQdy09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impintc_cob_act"/>
+<JoinerField imx:id="U:oPUQeC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impintc_pag_act"/>
+<JoinerField imx:id="U:oPUQeS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impcof_cob_act"/>
+<JoinerField imx:id="U:oPUQei09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impcof_pag_act"/>
+<JoinerField imx:id="U:oPUQey09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_ingre_real_act"/>
+<JoinerField imx:id="U:oPU3jC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_coste_real_act"/>
+<JoinerField imx:id="U:oPU3jS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_ingre_analitica_act"/>
+<JoinerField imx:id="U:oPU3ji09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_coste_analitica_act"/>
+<JoinerField imx:id="U:oPU3jy09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="tti_r_motor_act"/>
+<JoinerField imx:id="U:oPU3kC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="tti_a_motor_act"/>
+<JoinerField imx:id="U:oPU3kS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="spread_apl_act"/>
+<JoinerField imx:id="U:oPU3ki09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="margen_financiero_act"/>
+<JoinerField imx:id="U:oPU3ky09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_cnf_neto_act"/>
+<JoinerField imx:id="U:oPU3lC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_rof_neto_act"/>
+<JoinerField imx:id="U:oPU3lS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_orex_neto_act"/>
+<JoinerField imx:id="U:oPU3li09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="margen_bruto_act"/>
+<JoinerField imx:id="U:oPU3ly09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_costes_expl_act"/>
+<JoinerField imx:id="U:oPU3mC09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="margen_neto_act"/>
+<JoinerField imx:id="U:oPU3mS09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_dot_insolv_act"/>
+<JoinerField imx:id="U:oPU3mi09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_rdos_dot_act"/>
+<JoinerField imx:id="U:oPU3my09EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="result_antes_impuestos_act"/>
 </joinerFields>
 </JoinerDataInterface>
-<JoinerDataInterface imx:id="U:1XTVFTGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerDataInterface" input="true" name="Principal">
+<JoinerDataInterface imx:id="U:juNnXixVEeiFrAoaabTgbA" xsi:type="joiner:JoinerDataInterface" input="true" name="Principal">
 <joinerFields>
-<JoinerField imx:id="U:1XTVFjGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="codcesta"/>
-<JoinerField imx:id="U:1XTVFzGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idempr1"/>
-<JoinerField imx:id="U:1XTVGDGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="idprod1"/>
-<JoinerField imx:id="U:1XTVGTGSEeihRMPHnoObNQ" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="idsprod1"/>
+<JoinerField imx:id="U:Z0wvyy02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idcent">
+<annotations>
+<Annotation imx:id="ID_996" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wvzC02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="idprod">
+<annotations>
+<Annotation imx:id="ID_997" xsi:type="description:Description" body="string+3"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wvzS02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="idsprod">
+<annotations>
+<Annotation imx:id="ID_998" xsi:type="description:Description" body="string+3"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wvzi02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="idcontrn">
+<annotations>
+<Annotation imx:id="ID_999" xsi:type="description:Description" body="string+7"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wvzy02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="idscontrn">
+<annotations>
+<Annotation imx:id="ID_1000" xsi:type="description:Description" body="string+11"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wv0C02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="linarcco1">
+<annotations>
+<Annotation imx:id="ID_1001" xsi:type="description:Description" body="string+6"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wv0S02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codmonsw1">
+<annotations>
+<Annotation imx:id="ID_1002" xsi:type="description:Description" body="string+3"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wv0i02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="id_moneda">
+<annotations>
+<Annotation imx:id="ID_1003" xsi:type="description:Description" body="string+1"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wv0y02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idemprmb">
+<annotations>
+<Annotation imx:id="ID_1004" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wv1C02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idcentmb">
+<annotations>
+<Annotation imx:id="ID_1005" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wv1S02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="coestref1">
+<annotations>
+<Annotation imx:id="ID_1006" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wv1i02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="cgm1">
+<annotations>
+<Annotation imx:id="ID_1007" xsi:type="description:Description" body="string+6"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wv1y02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codcepto1">
+<annotations>
+<Annotation imx:id="ID_1008" xsi:type="description:Description" body="string+3"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wv2C02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="ind_garant">
+<annotations>
+<Annotation imx:id="ID_1009" xsi:type="description:Description" body="string+2"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wv2S02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="codcesta1">
+<annotations>
+<Annotation imx:id="ID_1010" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wv2i02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="tipoint1">
+<annotations>
+<Annotation imx:id="ID_1011" xsi:type="description:Description" body="string+1"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wv2y02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="sitfin1">
+<annotations>
+<Annotation imx:id="ID_1012" xsi:type="description:Description" body="string+3"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:Z0wv3C02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="idindre1">
+<annotations>
+<Annotation imx:id="ID_1013" xsi:type="description:Description" body="string+1"/>
+</annotations>
+</JoinerField>
+<JoinerField imx:id="U:YQAGFC04EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idempr">
+<annotations>
+<Annotation imx:id="ID_1014" xsi:type="description:Description" body="string+4"/>
+</annotations>
+</JoinerField>
 </joinerFields>
 </JoinerDataInterface>
 </joinerInterfaces>
 </AbstractTransformation>
-</transformations>
+

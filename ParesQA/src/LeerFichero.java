@@ -23,6 +23,17 @@ public class LeerFichero {
 	
 	private static HashMap<String, String> tablaExecutionParameters = new HashMap<String, String>();
 	private static HashMap<Parametro, String> tablaParametros = new HashMap<Parametro, String>();
+	private static boolean falloXML;
+	private static boolean falloReal;
+	private static String dataInterface;
+	
+	public static boolean getFalloXML(){
+		return falloXML;
+	}
+	
+	public static boolean getFalloReal(){
+		return falloReal;
+	}
 	
 	public static ArrayList<Instance> getListaInstancia(){
 		return listaInstancia;
@@ -57,29 +68,22 @@ public class LeerFichero {
 
 			while((cadena = br.readLine())!=null) { //mientras no sea el final
 				
-				if (cadena.contains("<HadoopExecutionParameter")) {
+				if (cadena.contains("<HadoopExecutionParameter")) { //TABLA DE ExecutionParameter
 					leerExecutionParameters(br, cadena);
 				}
-				else if(cadena.contains("<UserDefinedParameter")){ //PARAMETROS
-					//Cada parametro sera un hashMap que tiene asociado
-					//un id y un nombre.
-				
-					//En este mismo metodo a�adimos el parametro con un valor a tablaParametros.
+				else if(cadena.contains("<UserDefinedParameter")){ //TABLA DE Parameter	
 					leerParametros(br,cadena);	
 				}
-//				else if(cadena.contains("<transformations")){
-//					//CREAR UN OBJETO DE LA CLASE ABSTRACTTRANSFORMATION
-//					AbstractTransformation transformacion;
-//					transformacion=leerAbstractTransformation(br,cadena);	
-//					transformacion= new AbstractTransformation(transformacion.getId(), transformacion.getNombre(), transformacion.getType(), transformacion.getActive(), transformacion.getCampos());
-//					listaTransformacion.add(transformacion);
-//				}
+				else if(cadena.contains("<AbstractTransformation")){
+					AbstractTransformation transformacion;
+					transformacion=leerAbstractTransformation(br,cadena);	
+					transformacion= new AbstractTransformation(transformacion.getId(), transformacion.getType(), transformacion.getNombre(), transformacion.getCampos());
+					listaTransformacion.add(transformacion);
+				}
 				else if(cadena.contains("<Instance")){
-					//CREAR UN OBJETO DE LA CLASE INSTANCIA
-					//id, name, body, campos
 					Instance instancia;
 					instancia=leerInstancia(br,cadena);
-					instancia = new Instance(instancia.getId(), instancia.getName(), instancia.getBody(), instancia.getCampos());
+					instancia = new Instance(instancia.getId(), instancia.getType(), instancia.getName(),instancia.getBody(), instancia.getfromInstance(), instancia.getToInstance(), instancia.getCampos());
 					//System.out.println("NUEVA INSTANCIAAAAAAA");
 					listaInstancia.add(instancia);
 				}
@@ -88,7 +92,6 @@ public class LeerFichero {
 					objeto=leerIObject(br,cadena);
 					objeto = new Iobject(objeto.gedId(), objeto.getName(),objeto.getType() ,objeto.getRef(), objeto.getCampos());
 					listaObjetos.add(objeto);
-					
 				}
 			}
 		}
@@ -126,8 +129,21 @@ public class LeerFichero {
 	//metodo donde vemos que parte de la cadena nos interesa tener o no
 	public static void nosInteresa(String array[], String arrayBueno[], boolean from_to[], boolean tipo_idRef[]){
 		int contador=0;
+		boolean tipoCogido=false;
+		boolean precisionCogida=false;
+		boolean escalaCogida=false;
 		
 		for(int i=0; i<array.length;i++){
+			
+			if(array[i].contains("fromInstance")){
+				arrayBueno[contador]=array[i];
+				contador++;
+			}
+			
+			if(array[i].contains("toInstance")){
+				arrayBueno[contador]=array[i];
+				contador++;
+			}
 			
 			
 			if(array[i].contains("fromPort")) {
@@ -181,9 +197,10 @@ public class LeerFichero {
 				arrayBueno[contador]=array[i];
 				contador++;		
 			}
-			if(array[i].contains("odbcPrecision")){
+			if((array[i].contains("odbcPrecision") || array[i].contains("precision")) && !precisionCogida){
 				arrayBueno[contador]=array[i];
 				contador++;		
+				precisionCogida=true;
 			}
 			if(array[i].contains("feature")){
 				arrayBueno[contador]=array[i];
@@ -198,60 +215,71 @@ public class LeerFichero {
 				contador++;
 				
 			}
+			
 			if(array[i].contains("type") && tipo_idRef[0]){
 				arrayBueno[contador]=array[i];
 				contador++;		
-				//tipo_idRef[0]=false;
 			}
 			
-			if(array[i].contains("odbcScale")){
+			if((array[i].contains("odbcScale") || array[i].contains("scale")) && !escalaCogida ){
 				arrayBueno[contador]=array[i];
 				contador++;	
+				falloXML=true; //Esto lo usaremos cuando en el XML un campo este mal por falta de algun atributo o algo asi
+				escalaCogida=true;
 			}
 			
-			if(array[i].contains("typesystem%2") && !array[i].contains("odbc")){
+			if(array[i].contains("typesystem%2") && !array[i].contains("odbc")){ //cogemos el odbcType
+				arrayBueno[contador]=array[i];
+				contador++;
+				tipoCogido=true;
+			}
+			
+			if(array[i].contains("typesystem%2") && array[i].contains("odbc") && !tipoCogido){
 				arrayBueno[contador]=array[i];
 				contador++;
 			}
 		}
 	}
 	
-	
 	//METODO PARA QUITAR TODOS LOS CARACTERES INNECESARIOS
 	@SuppressWarnings("null")
 	public static void reemplazo(String array[], String[] arrayBueno, boolean from_to[],boolean tipo_idRef[]){
 		nosInteresa(array, arrayBueno,from_to,tipo_idRef);
-		
-			for(int i=0; i<arrayBueno.length; i++){
-				if(arrayBueno[i]!=null) {
-					Pattern patron= Pattern.compile("[/><]");
-					Matcher caja= patron.matcher(arrayBueno[i]);
-					arrayBueno[i]=caja.replaceAll("");	
-					arrayBueno[i]=arrayBueno[i].replace("imx:id=", "");
-					arrayBueno[i]=arrayBueno[i].replace("name=", "");
-					arrayBueno[i]=arrayBueno[i].replace("body=", "");
-					arrayBueno[i]=arrayBueno[i].replace("structuralFeature=", "");
-					arrayBueno[i]=arrayBueno[i].replace("toPorts=", "");
-					arrayBueno[i]=arrayBueno[i].replace("connectionName=", "");
-					arrayBueno[i]=arrayBueno[i].replace("valueLiteral=", "");
-					arrayBueno[i]=arrayBueno[i].replace("feature=", "");
-					arrayBueno[i]=arrayBueno[i].replace("column=", "");
-					arrayBueno[i]=arrayBueno[i].replace("odbcPrecision=", "");
-					arrayBueno[i]=arrayBueno[i].replace("odbcScale=", "");
-					arrayBueno[i]=arrayBueno[i].replace("nullable=", "");
-					arrayBueno[i]=arrayBueno[i].replace("value.=", "");
-					arrayBueno[i]=arrayBueno[i].replace("imx:idref=", "");
-					arrayBueno[i]=arrayBueno[i].replace("xsi:type=", "");
-					
-					
-					arrayBueno[i]=arrayBueno[i].replaceAll("\"", ""); //para quitar las comillas
-					//esto es para los objetos y las transformaciones
-					if(arrayBueno[i].contains("typesystem%")){
-						arrayBueno[i]=arrayBueno[i].replace("type=smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2F", "");
-						//arrayBueno[i]=arrayBueno[i].replace("odbcType=smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%", "");
-						//arrayBueno[i]=arrayBueno[i].substring(2, arrayBueno[i].length());						
-					}
-				}
+
+		for(int i=0; i<arrayBueno.length; i++){
+			if(arrayBueno[i]!=null) {
+				Pattern patron= Pattern.compile("[/><]");
+				Matcher caja= patron.matcher(arrayBueno[i]);
+				arrayBueno[i]=caja.replaceAll("");	
+				arrayBueno[i]=arrayBueno[i].replace("imx:id=", "");
+				arrayBueno[i]=arrayBueno[i].replace("name=", "");
+				arrayBueno[i]=arrayBueno[i].replace("body=", "");
+				arrayBueno[i]=arrayBueno[i].replace("structuralFeature=", "");
+				arrayBueno[i]=arrayBueno[i].replace("toPorts=", "");
+				arrayBueno[i]=arrayBueno[i].replace("connectionName=", "");
+				arrayBueno[i]=arrayBueno[i].replace("valueLiteral=", "");
+				arrayBueno[i]=arrayBueno[i].replace("feature=", "");
+				arrayBueno[i]=arrayBueno[i].replace("column=", "");
+				arrayBueno[i]=arrayBueno[i].replace("odbcPrecision=", "");
+				arrayBueno[i]=arrayBueno[i].replace("precision=", "");
+				arrayBueno[i]=arrayBueno[i].replace("odbcScale=", "");
+				arrayBueno[i]=arrayBueno[i].replace("scale=", "");
+				arrayBueno[i]=arrayBueno[i].replace("nullable=", "");
+				arrayBueno[i]=arrayBueno[i].replace("value.=", "");
+				arrayBueno[i]=arrayBueno[i].replace("imx:idref=", "");
+				arrayBueno[i]=arrayBueno[i].replace("xsi:type=", "");
+				arrayBueno[i]=arrayBueno[i].replace("type=", "");
+				arrayBueno[i]=arrayBueno[i].replace("odbcType=","");
+				arrayBueno[i]=arrayBueno[i].replace("smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2F","");
+				arrayBueno[i]=arrayBueno[i].replace("smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar", "string");
+				arrayBueno[i]=arrayBueno[i].replace("smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2F", "");
+				arrayBueno[i]=arrayBueno[i].replace("smd:com.informatica.metadata.seed.platform.Platform.typesystem%2F", "");
+				arrayBueno[i]=arrayBueno[i].replace("fromInstance=", "");
+				arrayBueno[i]=arrayBueno[i].replace("toInstance=", "");
+
+
+				arrayBueno[i]=arrayBueno[i].replaceAll("\"", ""); //para quitar las comillas
+			}
 		}	
 	}
 	
@@ -274,13 +302,13 @@ public class LeerFichero {
 		listaClaves.clear();
 	}
 
-	
-	//NO
-	 //String body, String id, Instance.Campos campos
 	@SuppressWarnings("null")
 	private static Instance leerInstancia(BufferedReader br, String cadena) throws Exception{
 		boolean parar=false;
 		boolean falloBody=false; //para controlar cuando una instancia tiene cuerpo o no
+		boolean type_idRef[] = new boolean[2];
+		type_idRef[0]=false;
+		type_idRef[1]=false;
 		//booleano que nos sirve para saber si queremos coger el type o no
 		//en este caso solo queremos el booleano cuando sea un campo de una transfromacion o IOBJECT
 		//luego en las instancias siempre ser� falso.
@@ -290,7 +318,7 @@ public class LeerFichero {
 		ArrayList<Instance.Campos> listaCampos = new ArrayList<Instance.Campos>();
 		
 		//Creamos una nueva instancia
-		Instance nuevaInstancia = new Instance(null,null,null,null);
+		Instance nuevaInstancia = new Instance(null,null,null,null,null,null,null);
 		//Creamos una lista donde meteremos las cosas que nos interesen de la linea
 		ArrayList<String> listaClaves = new ArrayList<String>();
 		//en Array Bueno estaran solo las palabras que nos interesen de la cadena dividida
@@ -300,7 +328,7 @@ public class LeerFichero {
 		
 		
 		//Metodo para quitar los caracteres innecesarios
-		reemplazo(cadenaDividida,arrayBueno, null,null); 
+		reemplazo(cadenaDividida,arrayBueno, null,type_idRef); 
 		
 		//Metodo para meter en la lista solo lo que nos interese.
 		meterEnLista(arrayBueno,listaClaves);
@@ -311,7 +339,6 @@ public class LeerFichero {
 		nuevaInstancia.setName(it.next()); //tenemos nombre de la instancia
 		
 		listaClaves.clear(); //limpiamos la lista
-		
 		
 		while(!cadena.contains("annotations") && !parar)
 			if((cadena.contains("<fromOutlineLinks")) || cadena.contains("ports")) {
@@ -341,7 +368,7 @@ public class LeerFichero {
 			arrayBueno= new String[cadenaDividida.length];
 			
 			//Metodo para quitar los caracteres innecesarios
-			reemplazo(cadenaDividida,arrayBueno, null,null); 
+			reemplazo(cadenaDividida,arrayBueno, null,type_idRef); 
 			
 			//Metodo para meter en la lista solo lo que nos interese.
 			meterEnLista(arrayBueno,listaClaves);
@@ -350,153 +377,363 @@ public class LeerFichero {
 			nuevaInstancia.setBody(it.next());
 		}
 		
-			//que avance hasta que vea la etiqueta de <ports>
-			while(!cadena.contains("<ports"))
+		if(!nuevaInstancia.getName().contains("Write") && !nuevaInstancia.getName().contains("Escritura")){
+			while(!cadena.contains("fromOutlineLinks"))
 				cadena = br.readLine(); //para que avance
-			
-			while(!cadena.contains("</ports>")) { //mientras no sea el final
-				if(cadena.contains("<NestedPort") || (cadena.contains("<TransformationFieldPort") && (!nuevaInstancia.getName().contains("Lectura") && !nuevaInstancia.getName().contains("Read")  && !nuevaInstancia.getName().contains("Write") && !nuevaInstancia.getName().contains("Escritura")))){
-					boolean from_to[] = new boolean[2]; //Array para saber si tiene from y to el campo.
-					
-					listaClaves.clear(); //limpiamos la lista de elemenos 
-					Instance.Campos campo = nuevaInstancia.new Campos(null, null, null, null, null,null);
-					
-					cadenaDividida=cadena.split(" ");
-					arrayBueno= new String[cadenaDividida.length];
-					
-					//Metodo para quitar los caracteres innecesarios
-					reemplazo(cadenaDividida,arrayBueno, from_to,null); 
-					
-					//Metodo para meter en la lista solo lo que nos interese.
-					meterEnLista(arrayBueno,listaClaves);
-					
-					//Cuando la instancia es un source
-					if(nuevaInstancia.getName().contains("Lectura")){
-						campo.setTransformationField(null); //Source y Target no tienen este atributo
-						it = listaClaves.iterator(); //llevamos al iterador al principio de la lista
-						campo.setId(it.next());
-						campo.setToPorts(it.next());
-						campo.setStructural_feature(it.next());
-						listaCampos.add(campo);
-						cadena = br.readLine(); //para que avance
-					}
-					
-					//cuando la tabla es un target
-					else if(nuevaInstancia.getName().contains("Escritura")){
-						campo.setTransformationField(null); //Source y Target no tienen este atributo
+
+			cadena = br.readLine(); //para que avance
+			cadenaDividida=cadena.split(" ");
+			arrayBueno= new String[cadenaDividida.length];
+
+			//Metodo para quitar los caracteres innecesarios
+			reemplazo(cadenaDividida,arrayBueno, null,type_idRef); 
+
+			//Metodo para meter en la lista solo lo que nos interese.
+			meterEnLista(arrayBueno,listaClaves);
+			it = listaClaves.iterator(); //llevamos al iterador al principio de la lista
+			it.next(); //NOS SALTAMOS EL ID, NO NOS INTERESA
+			nuevaInstancia.setfromInstance(it.next());
+			nuevaInstancia.setToInstance(it.next());
+		}
+
+
+		//que avance hasta que vea la etiqueta de <ports>
+		while(!cadena.contains("<ports"))
+			cadena = br.readLine(); //para que avance
+
+		while(!cadena.contains("</ports>")) { //mientras no sea el final
+			if(cadena.contains("<NestedPort") || (cadena.contains("<TransformationFieldPort") && (!nuevaInstancia.getName().contains("Lectura") && !nuevaInstancia.getName().contains("Read")  && !nuevaInstancia.getName().contains("Write") && !nuevaInstancia.getName().contains("Escritura")))){
+				boolean from_to[] = new boolean[2]; //Array para saber si tiene from y to el campo.
+
+				listaClaves.clear(); //limpiamos la lista de elemenos 
+				Instance.Campos campo = nuevaInstancia.new Campos(null, null, null, null, null,null);
+
+				cadenaDividida=cadena.split(" ");
+				arrayBueno= new String[cadenaDividida.length];
+
+				//Metodo para quitar los caracteres innecesarios
+				reemplazo(cadenaDividida,arrayBueno, from_to,type_idRef); 
+
+				//Metodo para meter en la lista solo lo que nos interese.
+				meterEnLista(arrayBueno,listaClaves);
+
+				//Cuando la instancia es un source
+				if(nuevaInstancia.getName().contains("Lectura")){
+					campo.setTransformationField(null); //Source y Target no tienen este atributo
+					it = listaClaves.iterator(); //llevamos al iterador al principio de la lista
+					campo.setId(it.next());
+					campo.setToPorts(it.next());
+					campo.setStructural_feature(it.next());
+					listaCampos.add(campo);
+					cadena = br.readLine(); //para que avance
+				}
+
+				//cuando la tabla es un target
+				else if(nuevaInstancia.getName().contains("Escritura")){
+					campo.setTransformationField(null); //Source y Target no tienen este atributo
+					it=listaClaves.iterator();
+					campo.setId(it.next());
+					campo.setFromPort(it.next());
+					campo.setStructural_feature(it.next());
+					campo.setToPorts(null); //Como es escritura no va a ningun lado
+					listaCampos.add(campo);
+					cadena = br.readLine(); //para que avance
+				}
+				//cuando la tabla es una transformacion intermedia
+				else{
+					//Este atributo es solo para targets/source
+					campo.setStructural_feature(null);
+
+					if(from_to[0]){ //vemos si tiene fromPorts
 						it=listaClaves.iterator();
 						campo.setId(it.next());
 						campo.setFromPort(it.next());
-						campo.setStructural_feature(it.next());
-						campo.setToPorts(null); //Como es escritura no va a ningun lado
+
+						if(from_to[1]) //vemos si tiene el toPorts
+							campo.setToPorts(it.next());
+						else
+							campo.setToPorts(null);
+
+						campo.setTransformationField(it.next());
 						listaCampos.add(campo);
 						cadena = br.readLine(); //para que avance
 					}
-					//cuando la tabla es una transformacion intermedia
-					else{
-						//Este atributo es solo para targets/source
-						campo.setStructural_feature(null);
-						
-						if(from_to[0]){ //vemos si tiene fromPorts
-							it=listaClaves.iterator();
-							campo.setId(it.next());
-							campo.setFromPort(it.next());
-							
-							if(from_to[1]) //vemos si tiene el toPorts
-								campo.setToPorts(it.next());
-							else
+					else{ //entra aqui si no tiene fromPorts
+						campo.setFromPort(null); 
+
+						it=listaClaves.iterator();
+						campo.setId(it.next());
+
+						if(from_to[1])
+							campo.setToPorts(it.next());
+						else
 							campo.setToPorts(null);
-							
-							campo.setTransformationField(it.next());
-							listaCampos.add(campo);
-							cadena = br.readLine(); //para que avance
-						}
-						else{ //entra aqui si no tiene fromPorts
-							campo.setFromPort(null); 
-							
-							it=listaClaves.iterator();
-							campo.setId(it.next());
-							
-							if(from_to[1])
-								campo.setToPorts(it.next());
-							else
-							campo.setToPorts(null);
-							
-							campo.setTransformationField(it.next());
-							
-							//a�adimos este campo a la lista de campos
-							listaCampos.add(campo);
-							cadena = br.readLine(); //para que avance							
-						}
+
+						campo.setTransformationField(it.next());
+
+						//a�adimos este campo a la lista de campos
+						listaCampos.add(campo);
+						cadena = br.readLine(); //para que avance							
 					}
 				}
-				else
-					cadena = br.readLine(); //para que avance
-
 			}
-			//a�adimos la lista de campos a la instancia
-			nuevaInstancia.setCampos(listaCampos);
-			return nuevaInstancia;
+			else
+				cadena = br.readLine(); //para que avance
+
 		}
+		//a�adimos la lista de campos a la instancia
+		nuevaInstancia.setCampos(listaCampos);
+		return nuevaInstancia;
+	}
 	
-	//NO
-//	public static AbstractTransformation leerAbstractTransformation(BufferedReader br, String cadena) throws IOException{
-//		Iterator<String> it;
-//		ArrayList<String> listaTransformaciones = new ArrayList<String>();
-//		AbstractTransformation nuevaTransformacion = new AbstractTransformation(null,null,null,null,null);
-//		String [] cadenaDividida;
-//		cadenaDividida=cadena.split(" ");
-//		String[] arrayBueno = new String[cadenaDividida.length];
-//		System.out.println("ABSTRACT TRANSFORMATION");
-//		
-//		cadena = br.readLine(); //para que avance
-//		System.out.println(cadena);
-//		
-//		while(!cadena.contains("</transformations>")) { //mientras no sea el final
-//			System.out.println(cadena);
-//			if(cadena.contains("<AbstractTransformation")){			
-//					cadenaDividida=cadena.split(" ");
-//					arrayBueno= new String[cadenaDividida.length];
-//					
-//					reemplazo(cadenaDividida,arrayBueno,null,false);
-//					meterEnLista(arrayBueno,listaTransformaciones);
-//					it = listaTransformaciones.iterator(); 
-//					nuevaTransformacion.setId(it.next());//ya tenemos el id de las AbstractTransformation(anonymousDso)
-//					System.out.println("TENEMOS EL ID PRIMERO: "+ nuevaTransformacion.getId());
-//					nuevaTransformacion.setNombre(it.next());//ya tenemos el name de las AbstractTransformation
-//					System.out.println("TENEMOS EL NAME PRIMERO: "+ nuevaTransformacion.getNombre());
-//					vaciarLista(listaTransformaciones);							
-//			}
-//			
-//			if(cadena.contains("<RelationalField")){			
-//				AbstractTransformation.campos campos = nuevaTransformacion.new campos(null, null, null, null, null,null);
-//			
-//						cadenaDividida=cadena.split(" ");
-//						arrayBueno= new String[cadenaDividida.length];
-//						
-//						reemplazo(cadenaDividida,arrayBueno,null,true);
-//						meterEnLista(arrayBueno,listaTransformaciones);
-//						it = listaTransformaciones.iterator(); 
-//						campos.setID(it.next());
-//						System.out.println("TENEMOS EL ID: "+ campos.getId());					
-//						campos.setColumna(it.next());
-//						System.out.println("TENEMOS LA COLUMNA: "+ campos.getColumna());					
-//						campos.setfeature(it.next());
-//						System.out.println("TENEMOS EL FEATURE: "+ campos.getFeature());						
-//						campos.setName(it.next());
-//						System.out.println("TENEMOS EL NOMBRE: "+ campos.getName());						
-//						campos.setPrecision(it.next());
-//						System.out.println("TENEMOS LA PRECISION: "+ campos.getPrecision());
-//						campos.setType(it.next());
-//						if(campos.getType().contains("varchar")){campos.setType("string");}
-//						System.out.println("TENEMOS EL TIPO: "+ campos.getType());
-//						vaciarLista(listaTransformaciones);
-//				}		
-//			cadena = br.readLine(); //para que avance 
-//		
-//		}
-//		return nuevaTransformacion;
-//	}
+	
+	private static void obtenerCamposTransformacionSourceTarget(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos ) throws IOException{
+		while(!cadena.contains("</relationalFields")) { //Mientras no sea el final de los campos
+			if(cadena.contains("<RelationalField")){ // Si encuentra un campo
+				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null);
+				falloXML=false;
+
+				cadenaDividida=cadena.split(" ");
+				arrayBueno= new String[cadenaDividida.length];
+
+				tipo_idRef[0]=false; //en los campos no queremos el tipo
+
+				reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef); //NULL XQ NO NOS INTERESA NI LOS PUERTOS NI EL TIPO
+				meterEnLista(arrayBueno,listaTransformaciones);
+				it = listaTransformaciones.iterator(); 
+					//FALTA VER Q PASA SI LE QUITAS EL NOMBRE A UN CAMPO O ALGUN OTRO BIXO
+					if(listaTransformaciones.size() <= 6 && falloXML || listaTransformaciones.size() <= 5){
+						campo.setID(it.next());
+						campo.setColumna(it.next());
+						campo.setfeature(it.next());
+						falloReal=true;
+					}
+					else{
+
+						campo.setID(it.next());
+						campo.setColumna(it.next());
+						campo.setfeature(it.next());
+						campo.setName(it.next());
+						campo.setPrecision(it.next());
+
+						if(listaTransformaciones.size() == 6 && !falloXML) {
+							campo.setType(it.next());
+							campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
+						}					
+						else{
+							campo.setEscala(it.next());
+							campo.setType(it.next());	
+						}	
+					}
+
+				listaCampos.add(campo);
+				vaciarLista(listaTransformaciones);	
+			}
+			cadena = br.readLine(); //para que avance 
+		}
+	}	
+	
+	private static void obtenerCamposTransformacionJoiner(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos ) throws IOException{
+		while(!cadena.contains("</joinerFields")) { //Mientras no sea el final de los campos
+			if(cadena.contains("<JoinerField")){ // Si encuentra un campo
+				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null);
+				falloXML=false;
+
+				cadenaDividida=cadena.split(" ");
+				arrayBueno= new String[cadenaDividida.length];
+
+				tipo_idRef[0]=false; //en los campos no queremos el tipo, solo el typesystem
+
+				vaciarLista(listaTransformaciones);	
+				reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef); //NULL XQ NO NOS INTERESA NI LOS PUERTOS NI EL TIPO
+				meterEnLista(arrayBueno,listaTransformaciones);
+				
+				it = listaTransformaciones.iterator(); 
+					
+					if(listaTransformaciones.size() <= 4 && falloXML || listaTransformaciones.size() <= 3 ){
+						campo.setID(it.next());
+						falloReal=true;
+					}
+					else{
+
+						campo.setID(it.next());
+						campo.setType(it.next());
+						campo.setPrecision(it.next());
+						
+						if(listaTransformaciones.size() == 4 && !falloXML) {
+							campo.setName(it.next());
+							campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
+						}				
+						else{
+							campo.setEscala(it.next());
+							campo.setName(it.next());	
+						}	
+					}
+
+				listaCampos.add(campo);
+				vaciarLista(listaTransformaciones);	
+			}
+			cadena = br.readLine(); //para que avance 
+		}
+	}	
+	
+	private static void obtenerCamposTransformacionExpressionFilter(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos ) throws IOException{
+		while(!cadena.contains("</expressionFields") && !cadena.contains("</filterFields")) { //Mientras no sea el final de los campos
+			if(cadena.contains("<ExpressionField") || cadena.contains("<FilterField")){ // Si encuentra un campo
+				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null);
+				falloXML=false;
+
+				cadenaDividida=cadena.split(" ");
+				arrayBueno= new String[cadenaDividida.length];
+
+				tipo_idRef[0]=false; //en los campos no queremos el tipo, solo el typesystem
+
+				reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef); //NULL XQ NO NOS INTERESA NI LOS PUERTOS NI EL TIPO
+				meterEnLista(arrayBueno,listaTransformaciones);
+				it = listaTransformaciones.iterator(); 
+					
+					if(listaTransformaciones.size() <= 4 && falloXML || listaTransformaciones.size() <= 3 ){
+						campo.setID(it.next());
+						falloReal=true;
+					}
+					else{
+
+						campo.setID(it.next());
+						campo.setType(it.next());
+						campo.setPrecision(it.next());
+						
+						if(listaTransformaciones.size() == 4 && !falloXML) {
+							campo.setName(it.next());
+							campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
+						}				
+						else{
+							campo.setEscala(it.next());
+							campo.setName(it.next());	
+						}	
+					}
+
+				listaCampos.add(campo);
+				vaciarLista(listaTransformaciones);	
+			}
+			cadena = br.readLine(); //para que avance 
+		}
+	}	
+
+	private static void obtenerCamposTransformacionUnion(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos ) throws IOException{
+		while(!cadena.contains("</unionFields")) { //Mientras no sea el final de los campos
+			if(cadena.contains("<UnionField")){ // Si encuentra un campo
+				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null);
+				falloXML=false;
+
+				cadenaDividida=cadena.split(" ");
+				arrayBueno= new String[cadenaDividida.length];
+
+				tipo_idRef[0]=false; //en los campos no queremos el tipo, solo el typesystem
+
+				vaciarLista(listaTransformaciones);	
+				reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef); //NULL XQ NO NOS INTERESA NI LOS PUERTOS NI EL TIPO
+				meterEnLista(arrayBueno,listaTransformaciones);
+				
+				it = listaTransformaciones.iterator(); 
+					
+					if(listaTransformaciones.size() <= 4 && falloXML || listaTransformaciones.size() <= 3 ){
+						campo.setID(it.next());
+						falloReal=true;
+					}
+					else{
+
+						campo.setID(it.next());
+						campo.setType(it.next());
+						campo.setPrecision(it.next());
+						
+						if(listaTransformaciones.size() == 4 && !falloXML) {
+							campo.setName(it.next());
+							campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
+						}				
+						else{
+							campo.setEscala(it.next());
+							campo.setName(it.next());	
+						}	
+					}
+
+				listaCampos.add(campo);
+				vaciarLista(listaTransformaciones);	
+			}
+			cadena = br.readLine(); //para que avance 
+		}
+	}	
+	
+	public static AbstractTransformation leerAbstractTransformation(BufferedReader br, String cadena) throws IOException{
+		Iterator<String> it;
+		ArrayList<String> listaTransformaciones = new ArrayList<String>();
+		AbstractTransformation nuevaTransformacion = new AbstractTransformation(null,null,null,null);
+		boolean tipo_idRef[] = new boolean[2];
+		tipo_idRef[0]=true; //TRUE XQ NOS INTERESA COGER EL TIPO
+		tipo_idRef[1]=false; //ESTO LO QUEREMOS SOLO PARA LOS OBJETOS
+		
+		ArrayList<AbstractTransformation.Campo> listaCampos = new ArrayList<AbstractTransformation.Campo>();
+		
+		String [] cadenaDividida;
+		cadenaDividida=cadena.split(" ");
+		String[] arrayBueno = new String[cadenaDividida.length];
+
+		reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef);
+		meterEnLista(arrayBueno,listaTransformaciones);
+		it = listaTransformaciones.iterator(); 
+		nuevaTransformacion.setId(it.next());//ya tenemos el id de las AbstractTransformation(anonymousDso)
+		nuevaTransformacion.setType(it.next());
+		nuevaTransformacion.setNombre(it.next());//ya tenemos el name de las AbstractTransformation
+		vaciarLista(listaTransformaciones);	
+		
+		if(nuevaTransformacion.getType().contains("source") || nuevaTransformacion.getType().contains("target"))
+			obtenerCamposTransformacionSourceTarget(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCampos);
+			
+		else if(nuevaTransformacion.getType().contains("expression") || nuevaTransformacion.getType().contains("filter"))
+			obtenerCamposTransformacionExpressionFilter(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCampos);
+			
+		else if(nuevaTransformacion.getType().contains("joiner")){
+			while(!cadena.contains("JoinerDataInterface"))
+				cadena=br.readLine();
+			
+			cadenaDividida=cadena.split(" ");
+			arrayBueno = new String[cadenaDividida.length];
+			reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef);
+			meterEnLista(arrayBueno,listaTransformaciones);
+				
+			it = listaTransformaciones.iterator(); 
+			it.next(); //NOS SALTAMOS EL ID DEL UNIONDATAINTERFACE
+			it.next(); //NOS SALTAMOS EL TYPE DEL UNIONDATAINTERFACE
+			dataInterface=it.next(); //NOS QUEDAMOS CON EL NOMBRE DEL UNIONDATAINTERFACE
+			
+			if(dataInterface.equals("Salida")){
+				obtenerCamposTransformacionJoiner(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCampos);
+				dataInterface="";
+			}
+		}
+			
+		else if(nuevaTransformacion.getType().contains("union")){
+			while(!cadena.contains("UnionDataInterface"))
+				cadena=br.readLine();
+			
+			cadenaDividida=cadena.split(" ");
+			arrayBueno = new String[cadenaDividida.length];
+			reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef);
+			meterEnLista(arrayBueno,listaTransformaciones);
+				
+			it = listaTransformaciones.iterator(); 
+			it.next(); //NOS SALTAMOS EL ID DEL UNIONDATAINTERFACE
+			it.next(); //NOS SALTAMOS EL TYPE DEL UNIONDATAINTERFACE
+			dataInterface=it.next(); //NOS QUEDAMOS CON EL NOMBRE DEL UNIONDATAINTERFACE
+			
+			if(dataInterface.equals("OUTPUT")){
+				obtenerCamposTransformacionUnion(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCampos);
+				dataInterface="";
+			}
+		}
+
+		nuevaTransformacion.setCampos(listaCampos);
+		return nuevaTransformacion;
+	}
 	
 	//OKI
 	private static void leerParametros(BufferedReader br, String cadena) throws ParamSinDescripcion, IOException{
@@ -601,7 +838,7 @@ public class LeerFichero {
 		nuevoObjeto.setRef(tipo_idRef[1]); //ponemos si es un IDRef o no
 
 		if(!nuevoObjeto.getRef()) {
-			while(!cadena.contains("</columns")){
+			while(!cadena.contains("</columns")){ //EMPIEZA EL MUNDO DE LEER CAMPOS
 				if(cadena.contains("<Column")){
 						listaClaves.clear();
 		

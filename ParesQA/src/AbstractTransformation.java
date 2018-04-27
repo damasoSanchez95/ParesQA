@@ -4,22 +4,20 @@ public class AbstractTransformation {
 	
 	String id;
 	String type;
-	String active;
 	String nombre;
-	private ArrayList<campos> camposTransformacion;
+	private ArrayList<Campo> camposTransformacion;
 	
-	public AbstractTransformation(String id, String type, String active, String nombre, ArrayList<campos> camposTransformacion){
+	public AbstractTransformation(String id, String type, String nombre, ArrayList<Campo> camposTransformacion){
 		this.id=id;
 		this.type=type;
-		this.active = active;
 		this.nombre = nombre;
 		this.camposTransformacion=camposTransformacion;
 	}
-	public ArrayList<campos> getCampos(){
+	public ArrayList<Campo> getCampos(){
 		return this.camposTransformacion;
 	}
 	
-	public void setCampos(ArrayList<campos> campoTransformacion){
+	public void setCampos(ArrayList<Campo> camposTransformacion){
 		this.camposTransformacion=camposTransformacion;
 	}
 	
@@ -37,13 +35,6 @@ public class AbstractTransformation {
 		this.type=type;
 	}
 	
-	public String getActive(){
-		return active;
-	}
-	public void setActive(String active){
-		this.active=active;
-	}
-	
 	public String getNombre(){
 		return nombre;
 	}
@@ -51,21 +42,23 @@ public class AbstractTransformation {
 		this.nombre=nombre;
 	}
 	
-	class campos{ //Clase para los campos de dicha Transformacion, relacionalField en el XML
+	class Campo{ //Clase para los campos de dicha Transformacion, relacionalField en el XML
 		private String id;
 		private String columna;
 		private String feature;
 		private String name;
 		private String precision;
 		private String obdcType;
+		private String escala;
 		
-		public campos(String id, String columna,String feature, String name, String precision, String obdcType){
+		public Campo(String id, String columna,String feature, String name, String precision, String obdcType, String escala){
 			this.id=id;
 			this.columna=columna;
 			this.feature=feature;
 			this.name=name;
 			this.precision=precision;
 			this.obdcType=obdcType;
+			this.escala=escala;
 		}
 		
 		public String getId(){return id;}
@@ -93,6 +86,13 @@ public class AbstractTransformation {
 		}
 		
 		public String getType(){return obdcType;}
+		
+		public String getEscala(){return escala;}
+		
+		public void setEscala(String escala) {
+			this.escala=escala;
+		}
+		
 		
 		public void setType(String type) {
 			this.obdcType=type;

@@ -1,0 +1,108 @@
+<AbstractTransformation imx:id="U:O0TjDS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionTx" active="true" name="Uni%C3%B3n" transformationConfiguration="smd:com.informatica.extensions.transformation.seed.UnionTx.configuration">
+<unionInterfaces>
+<UnionDataInterface imx:id="U:O0TjDi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionDataInterface" name="OUTPUT" output="true">
+<unionFields>
+<UnionField imx:id="U:O0UKcS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" output="true"/>
+<UnionField imx:id="U:O0UKci0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="centro" output="true"/>
+<UnionField imx:id="U:O0UKhC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="impintc_cob_act1" output="true"/>
+<UnionField imx:id="U:O0UKcy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="producto" output="true"/>
+<UnionField imx:id="U:O0UKdC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="subpro" output="true"/>
+<UnionField imx:id="U:O0UKdS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="contrato" output="true"/>
+<UnionField imx:id="U:O0UKdi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="subcontrato" output="true"/>
+<UnionField imx:id="U:O0UKmC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1"/>
+</unionFields>
+</UnionDataInterface>
+<UnionDataInterface imx:id="U:O0TjDy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionDataInterface" input="true" name="enriq">
+<unionFields>
+<UnionField imx:id="U:O0TjOS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="empresa"/>
+<UnionField imx:id="U:O0TjOi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="centro"/>
+<UnionField imx:id="U:O0TjOy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="producto"/>
+<UnionField imx:id="U:O0TjPC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="subpro"/>
+<UnionField imx:id="U:O0TjPS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="contrato"/>
+<UnionField imx:id="U:O0TjPi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="subcontrato"/>
+<UnionField imx:id="U:O0TjPy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="linarcco"/>
+<UnionField imx:id="U:O0TjQC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="indmoneda"/>
+<UnionField imx:id="U:O0TjQS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codmonsw"/>
+<UnionField imx:id="U:O0TjQi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="empresa_ambito"/>
+<UnionField imx:id="U:O0TjQy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="cod_centro_ambito"/>
+<UnionField imx:id="U:O0TjRC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="coestref">
+<annotations>
+<Annotation imx:id="ID_1204" xsi:type="description:Description" body="string+7"/>
+</annotations>
+</UnionField>
+<UnionField imx:id="U:O0TjRS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="sitfin"/>
+<UnionField imx:id="U:O0TjRi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="codcesta"/>
+<UnionField imx:id="U:O0TjRy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="garantia"/>
+<UnionField imx:id="U:O0TjSC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="tipoint"/>
+<UnionField imx:id="U:O0TjSS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="idindre"/>
+<UnionField imx:id="U:O0TjSi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="cgm"/>
+<UnionField imx:id="U:O0TjSy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codcepto"/>
+<UnionField imx:id="U:O0TjTC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impintc_cob_act1"/>
+<UnionField imx:id="U:O0TjTS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impintc_pag_act1"/>
+<UnionField imx:id="U:O0UKXi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impcof_cob_act1"/>
+<UnionField imx:id="U:O0UKXy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impcof_pag_act1"/>
+<UnionField imx:id="U:O0UKYC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_ingre_real_act1"/>
+<UnionField imx:id="U:O0UKYS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_coste_real_act1"/>
+<UnionField imx:id="U:O0UKYi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_ingre_analitica_act1"/>
+<UnionField imx:id="U:O0UKYy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_coste_analitica_act1"/>
+<UnionField imx:id="U:O0UKZC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="tti_r_motor_act1"/>
+<UnionField imx:id="U:O0UKZS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="tti_a_motor_act1"/>
+<UnionField imx:id="U:O0UKZi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="spread_apl_act1"/>
+<UnionField imx:id="U:O0UKZy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="margen_financiero_act1"/>
+<UnionField imx:id="U:O0UKaC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_cnf_neto_act"/>
+<UnionField imx:id="U:O0UKaS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_rof_neto_act"/>
+<UnionField imx:id="U:O0UKai0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_orex_neto_act"/>
+<UnionField imx:id="U:O0UKay0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="margen_bruto_act"/>
+<UnionField imx:id="U:O0UKbC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_costes_expl_act"/>
+<UnionField imx:id="U:O0UKbS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="margen_neto_act"/>
+<UnionField imx:id="U:O0UKbi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_dot_insolv_act"/>
+<UnionField imx:id="U:O0UKby0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_rdos_dot_act"/>
+<UnionField imx:id="U:O0UKcC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="result_antes_impuestos_act"/>
+</unionFields>
+</UnionDataInterface>
+<UnionDataInterface imx:id="U:O0TjEC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionDataInterface" input="true" name="bajas">
+<unionFields>
+<UnionField imx:id="U:O0TjES0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="empresa"/>
+<UnionField imx:id="U:O0TjEi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="centro"/>
+<UnionField imx:id="U:O0TjEy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="producto"/>
+<UnionField imx:id="U:O0TjFC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="subpro"/>
+<UnionField imx:id="U:O0TjFS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="contrato"/>
+<UnionField imx:id="U:O0TjFi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="subcontrato"/>
+<UnionField imx:id="U:O0TjFy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="linarcco"/>
+<UnionField imx:id="U:O0TjGC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="indmoneda"/>
+<UnionField imx:id="U:O0TjGS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codmonsw"/>
+<UnionField imx:id="U:O0TjGi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="empresa_ambito"/>
+<UnionField imx:id="U:O0TjGy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="cod_centro_ambito"/>
+<UnionField imx:id="U:O0TjHC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="coestref"/>
+<UnionField imx:id="U:O0TjHS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="sitfin"/>
+<UnionField imx:id="U:O0TjHi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="codcesta"/>
+<UnionField imx:id="U:O0TjHy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="garantia"/>
+<UnionField imx:id="U:O0TjIC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="tipoint"/>
+<UnionField imx:id="U:O0TjIS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="idindre"/>
+<UnionField imx:id="U:O0TjIi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="cgm"/>
+<UnionField imx:id="U:O0TjIy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="codcepto"/>
+<UnionField imx:id="U:O0TjJC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impintc_cob_act1"/>
+<UnionField imx:id="U:O0TjJS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impintc_pag_act1"/>
+<UnionField imx:id="U:O0TjJi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impcof_cob_act1"/>
+<UnionField imx:id="U:O0TjJy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impcof_pag_act1"/>
+<UnionField imx:id="U:O0TjKC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_ingre_real_act1"/>
+<UnionField imx:id="U:O0TjKS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_coste_real_act1"/>
+<UnionField imx:id="U:O0TjKi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_ingre_analitica_act1"/>
+<UnionField imx:id="U:O0TjKy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_coste_analitica_act1"/>
+<UnionField imx:id="U:O0TjLC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="tti_r_motor_act1"/>
+<UnionField imx:id="U:O0TjLS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="tti_a_motor_act1"/>
+<UnionField imx:id="U:O0TjLi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="spread_apl_act1"/>
+<UnionField imx:id="U:O0TjLy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="margen_financiero_act1"/>
+<UnionField imx:id="U:O0TjMC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_cnf_neto_act"/>
+<UnionField imx:id="U:O0TjMS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_rof_neto_act"/>
+<UnionField imx:id="U:O0TjMi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_orex_neto_act"/>
+<UnionField imx:id="U:O0TjMy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="margen_bruto_act"/>
+<UnionField imx:id="U:O0TjNC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_costes_expl_act"/>
+<UnionField imx:id="U:O0TjNS0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="margen_neto_act"/>
+<UnionField imx:id="U:O0TjNi0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_dot_insolv_act"/>
+<UnionField imx:id="U:O0TjNy0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_rdos_dot_act"/>
+<UnionField imx:id="U:O0TjOC0_EeiQZWhR5Fywjg" xsi:type="uniontx:UnionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="9" scale="6" upper="1" input="true" name="result_antes_impuestos_act"/>
+</unionFields>
+</UnionDataInterface>
+</unionInterfaces>
+</AbstractTransformation>
