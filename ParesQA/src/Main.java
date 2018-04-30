@@ -15,6 +15,6 @@ public class Main {
 			validaciones = new Validaciones(LeerFichero.getListaInstancia(), LeerFichero.getListaTransformaciones(), LeerFichero.getTablaParametros(), LeerFichero.getListaObjetos(), LeerFichero.getTablaExecutionParameters());
 			validaciones.parametros();
 			validaciones.executionParameters();
-			System.out.println("ACABAMOS");
+			System.out.println("HEMOS ACABADO DE VALIDAR EL MAPPING.");
 	}
 }

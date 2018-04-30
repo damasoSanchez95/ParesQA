@@ -90,8 +90,10 @@ public class LeerFichero {
 				else if(cadena.contains("<IObject")){		
 					Iobject objeto;
 					objeto=leerIObject(br,cadena);
+					if(objeto!=null) {
 					objeto = new Iobject(objeto.gedId(), objeto.getName(),objeto.getType() ,objeto.getRef(), objeto.getCampos());
 					listaObjetos.add(objeto);
+					}
 				}
 			}
 		}
@@ -206,10 +208,10 @@ public class LeerFichero {
 				arrayBueno[contador]=array[i];
 				contador++;		
 			}
-			if(array[i].contains("nullable")){
-				arrayBueno[contador]=array[i];
-				contador++;		
-			}
+//			if(array[i].contains("nullable")){
+//				arrayBueno[contador]=array[i];
+//				contador++;		
+//			}
 			if (array[i].contains("value.")) {
 				arrayBueno[contador] = array[i];
 				contador++;
@@ -264,7 +266,7 @@ public class LeerFichero {
 				arrayBueno[i]=arrayBueno[i].replace("precision=", "");
 				arrayBueno[i]=arrayBueno[i].replace("odbcScale=", "");
 				arrayBueno[i]=arrayBueno[i].replace("scale=", "");
-				arrayBueno[i]=arrayBueno[i].replace("nullable=", "");
+				//arrayBueno[i]=arrayBueno[i].replace("nullable=", "");
 				arrayBueno[i]=arrayBueno[i].replace("value.=", "");
 				arrayBueno[i]=arrayBueno[i].replace("imx:idref=", "");
 				arrayBueno[i]=arrayBueno[i].replace("xsi:type=", "");
@@ -275,6 +277,7 @@ public class LeerFichero {
 				arrayBueno[i]=arrayBueno[i].replace("smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2F", "");
 				arrayBueno[i]=arrayBueno[i].replace("smd:com.informatica.metadata.seed.platform.Platform.typesystem%2F", "");
 				arrayBueno[i]=arrayBueno[i].replace("fromInstance=", "");
+				arrayBueno[i]=arrayBueno[i].replace("fromPort==", "");
 				arrayBueno[i]=arrayBueno[i].replace("toInstance=", "");
 
 
@@ -375,6 +378,7 @@ public class LeerFichero {
 			it = listaClaves.iterator(); //llevamos al iterador al principio de la lista
 			it.next(); //para saltarnos el ID del annotation
 			nuevaInstancia.setBody(it.next());
+			listaClaves.clear(); //limpiamos la lista
 		}
 		
 		if(!nuevaInstancia.getName().contains("Write") && !nuevaInstancia.getName().contains("Escritura")){
@@ -741,6 +745,7 @@ public class LeerFichero {
 		Parametro parametro = new Parametro(null,null);
 		boolean cuerpo=false;
 		boolean parar=false;
+		boolean type_idRef[]= new boolean[2];
 		String valor;
 		//booleano que nos sirve para saber si queremos coger el type o no
 		//en este caso solo queremos el booleano cuando sea un campo de una transfromacion o IOBJECT
@@ -755,7 +760,7 @@ public class LeerFichero {
 		cadenaDividida=cadena.split(" ");
 		arrayBueno= new String[cadenaDividida.length];
 
-		reemplazo(cadenaDividida,arrayBueno, null,null);
+		reemplazo(cadenaDividida,arrayBueno, null,type_idRef);
 		parametro.setId(arrayBueno[0]);
 		parametro.setName(arrayBueno[1]);
 
@@ -785,7 +790,7 @@ public class LeerFichero {
 				
 			cadenaDividida=cadena.split(" ");
 			arrayBueno= new String[cadenaDividida.length];
-			reemplazo(cadenaDividida,arrayBueno, null,null);
+			reemplazo(cadenaDividida,arrayBueno, null,type_idRef);
 			valor=arrayBueno[1];
 			reiniciarArray(arrayBueno);	
 			cadena = br.readLine(); //para que avance
@@ -821,62 +826,70 @@ public class LeerFichero {
 		arrayBueno= new String[cadenaDividida.length];
 
 		reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef);
-		meterEnLista(arrayBueno,listaClaves);
-		it = listaClaves.iterator(); 
-	
-		if(!tipo_idRef[1]) {
-			nuevoObjeto.setId(it.next()); //Id del Objeto
-			nuevoObjeto.setType(it.next()); //para saber que es un dataRecord
-			it.next(); //para saltarnos el connectionName del iObject ya que no nos interesa
-			nuevoObjeto.setName(it.next()); //Nombre del objeto
-		}
-		else {
-			nuevoObjeto.setId(it.next()); //Id del Objeto
-			nuevoObjeto.setType(it.next()); //para saber que es un dataRecord
-		}
 
-		nuevoObjeto.setRef(tipo_idRef[1]); //ponemos si es un IDRef o no
+		if(!arrayBueno[1].contains("folder")) {
+			meterEnLista(arrayBueno,listaClaves);
+			it = listaClaves.iterator(); 
 
-		if(!nuevoObjeto.getRef()) {
-			while(!cadena.contains("</columns")){ //EMPIEZA EL MUNDO DE LEER CAMPOS
-				if(cadena.contains("<Column")){
+			if(!tipo_idRef[1]) {
+				nuevoObjeto.setId(it.next()); //Id del Objeto
+				nuevoObjeto.setType(it.next()); //para saber que es un dataRecord
+				it.next(); //para saltarnos el connectionName del iObject ya que no nos interesa
+				nuevoObjeto.setName(it.next()); //Nombre del objeto
+			}
+			else {
+				nuevoObjeto.setId(it.next()); //Id del Objeto
+				nuevoObjeto.setType(it.next()); //para saber que es un dataRecord
+			}
+
+			nuevoObjeto.setRef(tipo_idRef[1]); //ponemos si es un IDRef o no
+
+			if(!nuevoObjeto.getRef()) {
+				while(!cadena.contains("</columns")){ //EMPIEZA EL MUNDO DE LEER CAMPOS
+					if(cadena.contains("<Column")){
 						listaClaves.clear();
-		
+
 						//el ultimo es booleano es para indicar si es una particion o no
 						Iobject.Campo campo = nuevoObjeto.new Campo(null, null, null, null, null,null);
-		
+
 						cadenaDividida=cadena.split(" ");
 						arrayBueno= new String[cadenaDividida.length];
-		
+
 						//Metodo para quitar los caracteres innecesarios
 						tipo_idRef[0]=false; //no queremos coger el tipo del campo, solo el typeSystem
 						reemplazo(cadenaDividida,arrayBueno, null, tipo_idRef); 
-		
+
 						//Metodo para meter en la lista solo lo que nos interese.
 						meterEnLista(arrayBueno,listaClaves);
 						it=listaClaves.iterator();
 						campo.setId(it.next());
 						campo.setType(it.next());
 						campo.setName(it.next());
-						campo.setNullable(it.next());
+						//campo.setNullable(it.next());
 						campo.setPrecision(it.next());
-						
+
 						if(campo.getType().equals("decimal"))
-							campo.setEscala(it.next());
+							if(it.hasNext())
+									campo.setEscala(it.next());
+							else
+								System.out.println("El campo " + campo.getName() + " de la tabla " + nuevoObjeto.getName() + " es un decimal y no tiene puesto la escala");
 						else
 							campo.setEscala(null);
-						
+
 						vaciarLista(listaClaves);
 						listaCampos.add(campo);
 						cadena=br.readLine(); //para pasar a la siguiete instruccion
 
 					}
-				else
-					cadena=br.readLine();
+					else
+						cadena=br.readLine();
+				}
+				nuevoObjeto.setCampos(listaCampos);			
 			}
-			nuevoObjeto.setCampos(listaCampos);			
 		}
-
+		else
+			return null;
+		
 		return nuevoObjeto;
 	}
 	
@@ -885,6 +898,7 @@ public class LeerFichero {
 		Iterator<String> it;
 		ExecutionParameters executionParameters = new ExecutionParameters(null, null);
 		ArrayList<String> listaParametros = new ArrayList<String>();
+		boolean type_idRef[] = new boolean[2];
 
 		String [] cadenaDividida;
 		cadenaDividida=cadena.split(" ");
@@ -896,7 +910,7 @@ public class LeerFichero {
 		arrayBueno= new String[cadenaDividida.length];
 
 		// Metodo para quitar los caracteres innecesarios
-		reemplazo(cadenaDividida, arrayBueno, null, null);
+		reemplazo(cadenaDividida, arrayBueno, null, type_idRef);
 
 		// Metodo para meter los reemplazos en un arratList
 		meterEnLista(arrayBueno, listaParametros);
