@@ -15,14 +15,15 @@ public class Validaciones {
 	private static ArrayList<Iobject> listaObjetos = new ArrayList<Iobject>();
 	private HashMap<Parametro, String> tablaParametros = new HashMap<Parametro, String>();
 	private HashMap<String, String> tablaExecutionParameters = new HashMap<String, String>();
-	
+	private boolean descripcionMapping;
 	//Constructor Validaciones
-	public Validaciones(ArrayList<Instance> listaInstancia, ArrayList<AbstractTransformation> listaTransformaciones , HashMap<Parametro, String> tablaParametros, ArrayList<Iobject> listaObjetos, HashMap<String, String> tablaExecutionParameters ){
+	public Validaciones(boolean descripcionMapping, ArrayList<Instance> listaInstancia, ArrayList<AbstractTransformation> listaTransformaciones , HashMap<Parametro, String> tablaParametros, ArrayList<Iobject> listaObjetos, HashMap<String, String> tablaExecutionParameters ){
 		this.listaInstancia=listaInstancia;
 		this.listaTransformaciones=listaTransformaciones;
 		this.tablaParametros=tablaParametros;
 		this.listaObjetos=listaObjetos;
 		this.tablaExecutionParameters=tablaExecutionParameters;
+		this.descripcionMapping = descripcionMapping;
 	}
 	
 	public void parametros() throws FechaEjecucionFallo{
@@ -38,6 +39,15 @@ public class Validaciones {
 			System.out.println(e.getLocalizedMessage());
 		}
 	}
+	
+	public void descripcionMapping(){
+		try{
+		if(!descripcionMapping)
+			throw new DescripcionMapping("EL MAPPING QUE ESTÁ COMPROBANDO NO TIENE DESCRICPCION");	
+		}catch(DescripcionMapping e){
+			System.out.println(e.getLocalizedMessage());
+			}
+		}
 	
 	public void executionParameters(){
 		for (Entry<Parametro, String> entry : tablaParametros.entrySet()) {

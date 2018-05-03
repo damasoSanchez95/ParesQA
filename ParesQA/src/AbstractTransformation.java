@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class AbstractTransformation {
 	
-	String id;
-	String type;
-	String nombre;
+	private String id;
+	private	String type;
+	private String nombre;
 	private ArrayList<Campo> camposTransformacion;
 	
 	public AbstractTransformation(String id, String type, String nombre, ArrayList<Campo> camposTransformacion){

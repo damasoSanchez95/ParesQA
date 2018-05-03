@@ -1,21 +1,14 @@
 import java.util.ArrayList;
 
-
-public class Iobject {
+public class DataRecord {
 
 	private String id;
-	private String type;
 	private String name;
-	private boolean ref;
 	private ArrayList<Campo> listaCampos;
 
-	
-	public Iobject(String id, String name,String type, boolean ref, ArrayList<Campo> listaCampos){
-		
+	public DataRecord(String id, String name, ArrayList<Campo> listaCampos){
 		this.id=id;
 		this.name=name;
-		this.type=type;
-		this.ref=ref;
 		this.listaCampos=listaCampos;
 	}
 	
@@ -32,18 +25,7 @@ public class Iobject {
 	public void setName(String name){
 		this.name=name;
 	}
-	public String getType(){
-		return type;
-	}
-	public void setType(String type){
-		this.type=type;
-	}
-	public boolean getRef(){
-		return ref;
-	}
-	public void setRef(boolean ref){
-		this.ref=ref;
-	}
+	
 	public ArrayList<Campo> getCampos(){
 		return this.listaCampos;
 	}

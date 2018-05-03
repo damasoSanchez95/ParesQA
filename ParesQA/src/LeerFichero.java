@@ -20,12 +20,18 @@ public class LeerFichero {
 	private static ArrayList<Instance> listaInstancia = new ArrayList<Instance>();
 	private static ArrayList<AbstractTransformation> listaTransformacion = new ArrayList<AbstractTransformation>();
 	private static ArrayList<Iobject> listaObjetos = new ArrayList<Iobject>();
+	private static ArrayList<DataRecord> listaDataRecords = new ArrayList<DataRecord>();
 	
 	private static HashMap<String, String> tablaExecutionParameters = new HashMap<String, String>();
 	private static HashMap<Parametro, String> tablaParametros = new HashMap<Parametro, String>();
 	private static boolean falloXML;
 	private static boolean falloReal;
 	private static String dataInterface;
+	private static boolean descripcionMapping;
+	
+	public static boolean getDescripcionMapping(){
+		return descripcionMapping;
+	}
 	
 	public static boolean getFalloXML(){
 		return falloXML;
@@ -60,6 +66,7 @@ public class LeerFichero {
 	public static void leerContenido(String archivo) throws Exception {
 	    FileReader fr = null;
 	    BufferedReader br = null;
+	    boolean cuerpoComprobado=false;
 	 
 		try {
 			fr = new FileReader(archivo); //leemos el archivo que pasemos por parametro
@@ -70,6 +77,11 @@ public class LeerFichero {
 				
 				if (cadena.contains("<HadoopExecutionParameter")) { //TABLA DE ExecutionParameter
 					leerExecutionParameters(br, cadena);
+				}
+				
+				else if(cadena.contains("</annotations") && !cuerpoComprobado){
+					descripcionMapping=descripcionMapping(br,cadena);
+					cuerpoComprobado=true;
 				}
 				else if(cadena.contains("<UserDefinedParameter")){ //TABLA DE Parameter	
 					leerParametros(br,cadena);	
@@ -95,10 +107,16 @@ public class LeerFichero {
 					listaObjetos.add(objeto);
 					}
 				}
+				else if(cadena.contains("<datarecord")){
+					DataRecord dataRecord;
+					dataRecord=leerDataRecord(br,cadena);
+					dataRecord = new DataRecord(dataRecord.gedId(), dataRecord.getName(), dataRecord.getCampos());
+					listaDataRecords.add(dataRecord);
+				}
 			}
 		}
 		catch(Exception e) {
-			throw new Exception("ESE ARCHIVO NO EXISTE. REEVISELO");
+			throw new Exception("HA OCURRIDO UN ERROR. COMPRUEBE SI HA INTRODUCIDO BIEN EL ARCHIVO.");
 		}
 		finally {
 			if(br!=null){
@@ -107,6 +125,94 @@ public class LeerFichero {
 		}
     }	
 	
+	private static DataRecord leerDataRecord(BufferedReader br, String cadena) throws IOException {
+
+		//booleano para saber si queremos el tipo y para saber si es un id de referencia o el propio
+		boolean tipo_idRef[]= new boolean[2];
+		tipo_idRef[0]=true;
+		tipo_idRef[1]=false;
+
+
+		Iterator<String> it;
+		DataRecord dataRecord = new DataRecord(null,null,null);
+
+		//creacion de una lista de los campos del objeto
+		ArrayList<DataRecord.Campo> listaCampos = new ArrayList<DataRecord.Campo>();
+
+		//Creamos una lista donde meteremos las cosas que nos interesen de la linea
+		ArrayList<String> listaClaves = new ArrayList<String>();
+
+		String [] cadenaDividida;
+		cadenaDividida=cadena.split(" ");
+		String[] arrayBueno = new String[cadenaDividida.length];
+
+		cadenaDividida=cadena.split(" ");
+		arrayBueno= new String[cadenaDividida.length];
+
+		reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef);
+
+		meterEnLista(arrayBueno,listaClaves);
+		it = listaClaves.iterator(); 
+
+		dataRecord.setId(it.next()); //Id del dataRecord
+		it.next(); //LA CONEXION EN ESTA OCASION NO NOS INTERESA
+		dataRecord.setName(it.next()); //Nombre del dataRecord
+
+		while(!cadena.contains("</columns")){ //EMPIEZA EL MUNDO DE LEER CAMPOS
+			if(cadena.contains("<Column")){
+				listaClaves.clear();
+
+				//el ultimo es booleano es para indicar si es una particion o no
+				DataRecord.Campo campo = dataRecord.new Campo(null, null, null, null, null,null);
+
+				cadenaDividida=cadena.split(" ");
+				arrayBueno= new String[cadenaDividida.length];
+
+				//Metodo para quitar los caracteres innecesarios
+				tipo_idRef[0]=false; //no queremos coger el tipo del campo, solo el typeSystem
+				reemplazo(cadenaDividida,arrayBueno, null, tipo_idRef); 
+
+				//Metodo para meter en la lista solo lo que nos interese.
+				meterEnLista(arrayBueno,listaClaves);
+				it=listaClaves.iterator();
+				campo.setId(it.next());
+				campo.setType(it.next());
+				campo.setName(it.next());
+				//campo.setNullable(it.next());
+				campo.setPrecision(it.next());
+
+				if(campo.getType().equals("decimal"))
+					if(it.hasNext())
+						campo.setEscala(it.next());
+					else
+						System.out.println("El campo " + campo.getName() + " de la tabla " + dataRecord.getName() + " es un decimal y no tiene puesto la escala");
+				else
+					campo.setEscala(null);
+
+				vaciarLista(listaClaves);
+				listaCampos.add(campo);
+				cadena=br.readLine(); //para pasar a la siguiete instruccion
+
+			}
+			else
+				cadena=br.readLine();
+		}
+
+		dataRecord.setCampos(listaCampos);			
+
+		return dataRecord;
+	}
+
+	private static boolean descripcionMapping(BufferedReader br, String cadena) throws IOException {
+		boolean descripcionMapping=false;
+		cadena=br.readLine(); //pasamos a la siguiente frase donde deberia aprecer characteristics, sino no tiene cuerpo
+		
+			if(cadena.contains("characteristics")){
+				descripcionMapping=true;
+			}
+		return descripcionMapping;
+	}
+
 	//metodo para mostrar una instancia (para probar)
 //	private static void mostrarInstancia(Instance instancia) {
 //		System.out.println(instancia.getId());
