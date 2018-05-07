@@ -2,8 +2,8 @@
 
 public class Parametro {
 	
-	String id;
-	String name;
+	private String id;
+	private String name;
 
 	public Parametro(String id, String name){
 		this.id = id;
@@ -24,11 +24,4 @@ public class Parametro {
 	public void setId(String id){
 		this.id=id;
 	}
-	
-//	public String getValor(){
-//		return valor;
-//	}
-//	public void SetValor(String valor){
-//		this.valor=valor;
-//	}
 }

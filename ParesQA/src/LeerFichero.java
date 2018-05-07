@@ -21,7 +21,6 @@ public class LeerFichero {
 	private static ArrayList<AbstractTransformation> listaTransformacion = new ArrayList<AbstractTransformation>();
 	private static ArrayList<Iobject> listaObjetos = new ArrayList<Iobject>();
 	private static ArrayList<DataRecord> listaDataRecords = new ArrayList<DataRecord>();
-	
 	private static HashMap<String, String> tablaExecutionParameters = new HashMap<String, String>();
 	private static HashMap<Parametro, String> tablaParametros = new HashMap<Parametro, String>();
 	private static boolean falloXML;
@@ -45,6 +44,10 @@ public class LeerFichero {
 		return listaInstancia;
 	}
 	
+	public static ArrayList<DataRecord> getListaDataRecords(){
+		return listaDataRecords;
+	}
+	
 	public static ArrayList<AbstractTransformation> getListaTransformaciones(){
 		return listaTransformacion;
 	}
@@ -60,7 +63,6 @@ public class LeerFichero {
 	public static HashMap<Parametro, String> getTablaParametros(){
 		return tablaParametros;
 	}
-	
 	
 	@SuppressWarnings("null")
 	public static void leerContenido(String archivo) throws Exception {
@@ -89,7 +91,7 @@ public class LeerFichero {
 				else if(cadena.contains("<AbstractTransformation")){
 					AbstractTransformation transformacion;
 					transformacion=leerAbstractTransformation(br,cadena);	
-					transformacion= new AbstractTransformation(transformacion.getId(), transformacion.getType(), transformacion.getNombre(), transformacion.getCampos());
+					transformacion= new AbstractTransformation(transformacion.getId(), transformacion.getType(), transformacion.getNombre(), transformacion.getCamposTransformacion(),transformacion.getCamposTransformacionPrincipal(),transformacion.getCamposTransformacionDetalle());
 					listaTransformacion.add(transformacion);
 				}
 				else if(cadena.contains("<Instance")){
@@ -103,14 +105,14 @@ public class LeerFichero {
 					Iobject objeto;
 					objeto=leerIObject(br,cadena);
 					if(objeto!=null) {
-					objeto = new Iobject(objeto.gedId(), objeto.getName(),objeto.getType() ,objeto.getRef(), objeto.getCampos());
+					objeto = new Iobject(objeto.getId(), objeto.getName(),objeto.getType() ,objeto.getRef(), objeto.getCampos());
 					listaObjetos.add(objeto);
 					}
 				}
 				else if(cadena.contains("<datarecord")){
 					DataRecord dataRecord;
 					dataRecord=leerDataRecord(br,cadena);
-					dataRecord = new DataRecord(dataRecord.gedId(), dataRecord.getName(), dataRecord.getCampos());
+					dataRecord = new DataRecord(dataRecord.getId(), dataRecord.getName(), dataRecord.getCampos());
 					listaDataRecords.add(dataRecord);
 				}
 			}
@@ -137,7 +139,7 @@ public class LeerFichero {
 		DataRecord dataRecord = new DataRecord(null,null,null);
 
 		//creacion de una lista de los campos del objeto
-		ArrayList<DataRecord.Campo> listaCampos = new ArrayList<DataRecord.Campo>();
+		ArrayList<CamposObjetosDataRecord> listaCampos = new ArrayList<CamposObjetosDataRecord>();
 
 		//Creamos una lista donde meteremos las cosas que nos interesen de la linea
 		ArrayList<String> listaClaves = new ArrayList<String>();
@@ -163,7 +165,7 @@ public class LeerFichero {
 				listaClaves.clear();
 
 				//el ultimo es booleano es para indicar si es una particion o no
-				DataRecord.Campo campo = dataRecord.new Campo(null, null, null, null, null,null);
+				CamposObjetosDataRecord campo = new CamposObjetosDataRecord(null, null, null, null, null,null);
 
 				cadenaDividida=cadena.split(" ");
 				arrayBueno= new String[cadenaDividida.length];
@@ -213,27 +215,6 @@ public class LeerFichero {
 		return descripcionMapping;
 	}
 
-	//metodo para mostrar una instancia (para probar)
-//	private static void mostrarInstancia(Instance instancia) {
-//		System.out.println(instancia.getId());
-//		System.out.println(instancia.getName());
-//		System.out.println(instancia.getBody());
-//		Iterator<Instance.Campos> it;
-//		Instance.Campos campo;
-//
-//		it = instancia.getCampos().iterator();
-//		int contador=0;
-//		while(it.hasNext()){
-//			campo = it.next();
-//			System.out.println("NUEVO CAMPOOOO");
-//			System.out.println(campo.getId());
-//			System.out.println(campo.getFromPorts());
-//			System.out.println(campo.getToPorts());
-//			System.out.println(campo.getStructural_feature());
-//			System.out.println(campo.getTransformationField());
-//		}
-//	}
-	
 	//metodo donde vemos que parte de la cadena nos interesa tener o no
 	public static void nosInteresa(String array[], String arrayBueno[], boolean from_to[], boolean tipo_idRef[]){
 		int contador=0;
@@ -596,7 +577,6 @@ public class LeerFichero {
 		return nuevaInstancia;
 	}
 	
-	
 	private static void obtenerCamposTransformacionSourceTarget(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos ) throws IOException{
 		while(!cadena.contains("</relationalFields")) { //Mientras no sea el final de los campos
 			if(cadena.contains("<RelationalField")){ // Si encuentra un campo
@@ -773,15 +753,19 @@ public class LeerFichero {
 		}
 	}	
 	
-	public static AbstractTransformation leerAbstractTransformation(BufferedReader br, String cadena) throws IOException{
+	private static AbstractTransformation leerAbstractTransformation(BufferedReader br, String cadena) throws IOException{
 		Iterator<String> it;
 		ArrayList<String> listaTransformaciones = new ArrayList<String>();
-		AbstractTransformation nuevaTransformacion = new AbstractTransformation(null,null,null,null);
+		AbstractTransformation nuevaTransformacion = new AbstractTransformation(null,null,null,null,null,null);
 		boolean tipo_idRef[] = new boolean[2];
 		tipo_idRef[0]=true; //TRUE XQ NOS INTERESA COGER EL TIPO
 		tipo_idRef[1]=false; //ESTO LO QUEREMOS SOLO PARA LOS OBJETOS
 		
-		ArrayList<AbstractTransformation.Campo> listaCampos = new ArrayList<AbstractTransformation.Campo>();
+		ArrayList<AbstractTransformation.Campo> listaCamposSalida = new ArrayList<AbstractTransformation.Campo>();
+		ArrayList<AbstractTransformation.Campo> listaCamposPrincipal = new ArrayList<AbstractTransformation.Campo>();
+		ArrayList<AbstractTransformation.Campo> listaCamposDetalle = new ArrayList<AbstractTransformation.Campo>();
+
+		
 		
 		String [] cadenaDividida;
 		cadenaDividida=cadena.split(" ");
@@ -795,11 +779,19 @@ public class LeerFichero {
 		nuevaTransformacion.setNombre(it.next());//ya tenemos el name de las AbstractTransformation
 		vaciarLista(listaTransformaciones);	
 		
-		if(nuevaTransformacion.getType().contains("source") || nuevaTransformacion.getType().contains("target"))
-			obtenerCamposTransformacionSourceTarget(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCampos);
+		if(nuevaTransformacion.getType().contains("source") || nuevaTransformacion.getType().contains("target")){
+			obtenerCamposTransformacionSourceTarget(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposSalida);
+			nuevaTransformacion.setCamposTransformacion(listaCamposSalida); //salida-OUTPUT o el único
+			nuevaTransformacion.setCamposTransformacionPrincipal(null);
+			nuevaTransformacion.setCamposTransformacionDetalle(null);
+		}
 			
-		else if(nuevaTransformacion.getType().contains("expression") || nuevaTransformacion.getType().contains("filter"))
-			obtenerCamposTransformacionExpressionFilter(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCampos);
+		else if(nuevaTransformacion.getType().contains("expression") || nuevaTransformacion.getType().contains("filter")){
+			obtenerCamposTransformacionExpressionFilter(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposSalida);
+			nuevaTransformacion.setCamposTransformacion(listaCamposSalida); //salida-OUTPUT o el único
+			nuevaTransformacion.setCamposTransformacionDetalle(null);
+			nuevaTransformacion.setCamposTransformacionPrincipal(null);
+		}
 			
 		else if(nuevaTransformacion.getType().contains("joiner")){
 			while(!cadena.contains("JoinerDataInterface"))
@@ -816,7 +808,56 @@ public class LeerFichero {
 			dataInterface=it.next(); //NOS QUEDAMOS CON EL NOMBRE DEL UNIONDATAINTERFACE
 			
 			if(dataInterface.equals("Salida")){
-				obtenerCamposTransformacionJoiner(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCampos);
+				obtenerCamposTransformacionJoiner(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposSalida);
+				nuevaTransformacion.setCamposTransformacion(listaCamposSalida); //salida-OUTPUT o el único
+				dataInterface="";
+			}
+			
+			cadena=br.readLine();
+			cadena=br.readLine();
+
+			
+			while(!cadena.contains("JoinerDataInterface"))
+				cadena=br.readLine();
+			
+			cadenaDividida=cadena.split(" ");
+			arrayBueno = new String[cadenaDividida.length];
+			tipo_idRef[0]=true;
+			reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef);
+			meterEnLista(arrayBueno,listaTransformaciones);
+				
+			it = listaTransformaciones.iterator(); 
+			it.next(); //NOS SALTAMOS EL ID DEL UNIONDATAINTERFACE
+			it.next(); //NOS SALTAMOS EL TYPE DEL UNIONDATAINTERFACE
+			dataInterface=it.next(); //NOS QUEDAMOS CON EL NOMBRE DEL UNIONDATAINTERFACE
+			
+			if(dataInterface.equals("Detalle")){
+				obtenerCamposTransformacionJoiner(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposDetalle);
+				nuevaTransformacion.setCamposTransformacionDetalle(listaCamposDetalle); //Leemos los campos de Detalle
+				dataInterface="";
+			}
+			
+			cadena=br.readLine();
+			cadena=br.readLine();
+
+			
+			while(!cadena.contains("JoinerDataInterface"))
+				cadena=br.readLine();
+			
+			cadenaDividida=cadena.split(" ");
+			arrayBueno = new String[cadenaDividida.length];
+			tipo_idRef[0]=true;
+			reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef);
+			meterEnLista(arrayBueno,listaTransformaciones);
+				
+			it = listaTransformaciones.iterator(); 
+			it.next(); //NOS SALTAMOS EL ID DEL UNIONDATAINTERFACE
+			it.next(); //NOS SALTAMOS EL TYPE DEL UNIONDATAINTERFACE
+			dataInterface=it.next(); //NOS QUEDAMOS CON EL NOMBRE DEL UNIONDATAINTERFACE
+			
+			if(dataInterface.equals("Principal")){
+				obtenerCamposTransformacionJoiner(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposPrincipal);
+				nuevaTransformacion.setCamposTransformacionPrincipal(listaCamposPrincipal); //Leemos los campos de Principal
 				dataInterface="";
 			}
 		}
@@ -836,16 +877,63 @@ public class LeerFichero {
 			dataInterface=it.next(); //NOS QUEDAMOS CON EL NOMBRE DEL UNIONDATAINTERFACE
 			
 			if(dataInterface.equals("OUTPUT")){
-				obtenerCamposTransformacionUnion(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCampos);
+				obtenerCamposTransformacionUnion(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposSalida);
+				nuevaTransformacion.setCamposTransformacion(listaCamposSalida);
 				dataInterface="";
 			}
+			
+			cadena=br.readLine();
+			cadena=br.readLine();
+			
+			while(!cadena.contains("UnionDataInterface"))
+				cadena=br.readLine();
+			
+			cadenaDividida=cadena.split(" ");
+			arrayBueno = new String[cadenaDividida.length];
+			tipo_idRef[0]=true; //para que pille el tipo y entonces no reviente
+			reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef);
+			meterEnLista(arrayBueno,listaTransformaciones);
+				
+			it = listaTransformaciones.iterator(); 
+			it.next(); //NOS SALTAMOS EL ID DEL UNIONDATAINTERFACE
+			it.next(); //NOS SALTAMOS EL TYPE DEL UNIONDATAINTERFACE
+			dataInterface=it.next(); //NOS QUEDAMOS CON EL NOMBRE DEL UNIONDATAINTERFACE
+			
+			if(!dataInterface.equals("OUTPUT")){ //sera INPUT
+				obtenerCamposTransformacionUnion(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposPrincipal);
+				nuevaTransformacion.setCamposTransformacionPrincipal(listaCamposPrincipal); //input
+				dataInterface="";
+			}
+			
+			cadena=br.readLine();
+			cadena=br.readLine();
+			
+			while(!cadena.contains("UnionDataInterface"))
+				cadena=br.readLine();
+			
+			cadenaDividida=cadena.split(" ");
+			arrayBueno = new String[cadenaDividida.length];
+			tipo_idRef[0]=true; //para que pille el tipo y entonces no reviente
+			reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef);
+			meterEnLista(arrayBueno,listaTransformaciones);
+				
+			it = listaTransformaciones.iterator(); 
+			it.next(); //NOS SALTAMOS EL ID DEL UNIONDATAINTERFACE
+			it.next(); //NOS SALTAMOS EL TYPE DEL UNIONDATAINTERFACE
+			dataInterface=it.next(); //NOS QUEDAMOS CON EL NOMBRE DEL UNIONDATAINTERFACE
+			
+			if(!dataInterface.equals("OUTPUT")){ //sera INPUT
+				obtenerCamposTransformacionUnion(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposDetalle);
+				nuevaTransformacion.setCamposTransformacionDetalle(listaCamposDetalle); //input
+				dataInterface="";
+			}
+			
+			nuevaTransformacion.setCamposTransformacionDetalle(null);
 		}
 
-		nuevaTransformacion.setCampos(listaCampos);
 		return nuevaTransformacion;
 	}
 	
-	//OKI
 	private static void leerParametros(BufferedReader br, String cadena) throws ParamSinDescripcion, IOException{
 		//creamos un parametro que va a ser un hashMap
 		Parametro parametro = new Parametro(null,null);
@@ -907,7 +995,7 @@ public class LeerFichero {
 			tablaParametros.put(parametro, valor);
 	}
 	
-	public static Iobject leerIObject(BufferedReader br, String cadena) throws IOException{
+	private static Iobject leerIObject(BufferedReader br, String cadena) throws IOException{
 
 		//booleano para saber si queremos el tipo y para saber si es un id de referencia o el propio
 		boolean tipo_idRef[]= new boolean[2];
@@ -919,7 +1007,7 @@ public class LeerFichero {
 		Iobject nuevoObjeto = new Iobject(null,null,null,tipo_idRef[1],null);
 
 		//creacion de una lista de los campos del objeto
-		ArrayList<Iobject.Campo> listaCampos = new ArrayList<Iobject.Campo>();
+		ArrayList<CamposObjetosDataRecord> listaCampos = new ArrayList<CamposObjetosDataRecord>();
 
 		//Creamos una lista donde meteremos las cosas que nos interesen de la linea
 		ArrayList<String> listaClaves = new ArrayList<String>();
@@ -956,7 +1044,7 @@ public class LeerFichero {
 						listaClaves.clear();
 
 						//el ultimo es booleano es para indicar si es una particion o no
-						Iobject.Campo campo = nuevoObjeto.new Campo(null, null, null, null, null,null);
+						CamposObjetosDataRecord campo = new CamposObjetosDataRecord(null, null, null, null, null,null);
 
 						cadenaDividida=cadena.split(" ");
 						arrayBueno= new String[cadenaDividida.length];

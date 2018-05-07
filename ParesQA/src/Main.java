@@ -12,7 +12,7 @@ public class Main {
 			Validaciones validaciones;
 			String archivo = br.readLine();
 			LeerFichero.leerContenido(archivo);
-			validaciones = new Validaciones(LeerFichero.getDescripcionMapping(),LeerFichero.getListaInstancia(), LeerFichero.getListaTransformaciones(), LeerFichero.getTablaParametros(), LeerFichero.getListaObjetos(), LeerFichero.getTablaExecutionParameters());
+			validaciones = new Validaciones(LeerFichero.getListaDataRecords(),LeerFichero.getDescripcionMapping(),LeerFichero.getListaInstancia(), LeerFichero.getListaTransformaciones(), LeerFichero.getTablaParametros(), LeerFichero.getListaObjetos(), LeerFichero.getTablaExecutionParameters());
 			validaciones.parametros();
 			validaciones.executionParameters();
 			validaciones.descripcionMapping();

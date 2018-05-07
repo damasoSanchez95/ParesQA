@@ -1,0 +1,20 @@
+	//metodo para mostrar una instancia (para probar)
+//	private static void mostrarInstancia(Instance instancia) {
+//		System.out.println(instancia.getId());
+//		System.out.println(instancia.getName());
+//		System.out.println(instancia.getBody());
+//		Iterator<Instance.Campos> it;
+//		Instance.Campos campo;
+//
+//		it = instancia.getCampos().iterator();
+//		int contador=0;
+//		while(it.hasNext()){
+//			campo = it.next();
+//			System.out.println("NUEVO CAMPOOOO");
+//			System.out.println(campo.getId());
+//			System.out.println(campo.getFromPorts());
+//			System.out.println(campo.getToPorts());
+//			System.out.println(campo.getStructural_feature());
+//			System.out.println(campo.getTransformationField());
+//		}
+//	}

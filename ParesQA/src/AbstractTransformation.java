@@ -5,20 +5,42 @@ public class AbstractTransformation {
 	private String id;
 	private	String type;
 	private String nombre;
-	private ArrayList<Campo> camposTransformacion;
+	private ArrayList<Campo> camposTransformacion; //En los join sera el de salida, en una union sera el OUTPUT
+	private ArrayList<Campo> camposTransformacionPrincipal; // en union sera el INPUT
+	private ArrayList<Campo> camposTransformacionDetalle; //solo sirve para los Join
 	
-	public AbstractTransformation(String id, String type, String nombre, ArrayList<Campo> camposTransformacion){
+	
+	public AbstractTransformation(String id, String type, String nombre, ArrayList<Campo> camposTransformacion, ArrayList<Campo> camposTransformacionPrincipal, ArrayList<Campo> camposTransformacionDetalle ){
 		this.id=id;
 		this.type=type;
 		this.nombre = nombre;
 		this.camposTransformacion=camposTransformacion;
+		this.camposTransformacionPrincipal = camposTransformacionPrincipal;
+		this.camposTransformacionDetalle=camposTransformacionDetalle;
 	}
-	public ArrayList<Campo> getCampos(){
+	
+	public ArrayList<Campo> getCamposTransformacion(){
 		return this.camposTransformacion;
 	}
 	
-	public void setCampos(ArrayList<Campo> camposTransformacion){
+	public void setCamposTransformacion(ArrayList<Campo> camposTransformacion){
 		this.camposTransformacion=camposTransformacion;
+	}
+	
+	public ArrayList<Campo> getCamposTransformacionPrincipal(){
+		return this.camposTransformacionPrincipal;
+	}
+	
+	public void setCamposTransformacionPrincipal(ArrayList<Campo> camposTransformacionPrincipal){
+		this.camposTransformacionPrincipal=camposTransformacionPrincipal;
+	}
+	
+	public ArrayList<Campo> getCamposTransformacionDetalle(){
+		return this.camposTransformacionDetalle;
+	}
+	
+	public void setCamposTransformacionDetalle(ArrayList<Campo> camposTransformacionDetalle){
+		this.camposTransformacionDetalle=camposTransformacionDetalle;
 	}
 	
 	public String getId(){

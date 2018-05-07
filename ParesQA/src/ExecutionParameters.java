@@ -1,8 +1,8 @@
 
 public class ExecutionParameters {
 	
-	String value;
-	String name;
+	private String value;
+	private String name;
 	
 	public ExecutionParameters(String value, String name) {
 		this.value = value;
@@ -20,6 +20,4 @@ public class ExecutionParameters {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
 }
