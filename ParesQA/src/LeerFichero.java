@@ -366,7 +366,7 @@ public class LeerFichero {
 				arrayBueno[i]=arrayBueno[i].replace("fromInstance=", "");
 				arrayBueno[i]=arrayBueno[i].replace("fromPort==", "");
 				arrayBueno[i]=arrayBueno[i].replace("toInstance=", "");
-
+				arrayBueno[i]=arrayBueno[i].replace("transformationField=", "");
 
 				arrayBueno[i]=arrayBueno[i].replaceAll("\"", ""); //para quitar las comillas
 			}
