@@ -64,6 +64,33 @@ public class LeerFichero {
 		return tablaParametros;
 	}
 	
+	public static void ordenarObjetos(){
+		int instancia=0;
+		int objeto=0;
+		boolean parar=false;
+		Iobject objetoEscritura = new Iobject(null,null,null,false, null);
+		
+		//buscamos la instancia de escritura
+		for(instancia=0; instancia<listaInstancia.size()&&!parar;instancia++)
+			if(listaInstancia.get(instancia).getName().contains("Escritura"))
+				parar=true;
+		
+		parar=false;
+		
+		//buscamos el objeto
+		for(objeto=0; objeto<listaObjetos.size()&&!parar;objeto++)
+			if(listaObjetos.get(objeto).getName()!=null)
+				if(listaInstancia.get(instancia-1).getName().contains(listaObjetos.get(objeto).getName())) {
+					parar=true;
+					objetoEscritura=listaObjetos.get(objeto);
+			}
+		
+		//ahora reeordenamos la lista de objetos, para ello borramos el objeto y le metemos al final
+		listaObjetos.remove(objeto-1);
+		listaObjetos.add(objetoEscritura);
+		
+	}
+	
 	@SuppressWarnings("null")
 	public static void leerContenido(String archivo) throws Exception {
 	    FileReader fr = null;

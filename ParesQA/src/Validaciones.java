@@ -1,10 +1,14 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import Excepciones.*; 
 
 public class Validaciones {
@@ -16,11 +20,12 @@ public class Validaciones {
 	private ArrayList<DataRecord> listaDataRecords= new ArrayList<DataRecord>();
 	private HashMap<Parametro, String> tablaParametros = new HashMap<Parametro, String>();
 	private HashMap<String, String> tablaExecutionParameters = new HashMap<String, String>();
+	private final static Logger LOGGER = Logger.getLogger("default.LeerFichero");
 	private boolean descripcionMapping;
 	
 	
 	//Constructor Validaciones
-	public Validaciones(ArrayList<DataRecord> listaDataRecords ,boolean descripcionMapping, ArrayList<Instance> listaInstancia, ArrayList<AbstractTransformation> listaTransformaciones , HashMap<Parametro, String> tablaParametros, ArrayList<Iobject> listaObjetos, HashMap<String, String> tablaExecutionParameters ){
+	public Validaciones(boolean descripcionMapping, ArrayList<Instance> listaInstancia, ArrayList<AbstractTransformation> listaTransformaciones , HashMap<Parametro, String> tablaParametros, ArrayList<Iobject> listaObjetos, HashMap<String, String> tablaExecutionParameters, ArrayList<DataRecord> listaDataRecords){
 		this.listaInstancia=listaInstancia;
 		this.listaTransformaciones=listaTransformaciones;
 		this.tablaParametros=tablaParametros;
@@ -30,7 +35,7 @@ public class Validaciones {
 		this.listaDataRecords=listaDataRecords;
 	}
 	
-	public void parametros() throws FechaEjecucionFallo{
+	public void parametros(){
 		try {
 			for (Entry<Parametro, String> entry : tablaParametros.entrySet()) {
 			    Parametro clave = entry.getKey();
@@ -41,9 +46,8 @@ public class Validaciones {
 			}
 		}catch(FechaEjecucionFallo e) {
 			System.out.println(e.getLocalizedMessage());
-		}
+		}		
 	}
-	
 	public void descripcionMapping(){
 		try{
 		if(!descripcionMapping)
@@ -65,260 +69,314 @@ public class Validaciones {
 			}
 		}
 	
-	
-	
-	
-/*	
-	
 	public void ValidacionesPuertos(){
-		
+
 		boolean puertoCorrecto = false;
 		boolean encontradoDataRecords=false;
 		boolean instanciaEncontrada=false;
-		boolean tipo_idRef[]= new boolean[2];
-		
-		int instanciaPartida; //declaramos variables que sera el indice de instancia de partida y la instancia destino
-		int instanciaDestino = 0;
+		boolean tipo_idRef[]= new boolean[2];	
+		boolean campoCorrecto=false;
+		boolean objetoMapping=false;
+		boolean escritura=false;
 
+		int InstanciaPartida=0;//declaramos variables que sera el indice de instancia de partida y de final
+		int InstanciaDestino=0;
+
+		//Declaramos los objetos
+		ArrayList<ArrayList<String>> tablaComparacionCampos = new ArrayList<ArrayList<String>>();
 		DataRecord nuevaDataRecord = new DataRecord(null,null, null);
 		Iobject nuevoObjeto = new Iobject(null,null,null,tipo_idRef[1],null);	
 		Instance nuevaInstancia = new Instance(null,null,null,null,null, null, null);
 		AbstractTransformation nuevaTransformacion = new AbstractTransformation(null,null,null, null,null,null);
 
-
-		Iterator<Iobject> iteradorObjetos;
+		//Iteradores para cada una de las listas
 		Iterator<DataRecord> iteradorDataRecords;
-		Iterator<Instance> iteradorInstancias;
-		Iterator<AbstractTransformation> iteradorAbstractTransformation;
-
-		Instance.Campos campo; //Variable local del campo de una instancia
-
 
 		//ITERADORES PARA RECORRER LAS LISTAS CORRESPONDIENTES
-		iteradorObjetos = listaObjetos.iterator(); 
 		iteradorDataRecords = listaDataRecords.iterator(); 
-		iteradorInstancias = listaInstancia.iterator();
-		iteradorAbstractTransformation = listaTransformaciones.iterator();
 
+		//For Externo en el que vamos recorriendo los objetos
+		for(int indiceObjeto=0; indiceObjeto<listaObjetos.size(); indiceObjeto++){
+			//lo primero habra que analizar los datos de los objetos para ver si tienen realacion con las intancias y las transformaciones.
 
-		//lo primero habra que analizar los datos de los objetos para ver si tienen realacion con las intancias y las transformaciones
-		for(int indiceObjeto=0; indiceObjeto<listaObjetos.size(); indiceObjeto++){ //Recorremos todos los objetos
+			//cogemos la ref de cada objeto ->Si es true habra que coger el id y buscar si hay algun id igual en algun otro objeto, Si no el nombre y empezar con las comparaciones
 			nuevoObjeto = listaObjetos.get(indiceObjeto);
-			if(nuevoObjeto.getRef() && nuevoObjeto.getType().contains("datarecord")){ //vemos si es un objeto con id de referencia
+
+			if(nuevoObjeto.getType().contains("mapping")) //si es el objeto del mapping queremos pasar de él
+				objetoMapping=true;
+
+			if(nuevoObjeto.getRef() && nuevoObjeto.getType().contains("datarecord")){ //vemos si es un objeto con id de referencia y que sea un datarecord, si es el mapping pasamos de el
 				while(iteradorDataRecords.hasNext() && !encontradoDataRecords){
 					nuevaDataRecord=iteradorDataRecords.next();
 					if(nuevaDataRecord.getId()==nuevoObjeto.getId())
 						encontradoDataRecords=true;
 				}
 
-				if(!encontradoDataRecords) //HABRA QUE HACER UNA EXCEPCION
+				if(!encontradoDataRecords) //HABRA QUE HACER UNA EXCEPCION (NO DEBERIA ENTRAR NUNCA)
 					System.out.println("FALLO, NO HEMOS ENCONTRADO ESE DATARECORDS CUANDO ES UN ID DE REFERENCIA A ÉL");
-
 				else{ //COMO DATARECORDS ES IGUAL QUE UN OBJETO IGUALOS SUS CAMPOS, PARA DESPUES JUGAR CON ÉL DIRECTAMENTE
 					nuevoObjeto.setName(nuevaDataRecord.getName());
 					nuevoObjeto.setCampos(nuevaDataRecord.getCampos());	
 				}	
 			}
 
+
 			//AQUI SEA UN OBJETO DE REFERENCIA O UNO NORMAL LLEGAMOS CON EL NOMBRE Y LA LISTA DE CAMPOS CORRESPONDIENTE
 
-			//*Entonces cogemos el name y debemos buscar que nombre de las instancias CONTIENE ese nombre porque tendra "Lectura_" y no sera exactamente igual
-
+			//Entonces cogemos el name y debemos buscar que nombre de las instancias CONTIENE ese nombre porque tendra "Lectura_" y no sera exactamente igual
 			//hay que comparar si es de lectura o escritura pero solo se sabe al compararlo con el nombre de la instancia
 
-			for(int indiceInstancia=0; indiceInstancia<listaInstancia.size(); indiceInstancia++){
-				nuevaInstancia=listaInstancia.get(indiceInstancia);
-				if(nuevaInstancia.getName().contains(nuevoObjeto.getName())){ //DE LA LISTA DE INSTANCIAS SOLO HABRA UNO QUE CONTENGA ESE NOMBRE, LA INSTANCIA DEL OBJETO
-					instanciaEncontrada=true;
-					//el nombre existe por lo que la instancia esta bien
-					
-					instanciaPartida=indiceInstancia;//guardamos la posicion de la instancia de partida del array de instancias
-					
-					String NombreAComprobar=nuevaInstancia.getName();
-					
-					while(!NombreAComprobar.contains("Escritura")){ //si no entra en el while significa que hemos cogido la instancia de escritura 	
-						
-						//necesitamos coger el toInstance de esa instancia, para ver cual es la siguiente instancia
-						String siguienteId=nuevaInstancia.getToInstance(); //importante ya que lo tendremos en cuenta con los toPort y FromPort
-						
-						//ESTE FOR SIRVE PARA SACAR LA INSTANCIA DESTINO
-						for(int k=0; k<listaInstancia.size(); k++){
-							//habra que comparar el toInstance con el id de la siguiente instancia
-							if(siguienteId==listaInstancia.get(k).getId()){
-								instanciaDestino=k;//guardamos la posicion  de la instancia de destino del array de instancias						
-							}
-						}
-						
-						//AQUI TENEMOS LAS DOS INSTANCIAS (LA ACTUAL Y LA SIGUIENTE) DE LAS CUALES HAY QUE COMPROBAR SUS PUERTOS
-						
-						//*************************COMPROBACION DE PUERTOS Y FEATURES************************
+			if(!objetoMapping){
+				for(int indiceInstancia=0; indiceInstancia<listaInstancia.size(); indiceInstancia++){ //Bucle de instancias, para buscar por que instancia empiezas
+					nuevaInstancia=listaInstancia.get(indiceInstancia);
+					if(nuevaInstancia.getName().contains(nuevoObjeto.getName())){ //DE LA LISTA DE INSTANCIAS SOLO HABRA UNO QUE CONTENGA ESE NOMBRE, LA INSTANCIA DEL OBJETO
+						//el nombre existe por lo que la instancia esta bien
+						instanciaEncontrada=true;
 
-							if(NombreAComprobar.contains("Lectura")){ //Si la instancia de partida es una instancia de LECTURA
-								
-								//Recorremos todos los campos de la instanciaDePartida
-								for(int indiceCampoDeLaInstanciaPartida=0; indiceCampoDeLaInstanciaPartida<listaInstancia.get(instanciaPartida).getCampos().size();indiceCampoDeLaInstanciaPartida++){
-									puertoCorrecto=false;
-									
-								for(int indiceCampoDeLaInstanciaDestino=0; indiceCampoDeLaInstanciaDestino<listaInstancia.get(instanciaDestino).getCampos().size() && !puertoCorrecto; indiceCampoDeLaInstanciaDestino++)
-									if(listaInstancia.get(instanciaDestino).getCampos().get(indiceCampoDeLaInstanciaDestino).getFromPorts()==listaInstancia.get(instanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId() && listaInstancia.get(instanciaDestino).getCampos().get(indiceCampoDeLaInstanciaDestino).getId()==listaInstancia.get(instanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts())
-										puertoCorrecto=true;
-										
-								
-								//APROVEHCAMOS EL MISMO BUCLE PARA COMPARAR LOS STRUCTURAL FEATURE. AQUI COMPROBAMOS LA INSTANCIA, EL OBJETO Y LA TRANSFORMACION
-								ComprobacionFeatures(instanciaPartida,indiceObjeto,indiceInstancia,indiceCampoDeLaInstanciaPartida);
+						InstanciaPartida=indiceInstancia;//guardamos la posicion de la instancia de partida del array de instancias
+						String NombreAComprobar=listaInstancia.get(indiceInstancia).getName();
+
+						while(!NombreAComprobar.contains("FINAL")){
+							//si no entra en el while significa que hemos cogido un objeto con escritura o hemos llegado a la ultima instancia que es la de escritura	
+							//necesitamos coger el toInstance de esa instancia
+							String siguienteId=listaInstancia.get(InstanciaPartida).getToInstance();//importante ya que lo tendremos en cuenta con los toPort y FromPort
+
+							//ESTE FOR SIRVE PARA SACAR LA INSTANCIA DESTINO
+							for(int k=0; k<listaInstancia.size(); k++){
+								//habra que comparar el toInstance con el id de la siguiente instancia
+								if(siguienteId==listaInstancia.get(k).getId()){
+									InstanciaDestino=k;//guardamos la posicion  de la instancia de destino del array de instancias						
 								}
-								
-								if(!puertoCorrecto)
-									System.out.println("NO SE HA ENCONTRADO EL PUERTO ORIGEN EN LOS PUERTOS DESTINO");
 							}
+
+							//Aqui busco su la transformacion que le corresponda a esta instancia
+							int posicionTransformacion=0;
+
+							for(int t=0; t<listaTransformaciones.size(); t++)
+								if(listaTransformaciones.get(t).getNombre().contains(listaInstancia.get(indiceInstancia).getName()))
+									posicionTransformacion=t;//cojemos la posicion de la transformacion en la lista de transformaciones
+
+							//AQUI TENEMOS LAS DOS INSTANCIAS (LA ACTUAL Y LA SIGUIENTE) DE LAS CUALES HAY QUE COMPROBAR SUS PUERTOS Y TAMBIEN LA POSICION DE LA TRANSFORMACION QUE LE CORRESPONDA.
+
 							
-							else if(NombreAComprobar.contains("jnr")||NombreAComprobar.contains("exp")){
-								//Recorremos todos los campos de la instanciaDePartida
-								for(int indiceCampoDeLaInstanciaPartida=0; indiceCampoDeLaInstanciaPartida<listaInstancia.get(instanciaPartida).getCampos().size();indiceCampoDeLaInstanciaPartida++){
-									puertoCorrecto=false;
-								
-									//los toPorts != null xq tienen que ir a algun lado si o si
-								for(int indiceCampoDeLaInstanciaDestino=0; indiceCampoDeLaInstanciaDestino<listaInstancia.get(instanciaDestino).getCampos().size();indiceCampoDeLaInstanciaDestino++)
-									if(listaInstancia.get(instanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts()!=null && listaInstancia.get(instanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId()==listaInstancia.get(instanciaDestino).getCampos().get(indiceCampoDeLaInstanciaDestino).getFromPorts() && listaInstancia.get(instanciaPartida).getCampos().get(indiceCampoDeLaInstanciaDestino).getToPorts()==listaInstancia.get(instanciaDestino).getCampos().get(indiceCampoDeLaInstanciaDestino).getId())
-										puertoCorrecto=true;
-											
+							//CASO DE LECTURA
+							if(NombreAComprobar.contains("Lectura")){
+								//AQUI COMPROBAMOS QUE LOS CAMPOS SON CORRECTOS Y EXISTEN EN LA 2 INSTANCIA, PERO NO ESTAMOS COMPARANDO LOS PUERTOS AUN
+								int ContadorComprobaciones=0; //Contador de arrayList, hay un arrayList de campos
+								for(int indiceCampoDeLaInstanciaPartida=0; indiceCampoDeLaInstanciaPartida<listaInstancia.get(InstanciaPartida).getCampos().size();indiceCampoDeLaInstanciaPartida++){	 //For para recorrer todos los campos de la instancia de origen					
+									campoCorrecto=false;
+									for(int indiceCampoDeLaInstanciaDestino=0; indiceCampoDeLaInstanciaDestino<listaInstancia.get(InstanciaDestino).getCampos().size() && !puertoCorrecto; indiceCampoDeLaInstanciaDestino++){ //For para recorrer todos los campos de la instancia de destino
+										//aqui recorremos los campos de la instacia DE LLEGADA 
+										if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId()==listaInstancia.get(InstanciaDestino).getCampos().get(indiceCampoDeLaInstanciaDestino).getFromPorts()&&listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts()==listaInstancia.get(InstanciaDestino).getCampos().get(indiceCampoDeLaInstanciaDestino).getId())
+											campoCorrecto=true;
+									}
+
+									if(!campoCorrecto)
+										System.out.println("El id " + listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId()+ " de la instancia de partida no se encuentra EN LA INSTANCIA DESTINO");
+
+									else{
+										//creamos un nuevo arraylista dentro del ya existente cada arraylist será un CAMPO con LOS PUERTOS(toPort,precision,tipo,escala, NAME)
+										tablaComparacionCampos.add(new ArrayList<String>());
+										tablaComparacionCampos.get(ContadorComprobaciones).add(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts());
+										//metemos el dato y en comprobacion feature meteremos todos los demas campos al hacerl as comprobaciones 
+										ComprobacionFeatures(InstanciaPartida,indiceObjeto,indiceCampoDeLaInstanciaPartida,tablaComparacionCampos,ContadorComprobaciones,posicionTransformacion);
+										ContadorComprobaciones++;//sumamos uno al contador del arraylist general para que al siguiente paso del bucle se cree otro ARRAYLIST PARA OTRO CAMPO
+									}
+								}
+							} //RECORREMOS TODOS LOS CAMPOS Y VAMOS CREANDO ARRAYLIST CON LOS PUERTOS DE CADA CAMPO 
+
+							
+							//CASO DE EXPRESION O JNR
+							else if(NombreAComprobar.contains("exp") || NombreAComprobar.contains("jnr")){	
+								for(int indiceCampoDeLaInstanciaPartida=0; indiceCampoDeLaInstanciaPartida<listaInstancia.get(InstanciaPartida).getCampos().size();indiceCampoDeLaInstanciaPartida++){
+									campoCorrecto=false;
+									//en la primera parte comparamos los campos en la siguiente los puertos y en la tercera el añadido de un nuevo campo (solo en las expresiones, xq es por si hemos creado un nuevo campo)
+
+									//1º PARTE
+									for(int indiceCampoDeLaInstanciaDestino=0; indiceCampoDeLaInstanciaDestino<listaInstancia.get(InstanciaDestino).getCampos().size() && !puertoCorrecto; indiceCampoDeLaInstanciaDestino++){
+										//aqui recorremos los campos de la instacia DE LLEGADA 
+										//HABRA QUE TENER EN CUENTA COMO HACIA EN PHP QUE ALOMEJOR PETA PORQUE AUNQUE SE SALGA DEL IF INTENTA PILLAR EL TOPORT Y NO EXISTE Y HABRA QUE METER UN IF PREVIO
+										if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts()!=null && listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId()==listaInstancia.get(InstanciaDestino).getCampos().get(indiceCampoDeLaInstanciaDestino).getFromPorts()&&listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts()==listaInstancia.get(InstanciaDestino).getCampos().get(indiceCampoDeLaInstanciaDestino).getId())
+											campoCorrecto=true; 
+										//ESTE IF NO DEBERIA FALLAR NUNCA
+									}
+
+									//NO DEBERIA ENTRAR NUNCA
+									if(!campoCorrecto)
+										System.out.println("El id " + listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId()+ " de la instancia de partida no se encuentra en la de destino");
+
+									//2º PARTE
+									boolean NuevoCampoo=true;//solo es util para la tercera parte SOLO DE EXP
+									for(int posicionArrayCampos=0; posicionArrayCampos<tablaComparacionCampos.size();posicionArrayCampos++){							
+										//COMPARAS EL ID CON EL TO_PORT DEL ANTERIOR
+										if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId()==tablaComparacionCampos.get(posicionArrayCampos).get(0)){																							
+											ComprobacionCampos(InstanciaPartida,indiceCampoDeLaInstanciaPartida,tablaComparacionCampos,posicionArrayCampos,posicionTransformacion);
+											NuevoCampoo=false;//solo es util para la tercera parte SOLO DE EXP
+										}
+									}
+									//3º PARTE SOLO PARA LAS EXCEPCIONES Y PORQUE SIGNIFICA QUE VA A SER UN CAMPO NUEVO					
+									if(NombreAComprobar.contains("exp") && NuevoCampoo && listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts()!=null){													
+										int longitud=tablaComparacionCampos.size();
+										tablaComparacionCampos.add(new ArrayList<String>());						
+										tablaComparacionCampos.get(longitud).add(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts());
+
+										for(int t=0; t<listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().size();t++){														
+											if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getTransformationField()==listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getId()){
+												tablaComparacionCampos.get(longitud).add(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getPrecision());
+												tablaComparacionCampos.get(longitud).add(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getType());
+												tablaComparacionCampos.get(longitud).add(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getEscala());		
+												tablaComparacionCampos.get(longitud).add(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getName());	
+											}			
+										}																										
+									}	
+								}
 							}
-								
-								if(!puertoCorrecto)
-									System.out.println("los puertos blablabla son incorrectos");
-								
-								
-						}//*************************COMPROBACION DE PUERTOS Y FEATURES************************					
-								
 
-						
-						
-						
+							//CASO DE ESCRITURA
+							else if(NombreAComprobar.contains("Escritura")) {
+								escritura=true;
 
-						//SI LLEGAMOS AQUI SIGNIFICA QUE HEMOS TERMINADO DE RECORRER LOS PUERTOS DE LA INSTANCIA DE PARTIDA Y COMPARARLO TANTO ELLOS COMO LOS STRUCTURAL FEATURE CON SUS CORRESPONDIENTES CAMPOS
-						//Guardamos en name de la siguiente instancia en NombreAComprobar comprobando si hemos llegado a escritura y cambiamos el valor de la instancia partida que es la actual instancia siguiente
-						NombreAComprobar=listaInstancia.get(instanciaDestino).getName();//aqui guardamos el nombre de la siguiente instancia en el nombre a comprobar
-						instanciaPartida=instanciaDestino;
+								if(listaInstancia.get(indiceInstancia).getName().contains(listaObjetos.get(indiceObjeto).getName()))						 
+									//en la instancia estan solo los q se han conectado, en el objeto todos.
+									
+									if(listaInstancia.get(InstanciaPartida).getCampos().size()!=listaObjetos.get(indiceObjeto).getCampos().size())
+										System.out.println("Algun campo de la tabla de escritura esta sin flechita tronco");
 
-					}//SIGNIFICA QUE HEMOS LLEGADO AL OBJETO DE ESCRITURA Y POR TANTO HEMOS ACABADO no entramos al while deberiamos de hacer un if y comprobar el structural feature
-					if(NombreAComprobar.contains("Escritura")){
-						for(int indiceCampoDeLaInstanciaPartida=0; indiceCampoDeLaInstanciaPartida<listaInstancia.get(instanciaPartida).getCampos().size();indiceCampoDeLaInstanciaPartida++){
-							ComprobacionFeatures(instanciaPartida,indiceObjeto,indiceInstancia,indiceCampoDeLaInstanciaPartida);
+									else{ //cuando has llegado aqui y aun no estas en el objeto de  escritura, sino que solo estas en la instancia escritura
+
+										//Compruebas del campo de su instancia (sus puertos) con los puertos del campo de su propio objeto (INNECESARIO)
+										for(int indiceCampoDeLaInstanciaPartida=0; indiceCampoDeLaInstanciaPartida<listaInstancia.get(InstanciaPartida).getCampos().size();indiceCampoDeLaInstanciaPartida++)
+											ComprobacionFeatures(InstanciaPartida,indiceObjeto,indiceCampoDeLaInstanciaPartida,tablaComparacionCampos,0,posicionTransformacion);
+
+										//COMPRUEBAS LOS CAMPOS CON LO DE LA TRANSFORMACION ANTERIOR
+										for(int indiceCampoDeLaInstanciaPartida=0; indiceCampoDeLaInstanciaPartida<listaInstancia.get(InstanciaPartida).getCampos().size();indiceCampoDeLaInstanciaPartida++){
+											for(int posicionArrayCampos=0; posicionArrayCampos<tablaComparacionCampos.size();posicionArrayCampos++){							
+												if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId()==tablaComparacionCampos.get(posicionArrayCampos).get(0))																					
+													ComprobacionCampos(InstanciaPartida,indiceCampoDeLaInstanciaPartida,tablaComparacionCampos,posicionArrayCampos,posicionTransformacion);
+											}
+										}
+									}
+
+								NombreAComprobar="FINAL";
+							}
+
+							//SI LLEGAMOS AQUI SIGNIFICA QUE HEMOS TERMINADO DE RECORRER LOS PUERTOS DE LA INSTANCIA DE PARTIDA Y COMPARARLO TANTO ELLOS COMO LOS STRUCTURAL FEATURE CON SUS CORRESPONDIENTES CAMPOS
+							//Guardamos en name de la siguiente instancia en NombreAComprobar comprobando si hemos llegado a escritura y cambiamos el valor de la instancia partida que es la actual instancia siguiente
+							if(!escritura) {
+								NombreAComprobar=listaInstancia.get(InstanciaDestino).getName();//aqui guardamos el nombre de la siguiente instancia en el nombre a comprobar
+								InstanciaPartida=InstanciaDestino;
+							}
+						}				
+					}					
+				}
+			}
+		}
+	}
+	
+	private boolean comprobacionesParaLosPuertosTransformacionesObjetos(int posicionTransformacion, int posicionCampoTransformacion, int InstanciaPartida, int posicionCampoObjeto){
+		if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getType().contains("decimal"))
+			return listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getPrecision()==listaObjetos.get(InstanciaPartida).getCampos().get(posicionCampoObjeto).getPrecision()&&listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getType()==listaObjetos.get(InstanciaPartida).getCampos().get(posicionCampoObjeto).getType()&&listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getEscala()==listaObjetos.get(InstanciaPartida).getCampos().get(posicionCampoObjeto).getEscala();
+		else
+			return listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getPrecision()==listaObjetos.get(InstanciaPartida).getCampos().get(posicionCampoObjeto).getPrecision()&&listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getType()==listaObjetos.get(InstanciaPartida).getCampos().get(posicionCampoObjeto).getType();
+	}
+	
+	
+	//ESTE METODO DEBERIA IR SIEMPRE BIEN YA QUE ESTAS COMPROBANDO LOS CAMPOS DEL OBJETO CON SU PROPIA TRANSFORMACION
+	public void ComprobacionFeatures(int InstanciaPartida,int indiceObjeto,int indiceCampoDeLaInstanciaPartida, ArrayList<ArrayList<String>> tablaComparacionCampos,int ContadorComprobaciones, int posicionTransformacion){
+		//comprobamos si el nombre de la transformacion concuerda con el del objeto
+		boolean campoEncontrado=false;
+		boolean campoCorrecto=false;
+		int posicionCampoTransformacion;
+
+		//En este bucle recorres todos los campos de la transformacion en cuestion
+		for(int t=0; t<listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().size() && !campoEncontrado;t++){
+			campoCorrecto=false;
+			//SIEMPRE DEBERIA ENTRAR EN ESTE IF XQ UN OBJETO SIEMPRE DEBERIA TENER SU PROPIA TRANSFORMACION
+			if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getStructural_feature()==listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getFeature()){
+				//SI LLEGAMOS AQUI SIGNIFICA QUE HAY RELACION ENTRE LA INSTANCIA Y LA TRANSFORMACION
+				campoEncontrado=true;
+				posicionCampoTransformacion = t;
+				//ahora deberemos comparar column, nombre,precision y tipo con el objeto para terminar de dar la vuelta a las comprobaciones
+					for(int posicionCampoObjeto=0; posicionCampoObjeto<listaObjetos.get(indiceObjeto).getCampos().size();posicionCampoObjeto++){ //RECORRES TODOS LOS CAMPOS DEL OBJETO
+						//debemos compararlo con las columna del objeto donde estamos NO DE OTROS OBJETOS
+						if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getColumna()==listaObjetos.get(InstanciaPartida).getCampos().get(posicionCampoObjeto).getId() && comprobacionesParaLosPuertosTransformacionesObjetos(posicionTransformacion,posicionCampoTransformacion,InstanciaPartida,posicionCampoObjeto)){
+							//Aqui comprobamos si tanto la columna,nombre,precision,tipo, nullable y scala coinciden con el objeto 
+							//ATENCION CON LA ESCALA QUE HABRA QUE COMPROBAR QUE NO SEA NULL
+							campoCorrecto=true;
+							if(!listaTransformaciones.get(indiceObjeto).getNombre().contains("Escritura") && campoCorrecto){
+								//una vez que se han comrpboado los campos y estan correctos y la instancia no es de escritura metermos los campos de precision tipo y escala en el arraylist dentro del array list (consultar dibujo para dudas)
+								tablaComparacionCampos.get(ContadorComprobaciones).add(listaObjetos.get(InstanciaPartida).getCampos().get(posicionCampoObjeto).getPrecision());
+								tablaComparacionCampos.get(ContadorComprobaciones).add(listaObjetos.get(InstanciaPartida).getCampos().get(posicionCampoObjeto).getType());
+								
+								if(listaObjetos.get(InstanciaPartida).getCampos().get(posicionCampoObjeto).getType().contains("decimal"))
+									tablaComparacionCampos.get(ContadorComprobaciones).add(listaObjetos.get(InstanciaPartida).getCampos().get(posicionCampoObjeto).getEscala());
+								
+								tablaComparacionCampos.get(ContadorComprobaciones).add(listaObjetos.get(InstanciaPartida).getCampos().get(posicionCampoObjeto).getName());
+							}
 						}
 					}
-				}
-				else{
-					//SI NUNCA ENCUENTRA NADA SIGNIFICA QUE HAY UN PROBLEMA *PONER BANDERA* debera entrar una vez al menos en el if
-				}				
-			}					
-		}
-
-	}
-
-	//SE HA HECHO ESTE METODO YA QUE LOS FEATURES SOLO SE TIENEN QUE HACER SI ES LECTURA O ESCRITURA	
-
-public void ComprobacionFeatures(int InstanciaPartida,int indiceObjeto,int indiceInstancia,int indiceCampoDeLaInstanciaPartida){
-		//comprobamos si el nombre de la transformacion concuerda con el del objeto
-		int posicionTransformacion = 0;
-		boolean campoEncontrado=false;
-		boolean transformacionEncontrada=false;
-		boolean campoCorrecto=false;
-		boolean falloCampo=false;
-		int posicionFalloCampo;
-		int posicionCampoTransformacion=0;
-
-		for(int t=0; t<listaTransformaciones.size() && !transformacionEncontrada; t++){
-			if(listaTransformaciones.get(t).getNombre().contains(listaObjetos.get(indiceObjeto).getName())){
-				posicionTransformacion=t;//cojemos la posicion de la transformacion en la lista de transformaciones
-			}
-		} //DE ESTA MANERA YA TENEMOS A QUE TRANSFORMACION NOS REFERIMOS
-
-		if(transformacionEncontrada){
-			//RECORREMOS LOS CAMPOS DE DICHA TRANSFORMACION
-			for(int t=0; t<listaTransformaciones.get(posicionTransformacion).getCampos().size() && !campoEncontrado;t++){
-				if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getStructural_feature()==listaTransformaciones.get(posicionTransformacion).getCampos().get(t).getFeature()){
-					campoEncontrado=true;
-					posicionCampoTransformacion = t;
-				}
-			}	
-			
-			//ahora deberemos comparar column,nombre,precision y tipo con el objeto para terminar de dar la vuelta a las comprobaciones
-			if(campoEncontrado){
-				//debemos compararlo con las columna del objeto donde estamos NO DE OTROS OBJETOS
-				for(int posicionCampoObjeto=0; posicionCampoObjeto<listaObjetos.get(indiceObjeto).getCampos().size() && !falloCampo;posicionCampoObjeto++)
-					if(listaTransformaciones.get(posicionTransformacion).getCampos().get(posicionCampoTransformacion).getColumna()==listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getId() && listaTransformaciones.get(posicionTransformacion).getCampos().get(posicionCampoTransformacion).getPrecision()==listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getPrecision() && listaTransformaciones.get(posicionTransformacion).getCampos().get(posicionCampoTransformacion).getType() == listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getType() && listaTransformaciones.get(posicionTransformacion).getCampos().get(posicionCampoTransformacion).getEscala()==listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getEscala()){
-					//Aqui comprobamos si tanto la columna,nombre,precision,tipo, nullable y scala coinciden con el objeto 
-					campoCorrecto=true;
-					falloCampo=true;
-					posicionFalloCampo=posicionCampoObjeto;
-					} //MIRAR SI LOS CAMPOS DE LAS TRANSFORMACIONES VAN EN EL MISMO ORDEN QE LOS CAMPOS DEL OBJETO. LA RESPUESTA ES Q SI
-			}
-			else
-				System.out.println("CAMPO EN CUESTION NO ENCONTRADO EN LA TRANSFORMACION");
-		}
-		else
-			System.out.println("TRANSFORMACION EN CUESTION NO ENCONTRADA");
-		
-
-		if(!campoCorrecto)
-			System.out.println("Algun campo no concuerda del colum cuyo id es: " + listaTransformaciones.get(posicionTransformacion).getCampos().get(posicionCampoTransformacion).getColumna() + " y cuyo name es " + listaTransformaciones.get(posicionTransformacion).getCampos().get(posicionCampoTransformacion).getName());
-}
-
-		
-	//AQUI ESTA LA EXPLICACION DE LO QUE SE ESTA HACIENDO ARRIBA
-		
-		//while(it.hasNext()){
-			/*if(el campo -ref- de cada objeto es true){
-				*Cogemos el campo id y deberemos buscar ese campo en TODO el archivo, deberá de devolver true al encontrar algo
 				
-			}else{
-					"si es false el campo -ref-"
-					*Entonces cogemos el name y debemos buscar que nombre de las instancias CONTIENE ese nombre porque tendra "Lectura_" y no sera exactamente igual
-						
-			while(el nombre del siguiente objeto al compararlo con el name la instancia es diferente a escritura){ "tenemos que llegar a compararlo con la instancia porque ahi reside si es de lectura o escritura en ese caso no haremos la movida de avanzar de instancias porque es la ultima:)"
-				++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-				*Ahora tenemos que coger el -toInstance- a través del -fromInstance- que is el mismo al id o directamente cogiendo el toInstance de esa instancia
-					*el -strcturalFeature- lo tendremos que tener en cuenta para compararlo con el -feature- de los relational Field y comparar (nombre,precision,tipo y la columna del objeto del que veniamos de primeras)		
-						*El -structuralFeatre- lo cmprobamos con el -feature- de los realtionalField y de ahí cogemos nombre,precision,tipo...) 
-						*Lo tendremos que comparar con otras relational field el JoinerField (tantas veces como transformaciones haya en los joiner hay varios) con el column (tantas veces como objetos)
-							*Para comprobarlo con el column tendremos que partir del feature del realtionalfield y coger el column (hay que comprobar si su id corresponde al del bojeto y toda la vaina del nombre,precision,tipo...
-					
-					SI ESTA TODO BIEN PARTIMOS A COGER LOS PUERTOS COMPARARLO CON LA SIGUIENTE INSTANCIA Y PASAR  
-				*Tendremos que coger el -toPorts- y el -id- para compararlo con el -id- y el -fromPort- respectivamente de la siguiente instancia		
-					*Una vez que tenemos el -toInstance- tendremos que buscar que id de las instancias es igual y comparar los -id- y -fromPort- 
-					*Si todo esta correcto pasaremos a la siguiente instancia 
-					
-					*HABRA QUE TENER EN CUENTA SI ES UNA EXPRESION O UN JOIN PORQUE SI ES UN JOIN SEGUIREMOS HACIA ADELANTE Y NO HACIA EL LADO
-					
-					SI ES JOIN
-					*Lo primero será comprobar  las -transformationField- de la tabla que vengamos con el -id- del JoinerField y comparar todo nombre...
-					* Si es un join solamente habra que comparar los toPorts ya que los fromPort e id de una de las dos tablas ya se ha comprobado lo unico que habrá fromPort e Id por comprobar que se harán al ir desde el siguiente objeto
-					* cogeremos el toInstance compararemos que id pertenece esa instancia y lo mismo comparareos toport e id
-					* Si hemos llegado a la tabla de escritura ya no cambiaremos de instancia pero tenemos que mirar el -structuralfeature- como siempre que es el feature de ahi los campos y el column y los campos
-					
-					ELSE SI ES EXPRRESION
-					*Lo primero será comprobar  las -transformationField- de la tabla que vengamos con el -id- del JoinerField y comparar todo nombre...
-					* Hay que comprobar si tiene fromPort y toPort (si es asi el campo viene del anterior y continua) si solo tiene From(viene del anerior pero luego se creara una nueva variable) y to(es una variable creada nueva)
-						1:los que tengan ambos: habrá que comprobar el toPort que sea el fromPort del siguiente, el fromPort ya se ha comprobado que era el id del anterior y el id es el toPort del anterior (comprobado) y el from del siguiente (hay que comprobarlo)
-						2:los que tengan solo toPort será el id del siguiente (hay que comprobar) y el id el fromPort del siguiente (comprobar)
-						3:los que tengan solo fromPort son campos que ya no siguen no hay que comprobar nada ya que se ha comprobado al pasar de la anterior instancia a esta
-					*Comprobaremos los puertos necesarios con la siguiente tabla haciendo referencia al toInstance=id de la siguiente instancia	
-					
-					ELSE SI LLEGAMOS A LA TABLA DE ESCRITURA IREMOS AL SIGUIENTE OBJETO PARA HACER LA PASADA PERTINENTE 
-					if(el nombre de la instancia que hemos accedido por id sea igual a escritura){
-						
-						*Tendremos que leer el siguiente objeto y siemrpe que sea de lectura tendremos que leer el nombre del objeto y compararlo con el nombre de la instancia de ahi si es lectura saldremos del bucle
-						*El estilo es el mismo que antes hasta que lleguemos a la tabla de escritura y volvamos a buscar otro objeto. Si los objetos se acaban hemos acabado las validaciones
-					}
-					
-					
-				}	
-					
+				//NO DEBERIA ENTRAR NUNCA
+				if(!campoCorrecto)
+					System.out.println("Algun campo no concuerda del colum cuyo id es: " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getColumna() + " y cuyo name es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getName());				
 			}
+		}
+	}
+	
+	public void ComprobacionCampos(int InstanciaPartida,int indiceCampoDeLaInstanciaPartida, ArrayList<ArrayList<String>> tablaComparacionCampos,int posicionArrayCampos,int posicionTransformacion){
+		boolean campoCorrecto=false;
+		for(int t=0; t<listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().size();t++){
+			if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getTransformationField()==listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getId())
+				if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getPrecision()==tablaComparacionCampos.get(posicionArrayCampos).get(1)&&listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getType()==tablaComparacionCampos.get(posicionArrayCampos).get(2)&&listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getEscala()==tablaComparacionCampos.get(posicionArrayCampos).get(3))
+					//COMPROBAMOS LOS CAMPOS DE LA INSTANCIA A LOS DEL ARRAYlIST QUE SON LOS DE LA ISNTANCIA ANTERIOR 
+					campoCorrecto=true;//Los CAMPOS ESTAN CORRECTOS		
+		}
+		if(!campoCorrecto)
+			System.out.println("La has cagado en el campo" + tablaComparacionCampos.get(posicionArrayCampos).get(4));
+		
+		if(campoCorrecto){
+			//si el campo esta ok, pasamos a actualizar el arraylist y ahora tendra un nuevo toPort este campo en el caso de las transformaciones.
+			
+			
+			
+			
+			//******************************ESTO SOLO SI ES EXPRESION******************************
+			//ACTUALIZAMOS EL TOPORTS
+			if(listaTransformaciones.get(posicionTransformacion).getNombre().contains("exp") && listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts()!=null)
+					tablaComparacionCampos.get(posicionArrayCampos).set(0,listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts());	
+			
+			//Esto será cuando un campo deje de tener toPorts, es decir ya no continuará
+			else if(listaTransformaciones.get(posicionTransformacion).getNombre().contains("exp") && listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts()==null)
+				tablaComparacionCampos.remove(posicionArrayCampos);
+	
+			//******************************ESTO SOLO SI ES EXPRESION******************************
 			
 			
 			
 			
 			
-		}*/
+			
+			//******************************ESTO SOLO SI ES JOIN******************************
+			if(listaTransformaciones.get(posicionTransformacion).getNombre().contains("jnr")){
+				//TENDREMOS QUE UTILIZAR EL NOMBRE		
+				//hay que ver si el nombre de la transformacion de salida del join su id tiene un transformation field que significa que la variable continua a la siguiente instancia y debemos meterla en el array
+				for(int t=0; t<listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().size();t++){
+					if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getName().contains(tablaComparacionCampos.get(posicionArrayCampos).get(4))){
+						
+						for(int r=0; r<listaInstancia.get(InstanciaPartida).getCampos().size();r++){
+							//ACTUALIZAMOS EL TOPORT
+							if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getId()==listaInstancia.get(InstanciaPartida).getCampos().get(r).getTransformationField())														
+								tablaComparacionCampos.get(posicionArrayCampos).set(0,listaInstancia.get(InstanciaPartida).getCampos().get(r).getToPorts());						
+							else //BORRAMOS ESTE CAMPO DEL ARRAYLIST
+								tablaComparacionCampos.remove(posicionArrayCampos);
+							
+						}			
+					}
+				}	
+			}
+		}
+		//******************************ESTO SOLO SI ES JOIN******************************
+		
+		
+	}
 }
