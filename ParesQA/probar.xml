@@ -763,7 +763,6 @@
 <TransformationFieldPort imx:id="ID_761" xsi:type="mapping:TransformationFieldPort" instance="U:gLR23TEIEei1gR4yjrCWWA" transformationField="U:gLR25TEIEei1gR4yjrCWWA">
 <children>
 <NestedPort imx:id="ID_674" xsi:type="mapping:NestedPort" fromPort="ID_501" parent="ID_761" structuralFeature="U:gLR26DEIEei1gR4yjrCWWA"/>
-
 <NestedPort imx:id="ID_684" xsi:type="mapping:NestedPort" fromPort="ID_525" parent="ID_761" structuralFeature="U:gLR29DEIEei1gR4yjrCWWA"/>
 <NestedPort imx:id="ID_685" xsi:type="mapping:NestedPort" fromPort="ID_527" parent="ID_761" structuralFeature="U:gLR29TEIEei1gR4yjrCWWA"/>
 <NestedPort imx:id="ID_688" xsi:type="mapping:NestedPort" fromPort="ID_533" parent="ID_761" structuralFeature="U:gLR2-DEIEei1gR4yjrCWWA"/>
@@ -1875,7 +1874,7 @@
 <ownedCapabilityTypes>
 <ComplexType imx:id="U:gLR25zEIEei1gR4yjrCWWA" xsi:type="typelibrary:ComplexType" name="arcco_rendimientos_detalle_aux">
 <features>
-<StructuralFeature imx:id="U:gLR26DEIEei1gR4yjrCWWA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="fecha_operacion" nullable="true" precision="10" upper="1"/>
+<StructuralFeature imx:id="U:gLR26DEIEei1gR4yjrCWWA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="fecha_operacion" nullable="true" precision="5000" upper="1"/>
 <StructuralFeature imx:id="U:mXhniDEREei1gR4yjrCWWA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idempr" nullable="true" precision="4" upper="1"/>
 <StructuralFeature imx:id="U:mXhniTEREei1gR4yjrCWWA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idcent" nullable="true" precision="4" upper="1"/>
 <StructuralFeature imx:id="U:mXhnijEREei1gR4yjrCWWA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idprod" nullable="true" precision="3" upper="1"/>

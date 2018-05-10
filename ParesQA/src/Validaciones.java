@@ -71,10 +71,8 @@ public class Validaciones {
 	
 	public void ValidacionesPuertos(){
 
-		boolean cambiado=false;
 		boolean toPortsEsNull=false;
 		boolean transformacionEncontrada=false;
-		boolean puertoCorrecto = false;
 		boolean encontradoDataRecords=false;
 		boolean instanciaEncontrada=false;
 		boolean tipo_idRef[]= new boolean[2];	
@@ -187,17 +185,17 @@ public class Validaciones {
 											campoCorrecto=true;
 									}
 
-									if(!campoCorrecto)
-										System.out.println("El id " + listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId()+ " de la instancia de partida no se encuentra EN LA INSTANCIA DESTINO");
+									//if(!campoCorrecto)
+										//System.out.println("El id " + listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId()+ " de la instancia de partida no se encuentra EN LA INSTANCIA DESTINO");
 
-									else{
+									//else{
 										//creamos un nuevo arraylista dentro del ya existente cada arraylist será un CAMPO con LOS PUERTOS(toPort,precision,tipo,escala, NAME)
 										tablaComparacionCampos.add(new ArrayList<String>());
 										tablaComparacionCampos.get(ContadorComprobaciones).add(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts());
 										//metemos el dato y en comprobacion feature meteremos todos los demas campos al hacerl as comprobaciones 
 										ComprobacionFeatures(InstanciaPartida,indiceObjeto,indiceCampoDeLaInstanciaPartida,tablaComparacionCampos,ContadorComprobaciones,posicionTransformacion);
 										ContadorComprobaciones++;//sumamos uno al contador del arraylist general para que al siguiente paso del bucle se cree otro ARRAYLIST PARA OTRO CAMPO
-									}
+									//}
 								}
 							} //RECORREMOS TODOS LOS CAMPOS Y VAMOS CREANDO ARRAYLIST CON LOS PUERTOS DE CADA CAMPO 
 
@@ -223,8 +221,8 @@ public class Validaciones {
 									}
 
 									//Deberia entrar en los campos que no te lleves a la instancia destino.
-									if(!campoCorrecto)
-										System.out.println("El id " + listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId()+ " de la instancia de partida no se encuentra en la de destino");
+									//if(!campoCorrecto)
+										//System.out.println("El id " + listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId()+ " de la instancia de partida no se encuentra en la de destino");
 
 									//2º PARTE
 									boolean NuevoCampoo=true;//solo es util para la tercera parte SOLO DE EXP
@@ -232,12 +230,14 @@ public class Validaciones {
 										//COMPARAS EL ID CON EL TO_PORT DEL ANTERIOR
 										if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId().equals(tablaComparacionCampos.get(posicionArrayCampos).get(0)) && !comprobado){																							
 											if(NombreAComprobar.contains("jnr")) {
-												ComprobacionCamposJoinUnion(InstanciaPartida, indiceCampoDeLaInstanciaPartida, tablaComparacionCampos, posicionArrayCampos, posicionTransformacion);
+												if(tablaComparacionCampos.get(posicionArrayCampos).size() > 1)
+													ComprobacionCamposJoinUnion(InstanciaPartida, indiceCampoDeLaInstanciaPartida, tablaComparacionCampos, posicionArrayCampos, posicionTransformacion);
 												NuevoCampoo=false;//solo es util para la tercera parte SOLO DE EXP
 												comprobado=true;
 											}
 											else if(NombreAComprobar.contains("exp"))
-												NuevoCampoo=ComprobacionCamposExpresionFiltro(InstanciaPartida, indiceCampoDeLaInstanciaPartida, tablaComparacionCampos, posicionArrayCampos, posicionTransformacion);
+												if(tablaComparacionCampos.size() > 1)
+													NuevoCampoo=ComprobacionCamposExpresionFiltro(InstanciaPartida, indiceCampoDeLaInstanciaPartida, tablaComparacionCampos, posicionArrayCampos, posicionTransformacion);
 
 										}
 									}
@@ -267,30 +267,36 @@ public class Validaciones {
 							else if(NombreAComprobar.contains("Escritura")) {
 								escritura=true;
 
-								//en la instancia estan solo los q se han conectado, en el objeto todos.
-								if(listaInstancia.get(InstanciaPartida).getName().contains(listaObjetos.get(indiceObjeto).getName())){
+								
+								
+								if(listaInstancia.get(InstanciaPartida).getCampos().size() != listaObjetos.get(indiceObjeto).getCampos().size() && indiceObjeto == listaObjetos.size()-1){
+									System.out.println("Algun campo de la tabla de escritura esta sin flechita tronco");
+									NombreAComprobar="FINAL";
+								}
 
-									if(listaInstancia.get(InstanciaPartida).getCampos().size() != listaObjetos.get(indiceObjeto).getCampos().size())
-										System.out.println("Algun campo de la tabla de escritura esta sin flechita tronco");
+								
+								else {
 
-									else{ //cuando has llegado aqui y aun no estas en el objeto de  escritura, sino que solo estas en la instancia escritura
+									//en la instancia estan solo los q se han conectado, en el objeto todos.
+									if(!listaInstancia.get(InstanciaPartida).getName().contains(listaObjetos.get(indiceObjeto).getName())){
 
 										//Compruebas del campo de su instancia (sus puertos) con los puertos del campo de su propio objeto (INNECESARIO)
 										for(int indiceCampoDeLaInstanciaPartida=0; indiceCampoDeLaInstanciaPartida<listaInstancia.get(InstanciaPartida).getCampos().size();indiceCampoDeLaInstanciaPartida++)
 											ComprobacionFeatures(InstanciaPartida,indiceObjeto,indiceCampoDeLaInstanciaPartida,tablaComparacionCampos,0,posicionTransformacion);
+
 									}
-								}
-								
-								//COMPRUEBAS LOS CAMPOS CON LO DE LA TRANSFORMACION ANTERIOR
-								for(int indiceCampoDeLaInstanciaPartida=0; indiceCampoDeLaInstanciaPartida<listaInstancia.get(InstanciaPartida).getCampos().size();indiceCampoDeLaInstanciaPartida++){
-									for(int posicionArrayCampos=0; posicionArrayCampos<tablaComparacionCampos.size();posicionArrayCampos++){							
-										if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId()==tablaComparacionCampos.get(posicionArrayCampos).get(0))																					
-											ComprobacionCamposExpresionFiltro(InstanciaPartida,indiceCampoDeLaInstanciaPartida,tablaComparacionCampos,posicionArrayCampos,posicionTransformacion);
+
+									//COMPRUEBAS LOS CAMPOS CON LO DE LA TRANSFORMACION ANTERIOR
+									for(int indiceCampoDeLaInstanciaPartida=0; indiceCampoDeLaInstanciaPartida<listaInstancia.get(InstanciaPartida).getCampos().size();indiceCampoDeLaInstanciaPartida++){
+										for(int posicionArrayCampos=0; posicionArrayCampos<tablaComparacionCampos.size();posicionArrayCampos++){							
+											if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId()==tablaComparacionCampos.get(posicionArrayCampos).get(0))																					
+												ComprobacionCamposExpresionFiltro(InstanciaPartida,indiceCampoDeLaInstanciaPartida,tablaComparacionCampos,posicionArrayCampos,posicionTransformacion);
+										}
 									}
+									NombreAComprobar="FINAL";
 								}
-								NombreAComprobar="FINAL";
 							}
-							
+
 							
 
 							//SI LLEGAMOS AQUI SIGNIFICA QUE HEMOS TERMINADO DE RECORRER LOS PUERTOS DE LA INSTANCIA DE PARTIDA Y COMPARARLO TANTO ELLOS COMO LOS STRUCTURAL FEATURE CON SUS CORRESPONDIENTES CAMPOS
@@ -307,10 +313,13 @@ public class Validaciones {
 	}
 	
 	private boolean comprobacionesParaLosPuertosTransformacionesObjetos(int posicionTransformacion, int posicionCampoTransformacion, int indiceObjeto, int posicionCampoObjeto){
-		if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getType().contains("decimal"))
-			return listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getPrecision().equals(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getPrecision())&&listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getType().equals(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getType())&&listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getEscala().equals(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getEscala());
-		else
-			return listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getPrecision().equals(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getPrecision())&&listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getType().equals(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getType());
+		if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getType() !=null ) {
+			if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getType().contains("decimal"))
+				return listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getPrecision().equals(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getPrecision())&&listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getType().equals(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getType())&&listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getEscala().equals(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getEscala());
+			else
+				return listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getPrecision().equals(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getPrecision())&&listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getType().equals(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getType());
+		}
+		else return true; //para los campos que solo tengan feature, id, y el otro campo
 	}
 	
 	
@@ -318,7 +327,6 @@ public class Validaciones {
 	public void ComprobacionFeatures(int InstanciaPartida,int indiceObjeto,int indiceCampoDeLaInstanciaPartida, ArrayList<ArrayList<String>> tablaComparacionCampos,int ContadorComprobaciones, int posicionTransformacion){
 		//comprobamos si el nombre de la transformacion concuerda con el del objeto
 		boolean campoComprobado=false;
-		boolean campoEncontrado=false;
 		boolean campoCorrecto=false;
 		int posicionCampoTransformacion;
 
@@ -332,12 +340,13 @@ public class Validaciones {
 				//ahora deberemos comparar column, nombre,precision y tipo con el objeto para terminar de dar la vuelta a las comprobaciones
 					for(int posicionCampoObjeto=0; posicionCampoObjeto<listaObjetos.get(indiceObjeto).getCampos().size() && !campoComprobado;posicionCampoObjeto++){ //RECORRES TODOS LOS CAMPOS DEL OBJETO
 						//debemos compararlo con las columna del objeto donde estamos NO DE OTROS OBJETOS
-						if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getColumna().equals(listaObjetos.get(InstanciaPartida).getCampos().get(posicionCampoObjeto).getId()) && comprobacionesParaLosPuertosTransformacionesObjetos(posicionTransformacion,posicionCampoTransformacion,indiceObjeto,posicionCampoObjeto)){
+						if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getColumna().equals(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getId()) && comprobacionesParaLosPuertosTransformacionesObjetos(posicionTransformacion,posicionCampoTransformacion,indiceObjeto,posicionCampoObjeto)){
 							//Aqui comprobamos si tanto la columna,nombre,precision,tipo, nullable y scala coinciden con el objeto 
 							//ATENCION CON LA ESCALA QUE HABRA QUE COMPROBAR QUE NO SEA NULL
 							campoCorrecto=true;
 							if(!listaTransformaciones.get(indiceObjeto).getNombre().contains("Escritura") && campoCorrecto){
 								//una vez que se han comrpboado los campos y estan correctos y la instancia no es de escritura metermos los campos de precision tipo y escala en el arraylist dentro del array list (consultar dibujo para dudas)
+								
 								tablaComparacionCampos.get(ContadorComprobaciones).add(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getPrecision());
 								tablaComparacionCampos.get(ContadorComprobaciones).add(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getType());
 								
@@ -347,12 +356,13 @@ public class Validaciones {
 								tablaComparacionCampos.get(ContadorComprobaciones).add(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getName());
 							}
 							campoComprobado=true;
+							
 						}
 					}
 				
 				//NO DEBERIA ENTRAR NUNCA
-				if(!campoCorrecto)
-					System.out.println("Algun campo no concuerda del colum cuyo id es: " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getColumna() + " y cuyo name es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getName());				
+				//if(!campoCorrecto)
+					//System.out.println("Algun campo no concuerda del colum cuyo id es: " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getColumna() + " y cuyo name es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getName());				
 			}
 		}
 	}
@@ -452,12 +462,12 @@ public class Validaciones {
 			else if(t<=listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().size()-1){
 				if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getTransformationField().equals(listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(t).getId())) {
 					if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(t).getType().contains("decimal") && listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(t).getEscala()!=null ) {
-						if((listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(t).getPrecision().equals(tablaComparacionCampos.get(posicionArrayCampos).get(1)) && (listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(t).getType().equals(tablaComparacionCampos.get(posicionArrayCampos).get(2)) /*&& (listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(t).getEscala().equals(tablaComparacionCampos.get(posicionArrayCampos).get(3)))*/)))
+						if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getTransformationField().equals(listaTransformaciones.get(posicionTransformacion).getCamposTransformacionPrincipal().get(t).getId()) || listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getTransformationField().equals(listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(t).getId())                   && (listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(t).getPrecision().equals(tablaComparacionCampos.get(posicionArrayCampos).get(1)) && (listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(t).getType().equals(tablaComparacionCampos.get(posicionArrayCampos).get(2)) /*&& (listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(t).getEscala().equals(tablaComparacionCampos.get(posicionArrayCampos).get(3)))*/)))
 							//COMPROBAMOS LOS CAMPOS DE LA INSTANCIA A LOS DEL ARRAYlIST QUE SON LOS DE LA ISNTANCIA ANTERIOR 
 							campoCorrecto=true;//Los CAMPOS ESTAN CORRECTOS		
 						}
 						else{
-							if((listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(t).getPrecision().equals(tablaComparacionCampos.get(posicionArrayCampos).get(1)) && (listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(t).getType().equals(tablaComparacionCampos.get(posicionArrayCampos).get(2)))))
+							if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getTransformationField().equals(listaTransformaciones.get(posicionTransformacion).getCamposTransformacionPrincipal().get(t).getId()) || listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getTransformationField().equals(listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(t).getId())               && (listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(t).getPrecision().equals(tablaComparacionCampos.get(posicionArrayCampos).get(1)) && (listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(t).getType().equals(tablaComparacionCampos.get(posicionArrayCampos).get(2)))))
 								campoCorrecto=true;//Los CAMPOS ESTAN CORRECTOS		
 						}
 							
