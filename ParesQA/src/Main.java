@@ -15,9 +15,10 @@ public class Main {
 			LeerFichero.leerContenido(archivo);
 			LeerFichero.ordenarObjetos(); //se hace para que el de escritura nunca este el primero
 			validaciones = new Validaciones(LeerFichero.getDescripcionMapping(), LeerFichero.getListaInstancia(), LeerFichero.getListaTransformaciones(), LeerFichero.getTablaParametros(), LeerFichero.getListaObjetos(), LeerFichero.getTablaExecutionParameters(), LeerFichero.getListaDataRecords());
-			validaciones.parametros();
-			validaciones.executionParameters();
-			validaciones.descripcionMapping();
+			//validaciones.parametros();
+			//validaciones.executionParameters();
+			//validaciones.descripcionMapping();
+			validaciones.ValidacionesPuertos();
 			System.out.println("HEMOS ACABADO DE VALIDAR EL MAPPING.");
 	}
 }
