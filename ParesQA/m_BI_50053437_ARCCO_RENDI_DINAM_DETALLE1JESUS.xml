@@ -2066,32 +2066,7 @@
 </AbstractTransformation>
 </transformations>
 </mapping:Mapping>
-<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_MD" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_MD">
-<defaultAttributes imx:id="U:r374x1ymEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
-<modelExtension imx:id="ID_1005" xsi:type="Hive:HiveConnectInfoExtension"/>
-</Hive:HiveConnectInfo>
-<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_ST" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_ST">
-<defaultAttributes imx:id="U:dkf-U1yoEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
-<modelExtension imx:id="ID_1006" xsi:type="Hive:HiveConnectInfoExtension"/>
-</Hive:HiveConnectInfo>
-<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_TM" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_TM">
-<defaultAttributes imx:id="U:dolMnVyoEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
-<modelExtension imx:id="ID_1007" xsi:type="Hive:HiveConnectInfoExtension"/>
-</Hive:HiveConnectInfo>
-<project:Project imx:id="U:a5D_p2boEeeZTEfoBI-DAw" name="d_x860953">
-<imx:annotations>
-<imx:IGenericAnnotations>
-<com.informatica.tools.objectie key1="projectName" value1="MRS04_DESA"/>
-</imx:IGenericAnnotations>
-</imx:annotations>
-<annotations>
-<Annotation imx:id="ID_1008" xsi:type="description:Description"/>
-</annotations>
-<contents>
-<IObject imx:id="U:zRq8asOeEeeO4K4Q9BCEUQ" xsi:type="folder:Folder" name="BI_50053437_HOM">
-<contents>
-<IObject imx:idref="U:MFFvIjDkEei1gR4yjrCWWA" xsi:type="mapping:Mapping"/>
-<IObject imx:id="U:n8_ptDDvEeiv2aAE2TYESA" xsi:type="datarecord:Table" connection="stringIdentity:cnx_01_HV_ARC_TM" connectionName="cnx_01_HV_ARC_TM" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_rendimientos_detalle_aux" ownerName="WS_APLARCCO_DEV_TMP" physicalName="arcco_rendimientos_detalle_aux">
+<datarecord:Table imx:id="U:n8_ptDDvEeiv2aAE2TYESA" connection="stringIdentity:cnx_01_HV_ARC_TM" connectionName="cnx_01_HV_ARC_TM" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_rendimientos_detalle_aux" ownerName="WS_APLARCCO_DEV_TMP" physicalName="arcco_rendimientos_detalle_aux">
 <columns>
 <Column imx:id="U:n8_ptTDvEeiv2aAE2TYESA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="fecha_operacion" nullable="true" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="10"/>
 <Column imx:id="U:s-piXTEQEeiv2aAE2TYESA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
@@ -2178,8 +2153,37 @@
 <Column imx:id="U:n8_p8TDvEeiv2aAE2TYESA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fdecimal" name="impo_ope_acum_ant" nullable="true" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" precision="15" scale="2"/>
 <Column imx:id="U:n8_p8jDvEeiv2aAE2TYESA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fdecimal" name="importe_coc_acum_ant" nullable="true" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" precision="15" scale="2"/>
 </columns>
-</IObject>
-<IObject imx:id="U:NYCbU8PkEeewymC9bPGwNA" xsi:type="datarecord:Table" connection="stringIdentity:cnx_01_HV_ARC_ST" connectionName="cnx_01_HV_ARC_ST" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_trasp_cont" ownerName="WS_APLARCCO_DEV_STAGING" physicalName="arcco_trasp_cont">
+</datarecord:Table>
+<datarecord:Table imx:id="U:BsXeuMPkEeewymC9bPGwNA" connection="stringIdentity:cnx_01_HV_ARC_MD" connectionName="cnx_01_HV_ARC_MD" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_primer_titular" ownerName="ws_aplarcco_dev_md" physicalName="arcco_primer_titular" primaryKey="U:a94Ibw_0EeizPS1JWY-gsg">
+<columns>
+<Column imx:id="U:BsXeucPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
+<Column imx:id="U:BsXeusPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcent" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
+<Column imx:id="U:BsXeu8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idprod" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
+<Column imx:id="U:BsXevMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idsprod" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
+<Column imx:id="U:BsXevcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcontrn" nullable="true" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="7"/>
+<Column imx:id="U:BsXevsPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="tip_pers" nullable="true" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="1"/>
+<Column imx:id="U:BsXev8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fint" name="cod_pers" nullable="true" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Finteger" precision="10"/>
+<Column imx:id="U:BsXewMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="indtipri" nullable="true" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="2"/>
+<Column imx:id="U:BsXewcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="csecbes" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
+<Column imx:id="U:BsXewsPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="tiposeg" nullable="true" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="2"/>
+<Column imx:id="U:BsXew8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="cnae93" nullable="true" odbcPrecision="5" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="5"/>
+<Column imx:id="U:BsXexMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="tipo_inter" nullable="true" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="2"/>
+<Column imx:id="U:BsXexcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fint" name="ord_inter" nullable="true" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Finteger" precision="10"/>
+<Column imx:id="U:BsXexsPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr_amb" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
+<Column imx:id="U:BsXex8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcent_amb" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
+<Column imx:id="U:BsXeyMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="csegcome" nullable="true" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="2"/>
+<Column imx:id="U:BsXeycPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idsubgr" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
+<Column imx:id="U:BsXeysPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcontr" nullable="true" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="7"/>
+<Column imx:id="U:BsXey8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" nullable="true" odbcPrecision="49" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="49"/>
+</columns>
+<PartitionedColumns>
+<Column imx:id="U:BsXezMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" precision="4000"/>
+</PartitionedColumns>
+<uniqueKeys>
+<UniqueKey imx:id="U:a94Ibw_0EeizPS1JWY-gsg" xsi:type="datarecord:PrimaryKey" columns="U:BsXeycPkEeewymC9bPGwNA" name="PrimaryKey1"/>
+</uniqueKeys>
+</datarecord:Table>
+<datarecord:Table imx:id="U:NYCbU8PkEeewymC9bPGwNA" connection="stringIdentity:cnx_01_HV_ARC_ST" connectionName="cnx_01_HV_ARC_ST" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_trasp_cont" ownerName="WS_APLARCCO_DEV_STAGING" physicalName="arcco_trasp_cont">
 <columns>
 <Column imx:id="U:NYCbVMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr_ori" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
 <Column imx:id="U:NYCbVcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcent_ori" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
@@ -2198,7 +2202,23 @@
 <Column imx:id="U:NYCbYMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" precision="4000"/>
 <Column imx:id="U:NYCbYcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fbigint" name="data_timestamp_part" precision="19"/>
 </PartitionedColumns>
-</IObject>
+</datarecord:Table>
+<project:Project imx:id="U:a5D_p2boEeeZTEfoBI-DAw" name="d_x860953">
+<imx:annotations>
+<imx:IGenericAnnotations>
+<com.informatica.tools.objectie key1="projectName" value1="MRS04_DESA"/>
+</imx:IGenericAnnotations>
+</imx:annotations>
+<annotations>
+<Annotation imx:id="ID_1005" xsi:type="description:Description"/>
+</annotations>
+<contents>
+<IObject imx:id="U:zRq8asOeEeeO4K4Q9BCEUQ" xsi:type="folder:Folder" name="BI_50053437_HOM">
+<contents>
+<IObject imx:idref="U:MFFvIjDkEei1gR4yjrCWWA" xsi:type="mapping:Mapping"/>
+<IObject imx:idref="U:n8_ptDDvEeiv2aAE2TYESA" xsi:type="datarecord:Table"/>
+<IObject imx:idref="U:BsXeuMPkEeewymC9bPGwNA" xsi:type="datarecord:Table"/>
+<IObject imx:idref="U:NYCbU8PkEeewymC9bPGwNA" xsi:type="datarecord:Table"/>
 <IObject imx:id="U:1ybklTDuEeiv2aAE2TYESA" xsi:type="datarecord:Table" connection="stringIdentity:cnx_01_HV_ARC_MD" connectionName="cnx_01_HV_ARC_MD" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_homog_rendimientos" ownerName="WS_APLARCCO_DEV_MD" physicalName="arcco_homog_rendimientos">
 <columns>
 <Column imx:id="U:1ybkljDuEeiv2aAE2TYESA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="fecha_operacion" nullable="true" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="10"/>
@@ -2291,38 +2311,21 @@
 <Column imx:id="U:1ybk6jDuEeiv2aAE2TYESA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" precision="4000"/>
 </PartitionedColumns>
 </IObject>
-<IObject imx:id="U:BsXeuMPkEeewymC9bPGwNA" xsi:type="datarecord:Table" connection="stringIdentity:cnx_01_HV_ARC_MD" connectionName="cnx_01_HV_ARC_MD" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_primer_titular" ownerName="ws_aplarcco_dev_md" physicalName="arcco_primer_titular" primaryKey="U:a94Ibw_0EeizPS1JWY-gsg">
-<columns>
-<Column imx:id="U:BsXeucPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
-<Column imx:id="U:BsXeusPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcent" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
-<Column imx:id="U:BsXeu8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idprod" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
-<Column imx:id="U:BsXevMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idsprod" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
-<Column imx:id="U:BsXevcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcontrn" nullable="true" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="7"/>
-<Column imx:id="U:BsXevsPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="tip_pers" nullable="true" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="1"/>
-<Column imx:id="U:BsXev8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fint" name="cod_pers" nullable="true" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Finteger" precision="10"/>
-<Column imx:id="U:BsXewMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="indtipri" nullable="true" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="2"/>
-<Column imx:id="U:BsXewcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="csecbes" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
-<Column imx:id="U:BsXewsPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="tiposeg" nullable="true" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="2"/>
-<Column imx:id="U:BsXew8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="cnae93" nullable="true" odbcPrecision="5" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="5"/>
-<Column imx:id="U:BsXexMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="tipo_inter" nullable="true" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="2"/>
-<Column imx:id="U:BsXexcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fint" name="ord_inter" nullable="true" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Finteger" precision="10"/>
-<Column imx:id="U:BsXexsPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr_amb" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
-<Column imx:id="U:BsXex8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcent_amb" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
-<Column imx:id="U:BsXeyMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="csegcome" nullable="true" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="2"/>
-<Column imx:id="U:BsXeycPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idsubgr" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
-<Column imx:id="U:BsXeysPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcontr" nullable="true" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="7"/>
-<Column imx:id="U:BsXey8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" nullable="true" odbcPrecision="49" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="49"/>
-</columns>
-<PartitionedColumns>
-<Column imx:id="U:BsXezMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" precision="4000"/>
-</PartitionedColumns>
-<uniqueKeys>
-<UniqueKey imx:id="U:a94Ibw_0EeizPS1JWY-gsg" xsi:type="datarecord:PrimaryKey" columns="U:BsXeycPkEeewymC9bPGwNA" name="PrimaryKey1"/>
-</uniqueKeys>
-</IObject>
 </contents>
 </IObject>
 </contents>
 </project:Project>
-<imx:crc value="3267560577"/>
+<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_MD" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_MD">
+<defaultAttributes imx:id="U:r374x1ymEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
+<modelExtension imx:id="ID_1006" xsi:type="Hive:HiveConnectInfoExtension"/>
+</Hive:HiveConnectInfo>
+<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_ST" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_ST">
+<defaultAttributes imx:id="U:dkf-U1yoEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
+<modelExtension imx:id="ID_1007" xsi:type="Hive:HiveConnectInfoExtension"/>
+</Hive:HiveConnectInfo>
+<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_TM" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_TM">
+<defaultAttributes imx:id="U:dolMnVyoEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
+<modelExtension imx:id="ID_1008" xsi:type="Hive:HiveConnectInfoExtension"/>
+</Hive:HiveConnectInfo>
+<imx:crc value="2800448937"/>
 </imx:IMX>

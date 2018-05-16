@@ -67,28 +67,55 @@ public class LeerFichero {
 	public static void ordenarObjetos(){
 		int instancia=0;
 		int objeto=0;
+		int dataRecordIndice=0;
 		boolean parar=false;
+		boolean dataRecord=true;
 		Iobject objetoEscritura = new Iobject(null,null,null,false, null);
-		
+
 		//buscamos la instancia de escritura
 		for(instancia=0; instancia<listaInstancia.size()&&!parar;instancia++)
 			if(listaInstancia.get(instancia).getName().contains("Escritura"))
 				parar=true;
-		
+
 		parar=false;
-		
+
 		//buscamos el objeto
 		for(objeto=0; objeto<listaObjetos.size()&&!parar;objeto++)
 			if(listaObjetos.get(objeto).getName()!=null)
 				if(listaInstancia.get(instancia-1).getName().contains(listaObjetos.get(objeto).getName())) {
 					parar=true;
 					objetoEscritura=listaObjetos.get(objeto);
-			}
-		
+					dataRecord=false;
+				}
+
 		//ahora reeordenamos la lista de objetos, para ello borramos el objeto y le metemos al final
-		listaObjetos.remove(objeto-1);
-		listaObjetos.add(objetoEscritura);
-		
+		if(!dataRecord) {
+			listaObjetos.remove(objeto-1);
+			listaObjetos.add(objetoEscritura);
+		}
+
+		else { //Si es dataRecord lo buscamos ahi
+			parar=false;
+			//Buscamos el dataRecord en cuestion
+			for(dataRecordIndice=0; dataRecordIndice< listaDataRecords.size() &&!parar;instancia++)
+				if(listaInstancia.get(instancia-1).getName().contains(listaDataRecords.get(dataRecordIndice).getName())) {
+					parar=true;
+				}
+
+			parar=false;
+			
+			//Buscamos el objeto en cuestion
+			for(objeto=0; objeto<listaObjetos.size()&&!parar;objeto++)
+				if(listaDataRecords.get(dataRecordIndice).getId().equals(listaObjetos.get(objeto).getId())) {
+					parar=true;
+					objetoEscritura=listaObjetos.get(objeto);
+					dataRecord=false;
+				}
+				
+			listaObjetos.remove(objeto-1);
+			listaObjetos.add(objetoEscritura);
+			
+		}
 	}
 	
 	@SuppressWarnings("null")
