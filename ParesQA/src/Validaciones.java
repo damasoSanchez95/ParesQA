@@ -17,7 +17,6 @@ public class Validaciones {
 	private final static Logger LOGGER = Logger.getLogger("default.LeerFichero");
 	private boolean descripcionMapping;
 	
-	
 	//Constructor Validaciones
 	public Validaciones(boolean descripcionMapping, ArrayList<Instance> listaInstancia, ArrayList<AbstractTransformation> listaTransformaciones , HashMap<Parametro, String> tablaParametros, ArrayList<Iobject> listaObjetos, HashMap<String, String> tablaExecutionParameters, ArrayList<DataRecord> listaDataRecords){
 		this.listaInstancia=listaInstancia;
@@ -130,7 +129,7 @@ public class Validaciones {
 
 			//AQUI SEA UN OBJETO DE REFERENCIA O UNO NORMAL LLEGAMOS CON EL NOMBRE Y LA LISTA DE CAMPOS CORRESPONDIENTE
 
-			//Entonces cogemos el name y debemos buscar que nombre de las instancias CONTIENE ese nombre porque tendra "Lectura_" y no sera exactamente igual
+			//Entonces cogemos el name y debemos buscar que nombre de las instancias CONTIENE ese nombre porque tendra "lectura_" y no sera exactamente igual
 			//hay que comparar si es de lectura o escritura pero solo se sabe al compararlo con el nombre de la instancia
 
 			if(!objetoMapping){
@@ -163,7 +162,7 @@ public class Validaciones {
 							
 							transformacionEncontrada=false;
 							
-							//CASO DE LECTURA
+							//CASO DE lectura
 							if(NombreAComprobar.contains("Lectura")){
 								//AQUI COMPROBAMOS QUE LOS CAMPOS SON CORRECTOS Y EXISTEN EN LA 2 INSTANCIA, PERO NO ESTAMOS COMPARANDO LOS PUERTOS AUN
 								int ContadorComprobaciones=0; //Contador de arrayList, hay un arrayList de campos
@@ -255,7 +254,7 @@ public class Validaciones {
 								}
 							}
 
-							//CASO DE ESCRITURA
+							//CASO DE escritura
 							else if(NombreAComprobar.contains("Escritura")) {
 								escritura=true;
 
@@ -309,12 +308,12 @@ public class Validaciones {
 		boolean[] ArrayBoleanos= new boolean[2];
 		
 		for(int indiceCampoDeLaInstanciaDestino=0; indiceCampoDeLaInstanciaDestino<listaInstancia.get(InstanciaDestino).getCampos().size() && !campoCorrecto; indiceCampoDeLaInstanciaDestino++){ //For para recorrer todos los campos de la instancia de destino		
-			if(NombreAComprobar.contains("exp") || NombreAComprobar.contains("jnr") || NombreAComprobar.contains("Union")){
+			if(NombreAComprobar.contains("exp") || NombreAComprobar.contains("jnr") || NombreAComprobar.contains("union")){
 				if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts()==null) 
 					toPortsEsNull=true;									
 			}		
 			
-			//aqui recorremos los campos de la instacia DE LLEGADA ESTO LO HACEMOS TANTO SI ES EXP COMO JOIN COMO LECTURA SOLO QUE SI toPortsEsNull es false significa que es jnr o exp y no hay que hacerlo porque no hay toPorts
+			//aqui recorremos los campos de la instacia DE LLEGADA ESTO LO HACEMOS TANTO SI ES EXP COMO JOIN COMO lectura SOLO QUE SI toPortsEsNull es false significa que es jnr o exp y no hay que hacerlo porque no hay toPorts
 			if(toPortsEsNull==false && listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId().equals(listaInstancia.get(InstanciaDestino).getCampos().get(indiceCampoDeLaInstanciaDestino).getFromPorts()) && listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts().equals(listaInstancia.get(InstanciaDestino).getCampos().get(indiceCampoDeLaInstanciaDestino).getId()))
 				campoCorrecto=true;			
 		}

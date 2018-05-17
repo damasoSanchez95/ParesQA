@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <imx:IMX xmlns:imx="http://com.informatica.imx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" serializationSpecVersion="9.0" crcEnabled="1" xmlns:typelibrary="http://com.informatica.metadata.common.typesystem.typelibrary/2" versiontypelibrary="2.4.0" xmlns:description="http://com.informatica.metadata.common.description/2" versiondescription="2.1.0" xmlns:project="http://com.informatica.metadata.common.project/2" versionproject="2.1.0" xmlns:source1="http://com.informatica.metadata.common.txhandlerconfig.source/2" versionsource1="2.1.0" xmlns:source="http://com.informatica.metadata.common.transformation.source/2" versionsource="2.1.0" xmlns:target1="http://com.informatica.metadata.common.txhandlerconfig.target/2" versiontarget1="2.4.0" xmlns:resourceaccess1="http://com.informatica.metadata.common.txhandlerconfig.resourceaccess/2" versionresourceaccess1="2.1.0" xmlns:datasourceoperation="http://com.informatica.metadata.relational.datasourceoperation/2" versiondatasourceoperation="2.9.0" xmlns:datarecord="http://com.informatica.metadata.relational.datarecord/2" versiondatarecord="2.4.0" xmlns:connectinfo="http://com.informatica.metadata.common.connectinfo/2" versionconnectinfo="2.4.0" xmlns:optimizer="http://com.informatica.metadata.common.optimizer/1" versionoptimizer="1.0.0" xmlns:txhandlerconfig="http://com.informatica.metadata.common.txhandlerconfig/2" versiontxhandlerconfig="2.1.0" xmlns:parameter="http://com.informatica.metadata.common.parameter/9" versionparameter="9.8.1" xmlns:optimizerconfig="http://com.informatica.metadata.common.optimizerconfig/1" versionoptimizerconfig="1.0.0" xmlns:hadoop="http://com.informatica.metadata.common.runtime.hadoop/1" versionhadoop="1.7.0" xmlns:modelextension="http://com.informatica.metadata.common.modelextension/2" versionmodelextension="2.1.0" xmlns:modeledtypes="http://com.informatica.metadata.common.modeledtypes/1" versionmodeledtypes="1.0.0" xmlns:mapping="http://com.informatica.metadata.common.mapping/2" versionmapping="2.9.0" xmlns:types="http://com.informatica.metadata.common.types/2" versiontypes="2.3.0" xmlns:adapter="http://com.informatica.metadata.common.adapter/2" versionadapter="2.2.0" xmlns:expression="http://com.informatica.metadata.common.transformation.expression/2" versionexpression="2.1.1" xmlns:datasourceoperation1="http://com.informatica.metadata.common.datasourceoperation/2" versiondatasourceoperation1="2.5.0" xmlns:sdkmodelextension="http://com.informatica.metadata.infasdk.connectinfo.common.sdkmodelextension/1" versionsdkmodelextension="1.1.0" xmlns:datahandler="http://com.informatica.metadata.common.datahandler/2" versiondatahandler="2.2.0" xmlns:runtime="http://com.informatica.metadata.common.runtime/2" versionruntime="2.12.0" xmlns:transformation="http://com.informatica.metadata.common.transformation/3" versiontransformation="3.3.0" xmlns:dsoconfig1="http://com.informatica.metadata.common.dsoconfig/2" versiondsoconfig1="2.1.0" xmlns:target="http://com.informatica.metadata.common.transformation.target/2" versiontarget="2.4.0" xmlns:core="http://com.informatica.metadata.common.core/2" versioncore="2.1.1" xmlns:Hive="http://com.informatica.adapter.Hive/1" versionHive="1.6.0" xmlns:folder="http://com.informatica.metadata.common.folder/2" versionfolder="2.1.1" xmlns:resourceaccess="http://com.informatica.metadata.common.transformation.resourceaccess/2" versionresourceaccess="2.3.0" xmlns:dsoconfig="http://com.informatica.metadata.relational.dsoconfig/2" versiondsoconfig="2.2.0" xmlns:joiner="http://com.informatica.metadata.common.transformation.joiner/2" versionjoiner="2.5.0" xmlns:relational="http://com.informatica.metadata.infasdk.dynconnectinfo.relational/1" versionrelational="1.1.0" xmlns:pdo="http://com.informatica.metadata.common.optimizerconfig.pdo/1" versionpdo="1.0.0" xmlns:typesystem="http://com.informatica.metadata.common.typesystem/2" versiontypesystem="2.2.0" xsi:schemaLocation="http://com.informatica.imx IMX.xsd http://com.informatica.metadata.common.typesystem.typelibrary/2 com.informatica.metadata.common.typesystem.typelibrary.xsd http://com.informatica.metadata.common.description/2 com.informatica.metadata.common.description.xsd http://com.informatica.metadata.common.project/2 com.informatica.metadata.common.project.xsd http://com.informatica.metadata.common.txhandlerconfig.source/2 com.informatica.metadata.common.txhandlerconfig.source.xsd http://com.informatica.metadata.common.transformation.source/2 com.informatica.metadata.common.transformation.source.xsd http://com.informatica.metadata.common.txhandlerconfig.target/2 com.informatica.metadata.common.txhandlerconfig.target.xsd http://com.informatica.metadata.common.txhandlerconfig.resourceaccess/2 com.informatica.metadata.common.txhandlerconfig.resourceaccess.xsd http://com.informatica.metadata.relational.datasourceoperation/2 com.informatica.metadata.relational.datasourceoperation.xsd http://com.informatica.metadata.relational.datarecord/2 com.informatica.metadata.relational.datarecord.xsd http://com.informatica.metadata.common.connectinfo/2 com.informatica.metadata.common.connectinfo.xsd http://com.informatica.metadata.common.optimizer/1 com.informatica.metadata.common.optimizer.xsd http://com.informatica.metadata.common.txhandlerconfig/2 com.informatica.metadata.common.txhandlerconfig.xsd http://com.informatica.metadata.common.parameter/9 com.informatica.metadata.common.parameter.xsd http://com.informatica.metadata.common.optimizerconfig/1 com.informatica.metadata.common.optimizerconfig.xsd http://com.informatica.metadata.common.runtime.hadoop/1 com.informatica.metadata.common.runtime.hadoop.xsd http://com.informatica.metadata.common.modelextension/2 com.informatica.metadata.common.modelextension.xsd http://com.informatica.metadata.common.modeledtypes/1 com.informatica.metadata.common.modeledtypes.xsd http://com.informatica.metadata.common.mapping/2 com.informatica.metadata.common.mapping.xsd http://com.informatica.metadata.common.types/2 com.informatica.metadata.common.types.xsd http://com.informatica.metadata.common.adapter/2 com.informatica.metadata.common.adapter.xsd http://com.informatica.metadata.common.transformation.expression/2 com.informatica.metadata.common.transformation.expression.xsd http://com.informatica.metadata.common.datasourceoperation/2 com.informatica.metadata.common.datasourceoperation.xsd http://com.informatica.metadata.infasdk.connectinfo.common.sdkmodelextension/1 com.informatica.metadata.infasdk.connectinfo.common.sdkmodelextension.xsd http://com.informatica.metadata.common.datahandler/2 com.informatica.metadata.common.datahandler.xsd http://com.informatica.metadata.common.runtime/2 com.informatica.metadata.common.runtime.xsd http://com.informatica.metadata.common.transformation/3 com.informatica.metadata.common.transformation.xsd http://com.informatica.metadata.common.dsoconfig/2 com.informatica.metadata.common.dsoconfig.xsd http://com.informatica.metadata.common.transformation.target/2 com.informatica.metadata.common.transformation.target.xsd http://com.informatica.metadata.common.core/2 com.informatica.metadata.common.core.xsd http://com.informatica.adapter.Hive/1 com.informatica.adapter.Hive.xsd http://com.informatica.metadata.common.folder/2 com.informatica.metadata.common.folder.xsd http://com.informatica.metadata.common.transformation.resourceaccess/2 com.informatica.metadata.common.transformation.resourceaccess.xsd http://com.informatica.metadata.relational.dsoconfig/2 com.informatica.metadata.relational.dsoconfig.xsd http://com.informatica.metadata.common.transformation.joiner/2 com.informatica.metadata.common.transformation.joiner.xsd http://com.informatica.metadata.infasdk.dynconnectinfo.relational/1 com.informatica.metadata.infasdk.dynconnectinfo.relational.xsd http://com.informatica.metadata.common.optimizerconfig.pdo/1 com.informatica.metadata.common.optimizerconfig.pdo.xsd http://com.informatica.metadata.common.typesystem/2 com.informatica.metadata.common.typesystem.xsd">
 <mapping:Mapping imx:id="U:MFFvIjDkEei1gR4yjrCWWA" name="m_BI_50053437_ARCCO_RENDI_DINAM_DETALLE1">
+<annotations>
+<Annotation imx:id="ID_1" xsi:type="description:Description" body="En+base+a+la+tabla+que+tenemos+con+toda+la+informaci%C3%B3n+detallada%2C+tenemos+que+actualizar+la+informaci%C3%B3n+relativa+a+los+centros+y+clientes+para+que+luego+cuadre+con+la+informaci%C3%B3n+diaria+que+vamos+a+recibir+%28ya+dinamizada%29"/>
+</annotations>
 <characteristics>
 <Characteristic imx:id="ID_2" xsi:type="runtime:RuntimeCharacteristic" maximumRuntimeIntervalPerSource="PT0S" selectedExecutionEnvironmentName="hadoop" stateStore.="smd:com.informatica.metadata.common.parameter.util.InfaParameterSeed.StateStore">
 <environments>
@@ -9,6 +12,7 @@
 <executionParameters>
 <HadoopExecutionParameter xsi:type="hadoop:HadoopExecutionParameter" value.="U:MFFvLjDkEei1gR4yjrCWWA" name="spark.dynamicAllocation.maxExecutors"/>
 <HadoopExecutionParameter xsi:type="hadoop:HadoopExecutionParameter" value.="U:MFFvLzDkEei1gR4yjrCWWA" name="spark.executor.memory"/>
+<HadoopExecutionParameter xsi:type="hadoop:HadoopExecutionParameter" value.="U:MFFvMDDkEei1gR4yjrCWWA" name="spark.driver.cores"/>
 <HadoopExecutionParameter xsi:type="hadoop:HadoopExecutionParameter" value.="U:MFFvMTDkEei1gR4yjrCWWA" name="spark.driver.memory"/>
 </executionParameters>
 </executionConfig>
@@ -883,6 +887,9 @@
 <defaultValue imx:id="ID_771" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_MD"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:MFFvKTDkEei1gR4yjrCWWA" xsi:type="parameter:UserDefinedParameter" name="P_s_Connection_ST_ARCCO" precision="-1" scale="-1" typeinfo="smd:com.informatica.metadata.seed.modeledtypes.ModeledTypeSeed.modeledtypes%2FConnection">
+<annotations>
+<Annotation imx:id="ID_772" xsi:type="description:Description" body="Conexion+a+la+base+de+datos"/>
+</annotations>
 <defaultValue imx:id="ID_773" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_ST"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:MFFvKjDkEei1gR4yjrCWWA" xsi:type="parameter:UserDefinedParameter" name="P_s_Connection_TMP_ARCCO" precision="-1" scale="-1" typeinfo="smd:com.informatica.metadata.seed.modeledtypes.ModeledTypeSeed.modeledtypes%2FConnection">
@@ -910,7 +917,7 @@
 <defaultValue imx:id="ID_781" xsi:type="parameter:StringParameterValue" valueLiteral="10g"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:MFFvMjDkEei1gR4yjrCWWA" xsi:type="parameter:UserDefinedParameter" name="P_s_FechaEjecucion" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
-<defaultValue imx:id="ID_782" xsi:type="parameter:StringParameterValue" valueLiteral="9299-12-31"/>
+<defaultValue imx:id="ID_782" xsi:type="parameter:StringParameterValue" valueLiteral="9999-12-31"/>
 </UserDefinedParameter>
 </parameters>
 <transformations>
@@ -1276,7 +1283,7 @@
 <JoinerField imx:id="U:gLR31zEIEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" name="indicador_cobro" output="true"/>
 <JoinerField imx:id="U:gLR32DEIEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="cesta" output="true"/>
 <JoinerField imx:id="U:gLR32TEIEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" name="codcepto" output="true"/>
-<JoinerField imx:id="U:kIlB0TENEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="coestref" output="true"/>
+<JoinerField imx:id="U:kIlB0TENEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="78" upper="1" name="coestref" output="true"/>
 <JoinerField imx:id="U:kIlB0jENEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Finteger" lower="1" precision="10" upper="1" name="num_ope_act" output="true"/>
 <JoinerField imx:id="U:kIlB0zENEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="impo_ope_act" output="true"/>
 <JoinerField imx:id="U:kIlB1DENEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="importe_coc_act" output="true"/>
@@ -1362,7 +1369,7 @@
 <JoinerDataInterface imx:id="U:gLR3ozEIEei1gR4yjrCWWA" xsi:type="joiner:JoinerDataInterface" input="true" name="Principal">
 <joinerFields>
 <JoinerField imx:id="U:gLR3pDEIEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="10" upper="1" input="true" name="fecha_operacion"/>
-<JoinerField imx:id="U:gLR3pTEIEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="empresa"/>
+<JoinerField imx:id="U:gLR3pTEIEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="40" upper="1" input="true" name="empresa"/>
 <JoinerField imx:id="U:gLR3pjEIEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="centro"/>
 <JoinerField imx:id="U:gLR3pzEIEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="producto"/>
 <JoinerField imx:id="U:gLR3qDEIEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="subpro"/>
@@ -1443,7 +1450,7 @@
 <JoinerField imx:id="U:kIlBzDENEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impo_ope_acum_last_12"/>
 <JoinerField imx:id="U:kIlBzTENEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="importe_coc_acum_last_12"/>
 <JoinerField imx:id="U:kIlBzjENEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Finteger" lower="1" precision="10" upper="1" input="true" name="num_ope_acum_ant"/>
-<JoinerField imx:id="U:kIlBzzENEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impo_ope_acum_ant"/>
+<JoinerField imx:id="U:kIlBzzENEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="105" scale="2" upper="1" input="true" name="impo_ope_acum_ant"/>
 <JoinerField imx:id="U:kIlB0DENEei1gR4yjrCWWA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="importe_coc_acum_ant"/>
 </joinerFields>
 </JoinerDataInterface>
@@ -1874,7 +1881,7 @@
 <ownedCapabilityTypes>
 <ComplexType imx:id="U:gLR25zEIEei1gR4yjrCWWA" xsi:type="typelibrary:ComplexType" name="arcco_rendimientos_detalle_aux">
 <features>
-<StructuralFeature imx:id="U:gLR26DEIEei1gR4yjrCWWA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="fecha_operacion" nullable="true" precision="5000" upper="1"/>
+<StructuralFeature imx:id="U:gLR26DEIEei1gR4yjrCWWA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="fecha_operacion" nullable="true" precision="10" upper="1"/>
 <StructuralFeature imx:id="U:mXhniDEREei1gR4yjrCWWA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idempr" nullable="true" precision="4" upper="1"/>
 <StructuralFeature imx:id="U:mXhniTEREei1gR4yjrCWWA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idcent" nullable="true" precision="4" upper="1"/>
 <StructuralFeature imx:id="U:mXhnijEREei1gR4yjrCWWA" xsi:type="typelibrary:StructuralFeature" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" name="idprod" nullable="true" precision="3" upper="1"/>
@@ -2059,39 +2066,18 @@
 </AbstractTransformation>
 </transformations>
 </mapping:Mapping>
-<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_TM" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_TM">
-<defaultAttributes imx:id="U:dolMnVyoEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
-<modelExtension imx:id="ID_1005" xsi:type="Hive:HiveConnectInfoExtension"/>
-</Hive:HiveConnectInfo>
 <Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_MD" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_MD">
 <defaultAttributes imx:id="U:r374x1ymEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
-<modelExtension imx:id="ID_1006" xsi:type="Hive:HiveConnectInfoExtension"/>
+<modelExtension imx:id="ID_1005" xsi:type="Hive:HiveConnectInfoExtension"/>
 </Hive:HiveConnectInfo>
 <Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_ST" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_ST">
 <defaultAttributes imx:id="U:dkf-U1yoEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
+<modelExtension imx:id="ID_1006" xsi:type="Hive:HiveConnectInfoExtension"/>
+</Hive:HiveConnectInfo>
+<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_TM" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_TM">
+<defaultAttributes imx:id="U:dolMnVyoEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
 <modelExtension imx:id="ID_1007" xsi:type="Hive:HiveConnectInfoExtension"/>
 </Hive:HiveConnectInfo>
-
-<datarecord:Table imx:id="U:NYCbU8PkEeewymC9bPGwNA" connection="stringIdentity:cnx_01_HV_ARC_ST" connectionName="cnx_01_HV_ARC_ST" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_trasp_cont" ownerName="WS_APLARCCO_DEV_STAGING" physicalName="arcco_trasp_cont">
-<columns>
-<Column imx:id="U:NYCbVMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr_ori" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
-<Column imx:id="U:NYCbVcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcent_ori" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
-<Column imx:id="U:NYCbVsPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idprod_ori" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
-<Column imx:id="U:NYCbV8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcontr_ori" nullable="true" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="7"/>
-<Column imx:id="U:NYCbWMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idsprod_ori" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
-<Column imx:id="U:NYCbWcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr_des" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
-<Column imx:id="U:NYCbWsPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcent_des" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
-<Column imx:id="U:NYCbW8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idprod_des" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
-<Column imx:id="U:NYCbXMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcontr_des" nullable="true" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="7"/>
-<Column imx:id="U:NYCbXcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idsprod_des" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
-<Column imx:id="U:NYCbXsPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" nullable="true" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="10"/>
-<Column imx:id="U:NYCbX8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fbigint" name="data_timestamp_part" nullable="true" odbcPrecision="19" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fbigint" precision="19"/>
-</columns>
-<PartitionedColumns>
-<Column imx:id="U:NYCbYMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" precision="4000"/>
-<Column imx:id="U:NYCbYcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fbigint" name="data_timestamp_part" precision="19"/>
-</PartitionedColumns>
-</datarecord:Table>
 <project:Project imx:id="U:a5D_p2boEeeZTEfoBI-DAw" name="d_x860953">
 <imx:annotations>
 <imx:IGenericAnnotations>
@@ -2105,7 +2091,6 @@
 <IObject imx:id="U:zRq8asOeEeeO4K4Q9BCEUQ" xsi:type="folder:Folder" name="BI_50053437_HOM">
 <contents>
 <IObject imx:idref="U:MFFvIjDkEei1gR4yjrCWWA" xsi:type="mapping:Mapping"/>
-<IObject imx:idref="U:NYCbU8PkEeewymC9bPGwNA" xsi:type="datarecord:Table"/>
 <IObject imx:id="U:n8_ptDDvEeiv2aAE2TYESA" xsi:type="datarecord:Table" connection="stringIdentity:cnx_01_HV_ARC_TM" connectionName="cnx_01_HV_ARC_TM" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_rendimientos_detalle_aux" ownerName="WS_APLARCCO_DEV_TMP" physicalName="arcco_rendimientos_detalle_aux">
 <columns>
 <Column imx:id="U:n8_ptTDvEeiv2aAE2TYESA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="fecha_operacion" nullable="true" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="10"/>
@@ -2193,6 +2178,26 @@
 <Column imx:id="U:n8_p8TDvEeiv2aAE2TYESA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fdecimal" name="impo_ope_acum_ant" nullable="true" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" precision="15" scale="2"/>
 <Column imx:id="U:n8_p8jDvEeiv2aAE2TYESA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fdecimal" name="importe_coc_acum_ant" nullable="true" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" precision="15" scale="2"/>
 </columns>
+</IObject>
+<IObject imx:id="U:NYCbU8PkEeewymC9bPGwNA" xsi:type="datarecord:Table" connection="stringIdentity:cnx_01_HV_ARC_ST" connectionName="cnx_01_HV_ARC_ST" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_trasp_cont" ownerName="WS_APLARCCO_DEV_STAGING" physicalName="arcco_trasp_cont">
+<columns>
+<Column imx:id="U:NYCbVMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr_ori" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
+<Column imx:id="U:NYCbVcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcent_ori" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
+<Column imx:id="U:NYCbVsPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idprod_ori" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
+<Column imx:id="U:NYCbV8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcontr_ori" nullable="true" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="7"/>
+<Column imx:id="U:NYCbWMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idsprod_ori" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
+<Column imx:id="U:NYCbWcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr_des" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
+<Column imx:id="U:NYCbWsPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcent_des" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
+<Column imx:id="U:NYCbW8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idprod_des" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
+<Column imx:id="U:NYCbXMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcontr_des" nullable="true" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="7"/>
+<Column imx:id="U:NYCbXcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idsprod_des" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
+<Column imx:id="U:NYCbXsPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" nullable="true" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="10"/>
+<Column imx:id="U:NYCbX8PkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fbigint" name="data_timestamp_part" nullable="true" odbcPrecision="19" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fbigint" precision="19"/>
+</columns>
+<PartitionedColumns>
+<Column imx:id="U:NYCbYMPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" precision="4000"/>
+<Column imx:id="U:NYCbYcPkEeewymC9bPGwNA" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fbigint" name="data_timestamp_part" precision="19"/>
+</PartitionedColumns>
 </IObject>
 <IObject imx:id="U:1ybklTDuEeiv2aAE2TYESA" xsi:type="datarecord:Table" connection="stringIdentity:cnx_01_HV_ARC_MD" connectionName="cnx_01_HV_ARC_MD" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_homog_rendimientos" ownerName="WS_APLARCCO_DEV_MD" physicalName="arcco_homog_rendimientos">
 <columns>
@@ -2319,5 +2324,5 @@
 </IObject>
 </contents>
 </project:Project>
-<imx:crc value="814839454"/>
+<imx:crc value="3267560577"/>
 </imx:IMX>

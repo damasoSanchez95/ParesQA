@@ -28,6 +28,22 @@ public class LeerFichero {
 	private static String dataInterface;
 	private static boolean descripcionMapping;
 	
+//	public static void pasarNombreTransformacionesAMinusc(){
+//		int contador=0;
+//		while(contador <= listaTransformacion.size()-1){
+//			listaTransformacion.get(contador).setNombre(listaTransformacion.get(contador).getNombre().toLowerCase());
+//			contador++;
+//		}			
+//	}
+//	
+//	public static void pasarNombreInstanciaAMinusc(){
+//		int contador=0;
+//		while(contador <= listaInstancia.size()-1){
+//			listaInstancia.get(contador).setName(listaInstancia.get(contador).getName().toLowerCase());
+//			contador++;
+//		}		
+//	}
+
 	public static boolean getDescripcionMapping(){
 		return descripcionMapping;
 	}

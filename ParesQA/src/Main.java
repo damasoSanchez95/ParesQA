@@ -14,6 +14,9 @@ public class Main {
 			String archivo = br.readLine();
 			LeerFichero.leerContenido(archivo);
 			LeerFichero.ordenarObjetos(); //se hace para que el de escritura nunca este el primero
+			//LeerFichero.pasarNombreInstanciaAMinusc();
+			//LeerFichero.pasarNombreTransformacionesAMinusc();
+			
 			validaciones = new Validaciones(LeerFichero.getDescripcionMapping(), LeerFichero.getListaInstancia(), LeerFichero.getListaTransformaciones(), LeerFichero.getTablaParametros(), LeerFichero.getListaObjetos(), LeerFichero.getTablaExecutionParameters(), LeerFichero.getListaDataRecords());
 			//validaciones.parametros();
 			//validaciones.executionParameters();
