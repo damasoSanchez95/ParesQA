@@ -6246,11 +6246,11 @@
 <JoinerField imx:id="U:KGmenyxhEeiFrAoaabTgbA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="imp_rdos_dot_acum_ant"/>
 <JoinerField imx:id="U:KGmeoCxhEeiFrAoaabTgbA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="result_antes_impuestos_acum_ant"/>
 <JoinerField imx:id="U:KGmeoSxhEeiFrAoaabTgbA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="10" upper="1" input="true" name="data_date_part"/>
-<JoinerField imx:id="U:KGmeoixhEeiFrAoaabTgbA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="10" upper="1" input="true" name="v_empresa"/>
-<JoinerField imx:id="U:KGmeoyxhEeiFrAoaabTgbA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="10" upper="1" input="true" name="v_centro"/>
-<JoinerField imx:id="U:KGmepCxhEeiFrAoaabTgbA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="10" upper="1" input="true" name="v_producto"/>
-<JoinerField imx:id="U:KGmepSxhEeiFrAoaabTgbA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="10" upper="1" input="true" name="v_subproducto"/>
-<JoinerField imx:id="U:KGmepixhEeiFrAoaabTgbA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="10" upper="1" input="true" name="v_contrato"/>
+<JoinerField imx:id="U:KGmeoixhEeiFrAoaabTgbA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="v_empresa"/>
+<JoinerField imx:id="U:KGmeoyxhEeiFrAoaabTgbA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="v_centro"/>
+<JoinerField imx:id="U:KGmepCxhEeiFrAoaabTgbA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="v_producto"/>
+<JoinerField imx:id="U:KGmepSxhEeiFrAoaabTgbA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="v_subproducto"/>
+<JoinerField imx:id="U:KGmepixhEeiFrAoaabTgbA" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="v_contrato"/>
 </joinerFields>
 </JoinerDataInterface>
 <JoinerDataInterface imx:id="U:iPbUzCxVEeiFrAoaabTgbA" xsi:type="joiner:JoinerDataInterface" input="true" name="Principal">

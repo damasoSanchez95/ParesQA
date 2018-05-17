@@ -76,7 +76,6 @@
 <ports>
 <TransformationFieldPort imx:id="ID_64" xsi:type="mapping:TransformationFieldPort" instance="U:9-NG8iwhEeifwIeF2GB2UA" transformationField="U:9-NG-iwhEeifwIeF2GB2UA">
 <children>
-<NestedPort imx:id="ID_65" xsi:type="mapping:NestedPort" fromPort="ID_66" parent="ID_64" structuralFeature="U:9-NG_SwhEeifwIeF2GB2UA"/>
 <NestedPort imx:id="ID_67" xsi:type="mapping:NestedPort" fromPort="ID_68" parent="ID_64" structuralFeature="U:9-NG_iwhEeifwIeF2GB2UA"/>
 <NestedPort imx:id="ID_69" xsi:type="mapping:NestedPort" fromPort="ID_70" parent="ID_64" structuralFeature="U:9-NG_ywhEeifwIeF2GB2UA"/>
 <NestedPort imx:id="ID_71" xsi:type="mapping:NestedPort" fromPort="ID_72" parent="ID_64" structuralFeature="U:9-NHACwhEeifwIeF2GB2UA"/>
@@ -627,32 +626,19 @@
 </AbstractTransformation>
 </transformations>
 </mapping:Mapping>
+<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_TM" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_TM">
+<defaultAttributes imx:id="U:dolMnVyoEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
+<modelExtension imx:id="ID_253" xsi:type="Hive:HiveConnectInfoExtension"/>
+</Hive:HiveConnectInfo>
 <Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_MD" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_MD">
 <defaultAttributes imx:id="U:r374x1ymEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
-<modelExtension imx:id="ID_253" xsi:type="Hive:HiveConnectInfoExtension"/>
+<modelExtension imx:id="ID_254" xsi:type="Hive:HiveConnectInfoExtension"/>
 </Hive:HiveConnectInfo>
 <Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_ST" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_ST">
 <defaultAttributes imx:id="U:dkf-U1yoEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
-<modelExtension imx:id="ID_254" xsi:type="Hive:HiveConnectInfoExtension"/>
-</Hive:HiveConnectInfo>
-<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_TM" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_TM">
-<defaultAttributes imx:id="U:dolMnVyoEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
 <modelExtension imx:id="ID_255" xsi:type="Hive:HiveConnectInfoExtension"/>
 </Hive:HiveConnectInfo>
-<project:Project imx:id="U:a5D_p2boEeeZTEfoBI-DAw" name="d_x860953">
-<imx:annotations>
-<imx:IGenericAnnotations>
-<com.informatica.tools.objectie key1="projectName" value1="MRS04_DESA"/>
-</imx:IGenericAnnotations>
-</imx:annotations>
-<annotations>
-<Annotation imx:id="ID_256" xsi:type="description:Description"/>
-</annotations>
-<contents>
-<IObject imx:id="U:zRq8asOeEeeO4K4Q9BCEUQ" xsi:type="folder:Folder" name="BI_50053437_HOM">
-<contents>
-<IObject imx:idref="U:QIAZvywhEeifwIeF2GB2UA" xsi:type="mapping:Mapping"/>
-<IObject imx:id="U:ptcwHt8fEeexjA8RSYbcVQ" xsi:type="datarecord:Table" connection="stringIdentity:cnx_01_HV_ARC_ST" connectionName="cnx_01_HV_ARC_ST" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_pt_cesta" ownerName="WS_APLARCCO_DEV_STAGING" physicalName="arcco_pt_cesta">
+<datarecord:Table imx:id="U:ptcwHt8fEeexjA8RSYbcVQ" connection="stringIdentity:cnx_01_HV_ARC_ST" connectionName="cnx_01_HV_ARC_ST" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_pt_cesta" ownerName="WS_APLARCCO_DEV_STAGING" physicalName="arcco_pt_cesta">
 <columns>
 <Column imx:id="U:ptcwH98fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
 <Column imx:id="U:ptcwIN8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="tipcesta" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
@@ -668,7 +654,21 @@
 <Column imx:id="U:ptcwKN8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" precision="4000"/>
 <Column imx:id="U:ptcwKd8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fbigint" name="data_timestamp_part" precision="19"/>
 </PartitionedColumns>
-</IObject>
+</datarecord:Table>
+<project:Project imx:id="U:a5D_p2boEeeZTEfoBI-DAw" name="d_x860953">
+<imx:annotations>
+<imx:IGenericAnnotations>
+<com.informatica.tools.objectie key1="projectName" value1="MRS04_DESA"/>
+</imx:IGenericAnnotations>
+</imx:annotations>
+<annotations>
+<Annotation imx:id="ID_256" xsi:type="description:Description"/>
+</annotations>
+<contents>
+<IObject imx:id="U:zRq8asOeEeeO4K4Q9BCEUQ" xsi:type="folder:Folder" name="BI_50053437_HOM">
+<contents>
+<IObject imx:idref="U:QIAZvywhEeifwIeF2GB2UA" xsi:type="mapping:Mapping"/>
+<IObject imx:idref="U:ptcwHt8fEeexjA8RSYbcVQ" xsi:type="datarecord:Table"/>
 <IObject imx:id="U:cQZV8eP2EeeI9b3aq1bBPw" xsi:type="datarecord:Table" connection="stringIdentity:cnx_01_HV_ARC_TM" connectionName="cnx_01_HV_ARC_TM" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_rendimientos_linea" ownerName="WS_APLARCCO_DEV_TMP" physicalName="arcco_rendimientos_linea">
 <columns>
 <Column imx:id="U:cQZV8uP2EeeI9b3aq1bBPw" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="fec_operacion" nullable="true" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="10"/>
@@ -749,5 +749,5 @@
 </IObject>
 </contents>
 </project:Project>
-<imx:crc value="3516723664"/>
+<imx:crc value="3064097288"/>
 </imx:IMX>
