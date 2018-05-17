@@ -256,8 +256,8 @@ public class LeerFichero {
 				if(campo.getType().equals("decimal"))
 					if(it.hasNext())
 						campo.setEscala(it.next());
-					else
-						System.out.println("El campo " + campo.getName() + " de la tabla " + dataRecord.getName() + " es un decimal y no tiene puesto la escala");
+					//else
+						//System.out.println("El campo " + campo.getName() + " de la tabla " + dataRecord.getName() + " es un decimal y no tiene puesto la escala");
 				else
 					campo.setEscala(null);
 
@@ -1136,8 +1136,8 @@ public class LeerFichero {
 						if(campo.getType().equals("decimal"))
 							if(it.hasNext())
 									campo.setEscala(it.next());
-							else
-								System.out.println("El campo " + campo.getName() + " de la tabla " + nuevoObjeto.getName() + " es un decimal y no tiene puesto la escala");
+							//else
+								//System.out.println("El campo " + campo.getName() + " de la tabla " + nuevoObjeto.getName() + " es un decimal y no tiene puesto la escala");
 						else
 							campo.setEscala(null);
 

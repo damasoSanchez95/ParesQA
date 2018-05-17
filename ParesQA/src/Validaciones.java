@@ -124,7 +124,7 @@ public class Validaciones {
 				}	
 			}
 
-			System.out.println(" NUEVO OBJETO" + nuevoObjeto.getName());
+			//System.out.println(" NUEVO OBJETO" + nuevoObjeto.getName());
 
 
 			//AQUI SEA UN OBJETO DE REFERENCIA O UNO NORMAL LLEGAMOS CON EL NOMBRE Y LA LISTA DE CAMPOS CORRESPONDIENTE

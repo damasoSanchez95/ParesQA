@@ -18,9 +18,19 @@ public class Main {
 			LeerFichero.pasarNombreTransformacionesAMinusc();
 			
 			validaciones = new Validaciones(LeerFichero.getDescripcionMapping(), LeerFichero.getListaInstancia(), LeerFichero.getListaTransformaciones(), LeerFichero.getTablaParametros(), LeerFichero.getListaObjetos(), LeerFichero.getTablaExecutionParameters(), LeerFichero.getListaDataRecords());
-			//validaciones.parametros();
-			//validaciones.executionParameters();
-			//validaciones.descripcionMapping();
+			System.out.println("*******COMPROBACION PARAMETROS*********");
+			validaciones.parametros();
+
+			
+			System.out.println("*******COMPROBACION PARAMETROS DE EJECUCION*********");
+			validaciones.executionParameters();
+			
+			
+			
+			System.out.println("*******COMPROBACION DESCRIPCION MAPPING*********");
+			validaciones.descripcionMapping();
+			
+			System.out.println("*******COMPROBACION PUERTOS*********");
 			validaciones.ValidacionesPuertos();
 			System.out.println("HEMOS ACABADO DE VALIDAR EL MAPPING.");
 	}
