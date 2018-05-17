@@ -148,7 +148,7 @@ public class Validaciones {
 							//si no entra en el while significa que hemos cogido un objeto con escritura o hemos llegado a la ultima instancia que es la de escritura	
 							//necesitamos coger el toInstance de esa instancia
 							
-							if(!NombreAComprobar.contains("Escritura")){
+							if(!NombreAComprobar.contains("escritura") && !NombreAComprobar.contains("write")){
 							
 								String siguienteId=listaInstancia.get(InstanciaPartida).getToInstance();//importante ya que lo tendremos en cuenta con los toPort y FromPort	
 								InstanciaDestino=SiguienteInstancia(siguienteId,instanciaEncontrada,InstanciaDestino);
@@ -163,7 +163,7 @@ public class Validaciones {
 							transformacionEncontrada=false;
 							
 							//CASO DE lectura
-							if(NombreAComprobar.contains("Lectura")){
+							if(NombreAComprobar.contains("lectura") || NombreAComprobar.contains("read")){
 								//AQUI COMPROBAMOS QUE LOS CAMPOS SON CORRECTOS Y EXISTEN EN LA 2 INSTANCIA, PERO NO ESTAMOS COMPARANDO LOS PUERTOS AUN
 								int ContadorComprobaciones=0; //Contador de arrayList, hay un arrayList de campos
 								for(int indiceCampoDeLaInstanciaPartida=0; indiceCampoDeLaInstanciaPartida<listaInstancia.get(InstanciaPartida).getCampos().size();indiceCampoDeLaInstanciaPartida++){	 //For para recorrer todos los campos de la instancia de origen					
@@ -255,7 +255,7 @@ public class Validaciones {
 							}
 
 							//CASO DE escritura
-							else if(NombreAComprobar.contains("Escritura")) {
+							else if(NombreAComprobar.contains("escritura") || NombreAComprobar.contains("write") ) {
 								escritura=true;
 
 								
@@ -378,7 +378,7 @@ public class Validaciones {
 							//Aqui comprobamos si tanto la columna,nombre,precision,tipo, nullable y scala coinciden con el objeto 
 							//ATENCION CON LA ESCALA QUE HABRA QUE COMPROBAR QUE NO SEA NULL
 							campoCorrecto=true;
-							if(!listaTransformaciones.get(posicionTransformacion).getNombre().contains("Escritura") && campoCorrecto){
+							if(!listaTransformaciones.get(posicionTransformacion).getNombre().contains("escritura") && !listaTransformaciones.get(posicionTransformacion).getNombre().contains("write") && campoCorrecto){
 								//una vez que se han comrpboado los campos y estan correctos y la instancia no es de escritura metermos los campos de precision tipo y escala en el arraylist dentro del array list (consultar dibujo para dudas)
 								
 								tablaComparacionCampos.get(ContadorComprobaciones).add(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getPrecision());

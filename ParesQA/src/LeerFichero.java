@@ -28,21 +28,21 @@ public class LeerFichero {
 	private static String dataInterface;
 	private static boolean descripcionMapping;
 	
-//	public static void pasarNombreTransformacionesAMinusc(){
-//		int contador=0;
-//		while(contador <= listaTransformacion.size()-1){
-//			listaTransformacion.get(contador).setNombre(listaTransformacion.get(contador).getNombre().toLowerCase());
-//			contador++;
-//		}			
-//	}
-//	
-//	public static void pasarNombreInstanciaAMinusc(){
-//		int contador=0;
-//		while(contador <= listaInstancia.size()-1){
-//			listaInstancia.get(contador).setName(listaInstancia.get(contador).getName().toLowerCase());
-//			contador++;
-//		}		
-//	}
+	public static void pasarNombreTransformacionesAMinusc(){
+		int contador=0;
+		while(contador <= listaTransformacion.size()-1){
+			listaTransformacion.get(contador).setNombre(listaTransformacion.get(contador).getNombre().toLowerCase());
+			contador++;
+		}			
+	}
+	
+	public static void pasarNombreInstanciaAMinusc(){
+		int contador=0;
+		while(contador <= listaInstancia.size()-1){
+			listaInstancia.get(contador).setName(listaInstancia.get(contador).getName().toLowerCase());
+			contador++;
+		}		
+	}
 
 	public static boolean getDescripcionMapping(){
 		return descripcionMapping;
@@ -90,7 +90,7 @@ public class LeerFichero {
 
 		//buscamos la instancia de escritura
 		for(instancia=0; instancia<listaInstancia.size()&&!parar;instancia++)
-			if(listaInstancia.get(instancia).getName().contains("Escritura"))
+			if(listaInstancia.get(instancia).getName().contains("Escritura") || listaInstancia.get(instancia).getName().contains("Write") )
 				parar=true;
 
 		parar=false;
@@ -580,7 +580,7 @@ public class LeerFichero {
 				meterEnLista(arrayBueno,listaClaves);
 
 				//Cuando la instancia es un source
-				if(nuevaInstancia.getName().contains("Lectura")){
+				if(nuevaInstancia.getName().contains("Lectura") || nuevaInstancia.getName().contains("Read") ){
 					campo.setTransformationField(null); //Source y Target no tienen este atributo
 					it = listaClaves.iterator(); //llevamos al iterador al principio de la lista
 					campo.setId(it.next());
@@ -591,7 +591,7 @@ public class LeerFichero {
 				}
 
 				//cuando la tabla es un target
-				else if(nuevaInstancia.getName().contains("Escritura")){
+				else if(nuevaInstancia.getName().contains("Escritura") || nuevaInstancia.getName().contains("Write") ){
 					campo.setTransformationField(null); //Source y Target no tienen este atributo
 					it=listaClaves.iterator();
 					campo.setId(it.next());
