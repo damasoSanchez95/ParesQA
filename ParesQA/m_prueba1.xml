@@ -5,18 +5,22 @@
 <Characteristic imx:id="ID_1" xsi:type="runtime:RuntimeCharacteristic" maximumRuntimeIntervalPerSource="PT0S" selectedExecutionEnvironmentName="hadoop" stateStore.="smd:com.informatica.metadata.common.parameter.util.InfaParameterSeed.StateStore">
 <environments>
 <ExecutionEnvironment imx:id="ID_2" xsi:type="hadoop:SparkYarnExecutionEngine" version="1.5.1">
-<executionConfig imx:id="ID_3" xsi:type="hadoop:HadoopExecutionConfig" connectionName.="U:ng-nhTwBEeibj0QW94iAPw"/>
+<executionConfig imx:id="ID_3" xsi:type="hadoop:HadoopExecutionConfig" connectionName.="U:ng-nhTwBEeibj0QW94iAPw">
+<executionParameters>
+<HadoopExecutionParameter xsi:type="hadoop:HadoopExecutionParameter" name="abcdr"/>
+</executionParameters>
+</executionConfig>
 </ExecutionEnvironment>
 </environments>
 <handlers>
-<TxHandlerConfig imx:id="ID_4" xsi:type="source1:SourceTxHandlerConfig" txInstance="U:39zFKjl-EeinF3GVsLcbyQ" selectedAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter"/>
-<TxHandlerConfig imx:id="ID_5" xsi:type="target1:TargetTxHandlerConfig" txInstance="U:03SWcj1jEeiFGq4Rhf3aoQ" selectedAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalWriterDataAdapter" rejectDirectory.="smd:com.informatica.metadata.common.parameter.util.InfaParameterSeed.RejectDir" rejectFile="Escritura_arcco_rendimientos_linea_tmpj.bad"/>
+<TxHandlerConfig imx:id="ID_5" xsi:type="source1:SourceTxHandlerConfig" txInstance="U:39zFKjl-EeinF3GVsLcbyQ" selectedAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter"/>
+<TxHandlerConfig imx:id="ID_6" xsi:type="target1:TargetTxHandlerConfig" txInstance="U:03SWcj1jEeiFGq4Rhf3aoQ" selectedAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalWriterDataAdapter" rejectDirectory.="smd:com.informatica.metadata.common.parameter.util.InfaParameterSeed.RejectDir" rejectFile="Escritura_arcco_rendimientos_linea_tmpj.bad"/>
 </handlers>
-<streamingConfig imx:id="ID_6" xsi:type="runtime:StreamingConfig" batchInterval="PT20S" cacheRefreshInterval="PT1H"/>
+<streamingConfig imx:id="ID_7" xsi:type="runtime:StreamingConfig" batchInterval="PT20S" cacheRefreshInterval="PT1H"/>
 </Characteristic>
-<Characteristic imx:id="ID_7" xsi:type="optimizer:OptimizerCharacteristic">
+<Characteristic imx:id="ID_8" xsi:type="optimizer:OptimizerCharacteristic">
 <configs>
-<OptimizerConfig imx:id="ID_8" xsi:type="pdo:PushdownConfig"/>
+<OptimizerConfig imx:id="ID_9" xsi:type="pdo:PushdownConfig"/>
 </configs>
 </Characteristic>
 </characteristics>
@@ -24,94 +28,90 @@
 <instances>
 <Instance imx:id="U:39zFKjl-EeinF3GVsLcbyQ" xsi:type="mapping:Instance" name="Lectura_arcco_ruc_comisiones" transformation="U:39zFLTl-EeinF3GVsLcbyQ">
 <fromOutlineLinks>
-<OutlineLink imx:id="ID_9" xsi:type="mapping:OutlineLink" fromInstance="U:39zFKjl-EeinF3GVsLcbyQ" toInstance="U:39zFKzl-EeinF3GVsLcbyQ"/>
+<OutlineLink imx:id="ID_10" xsi:type="mapping:OutlineLink" fromInstance="U:39zFKjl-EeinF3GVsLcbyQ" toInstance="U:39zFKzl-EeinF3GVsLcbyQ"/>
 </fromOutlineLinks>
 <ports>
-<TransformationFieldPort imx:id="ID_10" xsi:type="mapping:TransformationFieldPort" instance="U:39zFKjl-EeinF3GVsLcbyQ" transformationField="U:39zsXzl-EeinF3GVsLcbyQ">
+<TransformationFieldPort imx:id="ID_11" xsi:type="mapping:TransformationFieldPort" instance="U:39zFKjl-EeinF3GVsLcbyQ" transformationField="U:39zsXzl-EeinF3GVsLcbyQ">
 <children>
-<NestedPort imx:id="ID_11" xsi:type="mapping:NestedPort" toPorts="ID_12" parent="ID_10" structuralFeature="U:390Skjl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_13" xsi:type="mapping:NestedPort" toPorts="ID_14" parent="ID_10" structuralFeature="U:390Skzl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_15" xsi:type="mapping:NestedPort" toPorts="ID_16" parent="ID_10" structuralFeature="U:390Sizl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_17" xsi:type="mapping:NestedPort" toPorts="ID_18" parent="ID_10" structuralFeature="U:390SjDl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_19" xsi:type="mapping:NestedPort" toPorts="ID_20" parent="ID_10" structuralFeature="U:39zsYzl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_21" xsi:type="mapping:NestedPort" toPorts="ID_22" parent="ID_10" structuralFeature="U:39zsZDl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_23" xsi:type="mapping:NestedPort" toPorts="ID_24" parent="ID_10" structuralFeature="U:39zsZTl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_25" xsi:type="mapping:NestedPort" toPorts="ID_26" parent="ID_10" structuralFeature="U:39zsZjl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_27" xsi:type="mapping:NestedPort" toPorts="ID_28" parent="ID_10" structuralFeature="U:39zsZzl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_29" xsi:type="mapping:NestedPort" toPorts="ID_30" parent="ID_10" structuralFeature="U:390Sejl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_31" xsi:type="mapping:NestedPort" toPorts="ID_32" parent="ID_10" structuralFeature="U:390Sezl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_33" xsi:type="mapping:NestedPort" toPorts="ID_34" parent="ID_10" structuralFeature="U:390SfDl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_35" xsi:type="mapping:NestedPort" toPorts="ID_36" parent="ID_10" structuralFeature="U:390SfTl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_37" xsi:type="mapping:NestedPort" toPorts="ID_38" parent="ID_10" structuralFeature="U:390Sfjl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_39" xsi:type="mapping:NestedPort" toPorts="ID_40" parent="ID_10" structuralFeature="U:390Sgjl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_41" xsi:type="mapping:NestedPort" toPorts="ID_42" parent="ID_10" structuralFeature="U:390ShTl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_43" xsi:type="mapping:NestedPort" toPorts="ID_44" parent="ID_10" structuralFeature="U:390Shjl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_45" xsi:type="mapping:NestedPort" toPorts="ID_46" parent="ID_10" structuralFeature="U:390SlDl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_47" xsi:type="mapping:NestedPort" toPorts="ID_48" parent="ID_10" structuralFeature="U:390SjTl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_49" xsi:type="mapping:NestedPort" toPorts="ID_50" parent="ID_10" structuralFeature="U:390SlTl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_51" xsi:type="mapping:NestedPort" toPorts="ID_52" parent="ID_10" structuralFeature="U:390SnDl-EeinF3GVsLcbyQ"/>
-<NestedPort imx:id="ID_53" xsi:type="mapping:NestedPort" toPorts="ID_54" parent="ID_10" structuralFeature="U:39zsYjl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_12" xsi:type="mapping:NestedPort" toPorts="ID_13" parent="ID_11" structuralFeature="U:390Skjl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_14" xsi:type="mapping:NestedPort" toPorts="ID_15" parent="ID_11" structuralFeature="U:390Skzl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_16" xsi:type="mapping:NestedPort" toPorts="ID_17" parent="ID_11" structuralFeature="U:390Sizl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_18" xsi:type="mapping:NestedPort" toPorts="ID_19" parent="ID_11" structuralFeature="U:390SjDl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_20" xsi:type="mapping:NestedPort" toPorts="ID_21" parent="ID_11" structuralFeature="U:39zsYzl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_22" xsi:type="mapping:NestedPort" toPorts="ID_23" parent="ID_11" structuralFeature="U:39zsZDl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_24" xsi:type="mapping:NestedPort" toPorts="ID_25" parent="ID_11" structuralFeature="U:39zsZTl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_26" xsi:type="mapping:NestedPort" toPorts="ID_27" parent="ID_11" structuralFeature="U:39zsZjl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_28" xsi:type="mapping:NestedPort" toPorts="ID_29" parent="ID_11" structuralFeature="U:39zsZzl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_30" xsi:type="mapping:NestedPort" toPorts="ID_31" parent="ID_11" structuralFeature="U:390Sejl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_32" xsi:type="mapping:NestedPort" toPorts="ID_33" parent="ID_11" structuralFeature="U:390Sezl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_34" xsi:type="mapping:NestedPort" toPorts="ID_35" parent="ID_11" structuralFeature="U:390SfDl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_36" xsi:type="mapping:NestedPort" toPorts="ID_37" parent="ID_11" structuralFeature="U:390SfTl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_38" xsi:type="mapping:NestedPort" toPorts="ID_39" parent="ID_11" structuralFeature="U:390Sfjl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_40" xsi:type="mapping:NestedPort" toPorts="ID_41" parent="ID_11" structuralFeature="U:390Sgjl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_42" xsi:type="mapping:NestedPort" toPorts="ID_43" parent="ID_11" structuralFeature="U:390ShTl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_44" xsi:type="mapping:NestedPort" toPorts="ID_45" parent="ID_11" structuralFeature="U:390Shjl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_46" xsi:type="mapping:NestedPort" toPorts="ID_47" parent="ID_11" structuralFeature="U:390SlDl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_48" xsi:type="mapping:NestedPort" toPorts="ID_49" parent="ID_11" structuralFeature="U:390SjTl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_50" xsi:type="mapping:NestedPort" toPorts="ID_51" parent="ID_11" structuralFeature="U:390SlTl-EeinF3GVsLcbyQ"/>
+<NestedPort imx:id="ID_52" xsi:type="mapping:NestedPort" toPorts="ID_53" parent="ID_11" structuralFeature="U:390SnDl-EeinF3GVsLcbyQ"/>
 </children>
 </TransformationFieldPort>
 </ports>
 </Instance>
-<Instance imx:id="U:39zFKzl-EeinF3GVsLcbyQ" xsi:type="mapping:Instance" name="exp_importes" toOutlineLinks="ID_9" transformation="U:39zFLjl-EeinF3GVsLcbyQ">
+<Instance imx:id="U:39zFKzl-EeinF3GVsLcbyQ" xsi:type="mapping:Instance" name="Exp_importes" toOutlineLinks="ID_10" transformation="U:39zFLjl-EeinF3GVsLcbyQ">
 <fromOutlineLinks>
-<OutlineLink imx:id="ID_55" xsi:type="mapping:OutlineLink" fromInstance="U:39zFKzl-EeinF3GVsLcbyQ" toInstance="U:03SWcj1jEeiFGq4Rhf3aoQ"/>
+<OutlineLink imx:id="ID_54" xsi:type="mapping:OutlineLink" fromInstance="U:39zFKzl-EeinF3GVsLcbyQ" toInstance="U:03SWcj1jEeiFGq4Rhf3aoQ"/>
 </fromOutlineLinks>
 <ports>
-<TransformationFieldPort imx:id="ID_12" xsi:type="mapping:TransformationFieldPort" fromPort="ID_11" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:39zsWzl-EeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_14" xsi:type="mapping:TransformationFieldPort" fromPort="ID_13" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:39zsXDl-EeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_16" xsi:type="mapping:TransformationFieldPort" fromPort="ID_15" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:yh7OGDmFEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_18" xsi:type="mapping:TransformationFieldPort" fromPort="ID_17" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:yh7OGTmFEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_20" xsi:type="mapping:TransformationFieldPort" fromPort="ID_19" toPorts="ID_56" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXQzmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_22" xsi:type="mapping:TransformationFieldPort" fromPort="ID_21" toPorts="ID_57" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXRDmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_24" xsi:type="mapping:TransformationFieldPort" fromPort="ID_23" toPorts="ID_58" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXRTmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_26" xsi:type="mapping:TransformationFieldPort" fromPort="ID_25" toPorts="ID_59" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXRjmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_28" xsi:type="mapping:TransformationFieldPort" fromPort="ID_27" toPorts="ID_60" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXRzmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_30" xsi:type="mapping:TransformationFieldPort" fromPort="ID_29" toPorts="ID_61" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXSjmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_32" xsi:type="mapping:TransformationFieldPort" fromPort="ID_31" toPorts="ID_62" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXSzmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_34" xsi:type="mapping:TransformationFieldPort" fromPort="ID_33" toPorts="ID_63" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXTDmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_36" xsi:type="mapping:TransformationFieldPort" fromPort="ID_35" toPorts="ID_64" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXTTmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_38" xsi:type="mapping:TransformationFieldPort" fromPort="ID_37" toPorts="ID_65" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXTjmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_40" xsi:type="mapping:TransformationFieldPort" fromPort="ID_39" toPorts="ID_66" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXUjmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_42" xsi:type="mapping:TransformationFieldPort" fromPort="ID_41" toPorts="ID_67" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXVTmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_44" xsi:type="mapping:TransformationFieldPort" fromPort="ID_43" toPorts="ID_68" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXVjmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_46" xsi:type="mapping:TransformationFieldPort" fromPort="ID_45" toPorts="ID_69" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXYTmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_48" xsi:type="mapping:TransformationFieldPort" fromPort="ID_47" toPorts="ID_70" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXYjmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_50" xsi:type="mapping:TransformationFieldPort" fromPort="ID_49" toPorts="ID_71" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXYzmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_52" xsi:type="mapping:TransformationFieldPort" fromPort="ID_51" toPorts="ID_72" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXajmHEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_73" xsi:type="mapping:TransformationFieldPort" toPorts="ID_74" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:lTuPxDzREeizORL7K6xqaA"/>
-<TransformationFieldPort imx:id="ID_75" xsi:type="mapping:TransformationFieldPort" toPorts="ID_76" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:lTuPwzzREeizORL7K6xqaA"/>
-<TransformationFieldPort imx:id="ID_77" xsi:type="mapping:TransformationFieldPort" toPorts="ID_78" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:oyQc_zmAEeinF3GVsLcbyQ"/>
-<TransformationFieldPort imx:id="ID_54" xsi:type="mapping:TransformationFieldPort" fromPort="ID_53" toPorts="ID_79" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXQjmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_13" xsi:type="mapping:TransformationFieldPort" fromPort="ID_12" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:39zsWzl-EeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_15" xsi:type="mapping:TransformationFieldPort" fromPort="ID_14" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:39zsXDl-EeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_17" xsi:type="mapping:TransformationFieldPort" fromPort="ID_16" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:yh7OGDmFEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_19" xsi:type="mapping:TransformationFieldPort" fromPort="ID_18" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:yh7OGTmFEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_21" xsi:type="mapping:TransformationFieldPort" fromPort="ID_20" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXQzmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_23" xsi:type="mapping:TransformationFieldPort" fromPort="ID_22" toPorts="ID_55" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXRDmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_25" xsi:type="mapping:TransformationFieldPort" fromPort="ID_24" toPorts="ID_56" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXRTmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_27" xsi:type="mapping:TransformationFieldPort" fromPort="ID_26" toPorts="ID_57" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXRjmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_29" xsi:type="mapping:TransformationFieldPort" fromPort="ID_28" toPorts="ID_58" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXRzmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_31" xsi:type="mapping:TransformationFieldPort" fromPort="ID_30" toPorts="ID_59" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXSjmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_33" xsi:type="mapping:TransformationFieldPort" fromPort="ID_32" toPorts="ID_60" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXSzmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_35" xsi:type="mapping:TransformationFieldPort" fromPort="ID_34" toPorts="ID_61" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXTDmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_37" xsi:type="mapping:TransformationFieldPort" fromPort="ID_36" toPorts="ID_62" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXTTmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_39" xsi:type="mapping:TransformationFieldPort" fromPort="ID_38" toPorts="ID_63" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXTjmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_41" xsi:type="mapping:TransformationFieldPort" fromPort="ID_40" toPorts="ID_64" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXUjmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_43" xsi:type="mapping:TransformationFieldPort" fromPort="ID_42" toPorts="ID_65" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXVTmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_45" xsi:type="mapping:TransformationFieldPort" fromPort="ID_44" toPorts="ID_66" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXVjmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_47" xsi:type="mapping:TransformationFieldPort" fromPort="ID_46" toPorts="ID_67" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXYTmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_49" xsi:type="mapping:TransformationFieldPort" fromPort="ID_48" toPorts="ID_68" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXYjmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_51" xsi:type="mapping:TransformationFieldPort" fromPort="ID_50" toPorts="ID_69" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXYzmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_53" xsi:type="mapping:TransformationFieldPort" fromPort="ID_52" toPorts="ID_70" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:h8cXajmHEeinF3GVsLcbyQ"/>
+<TransformationFieldPort imx:id="ID_71" xsi:type="mapping:TransformationFieldPort" toPorts="ID_72" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:lTuPxDzREeizORL7K6xqaA"/>
+<TransformationFieldPort imx:id="ID_73" xsi:type="mapping:TransformationFieldPort" toPorts="ID_74" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:lTuPwzzREeizORL7K6xqaA"/>
+<TransformationFieldPort imx:id="ID_75" xsi:type="mapping:TransformationFieldPort" toPorts="ID_76" instance="U:39zFKzl-EeinF3GVsLcbyQ" transformationField="U:oyQc_zmAEeinF3GVsLcbyQ"/>
 </ports>
 </Instance>
-<Instance imx:id="U:03SWcj1jEeiFGq4Rhf3aoQ" xsi:type="mapping:Instance" name="Escritura_arcco_rendimientos_linea_tmpj" toOutlineLinks="ID_55" transformation="U:03SWcz1jEeiFGq4Rhf3aoQ">
+<Instance imx:id="U:03SWcj1jEeiFGq4Rhf3aoQ" xsi:type="mapping:Instance" name="Escritura_arcco_rendimientos_linea_tmpj" toOutlineLinks="ID_54" transformation="U:03SWcz1jEeiFGq4Rhf3aoQ">
 <ports>
-<TransformationFieldPort imx:id="ID_80" xsi:type="mapping:TransformationFieldPort" instance="U:03SWcj1jEeiFGq4Rhf3aoQ" transformationField="U:03SWdj1jEeiFGq4Rhf3aoQ">
+<TransformationFieldPort imx:id="ID_77" xsi:type="mapping:TransformationFieldPort" instance="U:03SWcj1jEeiFGq4Rhf3aoQ" transformationField="U:03SWdj1jEeiFGq4Rhf3aoQ">
 <children>
-<NestedPort imx:id="ID_74" xsi:type="mapping:NestedPort" fromPort="ID_73" parent="ID_80" structuralFeature="U:03SWeT1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_76" xsi:type="mapping:NestedPort" fromPort="ID_75" parent="ID_80" structuralFeature="U:03SWjD1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_72" xsi:type="mapping:NestedPort" fromPort="ID_52" parent="ID_80" structuralFeature="U:03SWgD1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_71" xsi:type="mapping:NestedPort" fromPort="ID_50" parent="ID_80" structuralFeature="U:03SWgT1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_70" xsi:type="mapping:NestedPort" fromPort="ID_48" parent="ID_80" structuralFeature="U:03SWiT1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_69" xsi:type="mapping:NestedPort" fromPort="ID_46" parent="ID_80" structuralFeature="U:03SWij1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_68" xsi:type="mapping:NestedPort" fromPort="ID_44" parent="ID_80" structuralFeature="U:03SWiD1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_78" xsi:type="mapping:NestedPort" fromPort="ID_77" parent="ID_80" structuralFeature="U:03SWiz1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_65" xsi:type="mapping:NestedPort" fromPort="ID_38" parent="ID_80" structuralFeature="U:03SWjT1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_67" xsi:type="mapping:NestedPort" fromPort="ID_42" parent="ID_80" structuralFeature="U:03SWhz1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_66" xsi:type="mapping:NestedPort" fromPort="ID_40" parent="ID_80" structuralFeature="U:03SWhT1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_63" xsi:type="mapping:NestedPort" fromPort="ID_34" parent="ID_80" structuralFeature="U:03SWhj1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_62" xsi:type="mapping:NestedPort" fromPort="ID_32" parent="ID_80" structuralFeature="U:03SWhD1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_61" xsi:type="mapping:NestedPort" fromPort="ID_30" parent="ID_80" structuralFeature="U:03SWgz1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_64" xsi:type="mapping:NestedPort" fromPort="ID_36" parent="ID_80" structuralFeature="U:03SWgj1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_60" xsi:type="mapping:NestedPort" fromPort="ID_28" parent="ID_80" structuralFeature="U:03SWfz1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_59" xsi:type="mapping:NestedPort" fromPort="ID_26" parent="ID_80" structuralFeature="U:03SWfj1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_58" xsi:type="mapping:NestedPort" fromPort="ID_24" parent="ID_80" structuralFeature="U:03SWfT1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_57" xsi:type="mapping:NestedPort" fromPort="ID_22" parent="ID_80" structuralFeature="U:03SWfD1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_79" xsi:type="mapping:NestedPort" fromPort="ID_54" parent="ID_80" structuralFeature="U:03SWej1jEeiFGq4Rhf3aoQ"/>
-<NestedPort imx:id="ID_56" xsi:type="mapping:NestedPort" fromPort="ID_20" parent="ID_80" structuralFeature="U:03SWez1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_72" xsi:type="mapping:NestedPort" fromPort="ID_71" parent="ID_77" structuralFeature="U:03SWeT1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_74" xsi:type="mapping:NestedPort" fromPort="ID_73" parent="ID_77" structuralFeature="U:03SWjD1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_70" xsi:type="mapping:NestedPort" fromPort="ID_53" parent="ID_77" structuralFeature="U:03SWgD1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_69" xsi:type="mapping:NestedPort" fromPort="ID_51" parent="ID_77" structuralFeature="U:03SWgT1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_68" xsi:type="mapping:NestedPort" fromPort="ID_49" parent="ID_77" structuralFeature="U:03SWiT1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_67" xsi:type="mapping:NestedPort" fromPort="ID_47" parent="ID_77" structuralFeature="U:03SWij1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_66" xsi:type="mapping:NestedPort" fromPort="ID_45" parent="ID_77" structuralFeature="U:03SWiD1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_76" xsi:type="mapping:NestedPort" fromPort="ID_75" parent="ID_77" structuralFeature="U:03SWiz1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_63" xsi:type="mapping:NestedPort" fromPort="ID_39" parent="ID_77" structuralFeature="U:03SWjT1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_65" xsi:type="mapping:NestedPort" fromPort="ID_43" parent="ID_77" structuralFeature="U:03SWhz1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_64" xsi:type="mapping:NestedPort" fromPort="ID_41" parent="ID_77" structuralFeature="U:03SWhT1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_61" xsi:type="mapping:NestedPort" fromPort="ID_35" parent="ID_77" structuralFeature="U:03SWhj1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_60" xsi:type="mapping:NestedPort" fromPort="ID_33" parent="ID_77" structuralFeature="U:03SWhD1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_59" xsi:type="mapping:NestedPort" fromPort="ID_31" parent="ID_77" structuralFeature="U:03SWgz1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_62" xsi:type="mapping:NestedPort" fromPort="ID_37" parent="ID_77" structuralFeature="U:03SWgj1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_58" xsi:type="mapping:NestedPort" fromPort="ID_29" parent="ID_77" structuralFeature="U:03SWfz1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_57" xsi:type="mapping:NestedPort" fromPort="ID_27" parent="ID_77" structuralFeature="U:03SWfj1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_56" xsi:type="mapping:NestedPort" fromPort="ID_25" parent="ID_77" structuralFeature="U:03SWfT1jEeiFGq4Rhf3aoQ"/>
+<NestedPort imx:id="ID_55" xsi:type="mapping:NestedPort" fromPort="ID_23" parent="ID_77" structuralFeature="U:03SWfD1jEeiFGq4Rhf3aoQ"/>
 </children>
 </TransformationFieldPort>
 </ports>
@@ -120,69 +120,69 @@
 <parameters>
 <UserDefinedParameter imx:id="U:ng-nhTwBEeibj0QW94iAPw" xsi:type="parameter:UserDefinedParameter" name="P_s_Integration_Services" precision="-1" scale="-1" typeinfo="smd:com.informatica.metadata.seed.modeledtypes.ModeledTypeSeed.modeledtypes%2FConnection">
 <annotations>
-<Annotation imx:id="ID_81" xsi:type="description:Description" body="Servicio+de+integracion"/>
+<Annotation imx:id="ID_78" xsi:type="description:Description" body="Servicio+de+integracion"/>
 </annotations>
-<defaultValue imx:id="ID_82" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HADOOP_ARC"/>
+<defaultValue imx:id="ID_79" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HADOOP_ARC"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:ng-nhjwBEeibj0QW94iAPw" xsi:type="parameter:UserDefinedParameter" name="P_s_Hive_Version" precision="100" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
 <annotations>
-<Annotation imx:id="ID_83" xsi:type="description:Description" body="Version+del+motor+Hive"/>
+<Annotation imx:id="ID_80" xsi:type="description:Description" body="Version+del+motor+Hive"/>
 </annotations>
-<defaultValue imx:id="ID_84" xsi:type="parameter:MidStringParameterValue" valueLiteral="0.11"/>
+<defaultValue imx:id="ID_81" xsi:type="parameter:MidStringParameterValue" valueLiteral="0.11"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:ng-nhzwBEeibj0QW94iAPw" xsi:type="parameter:UserDefinedParameter" name="P_s_Connection_MD_ARCCO" precision="-1" scale="-1" typeinfo="smd:com.informatica.metadata.seed.modeledtypes.ModeledTypeSeed.modeledtypes%2FConnection">
 <annotations>
-<Annotation imx:id="ID_85" xsi:type="description:Description" body="Conexion+a+la+base+de+datos"/>
+<Annotation imx:id="ID_82" xsi:type="description:Description" body="Conexion+a+la+base+de+datos"/>
 </annotations>
-<defaultValue imx:id="ID_86" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_MD"/>
+<defaultValue imx:id="ID_83" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_MD"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:ng-niDwBEeibj0QW94iAPw" xsi:type="parameter:UserDefinedParameter" name="P_s_Connection_TMP_ARCCO" precision="-1" scale="-1" typeinfo="smd:com.informatica.metadata.seed.modeledtypes.ModeledTypeSeed.modeledtypes%2FConnection">
 <annotations>
-<Annotation imx:id="ID_87" xsi:type="description:Description" body="Conexion+a+la+base+de+datos"/>
+<Annotation imx:id="ID_84" xsi:type="description:Description" body="Conexion+a+la+base+de+datos"/>
 </annotations>
-<defaultValue imx:id="ID_88" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_TM"/>
+<defaultValue imx:id="ID_85" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_TM"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:ng-niTwBEeibj0QW94iAPw" xsi:type="parameter:UserDefinedParameter" name="P_s_Schema_MD_OWNER" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
 <annotations>
-<Annotation imx:id="ID_89" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
+<Annotation imx:id="ID_86" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
 </annotations>
-<defaultValue imx:id="ID_90" xsi:type="parameter:StringParameterValue" valueLiteral="ws_aplarcco_dev_md"/>
+<defaultValue imx:id="ID_87" xsi:type="parameter:StringParameterValue" valueLiteral="ws_aplarcco_dev_md"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:ng-nijwBEeibj0QW94iAPw" xsi:type="parameter:UserDefinedParameter" name="P_s_Schema_TMP_OWNER" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
 <annotations>
-<Annotation imx:id="ID_91" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
+<Annotation imx:id="ID_88" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
 </annotations>
-<defaultValue imx:id="ID_92" xsi:type="parameter:StringParameterValue" valueLiteral="ws_aplarcco_dev_tmp"/>
+<defaultValue imx:id="ID_89" xsi:type="parameter:StringParameterValue" valueLiteral="ws_aplarcco_dev_tmp"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:ng-nizwBEeibj0QW94iAPw" xsi:type="parameter:UserDefinedParameter" name="P_s_FechaEjecucion" precision="10" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
 <annotations>
-<Annotation imx:id="ID_93" xsi:type="description:Description" body="Fecha+de+ejecuci%C3%B3n"/>
+<Annotation imx:id="ID_90" xsi:type="description:Description" body="Fecha+de+ejecuci%C3%B3n"/>
 </annotations>
-<defaultValue imx:id="ID_94" xsi:type="parameter:MidStringParameterValue" valueLiteral="9999-12-31"/>
+<defaultValue imx:id="ID_91" xsi:type="parameter:MidStringParameterValue" valueLiteral="9999-12-31"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:ng-njDwBEeibj0QW94iAPw" xsi:type="parameter:UserDefinedParameter" name="P_s_MAX_EXECUTORS" precision="10" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Finteger">
-<defaultValue imx:id="ID_95" xsi:type="parameter:IntegerParameterValue" valueLiteral="50"/>
+<defaultValue imx:id="ID_92" xsi:type="parameter:IntegerParameterValue" valueLiteral="50"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:ng-njTwBEeibj0QW94iAPw" xsi:type="parameter:UserDefinedParameter" name="P_s_EXECUTOR_MEMORY" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
-<defaultValue imx:id="ID_96" xsi:type="parameter:StringParameterValue" valueLiteral="4g"/>
+<defaultValue imx:id="ID_93" xsi:type="parameter:StringParameterValue" valueLiteral="4g"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:ng-njjwBEeibj0QW94iAPw" xsi:type="parameter:UserDefinedParameter" name="P_s_DRIVER_CORES" precision="10" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Finteger">
-<defaultValue imx:id="ID_97" xsi:type="parameter:IntegerParameterValue" valueLiteral="3"/>
+<defaultValue imx:id="ID_94" xsi:type="parameter:IntegerParameterValue" valueLiteral="3"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:ng-njzwBEeibj0QW94iAPw" xsi:type="parameter:UserDefinedParameter" name="P_s_DRIVER_MEMORY" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
-<defaultValue imx:id="ID_98" xsi:type="parameter:StringParameterValue" valueLiteral="10g"/>
+<defaultValue imx:id="ID_95" xsi:type="parameter:StringParameterValue" valueLiteral="10g"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:ng-nkDwBEeibj0QW94iAPw" xsi:type="parameter:UserDefinedParameter" name="P_s_Schema_ST_OWNER" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
 <annotations>
-<Annotation imx:id="ID_99" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
+<Annotation imx:id="ID_96" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
 </annotations>
-<defaultValue imx:id="ID_100" xsi:type="parameter:StringParameterValue" valueLiteral="ws_aplarcco_dev_staging"/>
+<defaultValue imx:id="ID_97" xsi:type="parameter:StringParameterValue" valueLiteral="ws_aplarcco_dev_staging"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:ng-nkTwBEeibj0QW94iAPw" xsi:type="parameter:UserDefinedParameter" name="P_s_Connection_ST_ARCCO" precision="-1" scale="-1" typeinfo="smd:com.informatica.metadata.seed.modeledtypes.ModeledTypeSeed.modeledtypes%2FConnection">
 <annotations>
-<Annotation imx:id="ID_101" xsi:type="description:Description" body="Conexion+a+la+base+de+datos"/>
+<Annotation imx:id="ID_98" xsi:type="description:Description" body="Conexion+a+la+base+de+datos"/>
 </annotations>
-<defaultValue imx:id="ID_102" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_ST"/>
+<defaultValue imx:id="ID_99" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_ST"/>
 </UserDefinedParameter>
 </parameters>
 <transformations>
@@ -192,12 +192,12 @@
 <DSORuntimeConfig imx:id="U:39zsYDl-EeinF3GVsLcbyQ" xsi:type="dsoconfig:RelationalDSORuntimeConfig" connectionName.="U:ng-nhzwBEeibj0QW94iAPw"/>
 </defaultConfigs>
 <operations>
-<Capability imx:id="ID_103" xsi:type="datasourceoperation1:ReadCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:39zsYDl-EeinF3GVsLcbyQ">
+<Capability imx:id="ID_100" xsi:type="datasourceoperation1:ReadCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:39zsYDl-EeinF3GVsLcbyQ">
 <outGroups>
-<DataAccessGroup imx:id="ID_104" xsi:type="datasourceoperation1:DataAccessGroup" groupType="U:39zsYTl-EeinF3GVsLcbyQ"/>
+<DataAccessGroup imx:id="ID_101" xsi:type="datasourceoperation1:DataAccessGroup" groupType="U:39zsYTl-EeinF3GVsLcbyQ"/>
 </outGroups>
 </Capability>
-<Capability imx:id="ID_105" xsi:type="datasourceoperation1:LookupCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:39zsYDl-EeinF3GVsLcbyQ"/>
+<Capability imx:id="ID_102" xsi:type="datasourceoperation1:LookupCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:39zsYDl-EeinF3GVsLcbyQ"/>
 </operations>
 <ownedCapabilityTypes>
 <ComplexType imx:id="U:39zsYTl-EeinF3GVsLcbyQ" xsi:type="typelibrary:ComplexType" name="arcco_ruc_comisiones">
@@ -250,53 +250,53 @@
 </ComplexType>
 </ownedCapabilityTypes>
 <relationalFields>
-<RelationalField imx:id="ID_106" xsi:type="datasourceoperation:RelationalField" column="U:ipQUQd8fEeexjA8RSYbcVQ" feature="U:39zsYjl-EeinF3GVsLcbyQ" name="idempr" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_108" xsi:type="datasourceoperation:RelationalField" column="U:ipQUQt8fEeexjA8RSYbcVQ" feature="U:39zsYzl-EeinF3GVsLcbyQ" name="idcent" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_109" xsi:type="datasourceoperation:RelationalField" column="U:ipQUQ98fEeexjA8RSYbcVQ" feature="U:39zsZDl-EeinF3GVsLcbyQ" name="idprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_110" xsi:type="datasourceoperation:RelationalField" column="U:ipQURN8fEeexjA8RSYbcVQ" feature="U:39zsZTl-EeinF3GVsLcbyQ" name="idsprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_111" xsi:type="datasourceoperation:RelationalField" column="U:ipQURd8fEeexjA8RSYbcVQ" feature="U:39zsZjl-EeinF3GVsLcbyQ" name="idcontrn" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_112" xsi:type="datasourceoperation:RelationalField" column="U:ipQURt8fEeexjA8RSYbcVQ" feature="U:39zsZzl-EeinF3GVsLcbyQ" name="idscontr" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_113" xsi:type="datasourceoperation:RelationalField" column="U:ipQUR98fEeexjA8RSYbcVQ" feature="U:39zsaDl-EeinF3GVsLcbyQ" name="tip_elemento" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_114" xsi:type="datasourceoperation:RelationalField" column="U:ipQUSN8fEeexjA8RSYbcVQ" feature="U:39zsaTl-EeinF3GVsLcbyQ" name="cod_elemento" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_115" xsi:type="datasourceoperation:RelationalField" column="U:ipQUSd8fEeexjA8RSYbcVQ" feature="U:390Sejl-EeinF3GVsLcbyQ" name="idemprmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_116" xsi:type="datasourceoperation:RelationalField" column="U:ipQUSt8fEeexjA8RSYbcVQ" feature="U:390Sezl-EeinF3GVsLcbyQ" name="idcentmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_117" xsi:type="datasourceoperation:RelationalField" column="U:ipQUS98fEeexjA8RSYbcVQ" feature="U:390SfDl-EeinF3GVsLcbyQ" name="coestref" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_118" xsi:type="datasourceoperation:RelationalField" column="U:ipQUTN8fEeexjA8RSYbcVQ" feature="U:390SfTl-EeinF3GVsLcbyQ" name="id_moneda" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_119" xsi:type="datasourceoperation:RelationalField" column="U:ipQUTd8fEeexjA8RSYbcVQ" feature="U:390Sfjl-EeinF3GVsLcbyQ" name="codcepto" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_120" xsi:type="datasourceoperation:RelationalField" column="U:ipQUTt8fEeexjA8RSYbcVQ" feature="U:390Sfzl-EeinF3GVsLcbyQ" name="cgm" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_121" xsi:type="datasourceoperation:RelationalField" column="U:ipQUT98fEeexjA8RSYbcVQ" feature="U:390SgDl-EeinF3GVsLcbyQ" name="cgm_sdo" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_122" xsi:type="datasourceoperation:RelationalField" column="U:ipQUUN8fEeexjA8RSYbcVQ" feature="U:390SgTl-EeinF3GVsLcbyQ" name="codmonsw" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_123" xsi:type="datasourceoperation:RelationalField" column="U:ipQUUd8fEeexjA8RSYbcVQ" feature="U:390Sgjl-EeinF3GVsLcbyQ" name="codtires" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_124" xsi:type="datasourceoperation:RelationalField" column="U:ipQUUt8fEeexjA8RSYbcVQ" feature="U:390Sgzl-EeinF3GVsLcbyQ" name="cod_amb_liq" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_125" xsi:type="datasourceoperation:RelationalField" column="U:ipQUU98fEeexjA8RSYbcVQ" feature="U:390ShDl-EeinF3GVsLcbyQ" name="tip_entrada" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_126" xsi:type="datasourceoperation:RelationalField" column="U:ipQUVN8fEeexjA8RSYbcVQ" feature="U:390ShTl-EeinF3GVsLcbyQ" name="imput_result" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_127" xsi:type="datasourceoperation:RelationalField" column="U:ipQUVd8fEeexjA8RSYbcVQ" feature="U:390Shjl-EeinF3GVsLcbyQ" name="indcobro" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_128" xsi:type="datasourceoperation:RelationalField" column="U:ipQUVt8fEeexjA8RSYbcVQ" feature="U:390Shzl-EeinF3GVsLcbyQ" name="id_ingre_gasto" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_129" xsi:type="datasourceoperation:RelationalField" column="U:ipQUV98fEeexjA8RSYbcVQ" feature="U:390SiDl-EeinF3GVsLcbyQ" name="id_impu_result" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_130" xsi:type="datasourceoperation:RelationalField" column="U:ipQUWN8fEeexjA8RSYbcVQ" feature="U:390SiTl-EeinF3GVsLcbyQ" name="id_natu_result" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_131" xsi:type="datasourceoperation:RelationalField" column="U:ipQUWd8fEeexjA8RSYbcVQ" feature="U:390Sijl-EeinF3GVsLcbyQ" name="cobrotip" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_132" xsi:type="datasourceoperation:RelationalField" column="U:ipQUWt8fEeexjA8RSYbcVQ" feature="U:390Sizl-EeinF3GVsLcbyQ" name="sig_" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_133" xsi:type="datasourceoperation:RelationalField" column="U:ipQUW98fEeexjA8RSYbcVQ" feature="U:390SjDl-EeinF3GVsLcbyQ" name="sig_impcoc_liq" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_134" xsi:type="datasourceoperation:RelationalField" column="U:ipQUXN8fEeexjA8RSYbcVQ" feature="U:390SjTl-EeinF3GVsLcbyQ" name="num_opera" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_135" xsi:type="datasourceoperation:RelationalField" column="U:ipQUXd8fEeexjA8RSYbcVQ" feature="U:390Sjjl-EeinF3GVsLcbyQ" name="tipgaran" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_136" xsi:type="datasourceoperation:RelationalField" column="U:ipQUXt8fEeexjA8RSYbcVQ" feature="U:390Sjzl-EeinF3GVsLcbyQ" name="tipclsgar" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_137" xsi:type="datasourceoperation:RelationalField" column="U:ipQUX98fEeexjA8RSYbcVQ" feature="U:390SkDl-EeinF3GVsLcbyQ" name="tipindgar" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_138" xsi:type="datasourceoperation:RelationalField" column="U:ipQUYN8fEeexjA8RSYbcVQ" feature="U:390SkTl-EeinF3GVsLcbyQ" name="rubrica" odbcPrecision="12" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_139" xsi:type="datasourceoperation:RelationalField" column="U:ipQUYd8fEeexjA8RSYbcVQ" feature="U:390Skjl-EeinF3GVsLcbyQ" name="impcoc_dev" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_140" xsi:type="datasourceoperation:RelationalField" column="U:ipQUYt8fEeexjA8RSYbcVQ" feature="U:390Skzl-EeinF3GVsLcbyQ" name="impcoc_liq" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_141" xsi:type="datasourceoperation:RelationalField" column="U:ipQUY98fEeexjA8RSYbcVQ" feature="U:390SlDl-EeinF3GVsLcbyQ" name="impopeor" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_142" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZN8fEeexjA8RSYbcVQ" feature="U:390SlTl-EeinF3GVsLcbyQ" name="lineacom" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_143" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZd8fEeexjA8RSYbcVQ" feature="U:390Sljl-EeinF3GVsLcbyQ" name="indicador" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_144" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZt8fEeexjA8RSYbcVQ" feature="U:390Slzl-EeinF3GVsLcbyQ" name="seccont" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_145" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZ98fEeexjA8RSYbcVQ" feature="U:390SmDl-EeinF3GVsLcbyQ" name="segmento" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_146" xsi:type="datasourceoperation:RelationalField" column="U:ipQUaN8fEeexjA8RSYbcVQ" feature="U:390SmTl-EeinF3GVsLcbyQ" name="tipperso" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_147" xsi:type="datasourceoperation:RelationalField" column="U:ipQUad8fEeexjA8RSYbcVQ" feature="U:390Smjl-EeinF3GVsLcbyQ" name="codper" odbcPrecision="9" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_148" xsi:type="datasourceoperation:RelationalField" column="U:ipQUat8fEeexjA8RSYbcVQ" feature="U:390Smzl-EeinF3GVsLcbyQ" name="segcomer" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_149" xsi:type="datasourceoperation:RelationalField" column="U:ipQUa98fEeexjA8RSYbcVQ" feature="U:390SnDl-EeinF3GVsLcbyQ" name="lineaibn" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
-<RelationalField imx:id="ID_150" xsi:type="datasourceoperation:RelationalField" column="U:ipQUbN8fEeexjA8RSYbcVQ" feature="U:390SnTl-EeinF3GVsLcbyQ" name="data_date_part" odbcPrecision="49" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_107"/>
+<RelationalField imx:id="ID_103" xsi:type="datasourceoperation:RelationalField" column="U:ipQUQd8fEeexjA8RSYbcVQ" feature="U:39zsYjl-EeinF3GVsLcbyQ" name="idempr" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_105" xsi:type="datasourceoperation:RelationalField" column="U:ipQUQt8fEeexjA8RSYbcVQ" feature="U:39zsYzl-EeinF3GVsLcbyQ" name="idcent" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_106" xsi:type="datasourceoperation:RelationalField" column="U:ipQUQ98fEeexjA8RSYbcVQ" feature="U:39zsZDl-EeinF3GVsLcbyQ" name="idprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_107" xsi:type="datasourceoperation:RelationalField" column="U:ipQURN8fEeexjA8RSYbcVQ" feature="U:39zsZTl-EeinF3GVsLcbyQ" name="idsprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_108" xsi:type="datasourceoperation:RelationalField" column="U:ipQURd8fEeexjA8RSYbcVQ" feature="U:39zsZjl-EeinF3GVsLcbyQ" name="idcontrn" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_109" xsi:type="datasourceoperation:RelationalField" column="U:ipQURt8fEeexjA8RSYbcVQ" feature="U:39zsZzl-EeinF3GVsLcbyQ" name="idscontr" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_110" xsi:type="datasourceoperation:RelationalField" column="U:ipQUR98fEeexjA8RSYbcVQ" feature="U:39zsaDl-EeinF3GVsLcbyQ" name="tip_elemento" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_111" xsi:type="datasourceoperation:RelationalField" column="U:ipQUSN8fEeexjA8RSYbcVQ" feature="U:39zsaTl-EeinF3GVsLcbyQ" name="cod_elemento" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_112" xsi:type="datasourceoperation:RelationalField" column="U:ipQUSd8fEeexjA8RSYbcVQ" feature="U:390Sejl-EeinF3GVsLcbyQ" name="idemprmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_113" xsi:type="datasourceoperation:RelationalField" column="U:ipQUSt8fEeexjA8RSYbcVQ" feature="U:390Sezl-EeinF3GVsLcbyQ" name="idcentmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_114" xsi:type="datasourceoperation:RelationalField" column="U:ipQUS98fEeexjA8RSYbcVQ" feature="U:390SfDl-EeinF3GVsLcbyQ" name="coestref" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_115" xsi:type="datasourceoperation:RelationalField" column="U:ipQUTN8fEeexjA8RSYbcVQ" feature="U:390SfTl-EeinF3GVsLcbyQ" name="id_moneda" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_116" xsi:type="datasourceoperation:RelationalField" column="U:ipQUTd8fEeexjA8RSYbcVQ" feature="U:390Sfjl-EeinF3GVsLcbyQ" name="codcepto" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_117" xsi:type="datasourceoperation:RelationalField" column="U:ipQUTt8fEeexjA8RSYbcVQ" feature="U:390Sfzl-EeinF3GVsLcbyQ" name="cgm" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_118" xsi:type="datasourceoperation:RelationalField" column="U:ipQUT98fEeexjA8RSYbcVQ" feature="U:390SgDl-EeinF3GVsLcbyQ" name="cgm_sdo" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_119" xsi:type="datasourceoperation:RelationalField" column="U:ipQUUN8fEeexjA8RSYbcVQ" feature="U:390SgTl-EeinF3GVsLcbyQ" name="codmonsw" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_120" xsi:type="datasourceoperation:RelationalField" column="U:ipQUUd8fEeexjA8RSYbcVQ" feature="U:390Sgjl-EeinF3GVsLcbyQ" name="codtires" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_121" xsi:type="datasourceoperation:RelationalField" column="U:ipQUUt8fEeexjA8RSYbcVQ" feature="U:390Sgzl-EeinF3GVsLcbyQ" name="cod_amb_liq" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_122" xsi:type="datasourceoperation:RelationalField" column="U:ipQUU98fEeexjA8RSYbcVQ" feature="U:390ShDl-EeinF3GVsLcbyQ" name="tip_entrada" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_123" xsi:type="datasourceoperation:RelationalField" column="U:ipQUVN8fEeexjA8RSYbcVQ" feature="U:390ShTl-EeinF3GVsLcbyQ" name="imput_result" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_124" xsi:type="datasourceoperation:RelationalField" column="U:ipQUVd8fEeexjA8RSYbcVQ" feature="U:390Shjl-EeinF3GVsLcbyQ" name="indcobro" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_125" xsi:type="datasourceoperation:RelationalField" column="U:ipQUVt8fEeexjA8RSYbcVQ" feature="U:390Shzl-EeinF3GVsLcbyQ" name="id_ingre_gasto" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_126" xsi:type="datasourceoperation:RelationalField" column="U:ipQUV98fEeexjA8RSYbcVQ" feature="U:390SiDl-EeinF3GVsLcbyQ" name="id_impu_result" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_127" xsi:type="datasourceoperation:RelationalField" column="U:ipQUWN8fEeexjA8RSYbcVQ" feature="U:390SiTl-EeinF3GVsLcbyQ" name="id_natu_result" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_128" xsi:type="datasourceoperation:RelationalField" column="U:ipQUWd8fEeexjA8RSYbcVQ" feature="U:390Sijl-EeinF3GVsLcbyQ" name="cobrotip" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_129" xsi:type="datasourceoperation:RelationalField" column="U:ipQUWt8fEeexjA8RSYbcVQ" feature="U:390Sizl-EeinF3GVsLcbyQ" name="sig_impcoc_dev" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_130" xsi:type="datasourceoperation:RelationalField" column="U:ipQUW98fEeexjA8RSYbcVQ" feature="U:390SjDl-EeinF3GVsLcbyQ" name="sig_impcoc_liq" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_131" xsi:type="datasourceoperation:RelationalField" column="U:ipQUXN8fEeexjA8RSYbcVQ" feature="U:390SjTl-EeinF3GVsLcbyQ" name="num_opera" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_132" xsi:type="datasourceoperation:RelationalField" column="U:ipQUXd8fEeexjA8RSYbcVQ" feature="U:390Sjjl-EeinF3GVsLcbyQ" name="tipgaran" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_133" xsi:type="datasourceoperation:RelationalField" column="U:ipQUXt8fEeexjA8RSYbcVQ" feature="U:390Sjzl-EeinF3GVsLcbyQ" name="tipclsgar" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_134" xsi:type="datasourceoperation:RelationalField" column="U:ipQUX98fEeexjA8RSYbcVQ" feature="U:390SkDl-EeinF3GVsLcbyQ" name="tipindgar" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_135" xsi:type="datasourceoperation:RelationalField" column="U:ipQUYN8fEeexjA8RSYbcVQ" feature="U:390SkTl-EeinF3GVsLcbyQ" name="rubrica" odbcPrecision="12" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_136" xsi:type="datasourceoperation:RelationalField" column="U:ipQUYd8fEeexjA8RSYbcVQ" feature="U:390Skjl-EeinF3GVsLcbyQ" name="impcoc_dev" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_137" xsi:type="datasourceoperation:RelationalField" column="U:ipQUYt8fEeexjA8RSYbcVQ" feature="U:390Skzl-EeinF3GVsLcbyQ" name="impcoc_liq" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_138" xsi:type="datasourceoperation:RelationalField" column="U:ipQUY98fEeexjA8RSYbcVQ" feature="U:390SlDl-EeinF3GVsLcbyQ" name="impopeor" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_139" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZN8fEeexjA8RSYbcVQ" feature="U:390SlTl-EeinF3GVsLcbyQ" name="lineacom" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_140" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZd8fEeexjA8RSYbcVQ" feature="U:390Sljl-EeinF3GVsLcbyQ" name="indicador" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_141" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZt8fEeexjA8RSYbcVQ" feature="U:390Slzl-EeinF3GVsLcbyQ" name="seccont" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_142" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZ98fEeexjA8RSYbcVQ" feature="U:390SmDl-EeinF3GVsLcbyQ" name="segmento" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_143" xsi:type="datasourceoperation:RelationalField" column="U:ipQUaN8fEeexjA8RSYbcVQ" feature="U:390SmTl-EeinF3GVsLcbyQ" name="tipperso" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_144" xsi:type="datasourceoperation:RelationalField" column="U:ipQUad8fEeexjA8RSYbcVQ" feature="U:390Smjl-EeinF3GVsLcbyQ" name="codper" odbcPrecision="9" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_145" xsi:type="datasourceoperation:RelationalField" column="U:ipQUat8fEeexjA8RSYbcVQ" feature="U:390Smzl-EeinF3GVsLcbyQ" name="segcomer" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_146" xsi:type="datasourceoperation:RelationalField" column="U:ipQUa98fEeexjA8RSYbcVQ" feature="U:390SnDl-EeinF3GVsLcbyQ" name="lineaibn" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
+<RelationalField imx:id="ID_147" xsi:type="datasourceoperation:RelationalField" column="U:ipQUbN8fEeexjA8RSYbcVQ" feature="U:390SnTl-EeinF3GVsLcbyQ" name="data_date_part" odbcPrecision="49" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_104"/>
 </relationalFields>
 <relationalRecordInstances>
-<RelationalRecordInstance imx:id="ID_107" xsi:type="datasourceoperation:RelationalRecordInstance" name="arcco_ruc_comisiones" ownerName.="U:ng-niTwBEeibj0QW94iAPw" record="U:ipQUQN8fEeexjA8RSYbcVQ"/>
+<RelationalRecordInstance imx:id="ID_104" xsi:type="datasourceoperation:RelationalRecordInstance" name="arcco_ruc_comisiones" ownerName.="U:ng-niTwBEeibj0QW94iAPw" record="U:ipQUQN8fEeexjA8RSYbcVQ"/>
 </relationalRecordInstances>
 </anonymousDso>
 <sourceInterfaces>
@@ -307,7 +307,7 @@
 </SourceDataInterface>
 </sourceInterfaces>
 </AbstractTransformation>
-<AbstractTransformation imx:id="U:39zFLjl-EeinF3GVsLcbyQ" xsi:type="expression:ExpressionTx" name="exp_importes">
+<AbstractTransformation imx:id="U:39zFLjl-EeinF3GVsLcbyQ" xsi:type="expression:ExpressionTx" name="Exp_importes">
 <expressionInterface>
 <ExpressionDataInterface imx:id="U:39zsWjl-EeinF3GVsLcbyQ" xsi:type="expression:ExpressionDataInterface" input="true" name="Grupo" output="true">
 <expressionFields>
@@ -351,12 +351,12 @@
 <AbstractTransformation imx:id="U:03SWcz1jEeiFGq4Rhf3aoQ" xsi:type="target:TargetTx" active="true" name="Escritura_arcco_rendimientos_linea_tmpj" dso="U:03SWdD1jEeiFGq4Rhf3aoQ">
 <anonymousDso imx:id="U:03SWdD1jEeiFGq4Rhf3aoQ" xsi:type="datasourceoperation:WriteRelationalDataSourceOperation" name="arcco_rendimientos_linea_tmpj" loadType="Normal" tableDefinition="U:POY4vT1iEeikmk6wSWipZg" typeSystem="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem">
 <defaultConfigs>
-<DSORuntimeConfig imx:id="U:03SWdz1jEeiFGq4Rhf3aoQ" xsi:type="dsoconfig:RelationalDSORuntimeConfig" connectInfo="stringIdentity:cnx_01_HV_ARC_TM" connectionName="cnx_01_HV_ARC_TM"/>
+<DSORuntimeConfig imx:id="U:03SWdz1jEeiFGq4Rhf3aoQ" xsi:type="dsoconfig:RelationalDSORuntimeConfig" connectionName.="U:ng-niDwBEeibj0QW94iAPw"/>
 </defaultConfigs>
 <operations>
-<Capability imx:id="ID_154" xsi:type="datasourceoperation1:WriteCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalWriterDataAdapter" defaultConfig="U:03SWdz1jEeiFGq4Rhf3aoQ">
+<Capability imx:id="ID_151" xsi:type="datasourceoperation1:WriteCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalWriterDataAdapter" defaultConfig="U:03SWdz1jEeiFGq4Rhf3aoQ">
 <inGroups>
-<DataAccessGroup imx:id="ID_155" xsi:type="datasourceoperation1:DataAccessGroup" groupType="U:03SWeD1jEeiFGq4Rhf3aoQ" input="true"/>
+<DataAccessGroup imx:id="ID_152" xsi:type="datasourceoperation1:DataAccessGroup" groupType="U:03SWeD1jEeiFGq4Rhf3aoQ" input="true"/>
 </inGroups>
 </Capability>
 </operations>
@@ -388,29 +388,29 @@
 </ComplexType>
 </ownedCapabilityTypes>
 <relationalFields>
-<RelationalField imx:id="ID_156" xsi:type="datasourceoperation:RelationalField" column="U:POaG3j1iEeikmk6wSWipZg" feature="U:03SWeT1jEeiFGq4Rhf3aoQ" name="fec_operacion" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_158" xsi:type="datasourceoperation:RelationalField" column="U:POaG3z1iEeikmk6wSWipZg" feature="U:03SWej1jEeiFGq4Rhf3aoQ" name="idempr" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_159" xsi:type="datasourceoperation:RelationalField" column="U:POaG4D1iEeikmk6wSWipZg" feature="U:03SWez1jEeiFGq4Rhf3aoQ" name="idcent" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_160" xsi:type="datasourceoperation:RelationalField" column="U:POaG4T1iEeikmk6wSWipZg" feature="U:03SWfD1jEeiFGq4Rhf3aoQ" name="idprod" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_161" xsi:type="datasourceoperation:RelationalField" column="U:POaG4j1iEeikmk6wSWipZg" feature="U:03SWfT1jEeiFGq4Rhf3aoQ" name="idsprod" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_162" xsi:type="datasourceoperation:RelationalField" column="U:POaG4z1iEeikmk6wSWipZg" feature="U:03SWfj1jEeiFGq4Rhf3aoQ" name="idcontrn" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_163" xsi:type="datasourceoperation:RelationalField" column="U:POaG5D1iEeikmk6wSWipZg" feature="U:03SWfz1jEeiFGq4Rhf3aoQ" name="idscontr" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_164" xsi:type="datasourceoperation:RelationalField" column="U:POaG5T1iEeikmk6wSWipZg" feature="U:03SWgD1jEeiFGq4Rhf3aoQ" name="lineaibn" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_165" xsi:type="datasourceoperation:RelationalField" column="U:POaG5j1iEeikmk6wSWipZg" feature="U:03SWgT1jEeiFGq4Rhf3aoQ" name="lineacom" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_166" xsi:type="datasourceoperation:RelationalField" column="U:POaG5z1iEeikmk6wSWipZg" feature="U:03SWgj1jEeiFGq4Rhf3aoQ" name="id_moneda" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_167" xsi:type="datasourceoperation:RelationalField" column="U:POaG6D1iEeikmk6wSWipZg" feature="U:03SWgz1jEeiFGq4Rhf3aoQ" name="idemprmb" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_168" xsi:type="datasourceoperation:RelationalField" column="U:POaG6T1iEeikmk6wSWipZg" feature="U:03SWhD1jEeiFGq4Rhf3aoQ" name="idcentmb" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_169" xsi:type="datasourceoperation:RelationalField" column="U:POaG6j1iEeikmk6wSWipZg" feature="U:03SWhT1jEeiFGq4Rhf3aoQ" name="codtires" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_170" xsi:type="datasourceoperation:RelationalField" column="U:POaG6z1iEeikmk6wSWipZg" feature="U:03SWhj1jEeiFGq4Rhf3aoQ" name="coestref" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_171" xsi:type="datasourceoperation:RelationalField" column="U:POaG7D1iEeikmk6wSWipZg" feature="U:03SWhz1jEeiFGq4Rhf3aoQ" name="imput_result" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_172" xsi:type="datasourceoperation:RelationalField" column="U:POaG7T1iEeikmk6wSWipZg" feature="U:03SWiD1jEeiFGq4Rhf3aoQ" name="indcobro" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_173" xsi:type="datasourceoperation:RelationalField" column="U:POaG7j1iEeikmk6wSWipZg" feature="U:03SWiT1jEeiFGq4Rhf3aoQ" name="num_opera" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_174" xsi:type="datasourceoperation:RelationalField" column="U:POaG7z1iEeikmk6wSWipZg" feature="U:03SWij1jEeiFGq4Rhf3aoQ" name="impopeor" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_175" xsi:type="datasourceoperation:RelationalField" column="U:POaG8D1iEeikmk6wSWipZg" feature="U:03SWiz1jEeiFGq4Rhf3aoQ" name="importe_coc" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_176" xsi:type="datasourceoperation:RelationalField" column="U:POaG8T1iEeikmk6wSWipZg" feature="U:03SWjD1jEeiFGq4Rhf3aoQ" name="codcesta" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
-<RelationalField imx:id="ID_177" xsi:type="datasourceoperation:RelationalField" column="U:POaG8j1iEeikmk6wSWipZg" feature="U:03SWjT1jEeiFGq4Rhf3aoQ" name="codcepto" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_157"/>
+<RelationalField imx:id="ID_153" xsi:type="datasourceoperation:RelationalField" column="U:POaG3j1iEeikmk6wSWipZg" feature="U:03SWeT1jEeiFGq4Rhf3aoQ" name="fec_operacion" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_155" xsi:type="datasourceoperation:RelationalField" column="U:POaG3z1iEeikmk6wSWipZg" feature="U:03SWej1jEeiFGq4Rhf3aoQ" name="idempr" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_156" xsi:type="datasourceoperation:RelationalField" column="U:POaG4D1iEeikmk6wSWipZg" feature="U:03SWez1jEeiFGq4Rhf3aoQ" name="idcent" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_157" xsi:type="datasourceoperation:RelationalField" column="U:POaG4T1iEeikmk6wSWipZg" feature="U:03SWfD1jEeiFGq4Rhf3aoQ" name="idprod" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_158" xsi:type="datasourceoperation:RelationalField" column="U:POaG4j1iEeikmk6wSWipZg" feature="U:03SWfT1jEeiFGq4Rhf3aoQ" name="idsprod" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_159" xsi:type="datasourceoperation:RelationalField" column="U:POaG4z1iEeikmk6wSWipZg" feature="U:03SWfj1jEeiFGq4Rhf3aoQ" name="idcontrn" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_160" xsi:type="datasourceoperation:RelationalField" column="U:POaG5D1iEeikmk6wSWipZg" feature="U:03SWfz1jEeiFGq4Rhf3aoQ" name="idscontr" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_161" xsi:type="datasourceoperation:RelationalField" column="U:POaG5T1iEeikmk6wSWipZg" feature="U:03SWgD1jEeiFGq4Rhf3aoQ" name="lineaibn" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_162" xsi:type="datasourceoperation:RelationalField" column="U:POaG5j1iEeikmk6wSWipZg" feature="U:03SWgT1jEeiFGq4Rhf3aoQ" name="lineacom" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_163" xsi:type="datasourceoperation:RelationalField" column="U:POaG5z1iEeikmk6wSWipZg" feature="U:03SWgj1jEeiFGq4Rhf3aoQ" name="id_moneda" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_164" xsi:type="datasourceoperation:RelationalField" column="U:POaG6D1iEeikmk6wSWipZg" feature="U:03SWgz1jEeiFGq4Rhf3aoQ" name="idemprmb" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_165" xsi:type="datasourceoperation:RelationalField" column="U:POaG6T1iEeikmk6wSWipZg" feature="U:03SWhD1jEeiFGq4Rhf3aoQ" name="idcentmb" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_166" xsi:type="datasourceoperation:RelationalField" column="U:POaG6j1iEeikmk6wSWipZg" feature="U:03SWhT1jEeiFGq4Rhf3aoQ" name="codtires" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_167" xsi:type="datasourceoperation:RelationalField" column="U:POaG6z1iEeikmk6wSWipZg" feature="U:03SWhj1jEeiFGq4Rhf3aoQ" name="coestref" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_168" xsi:type="datasourceoperation:RelationalField" column="U:POaG7D1iEeikmk6wSWipZg" feature="U:03SWhz1jEeiFGq4Rhf3aoQ" name="imput_result" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_169" xsi:type="datasourceoperation:RelationalField" column="U:POaG7T1iEeikmk6wSWipZg" feature="U:03SWiD1jEeiFGq4Rhf3aoQ" name="indcobro" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_170" xsi:type="datasourceoperation:RelationalField" column="U:POaG7j1iEeikmk6wSWipZg" feature="U:03SWiT1jEeiFGq4Rhf3aoQ" name="num_opera" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_171" xsi:type="datasourceoperation:RelationalField" column="U:POaG7z1iEeikmk6wSWipZg" feature="U:03SWij1jEeiFGq4Rhf3aoQ" name="impopeor" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_172" xsi:type="datasourceoperation:RelationalField" column="U:POaG8D1iEeikmk6wSWipZg" feature="U:03SWiz1jEeiFGq4Rhf3aoQ" name="importe_coc" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_173" xsi:type="datasourceoperation:RelationalField" column="U:POaG8T1iEeikmk6wSWipZg" feature="U:03SWjD1jEeiFGq4Rhf3aoQ" name="codcesta" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
+<RelationalField imx:id="ID_174" xsi:type="datasourceoperation:RelationalField" column="U:POaG8j1iEeikmk6wSWipZg" feature="U:03SWjT1jEeiFGq4Rhf3aoQ" name="codcepto" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_154"/>
 </relationalFields>
-<relationalRecordInstance imx:id="ID_157" xsi:type="datasourceoperation:RelationalRecordInstance" name="arcco_rendimientos_linea_tmpj" record="U:POY4vT1iEeikmk6wSWipZg"/>
+<relationalRecordInstance imx:id="ID_154" xsi:type="datasourceoperation:RelationalRecordInstance" name="arcco_rendimientos_linea_tmpj" record="U:POY4vT1iEeikmk6wSWipZg"/>
 </anonymousDso>
 <targetInterfaces>
 <TargetDataInterface imx:id="U:03SWdT1jEeiFGq4Rhf3aoQ" xsi:type="target:TargetDataInterface" input="true" name="Grupo">
@@ -422,10 +422,18 @@
 </AbstractTransformation>
 </transformations>
 </mapping:Mapping>
+<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_MD" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_MD">
+<defaultAttributes imx:id="U:r374x1ymEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
+<modelExtension imx:id="ID_175" xsi:type="Hive:HiveConnectInfoExtension"/>
+</Hive:HiveConnectInfo>
+<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_TM" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_TM">
+<defaultAttributes imx:id="U:dolMnVyoEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
+<modelExtension imx:id="ID_176" xsi:type="Hive:HiveConnectInfoExtension"/>
+</Hive:HiveConnectInfo>
 <datarecord:Table imx:id="U:POY4vT1iEeikmk6wSWipZg" connection="stringIdentity:cnx_01_HV_ARC_TM" connectionName="cnx_01_HV_ARC_TM" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_rendimientos_linea_tmpj" ownerName="WS_APLARCCO_DEV_TMP" physicalName="arcco_rendimientos_linea_tmpj">
 <columns>
 <Column imx:id="U:POaG3j1iEeikmk6wSWipZg" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="fec_operacion" nullable="true" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4000"/>
-<Column imx:id="U:POaG3z1iEeikmk6wSWipZg" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4000"/>
+<Column imx:id="U:POaG3z1iEeikmk6wSWipZg" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr" nullable="true" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4000"/>
 <Column imx:id="U:POaG4D1iEeikmk6wSWipZg" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcent" nullable="true" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4000"/>
 <Column imx:id="U:POaG4T1iEeikmk6wSWipZg" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idprod" nullable="true" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4000"/>
 <Column imx:id="U:POaG4j1iEeikmk6wSWipZg" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idsprod" nullable="true" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4000"/>
@@ -447,17 +455,7 @@
 <Column imx:id="U:POaG8j1iEeikmk6wSWipZg" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="codcepto" nullable="true" odbcPrecision="4000" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4000"/>
 </columns>
 </datarecord:Table>
-<project:Project imx:id="U:a5D_p2boEeeZTEfoBI-DAw" name="d_x860953">
-<imx:annotations>
-<imx:IGenericAnnotations>
-<com.informatica.tools.objectie key1="projectName" value1="MRS04_DESA"/>
-</imx:IGenericAnnotations>
-</imx:annotations>
-<annotations>
-<Annotation imx:id="ID_178" xsi:type="description:Description"/>
-</annotations>
-<contents>
-<IObject imx:id="U:zRq8asOeEeeO4K4Q9BCEUQ" xsi:type="folder:Folder" name="BI_50053437_HOM">
+<folder:Folder imx:id="U:zRq8asOeEeeO4K4Q9BCEUQ" name="BI_50053437_HOM">
 <contents>
 <IObject imx:idref="U:X0wWuTl8EeinF3GVsLcbyQ" xsi:type="mapping:Mapping"/>
 <IObject imx:idref="U:POY4vT1iEeikmk6wSWipZg" xsi:type="datarecord:Table"/>
@@ -513,16 +511,19 @@
 </PartitionedColumns>
 </IObject>
 </contents>
-</IObject>
+</folder:Folder>
+<project:Project imx:id="U:a5D_p2boEeeZTEfoBI-DAw" name="d_x860953">
+<imx:annotations>
+<imx:IGenericAnnotations>
+<com.informatica.tools.objectie key1="projectName" value1="MRS04_DESA"/>
+</imx:IGenericAnnotations>
+</imx:annotations>
+<annotations>
+<Annotation imx:id="ID_177" xsi:type="description:Description"/>
+</annotations>
+<contents>
+<IObject imx:idref="U:zRq8asOeEeeO4K4Q9BCEUQ" xsi:type="folder:Folder"/>
 </contents>
 </project:Project>
-<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_MD" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_MD">
-<defaultAttributes imx:id="U:r374x1ymEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
-<modelExtension imx:id="ID_179" xsi:type="Hive:HiveConnectInfoExtension"/>
-</Hive:HiveConnectInfo>
-<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_TM" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_TM">
-<defaultAttributes imx:id="U:dolMnVyoEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
-<modelExtension imx:id="ID_180" xsi:type="Hive:HiveConnectInfoExtension"/>
-</Hive:HiveConnectInfo>
-<imx:crc value="2021380057"/>
+<imx:crc value="2331527003"/>
 </imx:IMX>

@@ -137,23 +137,26 @@
 </ports>
 </Instance>
 <Instance imx:id="U:1XTVDzGSEeihRMPHnoObNQ" xsi:type="mapping:Instance" name="Lectura_arcco_pt_cesta" transformation="U:1XTVETGSEeihRMPHnoObNQ">
+<annotations>
+<Annotation imx:id="ID_132" xsi:type="description:Description" body="Tabla+con+la+informacion+de+las+cestas"/>
+</annotations>
 <fromOutlineLinks>
-<OutlineLink imx:id="ID_132" xsi:type="mapping:OutlineLink" fromInstance="U:1XTVDzGSEeihRMPHnoObNQ" toInstance="U:1XTVEDGSEeihRMPHnoObNQ"/>
+<OutlineLink imx:id="ID_133" xsi:type="mapping:OutlineLink" fromInstance="U:1XTVDzGSEeihRMPHnoObNQ" toInstance="U:1XTVEDGSEeihRMPHnoObNQ"/>
 </fromOutlineLinks>
 <ports>
-<TransformationFieldPort imx:id="ID_133" xsi:type="mapping:TransformationFieldPort" instance="U:1XTVDzGSEeihRMPHnoObNQ" transformationField="U:1XUjZjGSEeihRMPHnoObNQ">
+<TransformationFieldPort imx:id="ID_134" xsi:type="mapping:TransformationFieldPort" instance="U:1XTVDzGSEeihRMPHnoObNQ" transformationField="U:1XUjZjGSEeihRMPHnoObNQ">
 <children>
-<NestedPort imx:id="ID_134" xsi:type="mapping:NestedPort" toPorts="ID_135" parent="ID_133" structuralFeature="U:1XVKeTGSEeihRMPHnoObNQ"/>
-<NestedPort imx:id="ID_136" xsi:type="mapping:NestedPort" toPorts="ID_137" parent="ID_133" structuralFeature="U:1XVKfDGSEeihRMPHnoObNQ"/>
-<NestedPort imx:id="ID_138" xsi:type="mapping:NestedPort" toPorts="ID_139" parent="ID_133" structuralFeature="U:1XVKfTGSEeihRMPHnoObNQ"/>
-<NestedPort imx:id="ID_140" xsi:type="mapping:NestedPort" toPorts="ID_141" parent="ID_133" structuralFeature="U:1XVKezGSEeihRMPHnoObNQ"/>
+<NestedPort imx:id="ID_135" xsi:type="mapping:NestedPort" toPorts="ID_136" parent="ID_134" structuralFeature="U:1XVKeTGSEeihRMPHnoObNQ"/>
+<NestedPort imx:id="ID_137" xsi:type="mapping:NestedPort" toPorts="ID_138" parent="ID_134" structuralFeature="U:1XVKfDGSEeihRMPHnoObNQ"/>
+<NestedPort imx:id="ID_139" xsi:type="mapping:NestedPort" toPorts="ID_140" parent="ID_134" structuralFeature="U:1XVKfTGSEeihRMPHnoObNQ"/>
+<NestedPort imx:id="ID_141" xsi:type="mapping:NestedPort" toPorts="ID_142" parent="ID_134" structuralFeature="U:1XVKezGSEeihRMPHnoObNQ"/>
 </children>
 </TransformationFieldPort>
 </ports>
 </Instance>
-<Instance imx:id="U:1XTVEDGSEeihRMPHnoObNQ" xsi:type="mapping:Instance" name="jnr_cesta" toOutlineLinks="ID_108 ID_132" transformation="U:1XTVEjGSEeihRMPHnoObNQ">
+<Instance imx:id="U:1XTVEDGSEeihRMPHnoObNQ" xsi:type="mapping:Instance" name="jnr_cesta" toOutlineLinks="ID_108 ID_133" transformation="U:1XTVEjGSEeihRMPHnoObNQ">
 <annotations>
-<Annotation imx:id="ID_142" xsi:type="description:Description" body="cruzamos+con+la+plantilla+cesta+para+llevarnos+la+informaci%C3%B3n+del+campo+codcesta."/>
+<Annotation imx:id="ID_143" xsi:type="description:Description" body="cruzamos+con+la+plantilla+cesta+para+llevarnos+la+informaci%C3%B3n+del+campo+codcesta."/>
 </annotations>
 <fromOutlineLinks>
 <OutlineLink imx:id="ID_62" xsi:type="mapping:OutlineLink" fromInstance="U:1XTVEDGSEeihRMPHnoObNQ" toInstance="U:9-NG8iwhEeifwIeF2GB2UA"/>
@@ -177,10 +180,10 @@
 <TransformationFieldPort imx:id="ID_122" xsi:type="mapping:TransformationFieldPort" fromPort="ID_47" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVKjGSEeihRMPHnoObNQ"/>
 <TransformationFieldPort imx:id="ID_123" xsi:type="mapping:TransformationFieldPort" fromPort="ID_49" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVKzGSEeihRMPHnoObNQ"/>
 <TransformationFieldPort imx:id="ID_125" xsi:type="mapping:TransformationFieldPort" fromPort="ID_124" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVLDGSEeihRMPHnoObNQ"/>
-<TransformationFieldPort imx:id="ID_135" xsi:type="mapping:TransformationFieldPort" fromPort="ID_134" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVFzGSEeihRMPHnoObNQ"/>
-<TransformationFieldPort imx:id="ID_137" xsi:type="mapping:TransformationFieldPort" fromPort="ID_136" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVGDGSEeihRMPHnoObNQ"/>
-<TransformationFieldPort imx:id="ID_139" xsi:type="mapping:TransformationFieldPort" fromPort="ID_138" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVGTGSEeihRMPHnoObNQ"/>
-<TransformationFieldPort imx:id="ID_141" xsi:type="mapping:TransformationFieldPort" fromPort="ID_140" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVFjGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_136" xsi:type="mapping:TransformationFieldPort" fromPort="ID_135" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVFzGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_138" xsi:type="mapping:TransformationFieldPort" fromPort="ID_137" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVGDGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_140" xsi:type="mapping:TransformationFieldPort" fromPort="ID_139" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVGTGSEeihRMPHnoObNQ"/>
+<TransformationFieldPort imx:id="ID_142" xsi:type="mapping:TransformationFieldPort" fromPort="ID_141" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XTVFjGSEeihRMPHnoObNQ"/>
 <TransformationFieldPort imx:id="ID_66" xsi:type="mapping:TransformationFieldPort" toPorts="ID_65" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8PTGSEeihRMPHnoObNQ"/>
 <TransformationFieldPort imx:id="ID_68" xsi:type="mapping:TransformationFieldPort" toPorts="ID_67" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8PjGSEeihRMPHnoObNQ"/>
 <TransformationFieldPort imx:id="ID_70" xsi:type="mapping:TransformationFieldPort" toPorts="ID_69" instance="U:1XTVEDGSEeihRMPHnoObNQ" transformationField="U:1XT8PzGSEeihRMPHnoObNQ"/>
@@ -210,69 +213,69 @@
 <parameters>
 <UserDefinedParameter imx:id="U:QIAZwSwhEeifwIeF2GB2UA" xsi:type="parameter:UserDefinedParameter" name="P_s_Integration_Services" precision="-1" scale="-1" typeinfo="smd:com.informatica.metadata.seed.modeledtypes.ModeledTypeSeed.modeledtypes%2FConnection">
 <annotations>
-<Annotation imx:id="ID_143" xsi:type="description:Description" body="Servicio+de+integracion"/>
+<Annotation imx:id="ID_144" xsi:type="description:Description" body="Servicio+de+integracion"/>
 </annotations>
-<defaultValue imx:id="ID_144" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HADOOP_ARC"/>
+<defaultValue imx:id="ID_145" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HADOOP_ARC"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:QIAZwiwhEeifwIeF2GB2UA" xsi:type="parameter:UserDefinedParameter" name="P_s_Schema_MD_OWNER" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
 <annotations>
-<Annotation imx:id="ID_145" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
+<Annotation imx:id="ID_146" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
 </annotations>
-<defaultValue imx:id="ID_146" xsi:type="parameter:StringParameterValue" valueLiteral="ws_aplarcco_dev_md"/>
+<defaultValue imx:id="ID_147" xsi:type="parameter:StringParameterValue" valueLiteral="ws_aplarcco_dev_md"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:QIAZwywhEeifwIeF2GB2UA" xsi:type="parameter:UserDefinedParameter" name="P_s_Schema_ST_OWNER" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
 <annotations>
-<Annotation imx:id="ID_147" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
+<Annotation imx:id="ID_148" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
 </annotations>
-<defaultValue imx:id="ID_148" xsi:type="parameter:StringParameterValue" valueLiteral="ws_aplarcco_dev_staging"/>
+<defaultValue imx:id="ID_149" xsi:type="parameter:StringParameterValue" valueLiteral="ws_aplarcco_dev_staging"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:QIAZxCwhEeifwIeF2GB2UA" xsi:type="parameter:UserDefinedParameter" name="P_s_Schema_TMP_OWNER" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
 <annotations>
-<Annotation imx:id="ID_149" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
+<Annotation imx:id="ID_150" xsi:type="description:Description" body="Esquema+de+la+base+de+datos"/>
 </annotations>
-<defaultValue imx:id="ID_150" xsi:type="parameter:StringParameterValue" valueLiteral="ws_aplarcco_dev_tmp"/>
+<defaultValue imx:id="ID_151" xsi:type="parameter:StringParameterValue" valueLiteral="ws_aplarcco_dev_tmp"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:QIAZxSwhEeifwIeF2GB2UA" xsi:type="parameter:UserDefinedParameter" name="P_s_Connection_MD_ARCCO" precision="-1" scale="-1" typeinfo="smd:com.informatica.metadata.seed.modeledtypes.ModeledTypeSeed.modeledtypes%2FConnection">
 <annotations>
-<Annotation imx:id="ID_151" xsi:type="description:Description" body="Conexion+a+la+base+de+datos"/>
+<Annotation imx:id="ID_152" xsi:type="description:Description" body="Conexion+a+la+base+de+datos"/>
 </annotations>
-<defaultValue imx:id="ID_152" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_MD"/>
+<defaultValue imx:id="ID_153" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_MD"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:QIAZxiwhEeifwIeF2GB2UA" xsi:type="parameter:UserDefinedParameter" name="P_s_Connection_ST_ARCCO" precision="-1" scale="-1" typeinfo="smd:com.informatica.metadata.seed.modeledtypes.ModeledTypeSeed.modeledtypes%2FConnection">
 <annotations>
-<Annotation imx:id="ID_153" xsi:type="description:Description" body="Conexion+a+la+base+de+datos"/>
+<Annotation imx:id="ID_154" xsi:type="description:Description" body="Conexion+a+la+base+de+datos"/>
 </annotations>
-<defaultValue imx:id="ID_154" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_ST"/>
+<defaultValue imx:id="ID_155" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_ST"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:QIAZxywhEeifwIeF2GB2UA" xsi:type="parameter:UserDefinedParameter" name="P_s_Connection_TMP_ARCCO" precision="-1" scale="-1" typeinfo="smd:com.informatica.metadata.seed.modeledtypes.ModeledTypeSeed.modeledtypes%2FConnection">
 <annotations>
-<Annotation imx:id="ID_155" xsi:type="description:Description" body="Conexion+a+la+base+de+datos"/>
+<Annotation imx:id="ID_156" xsi:type="description:Description" body="Conexion+a+la+base+de+datos"/>
 </annotations>
-<defaultValue imx:id="ID_156" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_TM"/>
+<defaultValue imx:id="ID_157" xsi:type="parameter:ConnectionParameterValue" connectionName="cnx_01_HV_ARC_TM"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:QIAZyiwhEeifwIeF2GB2UA" xsi:type="parameter:UserDefinedParameter" name="P_s_Hive_Version" precision="100" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
 <annotations>
-<Annotation imx:id="ID_157" xsi:type="description:Description" body="Version+del+motor+Hive"/>
+<Annotation imx:id="ID_158" xsi:type="description:Description" body="Version+del+motor+Hive"/>
 </annotations>
-<defaultValue imx:id="ID_158" xsi:type="parameter:MidStringParameterValue" valueLiteral="0.11"/>
+<defaultValue imx:id="ID_159" xsi:type="parameter:MidStringParameterValue" valueLiteral="0.11"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:QIAZyywhEeifwIeF2GB2UA" xsi:type="parameter:UserDefinedParameter" name="P_s_MAX_EXECUTORS" precision="10" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Finteger">
-<defaultValue imx:id="ID_159" xsi:type="parameter:IntegerParameterValue" valueLiteral="50"/>
+<defaultValue imx:id="ID_160" xsi:type="parameter:IntegerParameterValue" valueLiteral="50"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:QIAZzCwhEeifwIeF2GB2UA" xsi:type="parameter:UserDefinedParameter" name="P_s_EXECUTOR_MEMORY" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
-<defaultValue imx:id="ID_160" xsi:type="parameter:StringParameterValue" valueLiteral="4g"/>
+<defaultValue imx:id="ID_161" xsi:type="parameter:StringParameterValue" valueLiteral="4g"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:QIAZzSwhEeifwIeF2GB2UA" xsi:type="parameter:UserDefinedParameter" name="P_s_DRIVER_CORES" precision="10" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Finteger">
-<defaultValue imx:id="ID_161" xsi:type="parameter:IntegerParameterValue" valueLiteral="3"/>
+<defaultValue imx:id="ID_162" xsi:type="parameter:IntegerParameterValue" valueLiteral="3"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:QIAZziwhEeifwIeF2GB2UA" xsi:type="parameter:UserDefinedParameter" name="P_s_DRIVER_MEMORY" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
-<defaultValue imx:id="ID_162" xsi:type="parameter:StringParameterValue" valueLiteral="10g"/>
+<defaultValue imx:id="ID_163" xsi:type="parameter:StringParameterValue" valueLiteral="10g"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:QIAZzywhEeifwIeF2GB2UA" xsi:type="parameter:UserDefinedParameter" name="P_s_FechaEjecucion" precision="1000" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring">
-<defaultValue imx:id="ID_163" xsi:type="parameter:StringParameterValue" valueLiteral="9999-12-31"/>
+<defaultValue imx:id="ID_164" xsi:type="parameter:StringParameterValue" valueLiteral="9999-12-31"/>
 </UserDefinedParameter>
 <UserDefinedParameter imx:id="U:jSLoHz5UEeihC0emK5KmfQ" xsi:type="parameter:UserDefinedParameter" name="P_d_cero" precision="10" typeinfo="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Finteger">
-<defaultValue imx:id="ID_164" xsi:type="parameter:IntegerParameterValue" valueLiteral="0"/>
+<defaultValue imx:id="ID_165" xsi:type="parameter:IntegerParameterValue" valueLiteral="0"/>
 </UserDefinedParameter>
 </parameters>
 <transformations>
@@ -282,12 +285,12 @@
 <DSORuntimeConfig imx:id="U:9-NHFSwhEeifwIeF2GB2UA" xsi:type="dsoconfig:RelationalDSORuntimeConfig" connectionName.="U:QIAZxSwhEeifwIeF2GB2UA"/>
 </defaultConfigs>
 <operations>
-<Capability imx:id="ID_165" xsi:type="datasourceoperation1:ReadCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:9-NHFSwhEeifwIeF2GB2UA">
+<Capability imx:id="ID_166" xsi:type="datasourceoperation1:ReadCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:9-NHFSwhEeifwIeF2GB2UA">
 <outGroups>
-<DataAccessGroup imx:id="ID_166" xsi:type="datasourceoperation1:DataAccessGroup" groupType="U:9-NHFiwhEeifwIeF2GB2UA"/>
+<DataAccessGroup imx:id="ID_167" xsi:type="datasourceoperation1:DataAccessGroup" groupType="U:9-NHFiwhEeifwIeF2GB2UA"/>
 </outGroups>
 </Capability>
-<Capability imx:id="ID_167" xsi:type="datasourceoperation1:LookupCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:9-NHFSwhEeifwIeF2GB2UA"/>
+<Capability imx:id="ID_168" xsi:type="datasourceoperation1:LookupCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:9-NHFSwhEeifwIeF2GB2UA"/>
 </operations>
 <ownedCapabilityTypes>
 <ComplexType imx:id="U:9-NHFiwhEeifwIeF2GB2UA" xsi:type="typelibrary:ComplexType" name="arcco_ruc_comisiones">
@@ -340,53 +343,53 @@
 </ComplexType>
 </ownedCapabilityTypes>
 <relationalFields>
-<RelationalField imx:id="ID_168" xsi:type="datasourceoperation:RelationalField" column="U:ipQUQd8fEeexjA8RSYbcVQ" feature="U:9-NHFywhEeifwIeF2GB2UA" name="idempr" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_170" xsi:type="datasourceoperation:RelationalField" column="U:ipQUQt8fEeexjA8RSYbcVQ" feature="U:9-NHGCwhEeifwIeF2GB2UA" name="idcent" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_171" xsi:type="datasourceoperation:RelationalField" column="U:ipQUQ98fEeexjA8RSYbcVQ" feature="U:9-NHGSwhEeifwIeF2GB2UA" name="idprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_172" xsi:type="datasourceoperation:RelationalField" column="U:ipQURN8fEeexjA8RSYbcVQ" feature="U:9-NHGiwhEeifwIeF2GB2UA" name="idsprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_173" xsi:type="datasourceoperation:RelationalField" column="U:ipQURd8fEeexjA8RSYbcVQ" feature="U:9-NHGywhEeifwIeF2GB2UA" name="idcontrn" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_174" xsi:type="datasourceoperation:RelationalField" column="U:ipQURt8fEeexjA8RSYbcVQ" feature="U:9-NHHCwhEeifwIeF2GB2UA" name="idscontr" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_175" xsi:type="datasourceoperation:RelationalField" column="U:ipQUR98fEeexjA8RSYbcVQ" feature="U:9-NHHSwhEeifwIeF2GB2UA" name="tip_elemento" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_176" xsi:type="datasourceoperation:RelationalField" column="U:ipQUSN8fEeexjA8RSYbcVQ" feature="U:9-NHHiwhEeifwIeF2GB2UA" name="cod_elemento" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_177" xsi:type="datasourceoperation:RelationalField" column="U:ipQUSd8fEeexjA8RSYbcVQ" feature="U:9-NHHywhEeifwIeF2GB2UA" name="idemprmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_178" xsi:type="datasourceoperation:RelationalField" column="U:ipQUSt8fEeexjA8RSYbcVQ" feature="U:9-NHICwhEeifwIeF2GB2UA" name="idcentmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_179" xsi:type="datasourceoperation:RelationalField" column="U:ipQUS98fEeexjA8RSYbcVQ" feature="U:9-NHISwhEeifwIeF2GB2UA" name="coestref" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_180" xsi:type="datasourceoperation:RelationalField" column="U:ipQUTN8fEeexjA8RSYbcVQ" feature="U:9-NHIiwhEeifwIeF2GB2UA" name="id_moneda" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_181" xsi:type="datasourceoperation:RelationalField" column="U:ipQUTd8fEeexjA8RSYbcVQ" feature="U:9-NHIywhEeifwIeF2GB2UA" name="codcepto" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_182" xsi:type="datasourceoperation:RelationalField" column="U:ipQUTt8fEeexjA8RSYbcVQ" feature="U:9-NHJCwhEeifwIeF2GB2UA" name="cgm" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_183" xsi:type="datasourceoperation:RelationalField" column="U:ipQUT98fEeexjA8RSYbcVQ" feature="U:9-NHJSwhEeifwIeF2GB2UA" name="cgm_sdo" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_184" xsi:type="datasourceoperation:RelationalField" column="U:ipQUUN8fEeexjA8RSYbcVQ" feature="U:9-NHJiwhEeifwIeF2GB2UA" name="codmonsw" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_185" xsi:type="datasourceoperation:RelationalField" column="U:ipQUUd8fEeexjA8RSYbcVQ" feature="U:9-NHJywhEeifwIeF2GB2UA" name="codtires" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_186" xsi:type="datasourceoperation:RelationalField" column="U:ipQUUt8fEeexjA8RSYbcVQ" feature="U:9-NHKCwhEeifwIeF2GB2UA" name="cod_amb_liq" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_187" xsi:type="datasourceoperation:RelationalField" column="U:ipQUU98fEeexjA8RSYbcVQ" feature="U:9-NHKSwhEeifwIeF2GB2UA" name="tip_entrada" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_188" xsi:type="datasourceoperation:RelationalField" column="U:ipQUVN8fEeexjA8RSYbcVQ" feature="U:9-NHKiwhEeifwIeF2GB2UA" name="imput_result" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_189" xsi:type="datasourceoperation:RelationalField" column="U:ipQUVd8fEeexjA8RSYbcVQ" feature="U:9-NHKywhEeifwIeF2GB2UA" name="indcobro" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_190" xsi:type="datasourceoperation:RelationalField" column="U:ipQUVt8fEeexjA8RSYbcVQ" feature="U:9-NHLCwhEeifwIeF2GB2UA" name="id_ingre_gasto" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_191" xsi:type="datasourceoperation:RelationalField" column="U:ipQUV98fEeexjA8RSYbcVQ" feature="U:9-NHLSwhEeifwIeF2GB2UA" name="id_impu_result" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_192" xsi:type="datasourceoperation:RelationalField" column="U:ipQUWN8fEeexjA8RSYbcVQ" feature="U:9-NHLiwhEeifwIeF2GB2UA" name="id_natu_result" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_193" xsi:type="datasourceoperation:RelationalField" column="U:ipQUWd8fEeexjA8RSYbcVQ" feature="U:9-NHLywhEeifwIeF2GB2UA" name="cobrotip" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_194" xsi:type="datasourceoperation:RelationalField" column="U:ipQUWt8fEeexjA8RSYbcVQ" feature="U:9-NHMCwhEeifwIeF2GB2UA" name="sig_impcoc_dev" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_195" xsi:type="datasourceoperation:RelationalField" column="U:ipQUW98fEeexjA8RSYbcVQ" feature="U:9-NHMSwhEeifwIeF2GB2UA" name="sig_impcoc_liq" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_196" xsi:type="datasourceoperation:RelationalField" column="U:ipQUXN8fEeexjA8RSYbcVQ" feature="U:9-NHMiwhEeifwIeF2GB2UA" name="num_opera" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_197" xsi:type="datasourceoperation:RelationalField" column="U:ipQUXd8fEeexjA8RSYbcVQ" feature="U:9-NHMywhEeifwIeF2GB2UA" name="tipgaran" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_198" xsi:type="datasourceoperation:RelationalField" column="U:ipQUXt8fEeexjA8RSYbcVQ" feature="U:9-NHNCwhEeifwIeF2GB2UA" name="tipclsgar" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_199" xsi:type="datasourceoperation:RelationalField" column="U:ipQUX98fEeexjA8RSYbcVQ" feature="U:9-NHNSwhEeifwIeF2GB2UA" name="tipindgar" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_200" xsi:type="datasourceoperation:RelationalField" column="U:ipQUYN8fEeexjA8RSYbcVQ" feature="U:9-NHNiwhEeifwIeF2GB2UA" name="rubrica" odbcPrecision="12" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_201" xsi:type="datasourceoperation:RelationalField" column="U:ipQUYd8fEeexjA8RSYbcVQ" feature="U:9-NHNywhEeifwIeF2GB2UA" name="impcoc_dev" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_202" xsi:type="datasourceoperation:RelationalField" column="U:ipQUYt8fEeexjA8RSYbcVQ" feature="U:9-NHOCwhEeifwIeF2GB2UA" name="impcoc_liq" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_203" xsi:type="datasourceoperation:RelationalField" column="U:ipQUY98fEeexjA8RSYbcVQ" feature="U:9-NHOSwhEeifwIeF2GB2UA" name="impopeor" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_204" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZN8fEeexjA8RSYbcVQ" feature="U:9-NHOiwhEeifwIeF2GB2UA" name="lineacom" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_205" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZd8fEeexjA8RSYbcVQ" feature="U:9-NHOywhEeifwIeF2GB2UA" name="indicador" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_206" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZt8fEeexjA8RSYbcVQ" feature="U:9-NHPCwhEeifwIeF2GB2UA" name="seccont" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_207" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZ98fEeexjA8RSYbcVQ" feature="U:9-NHPSwhEeifwIeF2GB2UA" name="segmento" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_208" xsi:type="datasourceoperation:RelationalField" column="U:ipQUaN8fEeexjA8RSYbcVQ" feature="U:9-NHPiwhEeifwIeF2GB2UA" name="tipperso" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_209" xsi:type="datasourceoperation:RelationalField" column="U:ipQUad8fEeexjA8RSYbcVQ" feature="U:9-NHPywhEeifwIeF2GB2UA" name="codper" odbcPrecision="9" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_210" xsi:type="datasourceoperation:RelationalField" column="U:ipQUat8fEeexjA8RSYbcVQ" feature="U:9-NHQCwhEeifwIeF2GB2UA" name="segcomer" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_211" xsi:type="datasourceoperation:RelationalField" column="U:ipQUa98fEeexjA8RSYbcVQ" feature="U:9-NHQSwhEeifwIeF2GB2UA" name="lineaibn" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
-<RelationalField imx:id="ID_212" xsi:type="datasourceoperation:RelationalField" column="U:ipQUbN8fEeexjA8RSYbcVQ" feature="U:9-NHQiwhEeifwIeF2GB2UA" name="data_date_part" odbcPrecision="49" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_169"/>
+<RelationalField imx:id="ID_169" xsi:type="datasourceoperation:RelationalField" column="U:ipQUQd8fEeexjA8RSYbcVQ" feature="U:9-NHFywhEeifwIeF2GB2UA" name="idempr" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_171" xsi:type="datasourceoperation:RelationalField" column="U:ipQUQt8fEeexjA8RSYbcVQ" feature="U:9-NHGCwhEeifwIeF2GB2UA" name="idcent" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_172" xsi:type="datasourceoperation:RelationalField" column="U:ipQUQ98fEeexjA8RSYbcVQ" feature="U:9-NHGSwhEeifwIeF2GB2UA" name="idprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_173" xsi:type="datasourceoperation:RelationalField" column="U:ipQURN8fEeexjA8RSYbcVQ" feature="U:9-NHGiwhEeifwIeF2GB2UA" name="idsprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_174" xsi:type="datasourceoperation:RelationalField" column="U:ipQURd8fEeexjA8RSYbcVQ" feature="U:9-NHGywhEeifwIeF2GB2UA" name="idcontrn" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_175" xsi:type="datasourceoperation:RelationalField" column="U:ipQURt8fEeexjA8RSYbcVQ" feature="U:9-NHHCwhEeifwIeF2GB2UA" name="idscontr" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_176" xsi:type="datasourceoperation:RelationalField" column="U:ipQUR98fEeexjA8RSYbcVQ" feature="U:9-NHHSwhEeifwIeF2GB2UA" name="tip_elemento" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_177" xsi:type="datasourceoperation:RelationalField" column="U:ipQUSN8fEeexjA8RSYbcVQ" feature="U:9-NHHiwhEeifwIeF2GB2UA" name="cod_elemento" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_178" xsi:type="datasourceoperation:RelationalField" column="U:ipQUSd8fEeexjA8RSYbcVQ" feature="U:9-NHHywhEeifwIeF2GB2UA" name="idemprmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_179" xsi:type="datasourceoperation:RelationalField" column="U:ipQUSt8fEeexjA8RSYbcVQ" feature="U:9-NHICwhEeifwIeF2GB2UA" name="idcentmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_180" xsi:type="datasourceoperation:RelationalField" column="U:ipQUS98fEeexjA8RSYbcVQ" feature="U:9-NHISwhEeifwIeF2GB2UA" name="coestref" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_181" xsi:type="datasourceoperation:RelationalField" column="U:ipQUTN8fEeexjA8RSYbcVQ" feature="U:9-NHIiwhEeifwIeF2GB2UA" name="id_moneda" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_182" xsi:type="datasourceoperation:RelationalField" column="U:ipQUTd8fEeexjA8RSYbcVQ" feature="U:9-NHIywhEeifwIeF2GB2UA" name="codcepto" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_183" xsi:type="datasourceoperation:RelationalField" column="U:ipQUTt8fEeexjA8RSYbcVQ" feature="U:9-NHJCwhEeifwIeF2GB2UA" name="cgm" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_184" xsi:type="datasourceoperation:RelationalField" column="U:ipQUT98fEeexjA8RSYbcVQ" feature="U:9-NHJSwhEeifwIeF2GB2UA" name="cgm_sdo" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_185" xsi:type="datasourceoperation:RelationalField" column="U:ipQUUN8fEeexjA8RSYbcVQ" feature="U:9-NHJiwhEeifwIeF2GB2UA" name="codmonsw" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_186" xsi:type="datasourceoperation:RelationalField" column="U:ipQUUd8fEeexjA8RSYbcVQ" feature="U:9-NHJywhEeifwIeF2GB2UA" name="codtires" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_187" xsi:type="datasourceoperation:RelationalField" column="U:ipQUUt8fEeexjA8RSYbcVQ" feature="U:9-NHKCwhEeifwIeF2GB2UA" name="cod_amb_liq" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_188" xsi:type="datasourceoperation:RelationalField" column="U:ipQUU98fEeexjA8RSYbcVQ" feature="U:9-NHKSwhEeifwIeF2GB2UA" name="tip_entrada" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_189" xsi:type="datasourceoperation:RelationalField" column="U:ipQUVN8fEeexjA8RSYbcVQ" feature="U:9-NHKiwhEeifwIeF2GB2UA" name="imput_result" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_190" xsi:type="datasourceoperation:RelationalField" column="U:ipQUVd8fEeexjA8RSYbcVQ" feature="U:9-NHKywhEeifwIeF2GB2UA" name="indcobro" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_191" xsi:type="datasourceoperation:RelationalField" column="U:ipQUVt8fEeexjA8RSYbcVQ" feature="U:9-NHLCwhEeifwIeF2GB2UA" name="id_ingre_gasto" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_192" xsi:type="datasourceoperation:RelationalField" column="U:ipQUV98fEeexjA8RSYbcVQ" feature="U:9-NHLSwhEeifwIeF2GB2UA" name="id_impu_result" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_193" xsi:type="datasourceoperation:RelationalField" column="U:ipQUWN8fEeexjA8RSYbcVQ" feature="U:9-NHLiwhEeifwIeF2GB2UA" name="id_natu_result" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_194" xsi:type="datasourceoperation:RelationalField" column="U:ipQUWd8fEeexjA8RSYbcVQ" feature="U:9-NHLywhEeifwIeF2GB2UA" name="cobrotip" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_195" xsi:type="datasourceoperation:RelationalField" column="U:ipQUWt8fEeexjA8RSYbcVQ" feature="U:9-NHMCwhEeifwIeF2GB2UA" name="sig_impcoc_dev" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_196" xsi:type="datasourceoperation:RelationalField" column="U:ipQUW98fEeexjA8RSYbcVQ" feature="U:9-NHMSwhEeifwIeF2GB2UA" name="sig_impcoc_liq" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_197" xsi:type="datasourceoperation:RelationalField" column="U:ipQUXN8fEeexjA8RSYbcVQ" feature="U:9-NHMiwhEeifwIeF2GB2UA" name="num_opera" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_198" xsi:type="datasourceoperation:RelationalField" column="U:ipQUXd8fEeexjA8RSYbcVQ" feature="U:9-NHMywhEeifwIeF2GB2UA" name="tipgaran" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_199" xsi:type="datasourceoperation:RelationalField" column="U:ipQUXt8fEeexjA8RSYbcVQ" feature="U:9-NHNCwhEeifwIeF2GB2UA" name="tipclsgar" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_200" xsi:type="datasourceoperation:RelationalField" column="U:ipQUX98fEeexjA8RSYbcVQ" feature="U:9-NHNSwhEeifwIeF2GB2UA" name="tipindgar" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_201" xsi:type="datasourceoperation:RelationalField" column="U:ipQUYN8fEeexjA8RSYbcVQ" feature="U:9-NHNiwhEeifwIeF2GB2UA" name="rubrica" odbcPrecision="12" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_202" xsi:type="datasourceoperation:RelationalField" column="U:ipQUYd8fEeexjA8RSYbcVQ" feature="U:9-NHNywhEeifwIeF2GB2UA" name="impcoc_dev" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_203" xsi:type="datasourceoperation:RelationalField" column="U:ipQUYt8fEeexjA8RSYbcVQ" feature="U:9-NHOCwhEeifwIeF2GB2UA" name="impcoc_liq" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_204" xsi:type="datasourceoperation:RelationalField" column="U:ipQUY98fEeexjA8RSYbcVQ" feature="U:9-NHOSwhEeifwIeF2GB2UA" name="impopeor" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_205" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZN8fEeexjA8RSYbcVQ" feature="U:9-NHOiwhEeifwIeF2GB2UA" name="lineacom" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_206" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZd8fEeexjA8RSYbcVQ" feature="U:9-NHOywhEeifwIeF2GB2UA" name="indicador" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_207" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZt8fEeexjA8RSYbcVQ" feature="U:9-NHPCwhEeifwIeF2GB2UA" name="seccont" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_208" xsi:type="datasourceoperation:RelationalField" column="U:ipQUZ98fEeexjA8RSYbcVQ" feature="U:9-NHPSwhEeifwIeF2GB2UA" name="segmento" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_209" xsi:type="datasourceoperation:RelationalField" column="U:ipQUaN8fEeexjA8RSYbcVQ" feature="U:9-NHPiwhEeifwIeF2GB2UA" name="tipperso" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_210" xsi:type="datasourceoperation:RelationalField" column="U:ipQUad8fEeexjA8RSYbcVQ" feature="U:9-NHPywhEeifwIeF2GB2UA" name="codper" odbcPrecision="9" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_211" xsi:type="datasourceoperation:RelationalField" column="U:ipQUat8fEeexjA8RSYbcVQ" feature="U:9-NHQCwhEeifwIeF2GB2UA" name="segcomer" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_212" xsi:type="datasourceoperation:RelationalField" column="U:ipQUa98fEeexjA8RSYbcVQ" feature="U:9-NHQSwhEeifwIeF2GB2UA" name="lineaibn" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
+<RelationalField imx:id="ID_213" xsi:type="datasourceoperation:RelationalField" column="U:ipQUbN8fEeexjA8RSYbcVQ" feature="U:9-NHQiwhEeifwIeF2GB2UA" name="data_date_part" odbcPrecision="49" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_170"/>
 </relationalFields>
 <relationalRecordInstances>
-<RelationalRecordInstance imx:id="ID_169" xsi:type="datasourceoperation:RelationalRecordInstance" name="arcco_ruc_comisiones" ownerName.="U:QIAZwiwhEeifwIeF2GB2UA" record="U:ipQUQN8fEeexjA8RSYbcVQ"/>
+<RelationalRecordInstance imx:id="ID_170" xsi:type="datasourceoperation:RelationalRecordInstance" name="arcco_ruc_comisiones" ownerName.="U:QIAZwiwhEeifwIeF2GB2UA" record="U:ipQUQN8fEeexjA8RSYbcVQ"/>
 </relationalRecordInstances>
 </anonymousDso>
 <sourceInterfaces>
@@ -403,9 +406,9 @@
 <DSORuntimeConfig imx:id="U:9-NG-ywhEeifwIeF2GB2UA" xsi:type="dsoconfig:RelationalDSORuntimeConfig" connectionName.="U:QIAZxywhEeifwIeF2GB2UA"/>
 </defaultConfigs>
 <operations>
-<Capability imx:id="ID_213" xsi:type="datasourceoperation1:WriteCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalWriterDataAdapter" defaultConfig="U:9-NG-ywhEeifwIeF2GB2UA">
+<Capability imx:id="ID_214" xsi:type="datasourceoperation1:WriteCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalWriterDataAdapter" defaultConfig="U:9-NG-ywhEeifwIeF2GB2UA">
 <inGroups>
-<DataAccessGroup imx:id="ID_214" xsi:type="datasourceoperation1:DataAccessGroup" groupType="U:9-NG_CwhEeifwIeF2GB2UA" input="true"/>
+<DataAccessGroup imx:id="ID_215" xsi:type="datasourceoperation1:DataAccessGroup" groupType="U:9-NG_CwhEeifwIeF2GB2UA" input="true"/>
 </inGroups>
 </Capability>
 </operations>
@@ -437,29 +440,29 @@
 </ComplexType>
 </ownedCapabilityTypes>
 <relationalFields>
-<RelationalField imx:id="ID_215" xsi:type="datasourceoperation:RelationalField" column="U:cQZV8uP2EeeI9b3aq1bBPw" feature="U:9-NG_SwhEeifwIeF2GB2UA" name="fec_cierre" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_217" xsi:type="datasourceoperation:RelationalField" column="U:cQZV8-P2EeeI9b3aq1bBPw" feature="U:9-NG_iwhEeifwIeF2GB2UA" name="idempr" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_218" xsi:type="datasourceoperation:RelationalField" column="U:cQZV9OP2EeeI9b3aq1bBPw" feature="U:9-NG_ywhEeifwIeF2GB2UA" name="idcent" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_219" xsi:type="datasourceoperation:RelationalField" column="U:cQZV9eP2EeeI9b3aq1bBPw" feature="U:9-NHACwhEeifwIeF2GB2UA" name="idprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_220" xsi:type="datasourceoperation:RelationalField" column="U:cQZV9uP2EeeI9b3aq1bBPw" feature="U:9-NHASwhEeifwIeF2GB2UA" name="idsprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_221" xsi:type="datasourceoperation:RelationalField" column="U:cQZV9-P2EeeI9b3aq1bBPw" feature="U:9-NHAiwhEeifwIeF2GB2UA" name="idcontrn" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_222" xsi:type="datasourceoperation:RelationalField" column="U:cQZV-OP2EeeI9b3aq1bBPw" feature="U:9-NHAywhEeifwIeF2GB2UA" name="idscontr" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_223" xsi:type="datasourceoperation:RelationalField" column="U:cQZV-eP2EeeI9b3aq1bBPw" feature="U:9-NHBCwhEeifwIeF2GB2UA" name="lineaibn" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_224" xsi:type="datasourceoperation:RelationalField" column="U:cQZV-uP2EeeI9b3aq1bBPw" feature="U:9-NHBSwhEeifwIeF2GB2UA" name="linea_hm" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_225" xsi:type="datasourceoperation:RelationalField" column="U:cQZV--P2EeeI9b3aq1bBPw" feature="U:9-NHBiwhEeifwIeF2GB2UA" name="id_moneda" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_226" xsi:type="datasourceoperation:RelationalField" column="U:cQZV_eP2EeeI9b3aq1bBPw" feature="U:9-NHCCwhEeifwIeF2GB2UA" name="idemprmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_227" xsi:type="datasourceoperation:RelationalField" column="U:cQZV_uP2EeeI9b3aq1bBPw" feature="U:9-NHCSwhEeifwIeF2GB2UA" name="idcentmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_228" xsi:type="datasourceoperation:RelationalField" column="U:cQZV_-P2EeeI9b3aq1bBPw" feature="U:9-NHCiwhEeifwIeF2GB2UA" name="codtires" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_229" xsi:type="datasourceoperation:RelationalField" column="U:cQZWAOP2EeeI9b3aq1bBPw" feature="U:9-NHCywhEeifwIeF2GB2UA" name="imput_result" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_230" xsi:type="datasourceoperation:RelationalField" column="U:cQZWAeP2EeeI9b3aq1bBPw" feature="U:9-NHDCwhEeifwIeF2GB2UA" name="indcobro" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_231" xsi:type="datasourceoperation:RelationalField" column="U:cQZWAuP2EeeI9b3aq1bBPw" feature="U:9-NHDSwhEeifwIeF2GB2UA" name="num_opera" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_232" xsi:type="datasourceoperation:RelationalField" column="U:cQZWA-P2EeeI9b3aq1bBPw" feature="U:9-NHDiwhEeifwIeF2GB2UA" name="impopeor" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_233" xsi:type="datasourceoperation:RelationalField" column="U:cQZWBOP2EeeI9b3aq1bBPw" feature="U:9-NHDywhEeifwIeF2GB2UA" name="importe_coc" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_234" xsi:type="datasourceoperation:RelationalField" column="U:cQZWBeP2EeeI9b3aq1bBPw" feature="U:9-NHECwhEeifwIeF2GB2UA" name="codcesta" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_235" xsi:type="datasourceoperation:RelationalField" column="U:cQZWBuP2EeeI9b3aq1bBPw" feature="U:9-NHESwhEeifwIeF2GB2UA" name="codcepto" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
-<RelationalField imx:id="ID_236" xsi:type="datasourceoperation:RelationalField" column="U:nnxk0jGkEeihRMPHnoObNQ" feature="U:AV-ujzGmEeihRMPHnoObNQ" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_216"/>
+<RelationalField imx:id="ID_216" xsi:type="datasourceoperation:RelationalField" column="U:cQZV8uP2EeeI9b3aq1bBPw" feature="U:9-NG_SwhEeifwIeF2GB2UA" name="fec_cierre" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_218" xsi:type="datasourceoperation:RelationalField" column="U:cQZV8-P2EeeI9b3aq1bBPw" feature="U:9-NG_iwhEeifwIeF2GB2UA" name="idempr" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_219" xsi:type="datasourceoperation:RelationalField" column="U:cQZV9OP2EeeI9b3aq1bBPw" feature="U:9-NG_ywhEeifwIeF2GB2UA" name="idcent" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_220" xsi:type="datasourceoperation:RelationalField" column="U:cQZV9eP2EeeI9b3aq1bBPw" feature="U:9-NHACwhEeifwIeF2GB2UA" name="idprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_221" xsi:type="datasourceoperation:RelationalField" column="U:cQZV9uP2EeeI9b3aq1bBPw" feature="U:9-NHASwhEeifwIeF2GB2UA" name="idsprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_222" xsi:type="datasourceoperation:RelationalField" column="U:cQZV9-P2EeeI9b3aq1bBPw" feature="U:9-NHAiwhEeifwIeF2GB2UA" name="idcontrn" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_223" xsi:type="datasourceoperation:RelationalField" column="U:cQZV-OP2EeeI9b3aq1bBPw" feature="U:9-NHAywhEeifwIeF2GB2UA" name="idscontr" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_224" xsi:type="datasourceoperation:RelationalField" column="U:cQZV-eP2EeeI9b3aq1bBPw" feature="U:9-NHBCwhEeifwIeF2GB2UA" name="lineaibn" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_225" xsi:type="datasourceoperation:RelationalField" column="U:cQZV-uP2EeeI9b3aq1bBPw" feature="U:9-NHBSwhEeifwIeF2GB2UA" name="linea_hm" odbcPrecision="6" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_226" xsi:type="datasourceoperation:RelationalField" column="U:cQZV--P2EeeI9b3aq1bBPw" feature="U:9-NHBiwhEeifwIeF2GB2UA" name="id_moneda" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_227" xsi:type="datasourceoperation:RelationalField" column="U:cQZV_eP2EeeI9b3aq1bBPw" feature="U:9-NHCCwhEeifwIeF2GB2UA" name="idemprmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_228" xsi:type="datasourceoperation:RelationalField" column="U:cQZV_uP2EeeI9b3aq1bBPw" feature="U:9-NHCSwhEeifwIeF2GB2UA" name="idcentmb" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_229" xsi:type="datasourceoperation:RelationalField" column="U:cQZV_-P2EeeI9b3aq1bBPw" feature="U:9-NHCiwhEeifwIeF2GB2UA" name="codtires" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_230" xsi:type="datasourceoperation:RelationalField" column="U:cQZWAOP2EeeI9b3aq1bBPw" feature="U:9-NHCywhEeifwIeF2GB2UA" name="imput_result" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_231" xsi:type="datasourceoperation:RelationalField" column="U:cQZWAeP2EeeI9b3aq1bBPw" feature="U:9-NHDCwhEeifwIeF2GB2UA" name="indcobro" odbcPrecision="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_232" xsi:type="datasourceoperation:RelationalField" column="U:cQZWAuP2EeeI9b3aq1bBPw" feature="U:9-NHDSwhEeifwIeF2GB2UA" name="num_opera" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_233" xsi:type="datasourceoperation:RelationalField" column="U:cQZWA-P2EeeI9b3aq1bBPw" feature="U:9-NHDiwhEeifwIeF2GB2UA" name="impopeor" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_234" xsi:type="datasourceoperation:RelationalField" column="U:cQZWBOP2EeeI9b3aq1bBPw" feature="U:9-NHDywhEeifwIeF2GB2UA" name="importe_coc" odbcPrecision="15" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_235" xsi:type="datasourceoperation:RelationalField" column="U:cQZWBeP2EeeI9b3aq1bBPw" feature="U:9-NHECwhEeifwIeF2GB2UA" name="codcesta" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_236" xsi:type="datasourceoperation:RelationalField" column="U:cQZWBuP2EeeI9b3aq1bBPw" feature="U:9-NHESwhEeifwIeF2GB2UA" name="codcepto" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
+<RelationalField imx:id="ID_237" xsi:type="datasourceoperation:RelationalField" column="U:nnxk0jGkEeihRMPHnoObNQ" feature="U:AV-ujzGmEeihRMPHnoObNQ" odbcPrecision="7" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_217"/>
 </relationalFields>
-<relationalRecordInstance imx:id="ID_216" xsi:type="datasourceoperation:RelationalRecordInstance" name="arcco_rendimientos_linea" ownerName.="U:QIAZxCwhEeifwIeF2GB2UA" record="U:cQZV8eP2EeeI9b3aq1bBPw"/>
+<relationalRecordInstance imx:id="ID_217" xsi:type="datasourceoperation:RelationalRecordInstance" name="arcco_rendimientos_linea" ownerName.="U:QIAZxCwhEeifwIeF2GB2UA" record="U:cQZV8eP2EeeI9b3aq1bBPw"/>
 </anonymousDso>
 <targetInterfaces>
 <TargetDataInterface imx:id="U:9-NG-SwhEeifwIeF2GB2UA" xsi:type="target:TargetDataInterface" input="true" name="Grupo">
@@ -516,12 +519,12 @@
 <DSORuntimeConfig imx:id="U:1XUjZzGSEeihRMPHnoObNQ" xsi:type="dsoconfig:RelationalDSORuntimeConfig" connectionName.="U:QIAZxiwhEeifwIeF2GB2UA"/>
 </defaultConfigs>
 <operations>
-<Capability imx:id="ID_240" xsi:type="datasourceoperation1:ReadCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:1XUjZzGSEeihRMPHnoObNQ">
+<Capability imx:id="ID_241" xsi:type="datasourceoperation1:ReadCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:1XUjZzGSEeihRMPHnoObNQ">
 <outGroups>
-<DataAccessGroup imx:id="ID_241" xsi:type="datasourceoperation1:DataAccessGroup" groupType="U:1XUjaDGSEeihRMPHnoObNQ"/>
+<DataAccessGroup imx:id="ID_242" xsi:type="datasourceoperation1:DataAccessGroup" groupType="U:1XUjaDGSEeihRMPHnoObNQ"/>
 </outGroups>
 </Capability>
-<Capability imx:id="ID_242" xsi:type="datasourceoperation1:LookupCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:1XUjZzGSEeihRMPHnoObNQ"/>
+<Capability imx:id="ID_243" xsi:type="datasourceoperation1:LookupCapability" defaultAdapter="smd:com.informatica.metadata.seed.relational.CanonicalRelational.relationalReaderDataAdapter" defaultConfig="U:1XUjZzGSEeihRMPHnoObNQ"/>
 </operations>
 <ownedCapabilityTypes>
 <ComplexType imx:id="U:1XUjaDGSEeihRMPHnoObNQ" xsi:type="typelibrary:ComplexType" name="arcco_pt_cesta">
@@ -539,18 +542,18 @@
 </ComplexType>
 </ownedCapabilityTypes>
 <relationalFields>
-<RelationalField imx:id="ID_243" xsi:type="datasourceoperation:RelationalField" column="U:ptcwH98fEeexjA8RSYbcVQ" feature="U:1XVKeTGSEeihRMPHnoObNQ" name="idempr" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_245" xsi:type="datasourceoperation:RelationalField" column="U:ptcwIN8fEeexjA8RSYbcVQ" feature="U:1XVKejGSEeihRMPHnoObNQ" name="tipcesta" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_246" xsi:type="datasourceoperation:RelationalField" column="U:ptcwId8fEeexjA8RSYbcVQ" feature="U:1XVKezGSEeihRMPHnoObNQ" name="codcesta" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_247" xsi:type="datasourceoperation:RelationalField" column="U:ptcwIt8fEeexjA8RSYbcVQ" feature="U:1XVKfDGSEeihRMPHnoObNQ" name="idprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_248" xsi:type="datasourceoperation:RelationalField" column="U:ptcwI98fEeexjA8RSYbcVQ" feature="U:1XVKfTGSEeihRMPHnoObNQ" name="idsprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_249" xsi:type="datasourceoperation:RelationalField" column="U:ptcwJN8fEeexjA8RSYbcVQ" feature="U:1XVKfjGSEeihRMPHnoObNQ" name="indtabco" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_250" xsi:type="datasourceoperation:RelationalField" column="U:ptcwJd8fEeexjA8RSYbcVQ" feature="U:1XVKfzGSEeihRMPHnoObNQ" name="natura" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_251" xsi:type="datasourceoperation:RelationalField" column="U:ptcwJt8fEeexjA8RSYbcVQ" feature="U:1XVKgDGSEeihRMPHnoObNQ" name="data_date_part" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_244"/>
-<RelationalField imx:id="ID_252" xsi:type="datasourceoperation:RelationalField" column="U:ptcwJ98fEeexjA8RSYbcVQ" feature="U:1XVKgTGSEeihRMPHnoObNQ" name="data_timestamp_part" odbcPrecision="19" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fbigint" recordInstance="ID_244"/>
+<RelationalField imx:id="ID_244" xsi:type="datasourceoperation:RelationalField" column="U:ptcwH98fEeexjA8RSYbcVQ" feature="U:1XVKeTGSEeihRMPHnoObNQ" name="idempr" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_245"/>
+<RelationalField imx:id="ID_246" xsi:type="datasourceoperation:RelationalField" column="U:ptcwIN8fEeexjA8RSYbcVQ" feature="U:1XVKejGSEeihRMPHnoObNQ" name="tipcesta" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_245"/>
+<RelationalField imx:id="ID_247" xsi:type="datasourceoperation:RelationalField" column="U:ptcwId8fEeexjA8RSYbcVQ" feature="U:1XVKezGSEeihRMPHnoObNQ" name="codcesta" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_245"/>
+<RelationalField imx:id="ID_248" xsi:type="datasourceoperation:RelationalField" column="U:ptcwIt8fEeexjA8RSYbcVQ" feature="U:1XVKfDGSEeihRMPHnoObNQ" name="idprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_245"/>
+<RelationalField imx:id="ID_249" xsi:type="datasourceoperation:RelationalField" column="U:ptcwI98fEeexjA8RSYbcVQ" feature="U:1XVKfTGSEeihRMPHnoObNQ" name="idsprod" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_245"/>
+<RelationalField imx:id="ID_250" xsi:type="datasourceoperation:RelationalField" column="U:ptcwJN8fEeexjA8RSYbcVQ" feature="U:1XVKfjGSEeihRMPHnoObNQ" name="indtabco" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_245"/>
+<RelationalField imx:id="ID_251" xsi:type="datasourceoperation:RelationalField" column="U:ptcwJd8fEeexjA8RSYbcVQ" feature="U:1XVKfzGSEeihRMPHnoObNQ" name="natura" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_245"/>
+<RelationalField imx:id="ID_252" xsi:type="datasourceoperation:RelationalField" column="U:ptcwJt8fEeexjA8RSYbcVQ" feature="U:1XVKgDGSEeihRMPHnoObNQ" name="data_date_part" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_245"/>
+<RelationalField imx:id="ID_253" xsi:type="datasourceoperation:RelationalField" column="U:ptcwJ98fEeexjA8RSYbcVQ" feature="U:1XVKgTGSEeihRMPHnoObNQ" name="data_timestamp_part" odbcPrecision="19" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fbigint" recordInstance="ID_245"/>
 </relationalFields>
 <relationalRecordInstances>
-<RelationalRecordInstance imx:id="ID_244" xsi:type="datasourceoperation:RelationalRecordInstance" name="arcco_pt_cesta" ownerName.="U:QIAZwywhEeifwIeF2GB2UA" record="U:ptcwHt8fEeexjA8RSYbcVQ"/>
+<RelationalRecordInstance imx:id="ID_245" xsi:type="datasourceoperation:RelationalRecordInstance" name="arcco_pt_cesta" ownerName.="U:QIAZwywhEeifwIeF2GB2UA" record="U:ptcwHt8fEeexjA8RSYbcVQ"/>
 </relationalRecordInstances>
 </anonymousDso>
 <sourceInterfaces>
@@ -627,10 +630,6 @@
 </AbstractTransformation>
 </transformations>
 </mapping:Mapping>
-<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_ST" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_ST">
-<defaultAttributes imx:id="U:dkf-U1yoEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
-<modelExtension imx:id="ID_253" xsi:type="Hive:HiveConnectInfoExtension"/>
-</Hive:HiveConnectInfo>
 <Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_MD" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_MD">
 <defaultAttributes imx:id="U:r374x1ymEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
 <modelExtension imx:id="ID_254" xsi:type="Hive:HiveConnectInfoExtension"/>
@@ -639,24 +638,14 @@
 <defaultAttributes imx:id="U:dolMnVyoEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
 <modelExtension imx:id="ID_255" xsi:type="Hive:HiveConnectInfoExtension"/>
 </Hive:HiveConnectInfo>
-<datarecord:Table imx:id="U:ptcwHt8fEeexjA8RSYbcVQ" connection="stringIdentity:cnx_01_HV_ARC_ST" connectionName="cnx_01_HV_ARC_ST" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_pt_cesta" ownerName="WS_APLARCCO_DEV_STAGING" physicalName="arcco_pt_cesta">
-<columns>
-<Column imx:id="U:ptcwH98fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
-<Column imx:id="U:ptcwIN8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="tipcesta" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
-<Column imx:id="U:ptcwId8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="codcesta" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
-<Column imx:id="U:ptcwIt8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idprod" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
-<Column imx:id="U:ptcwI98fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idsprod" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
-<Column imx:id="U:ptcwJN8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="indtabco" nullable="true" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="1"/>
-<Column imx:id="U:ptcwJd8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="natura" nullable="true" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="1"/>
-<Column imx:id="U:ptcwJt8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" nullable="true" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="10"/>
-<Column imx:id="U:ptcwJ98fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fbigint" name="data_timestamp_part" nullable="true" odbcPrecision="19" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fbigint" precision="19"/>
-</columns>
-<PartitionedColumns>
-<Column imx:id="U:ptcwKN8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" precision="4000"/>
-<Column imx:id="U:ptcwKd8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fbigint" name="data_timestamp_part" precision="19"/>
-</PartitionedColumns>
-</datarecord:Table>
-<datarecord:Table imx:id="U:ipQUQN8fEeexjA8RSYbcVQ" connection="stringIdentity:cnx_01_HV_ARC_MD" connectionName="cnx_01_HV_ARC_MD" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_ruc_comisiones" ownerName="WS_APLARCCO_DEV_MD" physicalName="arcco_ruc_comisiones">
+<Hive:HiveConnectInfo imx:id="stringIdentity:cnx_01_HV_ARC_ST" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="cnx_01_HV_ARC_ST">
+<defaultAttributes imx:id="U:dkf-U1yoEeea-y67HNNOJg" xsi:type="connectinfo:ConnectionPoolAttributes"/>
+<modelExtension imx:id="ID_256" xsi:type="Hive:HiveConnectInfoExtension"/>
+</Hive:HiveConnectInfo>
+<folder:Folder imx:id="U:zRq8asOeEeeO4K4Q9BCEUQ" name="BI_50053437_HOM">
+<contents>
+<IObject imx:idref="U:QIAZvywhEeifwIeF2GB2UA" xsi:type="mapping:Mapping"/>
+<IObject imx:id="U:ipQUQN8fEeexjA8RSYbcVQ" xsi:type="datarecord:Table" connection="stringIdentity:cnx_01_HV_ARC_MD" connectionName="cnx_01_HV_ARC_MD" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_ruc_comisiones" ownerName="WS_APLARCCO_DEV_MD" physicalName="arcco_ruc_comisiones">
 <columns>
 <Column imx:id="U:ipQUQd8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
 <Column imx:id="U:ipQUQt8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idcent" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
@@ -706,8 +695,8 @@
 <PartitionedColumns>
 <Column imx:id="U:ipQUbd8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" precision="4000"/>
 </PartitionedColumns>
-</datarecord:Table>
-<datarecord:Table imx:id="U:cQZV8eP2EeeI9b3aq1bBPw" connection="stringIdentity:cnx_01_HV_ARC_TM" connectionName="cnx_01_HV_ARC_TM" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_rendimientos_linea" ownerName="WS_APLARCCO_DEV_TMP" physicalName="arcco_rendimientos_linea">
+</IObject>
+<IObject imx:id="U:cQZV8eP2EeeI9b3aq1bBPw" xsi:type="datarecord:Table" connection="stringIdentity:cnx_01_HV_ARC_TM" connectionName="cnx_01_HV_ARC_TM" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_rendimientos_linea" ownerName="WS_APLARCCO_DEV_TMP" physicalName="arcco_rendimientos_linea">
 <columns>
 <Column imx:id="U:cQZV8uP2EeeI9b3aq1bBPw" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="fec_operacion" nullable="true" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="10"/>
 <Column imx:id="U:cQZV8-P2EeeI9b3aq1bBPw" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
@@ -731,13 +720,24 @@
 <Column imx:id="U:cQZWBeP2EeeI9b3aq1bBPw" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="codcesta" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
 <Column imx:id="U:cQZWBuP2EeeI9b3aq1bBPw" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="codcepto" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
 </columns>
-</datarecord:Table>
-<folder:Folder imx:id="U:zRq8asOeEeeO4K4Q9BCEUQ" name="BI_50053437_HOM">
-<contents>
-<IObject imx:idref="U:QIAZvywhEeifwIeF2GB2UA" xsi:type="mapping:Mapping"/>
-<IObject imx:idref="U:ptcwHt8fEeexjA8RSYbcVQ" xsi:type="datarecord:Table"/>
-<IObject imx:idref="U:ipQUQN8fEeexjA8RSYbcVQ" xsi:type="datarecord:Table"/>
-<IObject imx:idref="U:cQZV8eP2EeeI9b3aq1bBPw" xsi:type="datarecord:Table"/>
+</IObject>
+<IObject imx:id="U:ptcwHt8fEeexjA8RSYbcVQ" xsi:type="datarecord:Table" connection="stringIdentity:cnx_01_HV_ARC_ST" connectionName="cnx_01_HV_ARC_ST" connectionType="com.informatica.adapter.Hive.HiveConnectInfo" name="arcco_pt_cesta" ownerName="WS_APLARCCO_DEV_STAGING" physicalName="arcco_pt_cesta">
+<columns>
+<Column imx:id="U:ptcwH98fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idempr" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
+<Column imx:id="U:ptcwIN8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="tipcesta" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
+<Column imx:id="U:ptcwId8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="codcesta" nullable="true" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="4"/>
+<Column imx:id="U:ptcwIt8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idprod" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
+<Column imx:id="U:ptcwI98fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="idsprod" nullable="true" odbcPrecision="3" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="3"/>
+<Column imx:id="U:ptcwJN8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="indtabco" nullable="true" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="1"/>
+<Column imx:id="U:ptcwJd8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="natura" nullable="true" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="1"/>
+<Column imx:id="U:ptcwJt8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" nullable="true" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" precision="10"/>
+<Column imx:id="U:ptcwJ98fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fbigint" name="data_timestamp_part" nullable="true" odbcPrecision="19" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fbigint" precision="19"/>
+</columns>
+<PartitionedColumns>
+<Column imx:id="U:ptcwKN8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fstring" name="data_date_part" precision="4000"/>
+<Column imx:id="U:ptcwKd8fEeexjA8RSYbcVQ" xsi:type="datarecord:Column" type="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fbigint" name="data_timestamp_part" precision="19"/>
+</PartitionedColumns>
+</IObject>
 </contents>
 </folder:Folder>
 <project:Project imx:id="U:a5D_p2boEeeZTEfoBI-DAw" name="d_x860953">
@@ -747,11 +747,11 @@
 </imx:IGenericAnnotations>
 </imx:annotations>
 <annotations>
-<Annotation imx:id="ID_256" xsi:type="description:Description"/>
+<Annotation imx:id="ID_257" xsi:type="description:Description"/>
 </annotations>
 <contents>
 <IObject imx:idref="U:zRq8asOeEeeO4K4Q9BCEUQ" xsi:type="folder:Folder"/>
 </contents>
 </project:Project>
-<imx:crc value="2463260585"/>
+<imx:crc value="908770717"/>
 </imx:IMX>

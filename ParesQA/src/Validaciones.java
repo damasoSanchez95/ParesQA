@@ -54,7 +54,7 @@ public class Validaciones {
 		for (Entry<Parametro, String> entry : tablaParametros.entrySet()) {
 			Parametro clave = entry.getKey();
 			try {
-				if( (!tablaExecutionParameters.containsKey(clave.getId())) && (clave.getName().contains("DRIVER") || clave.getName().contains("EXECUTOR")))
+				if( (!tablaExecutionParameters.containsKey(clave.getId())) && (clave.getName().contains("DRIVER") || clave.getName().contains("EXECUTOR") || clave.getName().contains("PARTITIONS")))
 					throw new SinParametroPre("NO ESTA EL PARAMETRO " + clave.getName() + " DENTRO DE LOS TIEMPO DE EJECUCION DE LA FORMA ADECUADA");
 			}catch(SinParametroPre e){
 					System.out.println(e.getLocalizedMessage());
@@ -124,7 +124,7 @@ public class Validaciones {
 				}	
 			}
 
-			System.out.println(" NUEVO OBJETO" + nuevoObjeto.getName());
+			//System.out.println(" NUEVO OBJETO" + nuevoObjeto.getName());
 
 
 			//AQUI SEA UN OBJETO DE REFERENCIA O UNO NORMAL LLEGAMOS CON EL NOMBRE Y LA LISTA DE CAMPOS CORRESPONDIENTE
@@ -180,7 +180,7 @@ public class Validaciones {
 										//creamos un nuevo arraylista dentro del ya existente cada arraylist será un CAMPO con LOS PUERTOS(toPort,precision,tipo,escala, NAME)
 										tablaComparacionCampos.add(new ArrayList<String>());
 										tablaComparacionCampos.get(ContadorComprobaciones).add(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts());
-										//metemos el dato y en comprobacion feature meteremos todos los demas campos al hacerl as comprobaciones 
+										//metemos el dato y en comprobacion feature meteremos todos los demas campos al hacerlas comprobaciones 
 										ComprobacionFeatures(InstanciaPartida,indiceObjeto,indiceCampoDeLaInstanciaPartida,tablaComparacionCampos,ContadorComprobaciones,posicionTransformacion);
 										ContadorComprobaciones++;//sumamos uno al contador del arraylist general para que al siguiente paso del bucle se cree otro ARRAYLIST PARA OTRO CAMPO
 									//}
@@ -280,6 +280,7 @@ public class Validaciones {
 					
 										}
 										if(!QueCampo){
+											System.out.println("");
 											System.out.println("El campo " + CampoFallo.toUpperCase() +" de la tabla de escritura" + " esta sin flechita");
 										}
 						
@@ -296,7 +297,7 @@ public class Validaciones {
 
 										//Compruebas del campo de su instancia (sus puertos) con los puertos del campo de su propio objeto (INNECESARIO)
 										for(int indiceCampoDeLaInstanciaPartida=0; indiceCampoDeLaInstanciaPartida<listaInstancia.get(InstanciaPartida).getCampos().size();indiceCampoDeLaInstanciaPartida++)
-											ComprobacionFeatures(InstanciaPartida,indiceObjeto,indiceCampoDeLaInstanciaPartida,tablaComparacionCampos,0,posicionTransformacion);
+												ComprobacionFeatures(InstanciaPartida,indiceObjeto,indiceCampoDeLaInstanciaPartida,tablaComparacionCampos,0,posicionTransformacion);
 
 									}
 
@@ -368,7 +369,8 @@ public class Validaciones {
 	}	
 
 	private boolean comprobacionesParaLosPuertosTransformacionesObjetos(int posicionTransformacion, int posicionCampoTransformacion, int indiceObjeto, int posicionCampoObjeto){
-		if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getType() !=null ) {
+		
+		if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getType() !=null) {
 		//	if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getType().contains("decimal"))
 			//	return listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getPrecision().equals(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getPrecision())&&listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getType().equals(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getType())&&listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(posicionCampoTransformacion).getEscala().equals(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getEscala());
 			//else
@@ -408,7 +410,7 @@ public class Validaciones {
 								if(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getType().contains("decimal"))
 									tablaComparacionCampos.get(ContadorComprobaciones).add(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getEscala());
 								
-								tablaComparacionCampos.get(ContadorComprobaciones).add(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getName());
+									tablaComparacionCampos.get(ContadorComprobaciones).add(listaObjetos.get(indiceObjeto).getCampos().get(posicionCampoObjeto).getName());
 							}
 							campoComprobado=true;
 							
@@ -428,6 +430,7 @@ public class Validaciones {
 		boolean nuevoCampo=true;
 		boolean fallaTipo=false;
 		boolean fallaPrecision=false;
+		boolean yaEnseñado=false;
 		int dondeFalla=0;
 		
 		
@@ -449,12 +452,30 @@ public class Validaciones {
 					dondeFalla=t;
 				}
 
-				if(fallaPrecision)
-					System.out.println(" La has cagado en la precision del campo " + tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1) + " a la altura del " + listaTransformaciones.get(posicionTransformacion).getNombre() +  " deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(1) + " y es  " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).getPrecision() + " debes revisarlo y volver a pasar el XML al programa!! ");
+				if(fallaPrecision){
+					System.out.println("");
+					System.out.println("FALLO EN EL CAMPO: " + tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1));
+					System.out.println("ALTURA: " + listaTransformaciones.get(posicionTransformacion).getNombre());
+					yaEnseñado=true;
+					System.out.println("MOTIVO DEL FALLO: Precision. Deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(1) + " y es  " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).getPrecision()); 
+					//System.out.println("");
 
-				if(fallaTipo)
-					System.out.println(" La has cagado en el tipo del campo " + tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1) + " a la altura del " + listaTransformaciones.get(posicionTransformacion).getNombre() +  " deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(2) + "  y es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).getType() + " debes revisarlo y volver a pasar el XML al programa!! ");	
+				}
+				if(fallaTipo) {
+					if(yaEnseñado) {
+						System.out.println("MOTIVO DEL FALLO: Tipo. Deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(2) + "  y es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).getType());	
+						System.out.println("");
+					}
+					else {
+						System.out.println("");
+						System.out.println("FALLO EN EL CAMPO: " + tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1));
+						System.out.println("ALTURA: " + listaTransformaciones.get(posicionTransformacion).getNombre());
+						System.out.println("MOTIVO DEL FALLO: Tipo. Deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(2) + "  y es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).getType());	
+						System.out.println("");
 
+						yaEnseñado=true;
+					}
+				}
 				encontrado=true;
 			} //cierre del transformationField=id
 		} //CierreFor
@@ -480,8 +501,6 @@ public class Validaciones {
 		return nuevoCampo;
 	} 
 	
-
-	
 	public boolean ComprobacionCamposJoinUnion(int InstanciaPartida,int indiceCampoDeLaInstanciaPartida, ArrayList<ArrayList<String>> tablaComparacionCampos,int posicionArrayCampos,int posicionTransformacion){
 		boolean campoCorrecto=false;
 		boolean encontrado=false;
@@ -491,6 +510,7 @@ public class Validaciones {
 		boolean fallaTipo=false;
 		boolean fallaPrecision=false;
 		boolean mirarEnPrincipal=false;
+		boolean yaEnseñado=false;
 		int dondeFalla=0;
 		
 		
@@ -524,12 +544,33 @@ public class Validaciones {
 						}
 							
 						
-						if(fallaPrecision)
-							System.out.println(" La has cagado en la precision del campo " + tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1) + " a la altura del " + listaTransformaciones.get(posicionTransformacion).getNombre() +  " deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(1) + " y es  " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacionPrincipal().get(dondeFalla).getPrecision() + " debes revisarlo y volver a pasar el XML al programa!! ");
-							
-						if(fallaTipo)
-							System.out.println(" La has cagado en el tipo del campo " + tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1) + " a la altura del " + listaTransformaciones.get(posicionTransformacion).getNombre() +  " deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(2) + "  y es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacionPrincipal().get(dondeFalla).getType() + " debes revisarlo y volver a pasar el XML al programa!! ");	
+						if(fallaPrecision){
+							System.out.println("");
+							System.out.println("FALLO EN EL CAMPO: " + tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1));
+							System.out.println("ALTURA: " + listaTransformaciones.get(posicionTransformacion).getNombre());
+							yaEnseñado=true;
+							System.out.println("MOTIVO DEL FALLO: Precision. Deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(1) + " y es  " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacionPrincipal().get(dondeFalla).getPrecision()); 
+							//System.out.println("");
 
+							yaEnseñado=true;
+						}
+						
+						if(fallaTipo) {
+							if(yaEnseñado) {
+								System.out.println("MOTIVO DEL FALLO: Tipo. Deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(2) + "  y es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacionPrincipal().get(dondeFalla).getType());	
+								System.out.println("");
+							}
+							else {
+								System.out.println("");
+								System.out.println("FALLO EN EL CAMPO: " + tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1));
+								System.out.println("ALTURA: " + listaTransformaciones.get(posicionTransformacion).getNombre());
+								System.out.println("MOTIVO DEL FALLO: Tipo. Deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(2) + "  y es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacionPrincipal().get(dondeFalla).getType());	
+								System.out.println("");
+
+								yaEnseñado=true;
+							}
+						} //Cierre del fallaTipo
+						
 						encontrado=true;
 					} //Cierre del getId=getTransformationFiel
 				}//Cierre mirarEnPrincipal
@@ -554,12 +595,32 @@ public class Validaciones {
 							dondeFalla=t;
 						}
 						
-						if(fallaPrecision)
-							System.out.println(" La has cagado en la precision del campo " + tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1) + " a la altura del " + listaTransformaciones.get(posicionTransformacion).getNombre() +  " deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(1) + " y es  " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(dondeFalla).getPrecision() + " debes revisarlo y volver a pasar el XML al programa!! ");
-							
-						if(fallaTipo)
-							System.out.println(" La has cagado en el tipo del campo " + tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1) + " a la altura del " + listaTransformaciones.get(posicionTransformacion).getNombre() +  " deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(2) + "  y es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(dondeFalla).getType() + " debes revisarlo y volver a pasar el XML al programa!! ");	
+						if(fallaPrecision){
+							System.out.println("");
+							System.out.println("FALLO EN EL CAMPO: " + tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1));
+							System.out.println("ALTRURA : " + listaTransformaciones.get(posicionTransformacion).getNombre());
+							yaEnseñado=true;
+							System.out.println("MOTIVO DEL FALLO: Precision. Deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(1) + " y es  " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(dondeFalla).getPrecision()); 
+							//System.out.println("");
 
+							yaEnseñado=true;
+						}
+						if(fallaTipo) {
+							if(yaEnseñado) {
+								System.out.println("MOTIVO DEL FALLO: Tipo. Deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(2) + "  y es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(dondeFalla).getType());	
+								System.out.println("");
+							}
+							else {
+								System.out.println("");
+								System.out.println("FALLO EN EL CAMPO: " + tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1));
+								System.out.println("ALTURA: " + listaTransformaciones.get(posicionTransformacion).getNombre());
+								System.out.println("MOTIVO DEL FALLO: Tipo. Deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(2) + "  y es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacionDetalle().get(dondeFalla).getType());	
+								System.out.println("");
+
+								yaEnseñado=true;
+							}
+						} //Cierre del fallaTipo
+						
 						encontrado=true;
 				}	
 			} //Cierre mirarEnDetalle
@@ -577,7 +638,7 @@ public class Validaciones {
 				//TENDREMOS QUE UTILIZAR EL NOMBRE		
 				//hay que ver si el nombre de la transformacion de salida del join su id tiene un transformation field que significa que la variable continua a la siguiente instancia y debemos meterla en el array
 				for(int t=1; t<=listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().size() && !cambiado;t++){
-					if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t-1).getName().contains(tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1))){
+					if(!listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t-1).getName().contains("sig_") &&  listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t-1).getName().contains(tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1))){
 
 						for(int r=0; r<listaInstancia.get(InstanciaPartida).getCampos().size() && !encontrado;r++){
 							//ACTUALIZAMOS EL TOPORT

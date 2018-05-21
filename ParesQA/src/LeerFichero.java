@@ -81,54 +81,60 @@ public class LeerFichero {
 	}
 	
 	public static void ordenarObjetos(){
-		int instancia=0;
-		int objeto=0;
-		int dataRecordIndice=0;
+		int instanciaEncontrada=0;
+		int objetoEncontrado=0;
+		int dataRecordEncontrada=0;
 		boolean parar=false;
 		boolean dataRecord=true;
 		Iobject objetoEscritura = new Iobject(null,null,null,false, null);
 
 		//buscamos la instancia de escritura
-		for(instancia=0; instancia<listaInstancia.size()&&!parar;instancia++)
-			if(listaInstancia.get(instancia).getName().contains("Escritura") || listaInstancia.get(instancia).getName().contains("Write") )
+		for(int instancia=0; instancia<listaInstancia.size()&&!parar;instancia++)
+			if(listaInstancia.get(instancia).getName().contains("Escritura") || listaInstancia.get(instancia).getName().contains("Write")){
 				parar=true;
+				instanciaEncontrada=instancia;	
+			}
 
 		parar=false;
 
 		//buscamos el objeto
-		for(objeto=0; objeto<listaObjetos.size()&&!parar;objeto++)
+		for(int objeto=0; objeto<listaObjetos.size()&&!parar;objeto++)
 			if(listaObjetos.get(objeto).getName()!=null)
-				if(listaInstancia.get(instancia-1).getName().contains(listaObjetos.get(objeto).getName())) {
+				if(listaInstancia.get(instanciaEncontrada).getName().contains(listaObjetos.get(objeto).getName())) {
 					parar=true;
 					objetoEscritura=listaObjetos.get(objeto);
+					objetoEncontrado=objeto;
 					dataRecord=false;
 				}
 
 		//ahora reeordenamos la lista de objetos, para ello borramos el objeto y le metemos al final
 		if(!dataRecord) {
-			listaObjetos.remove(objeto-1);
+			listaObjetos.remove(objetoEncontrado);
 			listaObjetos.add(objetoEscritura);
 		}
 
 		else { //Si es dataRecord lo buscamos ahi
 			parar=false;
+			
 			//Buscamos el dataRecord en cuestion
-			for(dataRecordIndice=0; dataRecordIndice< listaDataRecords.size() &&!parar;instancia++)
-				if(listaInstancia.get(instancia-1).getName().contains(listaDataRecords.get(dataRecordIndice).getName())) {
+			for(int dataRecordIndice=0; dataRecordIndice< listaDataRecords.size() &&!parar;dataRecordIndice++)
+				if(listaInstancia.get(instanciaEncontrada).getName().contains(listaDataRecords.get(dataRecordIndice).getName())) {
+					dataRecordEncontrada=dataRecordIndice;
 					parar=true;
 				}
 
 			parar=false;
 			
 			//Buscamos el objeto en cuestion
-			for(objeto=0; objeto<listaObjetos.size()&&!parar;objeto++)
-				if(listaDataRecords.get(dataRecordIndice).getId().equals(listaObjetos.get(objeto).getId())) {
+			for(int objeto=0; objeto<listaObjetos.size()&&!parar;objeto++)
+				if(listaDataRecords.get(dataRecordEncontrada).getId().equals(listaObjetos.get(objeto).getId())) {
 					parar=true;
 					objetoEscritura=listaObjetos.get(objeto);
+					objetoEncontrado=objeto;
 					dataRecord=false;
 				}
 				
-			listaObjetos.remove(objeto-1);
+			listaObjetos.remove(objetoEncontrado);
 			listaObjetos.add(objetoEscritura);
 			
 		}
@@ -514,7 +520,7 @@ public class LeerFichero {
 		//Si no tiene cuerpo lanzamos la excepcion correspondiente
 		if(falloBody){ 
 			try {
-				throw new InstanciaSinDescrip(" LA INSTANCIA " + nuevaInstancia.getName() + " NO TIENE DESCRIPCION PUESTA ");
+				throw new InstanciaSinDescrip("LA INSTANCIA " + nuevaInstancia.getName() + " NO TIENE DESCRIPCION PUESTA ");
 
 			}catch(InstanciaSinDescrip e){
 				System.out.println(e.getMessage());
@@ -1183,9 +1189,11 @@ public class LeerFichero {
 		it = listaParametros.iterator();
 		//Metemos los datos en el arraylist principal de executionParameters
 
-		executionParameters.setValue(it.next());
-		executionParameters.setName(it.next());
-		//Mostramos los datos del arrayList
+		if(listaParametros.size() >=2){
+			executionParameters.setValue(it.next());
+			executionParameters.setName(it.next());
+		}//Mostramos los datos del arrayList
+		
 
 		vaciarLista(listaParametros);			
 

@@ -4535,7 +4535,6 @@
 <ports>
 <TransformationFieldPort imx:id="ID_4914" xsi:type="mapping:TransformationFieldPort" instance="U:-AuC7iz6EeiffU6q_PGcgg" transformationField="U:-AuC8iz6EeiffU6q_PGcgg">
 <children>
-<NestedPort imx:id="ID_4911" xsi:type="mapping:NestedPort" fromPort="ID_4910" parent="ID_4914" structuralFeature="U:wnUS2y5vEeivz0r0XV4K2Q"/>
 <NestedPort imx:id="ID_4430" xsi:type="mapping:NestedPort" fromPort="ID_3451" parent="ID_4914" structuralFeature="U:wnUS1C5vEeivz0r0XV4K2Q"/>
 <NestedPort imx:id="ID_4431" xsi:type="mapping:NestedPort" fromPort="ID_3453" parent="ID_4914" structuralFeature="U:wnUS1S5vEeivz0r0XV4K2Q"/>
 <NestedPort imx:id="ID_4432" xsi:type="mapping:NestedPort" fromPort="ID_3455" parent="ID_4914" structuralFeature="U:wnUS1i5vEeivz0r0XV4K2Q"/>
@@ -6865,7 +6864,7 @@
 <Annotation imx:id="ID_5488" xsi:type="description:Description" body="string+2"/>
 </annotations>
 </JoinerField>
-<JoinerField imx:id="U:gCqz6y0hEeiffU6q_PGcgg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="tipoint">
+<JoinerField imx:id="U:gCqz6y0hEeiffU6q_PGcgg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="1" upper="1" input="true" name="tipoint">
 <annotations>
 <Annotation imx:id="ID_5489" xsi:type="description:Description" body="string+2"/>
 </annotations>
@@ -10851,7 +10850,7 @@
 </expressionInterface>
 </AbstractTransformation>
 <AbstractTransformation imx:id="U:-AuC7yz6EeiffU6q_PGcgg" xsi:type="target:TargetTx" active="true" name="Escritura_arcco_datfinanc_detalle_temp" dso="U:wnUS0S5vEeivz0r0XV4K2Q">
-<anonymousDso imx:id="U:wnUS0S5vEeivz0r0XV4K2Q" xsi:type="datasourceoperation:WriteRelationalDataSourceOperation" name="arcco_datfinanc_detalle_temp" loadType="Normal" tableDefinition="U:Z7fUYiezEeit9taz0Nn1uw" typeSystem="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem">
+<anonymousDso imx:id="U:wnUS0S5vEeivz0r0XV4K2Q" xsi:type="datasourceoperation:WriteRelationalDataSourceOperation" name="arcco_datfinanc_detalle_temp" loadType="Normal" tableDefinition="" typeSystem="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem">
 <defaultConfigs>
 <DSORuntimeConfig imx:id="U:wnUS0i5vEeivz0r0XV4K2Q" xsi:type="dsoconfig:RelationalDSORuntimeConfig" connectionName.="U:Uaj8PCt_EeiXPysNYYVNyQ"/>
 </defaultConfigs>
