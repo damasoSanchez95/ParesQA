@@ -100,7 +100,7 @@ public class LeerFichero {
 		//buscamos el objeto
 		for(int objeto=0; objeto<listaObjetos.size()&&!parar;objeto++)
 			if(listaObjetos.get(objeto).getName()!=null)
-				if(listaInstancia.get(instanciaEncontrada).getName().contains(listaObjetos.get(objeto).getName())) {
+				if(listaInstancia.get(instanciaEncontrada).getName().contains(listaObjetos.get(objeto).getName()) && (listaInstancia.get(instanciaEncontrada).getName().charAt(listaInstancia.get(instanciaEncontrada).getName().length()-1))==listaObjetos.get(objeto).getName().charAt(listaObjetos.get(objeto).getName().length()-1)) {
 					parar=true;
 					objetoEscritura=listaObjetos.get(objeto);
 					objetoEncontrado=objeto;
@@ -118,7 +118,7 @@ public class LeerFichero {
 			
 			//Buscamos el dataRecord en cuestion
 			for(int dataRecordIndice=0; dataRecordIndice< listaDataRecords.size() &&!parar;dataRecordIndice++)
-				if(listaInstancia.get(instanciaEncontrada).getName().contains(listaDataRecords.get(dataRecordIndice).getName())) {
+				if(listaInstancia.get(instanciaEncontrada).getName().contains(listaDataRecords.get(dataRecordIndice).getName()) && (listaInstancia.get(instanciaEncontrada).getName().charAt(listaInstancia.get(instanciaEncontrada).getName().length()-1))==listaDataRecords.get(dataRecordIndice).getName().charAt(listaDataRecords.get(objetoEncontrado).getName().length()-1)) {
 					dataRecordEncontrada=dataRecordIndice;
 					parar=true;
 				}
@@ -435,6 +435,7 @@ public class LeerFichero {
 				arrayBueno[i]=arrayBueno[i].replace("xsi:type=", "");
 				arrayBueno[i]=arrayBueno[i].replace("type=", "");
 				arrayBueno[i]=arrayBueno[i].replace("odbcType=","");
+				arrayBueno[i]=arrayBueno[i].replace("smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2Fint","integer");
 				arrayBueno[i]=arrayBueno[i].replace("smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem%2F","");
 				arrayBueno[i]=arrayBueno[i].replace("smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar", "string");
 				arrayBueno[i]=arrayBueno[i].replace("smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2F", "");
@@ -657,7 +658,7 @@ public class LeerFichero {
 	private static void obtenerCamposTransformacionSourceTarget(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos ) throws IOException{
 		while(!cadena.contains("</relationalFields")) { //Mientras no sea el final de los campos
 			if(cadena.contains("<RelationalField")){ // Si encuentra un campo
-				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null);
+				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null,false);
 				falloXML=false;
 
 				cadenaDividida=cadena.split(" ");
@@ -703,7 +704,7 @@ public class LeerFichero {
 	private static void obtenerCamposTransformacionJoiner(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos ) throws IOException{
 		while(!cadena.contains("</joinerFields")) { //Mientras no sea el final de los campos
 			if(cadena.contains("<JoinerField")){ // Si encuentra un campo
-				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null);
+				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null,false);
 				falloXML=false;
 
 				cadenaDividida=cadena.split(" ");
@@ -747,7 +748,7 @@ public class LeerFichero {
 	private static void obtenerCamposTransformacionExpressionFilter(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos ) throws IOException{
 		while(!cadena.contains("</expressionFields") && !cadena.contains("</filterFields")) { //Mientras no sea el final de los campos
 			if(cadena.contains("<ExpressionField") || cadena.contains("<FilterField")){ // Si encuentra un campo
-				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null);
+				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null,false);
 				falloXML=false;
 
 				cadenaDividida=cadena.split(" ");
@@ -789,7 +790,7 @@ public class LeerFichero {
 	private static void obtenerCamposTransformacionUnion(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos ) throws IOException{
 		while(!cadena.contains("</unionFields")) { //Mientras no sea el final de los campos
 			if(cadena.contains("<UnionField")){ // Si encuentra un campo
-				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null);
+				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null,false);
 				falloXML=false;
 
 				cadenaDividida=cadena.split(" ");
@@ -1005,7 +1006,7 @@ public class LeerFichero {
 				dataInterface="";
 			}
 			
-			nuevaTransformacion.setCamposTransformacionDetalle(null);
+			//nuevaTransformacion.setCamposTransformacionDetalle(null);
 		}
 
 		return nuevaTransformacion;

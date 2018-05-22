@@ -71,9 +71,10 @@ public class AbstractTransformation {
 		private String name;
 		private String precision;
 		private String obdcType;
+		private boolean yaMostrado;
 		private String escala;
 		
-		public Campo(String id, String columna,String feature, String name, String precision, String obdcType, String escala){
+		public Campo(String id, String columna,String feature, String name, String precision, String obdcType, String escala, boolean yaMostrado){
 			this.id=id;
 			this.columna=columna;
 			this.feature=feature;
@@ -81,7 +82,18 @@ public class AbstractTransformation {
 			this.precision=precision;
 			this.obdcType=obdcType;
 			this.escala=escala;
+			this.yaMostrado=yaMostrado;
 		}
+		
+		public void setYaMostrado(boolean yaMostrado){
+			this.yaMostrado=yaMostrado;	
+		}
+		
+		public Boolean getYaMostrado(){
+			return yaMostrado;
+		}
+		
+		
 		
 		public String getId(){return id;}
 		public void setID(String id) {
