@@ -118,7 +118,7 @@ public class LeerFichero {
 			
 			//Buscamos el dataRecord en cuestion
 			for(int dataRecordIndice=0; dataRecordIndice< listaDataRecords.size() &&!parar;dataRecordIndice++)
-				if(listaInstancia.get(instanciaEncontrada).getName().contains(listaDataRecords.get(dataRecordIndice).getName()) && (listaInstancia.get(instanciaEncontrada).getName().charAt(listaInstancia.get(instanciaEncontrada).getName().length()-1))==listaDataRecords.get(dataRecordIndice).getName().charAt(listaDataRecords.get(objetoEncontrado).getName().length()-1)) {
+				if(listaInstancia.get(instanciaEncontrada).getName().contains(listaDataRecords.get(dataRecordIndice).getName()) && (listaInstancia.get(instanciaEncontrada).getName().charAt(listaInstancia.get(instanciaEncontrada).getName().length()-1))==listaDataRecords.get(dataRecordIndice).getName().charAt(listaDataRecords.get(dataRecordIndice).getName().length()-1)) {
 					dataRecordEncontrada=dataRecordIndice;
 					parar=true;
 				}
@@ -746,8 +746,8 @@ public class LeerFichero {
 	}	
 	
 	private static void obtenerCamposTransformacionExpressionFilter(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos ) throws IOException{
-		while(!cadena.contains("</expressionFields") && !cadena.contains("</filterFields")) { //Mientras no sea el final de los campos
-			if(cadena.contains("<ExpressionField") || cadena.contains("<FilterField")){ // Si encuentra un campo
+		while(!cadena.contains("</aggregatorFields") && !cadena.contains("</expressionFields") && !cadena.contains("</filterFields")) { //Mientras no sea el final de los campos
+			if(cadena.contains("<AggregatorField") || cadena.contains("<ExpressionField") || cadena.contains("<FilterField")){ // Si encuentra un campo
 				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null,false);
 				falloXML=false;
 
@@ -864,7 +864,7 @@ public class LeerFichero {
 			nuevaTransformacion.setCamposTransformacionDetalle(null);
 		}
 			
-		else if(nuevaTransformacion.getType().contains("expression") || nuevaTransformacion.getType().contains("filter")){
+		else if(nuevaTransformacion.getType().contains("expression") || nuevaTransformacion.getType().contains("filter") || nuevaTransformacion.getType().contains("aggregator")){
 			obtenerCamposTransformacionExpressionFilter(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposSalida);
 			nuevaTransformacion.setCamposTransformacion(listaCamposSalida); //salida-OUTPUT o el único
 			nuevaTransformacion.setCamposTransformacionDetalle(null);
