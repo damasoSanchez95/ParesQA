@@ -29,6 +29,13 @@ public class Main {
 			
 			System.out.println("");
 
+			System.out.println("*******COMPROBACION ESQUEMAS DE LAS TABLAS*********");
+			System.out.println("");
+
+			validaciones.conexionOwnerTablas();
+			
+			System.out.println("");
+
 
 			
 			System.out.println("*******COMPROBACION PARAMETROS DE EJECUCION*********");

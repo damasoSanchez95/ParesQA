@@ -167,7 +167,7 @@ public class LeerFichero {
 				else if(cadena.contains("<AbstractTransformation")){
 					AbstractTransformation transformacion;
 					transformacion=leerAbstractTransformation(br,cadena);	
-					transformacion= new AbstractTransformation(transformacion.getId(), transformacion.getType(), transformacion.getNombre(), transformacion.getCamposTransformacion(),transformacion.getCamposTransformacionPrincipal(),transformacion.getCamposTransformacionDetalle());
+					transformacion= new AbstractTransformation(transformacion.getConexionTabla(),transformacion.getOwnerTabla(),transformacion.getId(), transformacion.getType(), transformacion.getNombre(), transformacion.getCamposTransformacion(),transformacion.getCamposTransformacionPrincipal(),transformacion.getCamposTransformacionDetalle());
 					listaTransformacion.add(transformacion);
 				}
 				else if(cadena.contains("<Instance")){
@@ -300,6 +300,11 @@ public class LeerFichero {
 		
 		for(int i=0; i<array.length;i++){
 			
+			if(array[i].contains("ownerName")){
+				arrayBueno[contador]=array[i];
+				contador++;
+			}
+			
 			if(array[i].contains("fromInstance")){
 				arrayBueno[contador]=array[i];
 				contador++;
@@ -417,6 +422,8 @@ public class LeerFichero {
 				Matcher caja= patron.matcher(arrayBueno[i]);
 				arrayBueno[i]=caja.replaceAll("");	
 				arrayBueno[i]=arrayBueno[i].replace("imx:id=", "");
+				arrayBueno[i]=arrayBueno[i].replace("ownerName.=", "");
+				arrayBueno[i]=arrayBueno[i].replace("connectionName.=", "");				
 				arrayBueno[i]=arrayBueno[i].replace("name=", "");
 				arrayBueno[i]=arrayBueno[i].replace("body=", "");
 				arrayBueno[i]=arrayBueno[i].replace("structuralFeature=", "");
@@ -834,7 +841,7 @@ public class LeerFichero {
 	private static AbstractTransformation leerAbstractTransformation(BufferedReader br, String cadena) throws IOException{
 		Iterator<String> it;
 		ArrayList<String> listaTransformaciones = new ArrayList<String>();
-		AbstractTransformation nuevaTransformacion = new AbstractTransformation(null,null,null,null,null,null);
+		AbstractTransformation nuevaTransformacion = new AbstractTransformation(null,null,null,null,null,null,null,null);
 		boolean tipo_idRef[] = new boolean[2];
 		tipo_idRef[0]=true; //TRUE XQ NOS INTERESA COGER EL TIPO
 		tipo_idRef[1]=false; //ESTO LO QUEREMOS SOLO PARA LOS OBJETOS
@@ -856,6 +863,27 @@ public class LeerFichero {
 		nuevaTransformacion.setType(it.next());
 		nuevaTransformacion.setNombre(it.next());//ya tenemos el name de las AbstractTransformation
 		vaciarLista(listaTransformaciones);	
+		
+		//AQUI PARA LEER DSORUNTIMECONFIG --> CONEXION
+		
+		if(nuevaTransformacion.getNombre().contains("Lectura") || nuevaTransformacion.getNombre().contains("Read") || nuevaTransformacion.getNombre().contains("Write") || nuevaTransformacion.getNombre().contains("Escritura")){
+			
+			while(!cadena.contains("<DSORuntimeConfig"))
+				cadena=br.readLine();
+			
+			cadenaDividida=cadena.split(" ");
+			arrayBueno = new String[cadenaDividida.length];
+	
+			reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef);
+			meterEnLista(arrayBueno,listaTransformaciones);
+			it=listaTransformaciones.iterator();
+			it.next();
+			it.next();
+			nuevaTransformacion.setConexionTabla(it.next());
+			vaciarLista(listaTransformaciones);	
+			
+		}
+		
 		
 		if(nuevaTransformacion.getType().contains("source") || nuevaTransformacion.getType().contains("target")){
 			obtenerCamposTransformacionSourceTarget(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposSalida);
@@ -1008,6 +1036,34 @@ public class LeerFichero {
 			
 			//nuevaTransformacion.setCamposTransformacionDetalle(null);
 		}
+		
+		//AQUI PARA LEER RELATIONALRECORDINSTANCE --> OWNER
+		
+		if(nuevaTransformacion.getNombre().contains("Lectura") || nuevaTransformacion.getNombre().contains("Read") || nuevaTransformacion.getNombre().contains("Write") || nuevaTransformacion.getNombre().contains("Escritura")){
+			vaciarLista(listaTransformaciones);
+			
+			while(!cadena.contains("<RelationalRecordInstance") && !cadena.contains("<relationalRecordInstance"))
+				cadena=br.readLine();
+			
+			while(!cadena.contains("id"))
+				cadena=br.readLine();
+			
+			if(!cadena.contains("ownerName"))
+				nuevaTransformacion.setOwnerTabla(null);
+			else{
+				cadenaDividida=cadena.split(" ");
+				arrayBueno = new String[cadenaDividida.length];
+				reemplazo(cadenaDividida,arrayBueno,null,tipo_idRef);
+				meterEnLista(arrayBueno,listaTransformaciones);
+				it = listaTransformaciones.iterator(); 
+				it.next(); //ID
+				it.next(); //name
+				nuevaTransformacion.setOwnerTabla(it.next());
+			}	
+		} //Cierre if para el owner
+		
+		
+		
 
 		return nuevaTransformacion;
 	}

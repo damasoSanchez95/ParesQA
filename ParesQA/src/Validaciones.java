@@ -50,6 +50,45 @@ public class Validaciones {
 			}
 		}
 	
+	public void conexionOwnerTablas(){
+		boolean noOwner=false;
+		boolean encontradaConexion=false;
+		boolean encontradoPropietario=false;
+		for(int j =0; j<listaTransformaciones.size(); j++){
+			noOwner=false;
+			int contador=0;
+			encontradaConexion=false;
+			encontradoPropietario=false;
+			if(listaTransformaciones.get(j).getNombre().contains("lectura") || listaTransformaciones.get(j).getNombre().contains("read") || listaTransformaciones.get(j).getNombre().contains("write") || listaTransformaciones.get(j).getNombre().contains("escritura")){
+				System.out.println("");
+				if(listaTransformaciones.get(j).getOwnerTabla()==null){
+					System.out.println("LA TABLA " + listaTransformaciones.get(j).getNombre() + " NO TIENE EL PROPIETARIO PUESTO");
+					noOwner=true;
+				}
+					
+				for (Entry<Parametro, String> entry : tablaParametros.entrySet()) {
+					contador++;
+					Parametro clave = entry.getKey();
+					if(listaTransformaciones.get(j).getConexionTabla().equals((clave.getId()))) {
+						encontradaConexion=true;
+					}
+					else
+						if(contador == tablaParametros.size() && !encontradaConexion)
+						System.out.println("LA TABLA " + listaTransformaciones.get(j).getNombre() + " NO TIENE UN PARAMETRO EN LA CONEXION");
+				
+					if(!noOwner && listaTransformaciones.get(j).getOwnerTabla().equals(clave.getId())){
+						encontradoPropietario=true;
+					}
+					else
+						if(contador==tablaParametros.size() && !encontradoPropietario && !noOwner)
+							System.out.println("LA TABLA " + listaTransformaciones.get(j).getNombre() + " NO TIENE UN PARAMETRO EN EL PROPIETARIO");
+					
+				} //CIERRE FOR PARAMETROS
+			} //CIERRE IF PARA VER SI ES UNA TABLA
+		} //CIERRE FOR TRANSFORMACIONES
+			
+	}
+	
 	public void executionParameters(){
 		for (Entry<Parametro, String> entry : tablaParametros.entrySet()) {
 			Parametro clave = entry.getKey();
@@ -60,7 +99,19 @@ public class Validaciones {
 					System.out.println(e.getLocalizedMessage());
 				}
 			}
-		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void ValidacionesPuertos(){
 
@@ -84,7 +135,7 @@ public class Validaciones {
 		DataRecord nuevaDataRecord = new DataRecord(null,null, null);
 		Iobject nuevoObjeto = new Iobject(null,null,null,tipo_idRef[1],null);	
 		Instance nuevaInstancia = new Instance(null,null,null,null,null, null, null);
-		AbstractTransformation nuevaTransformacion = new AbstractTransformation(null,null,null, null,null,null);
+		AbstractTransformation nuevaTransformacion = new AbstractTransformation(null,null,null,null,null, null,null,null);
 
 		//Iteradores para cada una de las listas
 		Iterator<DataRecord> iteradorDataRecords;

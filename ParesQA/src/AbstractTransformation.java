@@ -5,18 +5,39 @@ public class AbstractTransformation {
 	private String id;
 	private	String type;
 	private String nombre;
+	private String owner;
+	private String conexion;
 	private ArrayList<Campo> camposTransformacion; //En los join sera el de salida, en una union sera el OUTPUT
 	private ArrayList<Campo> camposTransformacionPrincipal; // en union sera el INPUT
 	private ArrayList<Campo> camposTransformacionDetalle; //solo sirve para los Join
 	
 	
-	public AbstractTransformation(String id, String type, String nombre, ArrayList<Campo> camposTransformacion, ArrayList<Campo> camposTransformacionPrincipal, ArrayList<Campo> camposTransformacionDetalle ){
+	public AbstractTransformation(String conexion, String owner, String id, String type, String nombre, ArrayList<Campo> camposTransformacion, ArrayList<Campo> camposTransformacionPrincipal, ArrayList<Campo> camposTransformacionDetalle ){
 		this.id=id;
 		this.type=type;
 		this.nombre = nombre;
+		this.conexion=conexion;
+		this.owner=owner;
 		this.camposTransformacion=camposTransformacion;
 		this.camposTransformacionPrincipal = camposTransformacionPrincipal;
 		this.camposTransformacionDetalle=camposTransformacionDetalle;
+	}
+	
+	
+	public String getConexionTabla(){
+		return this.conexion;
+	}
+	
+	public void setConexionTabla(String conexion){
+		this.conexion=conexion;
+	}
+	
+	public String getOwnerTabla(){
+		return this.owner;
+	}
+	
+	public void setOwnerTabla(String owner){
+		this.owner=owner;
 	}
 	
 	public ArrayList<Campo> getCamposTransformacion(){
