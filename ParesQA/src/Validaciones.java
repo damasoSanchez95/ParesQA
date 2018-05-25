@@ -43,28 +43,32 @@ public class Validaciones {
 				//System.out.println(listaTransformaciones.get(transformacion).getNombre().substring(0, 4));
 				if(listaTransformaciones.get(transformacion).getNombre().substring(0, 1).contains("e") && !CTE_EXPRESION.equals(listaTransformaciones.get(transformacion).getNombre().substring(0, 4))){
 					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMENCLATURA.");
-					System.out.println("");
 					System.out.println("PUEDE QUE ESTE FALLO IMPLIQUE A QUE PARES NO FUNCIONE.");
+					System.out.println("");
+
 				}
 				else if(listaTransformaciones.get(transformacion).getNombre().substring(0, 1).contains("j") && !CTE_JOIN.equals(listaTransformaciones.get(transformacion).getNombre().substring(0, 4))){
 					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMENCLATURA.");
-					System.out.println("");
 					System.out.println("PUEDE QUE ESTE FALLO IMPLIQUE A QUE PARES NO FUNCIONE.");
+					System.out.println("");
+
 				}
 				else if(listaTransformaciones.get(transformacion).getNombre().substring(0, 1).contains("f") && !CTE_FILTRO.equals(listaTransformaciones.get(transformacion).getNombre().substring(0, 4))){
 					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMENCLATURA.");
-					System.out.println("");
 					System.out.println("PUEDE QUE ESTE FALLO IMPLIQUE A QUE PARES NO FUNCIONE.");
+					System.out.println("");
+
 				}
 				else if(listaTransformaciones.get(transformacion).getNombre().substring(0, 1).contains("u") && !CTE_UNION.equals(listaTransformaciones.get(transformacion).getNombre().substring(0, 4))){
 					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMENCLATURA.");
-					System.out.println("");
 					System.out.println("PUEDE QUE ESTE FALLO IMPLIQUE A QUE PARES NO FUNCIONE.");
+					System.out.println("");
+
 				}
 				else if(listaTransformaciones.get(transformacion).getNombre().substring(0, 1).contains("a") && !CTE_AGREGACION.equals(listaTransformaciones.get(transformacion).getNombre().substring(0, 4))){
 					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMENCLATURA.");
-					System.out.println("");
 					System.out.println("PUEDE QUE ESTE FALLO IMPLIQUE A QUE PARES NO FUNCIONE.");
+					System.out.println("");
 				}
 			}
 		}
