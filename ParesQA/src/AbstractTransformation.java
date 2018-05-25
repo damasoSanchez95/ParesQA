@@ -10,9 +10,10 @@ public class AbstractTransformation {
 	private ArrayList<Campo> camposTransformacion; //En los join sera el de salida, en una union sera el OUTPUT
 	private ArrayList<Campo> camposTransformacionPrincipal; // en union sera el INPUT
 	private ArrayList<Campo> camposTransformacionDetalle; //solo sirve para los Join
+	private ArrayList<Boolean> listaOutputsCampos; //Sirve para ver si un campo tiene outPut o no, no lo he querido meter como un atributo del campo para no tocar lo que ya estaba hecho.
 	
 	
-	public AbstractTransformation(String conexion, String owner, String id, String type, String nombre, ArrayList<Campo> camposTransformacion, ArrayList<Campo> camposTransformacionPrincipal, ArrayList<Campo> camposTransformacionDetalle ){
+	public AbstractTransformation(String conexion, String owner, String id, String type, String nombre, ArrayList<Campo> camposTransformacion, ArrayList<Campo> camposTransformacionPrincipal, ArrayList<Campo> camposTransformacionDetalle, ArrayList<Boolean> listaOutputs ){
 		this.id=id;
 		this.type=type;
 		this.nombre = nombre;
@@ -21,6 +22,7 @@ public class AbstractTransformation {
 		this.camposTransformacion=camposTransformacion;
 		this.camposTransformacionPrincipal = camposTransformacionPrincipal;
 		this.camposTransformacionDetalle=camposTransformacionDetalle;
+		this.listaOutputsCampos=listaOutputs;
 	}
 	
 	
@@ -46,6 +48,14 @@ public class AbstractTransformation {
 	
 	public void setCamposTransformacion(ArrayList<Campo> camposTransformacion){
 		this.camposTransformacion=camposTransformacion;
+	}
+	
+	public ArrayList<Boolean> getListaOutputsCampos(){
+		return this.listaOutputsCampos;
+	}
+	
+	public void setListaOutputsCampos(ArrayList<Boolean> listaOutputsCampos){
+		this.listaOutputsCampos=listaOutputsCampos;
 	}
 	
 	public ArrayList<Campo> getCamposTransformacionPrincipal(){
@@ -93,9 +103,14 @@ public class AbstractTransformation {
 		private String precision;
 		private String obdcType;
 		private boolean yaMostrado;
+		private boolean yaMostradoOutput;
+		private boolean yaMostradoOutput2;
+		private boolean output;
+		private boolean input;
+		private boolean YaMostradoInput;
 		private String escala;
 		
-		public Campo(String id, String columna,String feature, String name, String precision, String obdcType, String escala, boolean yaMostrado){
+		public Campo(boolean input,boolean output,String id, String columna,String feature, String name, String precision, String obdcType, String escala, boolean yaMostrado, boolean yaMostradoOutput, boolean yaMostradoOutput2, boolean YaMostradoInput){
 			this.id=id;
 			this.columna=columna;
 			this.feature=feature;
@@ -104,6 +119,27 @@ public class AbstractTransformation {
 			this.obdcType=obdcType;
 			this.escala=escala;
 			this.yaMostrado=yaMostrado;
+			this.output=output;
+			this.input=input;
+			this.yaMostradoOutput=yaMostradoOutput;
+			this.yaMostradoOutput2=yaMostradoOutput2;
+			this.YaMostradoInput=YaMostradoInput;
+		}
+		
+		public void setInput(boolean input){
+			this.input=input;	
+		}
+		
+		public Boolean getInput(){
+			return input;
+		}
+		
+		public void setOutput(boolean output){
+			this.output=output;	
+		}
+		
+		public Boolean getOutput(){
+			return output;
 		}
 		
 		public void setYaMostrado(boolean yaMostrado){
@@ -114,7 +150,30 @@ public class AbstractTransformation {
 			return yaMostrado;
 		}
 		
+		public void setYaMostradoOutput2(boolean yaMostradoOutpu2){
+			this.yaMostradoOutput2=yaMostradoOutpu2;	
+		}
 		
+		public Boolean getYaMostradoInput(){
+			return YaMostradoInput;
+		}
+		
+		public void setYaMostradoInput(boolean YaMostradoInput){
+			this.YaMostradoInput=YaMostradoInput;	
+		}
+		
+		public Boolean getYaMostradoOutput2(){
+			return yaMostradoOutput2;
+		}
+		
+		
+		public void setYaMostradoOutput(boolean yaMostradoOutput){
+			this.yaMostradoOutput=yaMostradoOutput;	
+		}
+		
+		public Boolean getYaMostradoOutput(){
+			return yaMostradoOutput;
+		}
 		
 		public String getId(){return id;}
 		public void setID(String id) {

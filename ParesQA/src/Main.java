@@ -21,6 +21,13 @@ public class Main {
 			validaciones = new Validaciones(LeerFichero.getDescripcionMapping(), LeerFichero.getListaInstancia(), LeerFichero.getListaTransformaciones(), LeerFichero.getTablaParametros(), LeerFichero.getListaObjetos(), LeerFichero.getTablaExecutionParameters(), LeerFichero.getListaDataRecords());
 			System.out.println("");			
 
+			System.out.println("*******COMPROBACION NOMENGLATURA*********");
+			System.out.println("");
+			
+			validaciones.comprobarNomenglatura();
+			
+			System.out.println("");
+			
 			
 			System.out.println("*******COMPROBACION PARAMETROS*********");
 			System.out.println("");
@@ -66,11 +73,5 @@ public class Main {
 			System.out.println("HEMOS ACABADO DE VALIDAR EL MAPPING.");
 			System.out.println("************************************");
 
-			
-//			System.out.println("Introduce un 0 para salir");
-//			BufferedReader br2 = new BufferedReader (isr);
-//			
-//			if(!br2.equals("0"))
-//				System.out.println("Esperando a que pulse 0 para finalizar ..");
 	}
 }

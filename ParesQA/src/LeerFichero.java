@@ -23,8 +23,11 @@ public class LeerFichero {
 	private static ArrayList<DataRecord> listaDataRecords = new ArrayList<DataRecord>();
 	private static HashMap<String, String> tablaExecutionParameters = new HashMap<String, String>();
 	private static HashMap<Parametro, String> tablaParametros = new HashMap<Parametro, String>();
-	private static boolean falloXML;
+	private static boolean scale;
 	private static boolean falloReal;
+	private static boolean output;
+	private static boolean input;
+	private static boolean nombre;
 	private static String dataInterface;
 	private static boolean descripcionMapping;
 	
@@ -48,8 +51,8 @@ public class LeerFichero {
 		return descripcionMapping;
 	}
 	
-	public static boolean getFalloXML(){
-		return falloXML;
+	public static boolean getScale(){
+		return scale;
 	}
 	
 	public static boolean getFalloReal(){
@@ -167,7 +170,7 @@ public class LeerFichero {
 				else if(cadena.contains("<AbstractTransformation")){
 					AbstractTransformation transformacion;
 					transformacion=leerAbstractTransformation(br,cadena);	
-					transformacion= new AbstractTransformation(transformacion.getConexionTabla(),transformacion.getOwnerTabla(),transformacion.getId(), transformacion.getType(), transformacion.getNombre(), transformacion.getCamposTransformacion(),transformacion.getCamposTransformacionPrincipal(),transformacion.getCamposTransformacionDetalle());
+					transformacion= new AbstractTransformation(transformacion.getConexionTabla(),transformacion.getOwnerTabla(),transformacion.getId(), transformacion.getType(), transformacion.getNombre(), transformacion.getCamposTransformacion(),transformacion.getCamposTransformacionPrincipal(),transformacion.getCamposTransformacionDetalle(), transformacion.getListaOutputsCampos());
 					listaTransformacion.add(transformacion);
 				}
 				else if(cadena.contains("<Instance")){
@@ -305,6 +308,18 @@ public class LeerFichero {
 				contador++;
 			}
 			
+			if(array[i].contains("input")){
+				arrayBueno[contador]=array[i];
+				contador++;
+				input=true;
+			}
+			
+			if(array[i].contains("output")){
+				arrayBueno[contador]=array[i];
+				contador++;
+				output=true;
+			}
+			
 			if(array[i].contains("fromInstance")){
 				arrayBueno[contador]=array[i];
 				contador++;
@@ -336,6 +351,7 @@ public class LeerFichero {
 			if(array[i].contains("name")){
 				arrayBueno[contador]=array[i];
 				contador++;		
+				nombre=true;
 			}	
 			
 			if(array[i].contains("body")){
@@ -357,6 +373,7 @@ public class LeerFichero {
 			if(array[i].contains("connectionName")){
 				arrayBueno[contador]=array[i];
 				contador++;		
+				nombre=true;
 			}
 			
 			if(array[i].contains("valueLiteral")){
@@ -394,7 +411,7 @@ public class LeerFichero {
 			if((array[i].contains("odbcScale") || array[i].contains("scale")) && !escalaCogida ){
 				arrayBueno[contador]=array[i];
 				contador++;	
-				falloXML=true; //Esto lo usaremos cuando en el XML un campo este mal por falta de algun atributo o algo asi
+				scale=true; //Esto lo usaremos cuando en el XML un campo este mal por falta de algun atributo o algo asi
 				escalaCogida=true;
 			}
 			
@@ -422,6 +439,8 @@ public class LeerFichero {
 				Matcher caja= patron.matcher(arrayBueno[i]);
 				arrayBueno[i]=caja.replaceAll("");	
 				arrayBueno[i]=arrayBueno[i].replace("imx:id=", "");
+				arrayBueno[i]=arrayBueno[i].replace("output=", "");
+				arrayBueno[i]=arrayBueno[i].replace("input=", "");
 				arrayBueno[i]=arrayBueno[i].replace("ownerName.=", "");
 				arrayBueno[i]=arrayBueno[i].replace("connectionName.=", "");				
 				arrayBueno[i]=arrayBueno[i].replace("name=", "");
@@ -665,8 +684,12 @@ public class LeerFichero {
 	private static void obtenerCamposTransformacionSourceTarget(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos ) throws IOException{
 		while(!cadena.contains("</relationalFields")) { //Mientras no sea el final de los campos
 			if(cadena.contains("<RelationalField")){ // Si encuentra un campo
-				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null,false);
-				falloXML=false;
+				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(false,false,null, null, null, null, null,null,null,false,false,false,false);
+				scale=false;
+				output=false;
+				nombre=false;
+				input=false;
+
 
 				cadenaDividida=cadena.split(" ");
 				arrayBueno= new String[cadenaDividida.length];
@@ -677,7 +700,7 @@ public class LeerFichero {
 				meterEnLista(arrayBueno,listaTransformaciones);
 				it = listaTransformaciones.iterator(); 
 					//FALTA VER Q PASA SI LE QUITAS EL NOMBRE A UN CAMPO O ALGUN OTRO BIXO
-					if(listaTransformaciones.size() <= 6 && falloXML || listaTransformaciones.size() <= 5){
+					if(!nombre){
 						campo.setID(it.next());
 						campo.setColumna(it.next());
 						campo.setfeature(it.next());
@@ -690,15 +713,23 @@ public class LeerFichero {
 						campo.setfeature(it.next());
 						campo.setName(it.next());
 						campo.setPrecision(it.next());
-
-						if(listaTransformaciones.size() == 6 && !falloXML) {
-							campo.setType(it.next());
-							campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
-						}					
-						else{
+						
+						if(scale)
 							campo.setEscala(it.next());
-							campo.setType(it.next());	
-						}	
+						
+						campo.setType(it.next());
+						
+						if(input) {
+							campo.setInput(true);
+							it.next(); //para saltarnoslo
+						}
+						
+						//campo.setName(it.next());
+
+						if(output) {
+							campo.setOutput(true);
+							it.next(); //para saltarnoslo
+						}
 					}
 
 				listaCampos.add(campo);
@@ -708,11 +739,15 @@ public class LeerFichero {
 		}
 	}	
 	
-	private static void obtenerCamposTransformacionJoiner(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos ) throws IOException{
+	private static void obtenerCamposTransformacionJoiner(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos, ArrayList<Boolean> listaOutputs ) throws IOException{
 		while(!cadena.contains("</joinerFields")) { //Mientras no sea el final de los campos
 			if(cadena.contains("<JoinerField")){ // Si encuentra un campo
-				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null,false);
-				falloXML=false;
+				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(false,false,null, null, null, null, null,null,null,false,false,false,false);
+				scale=false;
+				output=false;
+				nombre=false;
+				input=false;
+
 
 				cadenaDividida=cadena.split(" ");
 				arrayBueno= new String[cadenaDividida.length];
@@ -725,38 +760,69 @@ public class LeerFichero {
 				
 				it = listaTransformaciones.iterator(); 
 					
-					if(listaTransformaciones.size() <= 4 && falloXML || listaTransformaciones.size() <= 3 ){
-						campo.setID(it.next());
-						falloReal=true;
-					}
-					else{
+				if(!nombre){
+					campo.setID(it.next());
+					falloReal=true;
+				}
+				else{
 
-						campo.setID(it.next());
-						campo.setType(it.next());
-						campo.setPrecision(it.next());
+					campo.setID(it.next());
+					campo.setType(it.next());
+					campo.setPrecision(it.next());
+					
+					if(scale)
+						campo.setEscala(it.next());
+					if(input) {
+						campo.setInput(true);
+						it.next(); //para saltarnoslo
+					}
+					campo.setName(it.next());
+
+					if(output) {
+						campo.setOutput(true);
+						it.next(); //para saltarnoslo
+					}
 						
-						if(listaTransformaciones.size() == 4 && !falloXML) {
-							campo.setName(it.next());
-							campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
-						}				
-						else{
-							campo.setEscala(it.next());
-							campo.setName(it.next());	
-						}	
-					}
+					
+//					if(listaTransformaciones.size() == 4 && !falloXML && !output){
+//						campo.setName(it.next());
+//						campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
+//						listaOutputs.add(false);
+//					}
+//					else if(listaTransformaciones.size() == 5 && !falloXML && output){
+//						campo.setName(it.next());
+//						campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
+//						listaOutputs.add(true);
+//						campo.setOutput(true);
+//					}
+//					else{
+//						campo.setEscala(it.next());
+//						campo.setName(it.next());	
+//						if(output) {
+//							listaOutputs.add(true);
+//							campo.setOutput(true);
+//						}
+//						else
+//							listaOutputs.add(false);
+//					}	
+				}
 
-				listaCampos.add(campo);
-				vaciarLista(listaTransformaciones);	
-			}
-			cadena = br.readLine(); //para que avance 
+			listaCampos.add(campo);
+			vaciarLista(listaTransformaciones);	
+		}
+		cadena = br.readLine(); //para que avance 
 		}
 	}	
 	
-	private static void obtenerCamposTransformacionExpressionFilter(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos ) throws IOException{
+	private static void obtenerCamposTransformacionExpressionFilter(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos, ArrayList<Boolean> listaOutputs ) throws IOException{
 		while(!cadena.contains("</aggregatorFields") && !cadena.contains("</expressionFields") && !cadena.contains("</filterFields")) { //Mientras no sea el final de los campos
 			if(cadena.contains("<AggregatorField") || cadena.contains("<ExpressionField") || cadena.contains("<FilterField")){ // Si encuentra un campo
-				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null,false);
-				falloXML=false;
+				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(false,false,null, null, null, null, null,null,null,false,false,false,false);
+				scale=false;
+				output=false;
+				nombre=false;
+				input=false;
+
 
 				cadenaDividida=cadena.split(" ");
 				arrayBueno= new String[cadenaDividida.length];
@@ -767,7 +833,7 @@ public class LeerFichero {
 				meterEnLista(arrayBueno,listaTransformaciones);
 				it = listaTransformaciones.iterator(); 
 					
-					if(listaTransformaciones.size() <= 4 && falloXML || listaTransformaciones.size() <= 3 ){
+					if(!nombre){
 						campo.setID(it.next());
 						falloReal=true;
 					}
@@ -777,14 +843,41 @@ public class LeerFichero {
 						campo.setType(it.next());
 						campo.setPrecision(it.next());
 						
-						if(listaTransformaciones.size() == 4 && !falloXML) {
-							campo.setName(it.next());
-							campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
-						}				
-						else{
+						if(scale)
 							campo.setEscala(it.next());
-							campo.setName(it.next());	
-						}	
+						if(input) {
+							campo.setInput(true);
+							it.next(); //para saltarnoslo
+						}
+						campo.setName(it.next());
+
+						if(output) {
+							campo.setOutput(true);
+							it.next(); //para saltarnoslo
+						}
+							
+						
+//						if(listaTransformaciones.size() == 4 && !falloXML && !output){
+//							campo.setName(it.next());
+//							campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
+//							listaOutputs.add(false);
+//						}
+//						else if(listaTransformaciones.size() == 5 && !falloXML && output){
+//							campo.setName(it.next());
+//							campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
+//							listaOutputs.add(true);
+//							campo.setOutput(true);
+//						}
+//						else{
+//							campo.setEscala(it.next());
+//							campo.setName(it.next());	
+//							if(output) {
+//								listaOutputs.add(true);
+//								campo.setOutput(true);
+//							}
+//							else
+//								listaOutputs.add(false);
+//						}	
 					}
 
 				listaCampos.add(campo);
@@ -794,11 +887,14 @@ public class LeerFichero {
 		}
 	}	
 
-	private static void obtenerCamposTransformacionUnion(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos ) throws IOException{
+	private static void obtenerCamposTransformacionUnion(AbstractTransformation nuevaTransformacion, BufferedReader br, String cadena, boolean tipo_idRef[], ArrayList<String> listaTransformaciones, Iterator<String> it, String cadenaDividida[], String arrayBueno[],	ArrayList<AbstractTransformation.Campo> listaCampos, ArrayList<Boolean> listaOutputs ) throws IOException{
 		while(!cadena.contains("</unionFields")) { //Mientras no sea el final de los campos
 			if(cadena.contains("<UnionField")){ // Si encuentra un campo
-				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(null, null, null, null, null,null,null,false);
-				falloXML=false;
+				AbstractTransformation.Campo campo = nuevaTransformacion.new Campo(false,false,null, null, null, null, null,null,null,false,false,false,false);
+				scale=false;
+				output=false;
+				nombre=false;
+				input=false;
 
 				cadenaDividida=cadena.split(" ");
 				arrayBueno= new String[cadenaDividida.length];
@@ -811,37 +907,64 @@ public class LeerFichero {
 				
 				it = listaTransformaciones.iterator(); 
 					
-					if(listaTransformaciones.size() <= 4 && falloXML || listaTransformaciones.size() <= 3 ){
-						campo.setID(it.next());
-						falloReal=true;
-					}
-					else{
+				if(!nombre){
+					campo.setID(it.next());
+					falloReal=true;
+				}
+				else{
 
-						campo.setID(it.next());
-						campo.setType(it.next());
-						campo.setPrecision(it.next());
+					campo.setID(it.next());
+					campo.setType(it.next());
+					campo.setPrecision(it.next());
+					
+					if(scale)
+						campo.setEscala(it.next());
+					if(input) {
+						campo.setInput(true);
+						it.next(); //para saltarnoslo
+					}
+					campo.setName(it.next());
+
+					if(output) {
+						campo.setOutput(true);
+						it.next(); //para saltarnoslo
+					}
 						
-						if(listaTransformaciones.size() == 4 && !falloXML) {
-							campo.setName(it.next());
-							campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
-						}				
-						else{
-							campo.setEscala(it.next());
-							campo.setName(it.next());	
-						}	
-					}
+					
+//					if(listaTransformaciones.size() == 4 && !falloXML && !output){
+//						campo.setName(it.next());
+//						campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
+//						listaOutputs.add(false);
+//					}
+//					else if(listaTransformaciones.size() == 5 && !falloXML && output){
+//						campo.setName(it.next());
+//						campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
+//						listaOutputs.add(true);
+//						campo.setOutput(true);
+//					}
+//					else{
+//						campo.setEscala(it.next());
+//						campo.setName(it.next());	
+//						if(output) {
+//							listaOutputs.add(true);
+//							campo.setOutput(true);
+//						}
+//						else
+//							listaOutputs.add(false);
+//					}	
+				}
 
-				listaCampos.add(campo);
-				vaciarLista(listaTransformaciones);	
-			}
-			cadena = br.readLine(); //para que avance 
+			listaCampos.add(campo);
+			vaciarLista(listaTransformaciones);	
+		}
+		cadena = br.readLine(); //para que avance 
 		}
 	}	
 	
 	private static AbstractTransformation leerAbstractTransformation(BufferedReader br, String cadena) throws IOException{
 		Iterator<String> it;
 		ArrayList<String> listaTransformaciones = new ArrayList<String>();
-		AbstractTransformation nuevaTransformacion = new AbstractTransformation(null,null,null,null,null,null,null,null);
+		AbstractTransformation nuevaTransformacion = new AbstractTransformation(null,null,null,null,null,null,null,null,null);
 		boolean tipo_idRef[] = new boolean[2];
 		tipo_idRef[0]=true; //TRUE XQ NOS INTERESA COGER EL TIPO
 		tipo_idRef[1]=false; //ESTO LO QUEREMOS SOLO PARA LOS OBJETOS
@@ -849,6 +972,9 @@ public class LeerFichero {
 		ArrayList<AbstractTransformation.Campo> listaCamposSalida = new ArrayList<AbstractTransformation.Campo>();
 		ArrayList<AbstractTransformation.Campo> listaCamposPrincipal = new ArrayList<AbstractTransformation.Campo>();
 		ArrayList<AbstractTransformation.Campo> listaCamposDetalle = new ArrayList<AbstractTransformation.Campo>();
+		ArrayList<Boolean> listaOutputsCampos= new ArrayList<Boolean>();
+		ArrayList<Boolean> listaOutputsCamposBASURA= new ArrayList<Boolean>();
+
 
 		
 		
@@ -893,8 +1019,9 @@ public class LeerFichero {
 		}
 			
 		else if(nuevaTransformacion.getType().contains("expression") || nuevaTransformacion.getType().contains("filter") || nuevaTransformacion.getType().contains("aggregator")){
-			obtenerCamposTransformacionExpressionFilter(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposSalida);
+			obtenerCamposTransformacionExpressionFilter(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposSalida, listaOutputsCampos);
 			nuevaTransformacion.setCamposTransformacion(listaCamposSalida); //salida-OUTPUT o el único
+			nuevaTransformacion.setListaOutputsCampos(listaOutputsCampos);
 			nuevaTransformacion.setCamposTransformacionDetalle(null);
 			nuevaTransformacion.setCamposTransformacionPrincipal(null);
 		}
@@ -914,8 +1041,9 @@ public class LeerFichero {
 			dataInterface=it.next(); //NOS QUEDAMOS CON EL NOMBRE DEL UNIONDATAINTERFACE
 			
 			if(dataInterface.equals("Salida")){
-				obtenerCamposTransformacionJoiner(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposSalida);
+				obtenerCamposTransformacionJoiner(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposSalida,listaOutputsCampos);
 				nuevaTransformacion.setCamposTransformacion(listaCamposSalida); //salida-OUTPUT o el único
+				nuevaTransformacion.setListaOutputsCampos(listaOutputsCampos);
 				dataInterface="";
 			}
 			
@@ -935,10 +1063,11 @@ public class LeerFichero {
 			it = listaTransformaciones.iterator(); 
 			it.next(); //NOS SALTAMOS EL ID DEL UNIONDATAINTERFACE
 			it.next(); //NOS SALTAMOS EL TYPE DEL UNIONDATAINTERFACE
+			it.next(); //NOS SALTAMOS INPUT=TRUE;
 			dataInterface=it.next(); //NOS QUEDAMOS CON EL NOMBRE DEL UNIONDATAINTERFACE
 			
 			if(dataInterface.equals("Detalle")){
-				obtenerCamposTransformacionJoiner(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposDetalle);
+				obtenerCamposTransformacionJoiner(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposDetalle,listaOutputsCamposBASURA);
 				nuevaTransformacion.setCamposTransformacionDetalle(listaCamposDetalle); //Leemos los campos de Detalle
 				dataInterface="";
 			}
@@ -959,10 +1088,11 @@ public class LeerFichero {
 			it = listaTransformaciones.iterator(); 
 			it.next(); //NOS SALTAMOS EL ID DEL UNIONDATAINTERFACE
 			it.next(); //NOS SALTAMOS EL TYPE DEL UNIONDATAINTERFACE
+			it.next();
 			dataInterface=it.next(); //NOS QUEDAMOS CON EL NOMBRE DEL UNIONDATAINTERFACE
 			
 			if(dataInterface.equals("Principal")){
-				obtenerCamposTransformacionJoiner(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposPrincipal);
+				obtenerCamposTransformacionJoiner(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposPrincipal,listaOutputsCamposBASURA);
 				nuevaTransformacion.setCamposTransformacionPrincipal(listaCamposPrincipal); //Leemos los campos de Principal
 				dataInterface="";
 			}
@@ -983,8 +1113,9 @@ public class LeerFichero {
 			dataInterface=it.next(); //NOS QUEDAMOS CON EL NOMBRE DEL UNIONDATAINTERFACE
 			
 			if(dataInterface.equals("OUTPUT")){
-				obtenerCamposTransformacionUnion(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposSalida);
+				obtenerCamposTransformacionUnion(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposSalida,listaOutputsCampos);
 				nuevaTransformacion.setCamposTransformacion(listaCamposSalida);
+				nuevaTransformacion.setListaOutputsCampos(listaOutputsCampos);
 				dataInterface="";
 			}
 			
@@ -1003,10 +1134,11 @@ public class LeerFichero {
 			it = listaTransformaciones.iterator(); 
 			it.next(); //NOS SALTAMOS EL ID DEL UNIONDATAINTERFACE
 			it.next(); //NOS SALTAMOS EL TYPE DEL UNIONDATAINTERFACE
+			it.next();
 			dataInterface=it.next(); //NOS QUEDAMOS CON EL NOMBRE DEL UNIONDATAINTERFACE
 			
 			if(!dataInterface.equals("OUTPUT")){ //sera INPUT
-				obtenerCamposTransformacionUnion(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposPrincipal);
+				obtenerCamposTransformacionUnion(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposPrincipal,listaOutputsCamposBASURA);
 				nuevaTransformacion.setCamposTransformacionPrincipal(listaCamposPrincipal); //input
 				dataInterface="";
 			}
@@ -1026,10 +1158,11 @@ public class LeerFichero {
 			it = listaTransformaciones.iterator(); 
 			it.next(); //NOS SALTAMOS EL ID DEL UNIONDATAINTERFACE
 			it.next(); //NOS SALTAMOS EL TYPE DEL UNIONDATAINTERFACE
+			it.next();
 			dataInterface=it.next(); //NOS QUEDAMOS CON EL NOMBRE DEL UNIONDATAINTERFACE
 			
 			if(!dataInterface.equals("OUTPUT")){ //sera INPUT
-				obtenerCamposTransformacionUnion(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposDetalle);
+				obtenerCamposTransformacionUnion(nuevaTransformacion,br,cadena,tipo_idRef,listaTransformaciones,it,cadenaDividida,arrayBueno, listaCamposDetalle,null);
 				nuevaTransformacion.setCamposTransformacionDetalle(listaCamposDetalle); //input
 				dataInterface="";
 			}

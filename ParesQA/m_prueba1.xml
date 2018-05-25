@@ -348,6 +348,14 @@
 </ExpressionDataInterface>
 </expressionInterface>
 </AbstractTransformation>
+
+
+
+
+
+
+
+
 <AbstractTransformation imx:id="U:03SWcz1jEeiFGq4Rhf3aoQ" xsi:type="target:TargetTx" active="true" name="Escritura_arcco_rendimientos_linea_tmpj" dso="U:03SWdD1jEeiFGq4Rhf3aoQ">
 <anonymousDso imx:id="U:03SWdD1jEeiFGq4Rhf3aoQ" xsi:type="datasourceoperation:WriteRelationalDataSourceOperation" name="arcco_rendimientos_linea_tmpj" loadType="Normal" tableDefinition="U:POY4vT1iEeikmk6wSWipZg" typeSystem="smd:com.informatica.adapter.Hive.HiveTypeSystem.typesystem">
 <defaultConfigs>

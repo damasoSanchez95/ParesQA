@@ -2,7 +2,7 @@
 <joinerInterfaces>
 <JoinerDataInterface imx:id="U:juNnXCxVEeiFrAoaabTgbA" xsi:type="joiner:JoinerDataInterface" name="Salida" output="true">
 <joinerFields>
-<JoinerField imx:id="U:Z0zMTy02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" name="idcent" output="true">
+<JoinerField imx:id="U:Z0zMTy02EeiQZWhR5Fywjg" xsi:type="joiner:JoinerField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" output="true">
 <annotations>
 <Annotation imx:id="ID_977" xsi:type="description:Description" body="string+4"/>
 </annotations>

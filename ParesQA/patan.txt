@@ -1,0 +1,41 @@
+<AbstractTransformation imx:id="U:YBQ4uiwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionTx" name="exp_importes">
+<expressionInterface>
+<ExpressionDataInterface imx:id="U:YBQ4uywlEeifwIeF2GB2UA" xsi:type="expression:ExpressionDataInterface" input="true" name="Grupo" output="true">
+<expressionFields>
+<ExpressionField imx:id="U:Tmi9uC3OEeiODaPWF10igw" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="10" upper="1" name="fec_operacion" output="true" expression="%24P_s_FechaEjecucion">
+<defaultValue xsi:type="types:StringValue" valueLiteral="ERROR%28%27error+de+transformaci%C3%B3n%27%29"/>
+</ExpressionField>
+<ExpressionField imx:id="U:YBQ4vCwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idempr" output="true"/>
+<ExpressionField imx:id="U:YBQ4vSwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idcent" output="true"/>
+<ExpressionField imx:id="U:YBQ4viwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="idprod" output="true"/>
+<ExpressionField imx:id="U:YBQ4vywlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true" name="idsprod" output="true"/>
+<ExpressionField imx:id="U:YBQ4wCwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="idcontrn" output="true"/>
+<ExpressionField imx:id="U:YBQ4wSwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="idscontr" output="true"/>
+<ExpressionField imx:id="U:YBQ4wiwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="lineaibn" output="true"/>
+<ExpressionField imx:id="U:zsR0dTDnEei7MCDIo0nFQA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="6" upper="1" input="true" name="lineacom" output="true"/>
+<ExpressionField imx:id="U:YBQ4wywlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" name="id_moneda" output="true"/>
+<ExpressionField imx:id="U:YBQ4xSwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idemprmb" output="true"/>
+<ExpressionField imx:id="U:YBQ4xiwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="4" upper="1" input="true" name="idcentmb" output="true"/>
+<ExpressionField imx:id="U:AV-ujjGmEeihRMPHnoObNQ" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="coestref" output="true"/>
+<ExpressionField imx:id="U:YBQ4xywlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="codtires" output="true"/>
+<ExpressionField imx:id="U:YBQ4yCwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="imput_result" output="true"/>
+<ExpressionField imx:id="U:YBQ4ySwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="2" upper="1" input="true" name="indcobro" output="true"/>
+<ExpressionField imx:id="U:YBQ4yiwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" input="true" name="num_opera"/>
+<ExpressionField imx:id="U:-nQSwj5lEeihC0emK5KmfQ" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="7" upper="1" name="num_opera_out" expression="IIF%28ISNULL%28num_opera%29+OR+num_opera+%3D+%27%27%2C+to_char%28%24P_d_cero%29%2C+num_opera%29">
+<defaultValue xsi:type="types:StringValue" valueLiteral="ERROR%28%27error+de+transformaci%C3%B3n%27%29"/>
+</ExpressionField>
+<ExpressionField imx:id="U:YBQ4yywlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" name="impopeor"/>
+<ExpressionField imx:id="U:YBQ4zCwlEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="3" upper="1" input="true"  output="true"/>
+<ExpressionField imx:id="U:rSkJAiwwEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="V_importe_coc_dev" expression="IIF%28ISNULL%28impcoc_dev%29+OR+TO_CHAR%28impcoc_dev%29%3D%27%27%2C+%24P_d_cero%2C+impcoc_dev%29%0D%0A" variable="true"/>
+<ExpressionField imx:id="U:95MJjCw0EeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" name="V_importe_coc_liq" expression="IIF%28ISNULL%28impcoc_liq%29+OR+TO_CHAR%28impcoc_liq%29%3D%27%27%2C+%24P_d_cero%2C+impcoc_liq%29%0D%0A" variable="true"/>
+<ExpressionField imx:id="U:95MJjSw0EeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1"  output="true" expression="V_importe_coc_dev+%2B+V_importe_coc_liq">
+<defaultValue xsi:type="types:StringValue" valueLiteral="ERROR%28%27error+de+transformaci%C3%B3n%27%29"/>
+</ExpressionField>
+<ExpressionField imx:id="U:rSkJBCwwEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" />
+<ExpressionField imx:id="U:rSkJBSwwEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fstring" lower="1" precision="1" upper="1" input="true" />
+<ExpressionField imx:id="U:rSkJBiwwEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" />
+<ExpressionField imx:id="U:rSkJBywwEeifwIeF2GB2UA" xsi:type="expression:ExpressionField" type="smd:com.informatica.metadata.seed.platform.Platform.typesystem%2Fdecimal" lower="1" precision="15" scale="2" upper="1" input="true" />
+</expressionFields>
+</ExpressionDataInterface>
+</expressionInterface>
+</AbstractTransformation>

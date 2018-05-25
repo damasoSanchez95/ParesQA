@@ -7,6 +7,15 @@ import Excepciones.*;
 
 public class Validaciones {
 	
+	static final String CTE_EXPRESION = "exp_";
+	static final String CTE_JOIN = "jnr_";
+	static final String CTE_SORTER = "srt_";
+	static final String CTE_FILTRO = "fil_";
+	static final String CTE_UNION = "uni_";
+	static final String CTE_AGREGACION = "agg_";
+	static final String CTE_ROUTER = "rtr_";
+	static final String CTE_RANKING = "rnk_";
+	static final String CTE_NORMALIZER = "nrm_";
 	
 	private ArrayList<Instance> listaInstancia = new ArrayList<Instance>();
 	private ArrayList<AbstractTransformation> listaTransformaciones= new ArrayList<AbstractTransformation>();
@@ -26,6 +35,69 @@ public class Validaciones {
 		this.tablaExecutionParameters=tablaExecutionParameters;
 		this.descripcionMapping = descripcionMapping;
 		this.listaDataRecords=listaDataRecords;
+	}
+	
+	public void comprobarNomenglatura(){
+		for(int transformacion=0; transformacion<listaTransformaciones.size();transformacion++){
+			if(!listaTransformaciones.get(transformacion).getNombre().contains("lectura") && !listaTransformaciones.get(transformacion).getNombre().contains("read") && !listaTransformaciones.get(transformacion).getNombre().contains("escritura")  && !listaTransformaciones.get(transformacion).getNombre().contains("write")){
+				//System.out.println(listaTransformaciones.get(transformacion).getNombre().substring(0, 4));
+				if(listaTransformaciones.get(transformacion).getNombre().contains("exp") && !CTE_EXPRESION.equals(listaTransformaciones.get(transformacion).getNombre().substring(0, 4))){
+					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMBLAGURA.");
+				}
+				else if(listaTransformaciones.get(transformacion).getNombre().contains("jnr") && !CTE_JOIN.equals(listaTransformaciones.get(transformacion).getNombre().substring(0, 4))){
+					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMBLAGURA.");
+				}
+				else if(listaTransformaciones.get(transformacion).getNombre().contains("fil") && !CTE_FILTRO.equals(listaTransformaciones.get(transformacion).getNombre().substring(0, 4))){
+					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMBLAGURA.");
+				}
+				else if(listaTransformaciones.get(transformacion).getNombre().contains("uni") && !CTE_UNION.equals(listaTransformaciones.get(transformacion).getNombre().substring(0, 4))){
+					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMBLAGURA.");
+				}
+				else if(listaTransformaciones.get(transformacion).getNombre().contains("agg") && !CTE_AGREGACION.equals(listaTransformaciones.get(transformacion).getNombre().substring(0, 4))){
+					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMBLAGURA.");
+				}
+			}
+		}
+	}
+	
+	private void comprobarInstanciaTransformacion(int instanciaPartida, int posicionTransformacion){
+		boolean QueCampo=false;
+		String CampoFallo="";	
+
+		if(listaInstancia.get(instanciaPartida).getCampos().size() != listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().size()){
+			QueCampo=false;
+			CampoFallo="";
+			//System.out.println("CAMPO DEL OBJETO " +listaObjetos.get(indiceObjeto).getCampos().get(w).getId());
+			for(int campoTransformacion=0; campoTransformacion<listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().size(); campoTransformacion++){
+				QueCampo=false;
+				for(int x=0; x<listaInstancia.get(instanciaPartida).getCampos().size() && !QueCampo; x++){											
+					if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(campoTransformacion).getId().equals(listaInstancia.get(instanciaPartida).getCampos().get(x).getTransformationField())){
+						QueCampo=true;											
+					}
+					else{
+						CampoFallo=listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(campoTransformacion).getName();
+					}
+				}
+
+				
+				if(!listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(campoTransformacion).getYaMostradoInput())
+					if(!QueCampo && listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(campoTransformacion).getInput()){
+						listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(campoTransformacion).setYaMostradoInput(true);
+						System.out.println("");
+						System.out.println("El campo " + CampoFallo.toUpperCase() + " NO RECIBE NINGUNA FLECHA");
+						System.out.println("ALTURA: "+ listaTransformaciones.get(posicionTransformacion).getNombre() );
+
+				}
+				
+				if(!listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(campoTransformacion).getYaMostradoOutput2())
+					if(!QueCampo && listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(campoTransformacion).getOutput()){
+					listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(campoTransformacion).setYaMostradoOutput2(true);
+					System.out.println("");
+					System.out.println("El campo " + CampoFallo.toUpperCase() + " NO VA A NINGUN LADO Y ESTA DECLARADO COMO OUTPUT");
+					System.out.println("ALTURA: " + listaTransformaciones.get(posicionTransformacion).getNombre());
+				}
+			}
+		}
 	}
 	
 	public void parametros(){
@@ -135,7 +207,7 @@ public class Validaciones {
 		DataRecord nuevaDataRecord = new DataRecord(null,null, null);
 		Iobject nuevoObjeto = new Iobject(null,null,null,tipo_idRef[1],null);	
 		Instance nuevaInstancia = new Instance(null,null,null,null,null, null, null);
-		AbstractTransformation nuevaTransformacion = new AbstractTransformation(null,null,null,null,null, null,null,null);
+		AbstractTransformation nuevaTransformacion = new AbstractTransformation(null,null,null,null,null, null,null,null,null);
 
 		//Iteradores para cada una de las listas
 		Iterator<DataRecord> iteradorDataRecords;
@@ -209,6 +281,11 @@ public class Validaciones {
 							instanciaEncontrada=false;
 							int posicionTransformacion=busquedaTransformacion(transformacionEncontrada,InstanciaPartida);
 							
+							if(!listaTransformaciones.get(posicionTransformacion).getNombre().contains("escritura") && !listaTransformaciones.get(posicionTransformacion).getNombre().contains("write") && !listaTransformaciones.get(posicionTransformacion).getNombre().contains("lectura") && !listaTransformaciones.get(posicionTransformacion).getNombre().contains("read"))
+								comprobarInstanciaTransformacion(InstanciaPartida,posicionTransformacion);
+							
+							
+							
 							//AQUI TENEMOS LAS DOS INSTANCIAS (LA ACTUAL Y LA SIGUIENTE) DE LAS CUALES HAY QUE COMPROBAR SUS PUERTOS Y TAMBIEN LA POSICION DE LA TRANSFORMACION QUE LE CORRESPONDA.
 							
 							transformacionEncontrada=false;
@@ -224,6 +301,7 @@ public class Validaciones {
 									ArrayBoleanos=recorrerInstanciaDestino(InstanciaDestino,campoCorrecto,InstanciaPartida,indiceCampoDeLaInstanciaPartida,false,NombreAComprobar);
 									campoCorrecto=ArrayBoleanos[0];
 
+									
 									//if(!campoCorrecto)
 										//System.out.println("El id " + listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId()+ " de la instancia de partida no se encuentra EN LA INSTANCIA DESTINO");
 
@@ -240,7 +318,7 @@ public class Validaciones {
 
 							
 							//CASOS
-							else if(NombreAComprobar.contains("escritura") || NombreAComprobar.contains("write") || NombreAComprobar.contains("agg") ||NombreAComprobar.contains("exp") || NombreAComprobar.contains("jnr") || NombreAComprobar.contains("fil")  || NombreAComprobar.contains("union")){	
+							else if(NombreAComprobar.contains("escritura") || NombreAComprobar.contains("write") || NombreAComprobar.contains("agg") ||NombreAComprobar.contains("exp") || NombreAComprobar.contains("jnr") || NombreAComprobar.contains("fil")  || NombreAComprobar.contains("uni")){	
 								for(int indiceCampoDeLaInstanciaPartida=0; indiceCampoDeLaInstanciaPartida<listaInstancia.get(InstanciaPartida).getCampos().size();indiceCampoDeLaInstanciaPartida++){
 									campoCorrecto=false;
 									toPortsEsNull=false;
@@ -255,6 +333,12 @@ public class Validaciones {
 									campoCorrecto=ArrayBoleanos[0];
 									toPortsEsNull=ArrayBoleanos[1];
 
+									
+									//AQUI SE PUEDE HACER LA COMPROBACION DE LOS OUTPUTS CON LOS TOPORTS
+									
+									if(!NombreAComprobar.contains("escritura") && !NombreAComprobar.contains("write"))
+										comprobacionToPortsOutputs(posicionTransformacion,InstanciaPartida,indiceCampoDeLaInstanciaPartida);
+									
 									//Deberia entrar en los campos que no te lleves a la instancia destino.
 									//if(!campoCorrecto)
 										//System.out.println("El id " + listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId()+ " de la instancia de partida no se encuentra en la de destino");
@@ -264,7 +348,7 @@ public class Validaciones {
 									for(int posicionArrayCampos=0; posicionArrayCampos<tablaComparacionCampos.size();posicionArrayCampos++){							
 										//COMPARAS EL ID CON EL TO_PORT DEL ANTERIOR
 										if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getId().equals(tablaComparacionCampos.get(posicionArrayCampos).get(0)) && !comprobado){																							
-											if(NombreAComprobar.contains("jnr") || NombreAComprobar.contains("union")) {
+											if(NombreAComprobar.contains("jnr") || NombreAComprobar.contains("uni")) {
 												if(tablaComparacionCampos.get(posicionArrayCampos).size() > 1) {
 													
 													//if(borrado) {//Si hemos borrado, tenemos que volver a comprobar todo de nuevo ya que el arrayCampos ya no es el mismo
@@ -285,13 +369,12 @@ public class Validaciones {
 
 										
 											else if(NombreAComprobar.contains("escritura") || NombreAComprobar.contains("write")) {
-												if(tablaComparacionCampos.size() > 1)
 													ComprobacionCamposEscritura(InstanciaPartida, indiceCampoDeLaInstanciaPartida, tablaComparacionCampos, posicionArrayCampos, posicionTransformacion);		
 											}
 										}
 									}
 									//3º PARTE SOLO PARA LAS EXCEPCIONES Y PORQUE SIGNIFICA QUE VA A SER UN CAMPO NUEVO					
-									if((NombreAComprobar.contains("agg") || NombreAComprobar.contains("union") || NombreAComprobar.contains("jnr") || NombreAComprobar.contains("exp") || NombreAComprobar.contains("fil")) && NuevoCampoo && listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts()!=null){													
+									if((NombreAComprobar.contains("agg") || NombreAComprobar.contains("uni") || NombreAComprobar.contains("jnr") || NombreAComprobar.contains("exp") || NombreAComprobar.contains("fil")) && NuevoCampoo && listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts()!=null){													
 										boolean encontrado=false;
 										ArrayList<String> nuevo = new ArrayList<String>();
 										nuevo.add(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts());
@@ -397,7 +480,26 @@ public class Validaciones {
 			}
 		}
 	}
+		
+//private void comprobarCamposTr
 	
+	
+	
+private void comprobacionToPortsOutputs(int posicionTransformacion, int instanciaPartida,int indiceCampoDeLaInstanciaPartida) {
+
+	for(int campoTransformacion=0; campoTransformacion<listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().size();campoTransformacion++){
+		if(listaInstancia.get(instanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getTransformationField().equals(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(campoTransformacion).getId())){
+			if(listaInstancia.get(instanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts() == null && listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(campoTransformacion).getOutput()) {
+				if(!listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(campoTransformacion).getYaMostradoOutput()){
+				System.out.println("");
+				System.out.println("El campo " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(campoTransformacion).getName() + " NO VA A NINGUN LADO Y ESTA DECLARADO COMO OUTPUT");
+				System.out.println("ALTURA: " + listaTransformaciones.get(posicionTransformacion).getNombre());
+				listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(campoTransformacion).setYaMostradoOutput(true);
+				}
+			}
+		}	
+	}
+}
 
 //	private void comprobarArrayConObjetoDeEscritura(int instanciaPartida, ArrayList<ArrayList<String>> tablaComparacionCampos, int posicionTransformacion) {
 //		int objetoEncontrado=0;
@@ -420,7 +522,7 @@ public class Validaciones {
 		boolean[] ArrayBoleanos= new boolean[2];
 		
 		for(int indiceCampoDeLaInstanciaDestino=0; indiceCampoDeLaInstanciaDestino<listaInstancia.get(InstanciaDestino).getCampos().size() && !campoCorrecto; indiceCampoDeLaInstanciaDestino++){ //For para recorrer todos los campos de la instancia de destino		
-			if( NombreAComprobar.contains("agg") || NombreAComprobar.contains("exp") || NombreAComprobar.contains("jnr") || NombreAComprobar.contains("union") || NombreAComprobar.contains("fil") ){
+			if( NombreAComprobar.contains("agg") || NombreAComprobar.contains("exp") || NombreAComprobar.contains("jnr") || NombreAComprobar.contains("uni") || NombreAComprobar.contains("fil") ){
 				if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getToPorts()==null) 
 					toPortsEsNull=true;									
 			}		
@@ -604,55 +706,57 @@ public class Validaciones {
 		
 		
 		for(int t=0; t<listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().size() && !encontrado;t++){
-			//System.out.println(t);
-			if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getStructural_feature().equals(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getFeature())) {
-				if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getPrecision().equals(tablaComparacionCampos.get(posicionArrayCampos).get(1)) && (listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getType().equals(tablaComparacionCampos.get(posicionArrayCampos).get(2)))){
-					//COMPROBAMOS LOS CAMPOS DE LA INSTANCIA A LOS DEL ARRAYlIST QUE SON LOS DE LA ISNTANCIA ANTERIOR 
-					campoCorrecto=true;//Los CAMPOS ESTAN CORRECTOS	
-				}
-
-				//fallaPrecision		
-				if(!listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getPrecision().equals(tablaComparacionCampos.get(posicionArrayCampos).get(1))){
-					fallaPrecision=true;
-					dondeFalla=t;
-				}
-
-				//fallaTipo	
-				if(!listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getType().equals(tablaComparacionCampos.get(posicionArrayCampos).get(2))){
-					fallaTipo=true;
-					dondeFalla=t;
-				}
-
-				if(!listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).getYaMostrado()) {
-					listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).setYaMostrado(true);
-					if(fallaPrecision){
-						System.out.println("");
-						System.out.println("FALLO EN EL CAMPO: " + tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1));
-						System.out.println("ALTURA: " + listaTransformaciones.get(posicionTransformacion).getNombre());
-						yaEnseñado=true;
-						System.out.println("MOTIVO DEL FALLO: Precision. Deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(1) + " y es  " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).getPrecision()); 
-						//System.out.println("");
-	
+			if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getPrecision()!=null && listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getType()!=null ){
+				//System.out.println(t);
+				if(listaInstancia.get(InstanciaPartida).getCampos().get(indiceCampoDeLaInstanciaPartida).getStructural_feature().equals(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getFeature())) {
+					if(listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getPrecision().equals(tablaComparacionCampos.get(posicionArrayCampos).get(1)) && (listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getType().equals(tablaComparacionCampos.get(posicionArrayCampos).get(2)))){
+						//COMPROBAMOS LOS CAMPOS DE LA INSTANCIA A LOS DEL ARRAYlIST QUE SON LOS DE LA ISNTANCIA ANTERIOR 
+						campoCorrecto=true;//Los CAMPOS ESTAN CORRECTOS	
 					}
-					if(fallaTipo) {
-						//listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).setYaMostrado(true);
-						if(yaEnseñado) {
-							System.out.println("MOTIVO DEL FALLO: Tipo. Deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(2) + "  y es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).getType());	
-							System.out.println("");
-						}
-						else {
+
+					//fallaPrecision		
+					if(!listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getPrecision().equals(tablaComparacionCampos.get(posicionArrayCampos).get(1))){
+						fallaPrecision=true;
+						dondeFalla=t;
+					}
+
+					//fallaTipo	
+					if(!listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(t).getType().equals(tablaComparacionCampos.get(posicionArrayCampos).get(2))){
+						fallaTipo=true;
+						dondeFalla=t;
+					}
+
+					if(!listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).getYaMostrado()) {
+						listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).setYaMostrado(true);
+						if(fallaPrecision){
 							System.out.println("");
 							System.out.println("FALLO EN EL CAMPO: " + tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1));
 							System.out.println("ALTURA: " + listaTransformaciones.get(posicionTransformacion).getNombre());
-							System.out.println("MOTIVO DEL FALLO: Tipo. Deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(2) + "  y es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).getType());	
-							System.out.println("");
-	
 							yaEnseñado=true;
+							System.out.println("MOTIVO DEL FALLO: Precision. Deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(1) + " y es  " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).getPrecision()); 
+							//System.out.println("");
+
+						}
+						if(fallaTipo) {
+							//listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).setYaMostrado(true);
+							if(yaEnseñado) {
+								System.out.println("MOTIVO DEL FALLO: Tipo. Deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(2) + "  y es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).getType());	
+								System.out.println("");
+							}
+							else {
+								System.out.println("");
+								System.out.println("FALLO EN EL CAMPO: " + tablaComparacionCampos.get(posicionArrayCampos).get(tablaComparacionCampos.get(posicionArrayCampos).size()-1));
+								System.out.println("ALTURA: " + listaTransformaciones.get(posicionTransformacion).getNombre());
+								System.out.println("MOTIVO DEL FALLO: Tipo. Deberia ser " + tablaComparacionCampos.get(posicionArrayCampos).get(2) + "  y es " + listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().get(dondeFalla).getType());	
+								System.out.println("");
+
+								yaEnseñado=true;
+							}
 						}
 					}
-				}
-				encontrado=true;
-			} //cierre del transformationField=id
+					encontrado=true;
+				} //cierre del transformationField=id
+			} //Cierre if para ver que no es null las cosas 
 		} //CierreFor
 			
 		
@@ -825,7 +929,7 @@ public class Validaciones {
 
 
 			//******************************ESTO SOLO SI ES JOIN******************************
-			if(listaTransformaciones.get(posicionTransformacion).getNombre().contains("jnr") || listaTransformaciones.get(posicionTransformacion).getNombre().contains("union") ){
+			if(listaTransformaciones.get(posicionTransformacion).getNombre().contains("jnr") || listaTransformaciones.get(posicionTransformacion).getNombre().contains("uni") ){
 				//TENDREMOS QUE UTILIZAR EL NOMBRE		
 				//hay que ver si el nombre de la transformacion de salida del join su id tiene un transformation field que significa que la variable continua a la siguiente instancia y debemos meterla en el array
 				for(int t=1; t<=listaTransformaciones.get(posicionTransformacion).getCamposTransformacion().size() && !cambiado;t++){

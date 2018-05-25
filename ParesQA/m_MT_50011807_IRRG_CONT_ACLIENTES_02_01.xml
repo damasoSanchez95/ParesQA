@@ -427,7 +427,7 @@
 </ownedCapabilityTypes>
 <relationalFields>
 <RelationalField imx:id="ID_285" xsi:type="datasourceoperation:RelationalField" column="U:AWHQcDvjEeiK4YBsWxYztQ" feature="U:AWHP8jvjEeiK4YBsWxYztQ" name="cod_empresa" odbcPrecision="4" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_286"/>
-<RelationalField imx:id="ID_287" xsi:type="datasourceoperation:RelationalField" column="U:AWHQcTvjEeiK4YBsWxYztQ" feature="U:AWHP8zvjEeiK4YBsWxYztQ" name="fec_dato" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_286"/>
+<RelationalField imx:id="ID_287" xsi:type="datasourceoperation:RelationalField" column="U:AWHQcTvjEeiK4YBsWxYztQ" feature="U:AWHP8zvjEeiK4YBsWxYztQ" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_286"/>
 <RelationalField imx:id="ID_288" xsi:type="datasourceoperation:RelationalField" column="U:AWHQcjvjEeiK4YBsWxYztQ" feature="U:AWHP9DvjEeiK4YBsWxYztQ" name="tipo_pers" odbcPrecision="1" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fvarchar" recordInstance="ID_286"/>
 <RelationalField imx:id="ID_289" xsi:type="datasourceoperation:RelationalField" column="U:AWHQczvjEeiK4YBsWxYztQ" feature="U:AWHP9TvjEeiK4YBsWxYztQ" name="cod_pers" odbcPrecision="10" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Finteger" recordInstance="ID_286"/>
 <RelationalField imx:id="ID_290" xsi:type="datasourceoperation:RelationalField" column="U:AWHQdDvjEeiK4YBsWxYztQ" feature="U:AWHP9jvjEeiK4YBsWxYztQ" name="imp_irre_clie" odbcPrecision="17" odbcScale="2" odbcType="smd:com.informatica.metadata.seed.odbc.ODBC.typesystem%2Fdecimal" recordInstance="ID_286"/>
