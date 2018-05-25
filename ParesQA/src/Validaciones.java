@@ -42,19 +42,19 @@ public class Validaciones {
 			if(!listaTransformaciones.get(transformacion).getNombre().contains("lectura") && !listaTransformaciones.get(transformacion).getNombre().contains("read") && !listaTransformaciones.get(transformacion).getNombre().contains("escritura")  && !listaTransformaciones.get(transformacion).getNombre().contains("write")){
 				//System.out.println(listaTransformaciones.get(transformacion).getNombre().substring(0, 4));
 				if(listaTransformaciones.get(transformacion).getNombre().substring(0, 1).contains("e") && !CTE_EXPRESION.equals(listaTransformaciones.get(transformacion).getNombre().substring(0, 4))){
-					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMBLAGURA.");
+					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMENCLATURA.");
 				}
 				else if(listaTransformaciones.get(transformacion).getNombre().substring(0, 1).contains("j") && !CTE_JOIN.equals(listaTransformaciones.get(transformacion).getNombre().substring(0, 4))){
-					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMBLAGURA.");
+					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMENCLATURA.");
 				}
 				else if(listaTransformaciones.get(transformacion).getNombre().substring(0, 1).contains("f") && !CTE_FILTRO.equals(listaTransformaciones.get(transformacion).getNombre().substring(0, 4))){
-					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMBLAGURA.");
+					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMENCLATURA.");
 				}
 				else if(listaTransformaciones.get(transformacion).getNombre().substring(0, 1).contains("u") && !CTE_UNION.equals(listaTransformaciones.get(transformacion).getNombre().substring(0, 4))){
-					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMBLAGURA.");
+					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMENCLATURA.");
 				}
 				else if(listaTransformaciones.get(transformacion).getNombre().substring(0, 1).contains("a") && !CTE_AGREGACION.equals(listaTransformaciones.get(transformacion).getNombre().substring(0, 4))){
-					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMBLAGURA.");
+					System.out.println("LA CAJA " + listaTransformaciones.get(transformacion).getNombre() + " NO CUMPLE CON LA NOMENCLATURA.");
 				}
 			}
 		}
