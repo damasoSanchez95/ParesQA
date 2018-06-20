@@ -213,7 +213,6 @@ public class LeerFichero {
 		tipo_idRef[0]=true;
 		tipo_idRef[1]=false;
 
-
 		Iterator<String> it;
 		DataRecord dataRecord = new DataRecord(null,null,null);
 
@@ -482,7 +481,6 @@ public class LeerFichero {
 			if(arrayBueno[i]!=null)
 				claves.add(arrayBueno[i]);
 		}
-		
 	}
 	
 	public static void reiniciarArray(String arrayBueno[]){
@@ -782,29 +780,6 @@ public class LeerFichero {
 						campo.setOutput(true);
 						it.next(); //para saltarnoslo
 					}
-						
-					
-//					if(listaTransformaciones.size() == 4 && !falloXML && !output){
-//						campo.setName(it.next());
-//						campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
-//						listaOutputs.add(false);
-//					}
-//					else if(listaTransformaciones.size() == 5 && !falloXML && output){
-//						campo.setName(it.next());
-//						campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
-//						listaOutputs.add(true);
-//						campo.setOutput(true);
-//					}
-//					else{
-//						campo.setEscala(it.next());
-//						campo.setName(it.next());	
-//						if(output) {
-//							listaOutputs.add(true);
-//							campo.setOutput(true);
-//						}
-//						else
-//							listaOutputs.add(false);
-//					}	
 				}
 
 			listaCampos.add(campo);
@@ -854,30 +829,7 @@ public class LeerFichero {
 						if(output) {
 							campo.setOutput(true);
 							it.next(); //para saltarnoslo
-						}
-							
-						
-//						if(listaTransformaciones.size() == 4 && !falloXML && !output){
-//							campo.setName(it.next());
-//							campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
-//							listaOutputs.add(false);
-//						}
-//						else if(listaTransformaciones.size() == 5 && !falloXML && output){
-//							campo.setName(it.next());
-//							campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
-//							listaOutputs.add(true);
-//							campo.setOutput(true);
-//						}
-//						else{
-//							campo.setEscala(it.next());
-//							campo.setName(it.next());	
-//							if(output) {
-//								listaOutputs.add(true);
-//								campo.setOutput(true);
-//							}
-//							else
-//								listaOutputs.add(false);
-//						}	
+						}	
 					}
 
 				listaCampos.add(campo);
@@ -929,29 +881,6 @@ public class LeerFichero {
 						campo.setOutput(true);
 						it.next(); //para saltarnoslo
 					}
-						
-					
-//					if(listaTransformaciones.size() == 4 && !falloXML && !output){
-//						campo.setName(it.next());
-//						campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
-//						listaOutputs.add(false);
-//					}
-//					else if(listaTransformaciones.size() == 5 && !falloXML && output){
-//						campo.setName(it.next());
-//						campo.setEscala(null); //ESTO OCURRE CUANDO NO ES UN DECIMAL POR LO TANTO NO TIENE ESCALA
-//						listaOutputs.add(true);
-//						campo.setOutput(true);
-//					}
-//					else{
-//						campo.setEscala(it.next());
-//						campo.setName(it.next());	
-//						if(output) {
-//							listaOutputs.add(true);
-//							campo.setOutput(true);
-//						}
-//						else
-//							listaOutputs.add(false);
-//					}	
 				}
 
 			listaCampos.add(campo);
@@ -1195,9 +1124,6 @@ public class LeerFichero {
 			}	
 		} //Cierre if para el owner
 		
-		
-		
-
 		return nuevaTransformacion;
 	}
 	
