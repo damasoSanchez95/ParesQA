@@ -27,7 +27,7 @@ public class Validaciones {
 	private boolean descripcionMapping;
 	
 	//Constructor Validaciones
-	public Validaciones(boolean descripcionMapping, ArrayList<Instance> listaInstancia, ArrayList<AbstractTransformation> listaTransformaciones , HashMap<Parametro, String> tablaParametros, ArrayList<Iobject> listaObjetos, HashMap<String, String> tablaExecutionParameters, ArrayList<DataRecord> listaDataRecords){
+	public Validaciones(boolean descripcionMapping, ArrayList<Instance> listaInstancia, ArrayList<AbstractTransformation> listaTransformaciones , HashMap<Parametro, String> tablaParametros, ArrayList<Iobject> listaObjetos, HashMap<String, String> tablautionParameters, ArrayList<DataRecord> listaDataRecords){
 		this.listaInstancia=listaInstancia;
 		this.listaTransformaciones=listaTransformaciones;
 		this.tablaParametros=tablaParametros;
